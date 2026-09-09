@@ -1,0 +1,776 @@
+{
+    "manifest_version": "1.0.23",
+    "title": "Awima - Fishing Shop & Store WooCommerce Elementor Pro Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/store.rabonadev.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Single Post",
+            "screenshot": "screenshots\/single-post.jpg",
+            "source": "templates\/single-post.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=single-post",
+            "type": "single-post",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-post",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "single-post",
+                "elementor_pro_conditions": [
+                    "include\/singular"
+                ],
+                "additional_template_information": [
+                    "This is a \"Single Post\" template for Elementor Pro.",
+                    "This template will display on: All Singular."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home",
+            "screenshot": "screenshots\/home.jpg",
+            "source": "templates\/home.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=home",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "page",
+                "additional_template_information": [
+                    "This is a \"Page\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Contact",
+            "screenshot": "screenshots\/contact.jpg",
+            "source": "templates\/contact.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=contact",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "page",
+                "additional_template_information": [
+                    "This is a \"Page\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "My Account",
+            "screenshot": "screenshots\/my-account.jpg",
+            "source": "templates\/my-account.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=my-account",
+            "type": "single-page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "single-page",
+                "elementor_pro_conditions": [
+                    "include\/singular\/page\/9"
+                ],
+                "additional_template_information": [
+                    "This is a \"Single Page\" template for Elementor Pro.",
+                    "This template will display on: Page #9."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "About",
+            "screenshot": "screenshots\/about.jpg",
+            "source": "templates\/about.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=about",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "page",
+                "additional_template_information": [
+                    "This is a \"Page\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "404",
+            "screenshot": "screenshots\/404.jpg",
+            "source": "templates\/404.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=404",
+            "type": "error-404",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-404",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "error-404",
+                "elementor_pro_conditions": [
+                    "include\/singular\/not_found404"
+                ],
+                "additional_template_information": [
+                    "This is a \"Error 404\" template for Elementor Pro.",
+                    "This template will display on: 404 Page."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Blog",
+            "screenshot": "screenshots\/blog.jpg",
+            "source": "templates\/blog.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=blog",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "page",
+                "additional_template_information": [
+                    "This is a \"Page\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Popup",
+            "screenshot": "screenshots\/popup.jpg",
+            "source": "templates\/popup.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=popup",
+            "type": "popup",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-popup",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "popup",
+                "elementor_pro_conditions": [
+                    "include\/singular\/front_page"
+                ],
+                "additional_template_information": [
+                    "This is a \"Popup\" template for Elementor Pro.",
+                    "This template will display on: Front Page."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Single Product",
+            "screenshot": "screenshots\/single-product.jpg",
+            "source": "templates\/single-product.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=single-product",
+            "type": "product",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-product",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "product",
+                "elementor_pro_conditions": [
+                    "include\/product"
+                ],
+                "additional_template_information": [
+                    "This is a \"Product\" template for Elementor Pro.",
+                    "This template will display on: Products."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Cart",
+            "screenshot": "screenshots\/cart.jpg",
+            "source": "templates\/cart.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=cart",
+            "type": "single-page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "single-page",
+                "elementor_pro_conditions": [
+                    "include\/singular\/page\/7"
+                ],
+                "additional_template_information": [
+                    "This is a \"Single Page\" template for Elementor Pro.",
+                    "This template will display on: Page #7."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Checkout",
+            "screenshot": "screenshots\/checkout.jpg",
+            "source": "templates\/checkout.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=checkout",
+            "type": "single-page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "single-page",
+                "elementor_pro_conditions": [
+                    "include\/singular\/page\/8"
+                ],
+                "additional_template_information": [
+                    "This is a \"Single Page\" template for Elementor Pro.",
+                    "This template will display on: Page #8."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Search Results",
+            "screenshot": "screenshots\/search-results.jpg",
+            "source": "templates\/search-results.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=search-results",
+            "type": "search-results",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-search",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "search-results",
+                "elementor_pro_conditions": [
+                    "include\/archive\/search"
+                ],
+                "additional_template_information": [
+                    "This is a \"Search Results\" template for Elementor Pro.",
+                    "This template will display on: Search Results."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Shop",
+            "screenshot": "screenshots\/shop.jpg",
+            "source": "templates\/shop.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=shop",
+            "type": "product-archive",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-product",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "product-archive",
+                "elementor_pro_conditions": [
+                    "include\/product_archive"
+                ],
+                "additional_template_information": [
+                    "This is a \"Product Archive\" template for Elementor Pro.",
+                    "This template will display on: All Product Archives."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=footer",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=header",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Product Loop",
+            "screenshot": "screenshots\/product-loop.jpg",
+            "source": "templates\/product-loop.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=elementor-loop-item-2",
+            "type": "loop-item",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-loop",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "loop-item",
+                "additional_template_information": [
+                    "This is a \"Loop Item\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Product Intro Loop",
+            "screenshot": "screenshots\/product-intro-loop.jpg",
+            "source": "templates\/product-intro-loop.json",
+            "preview_url": "https:\/\/store.rabonadev.com\/awima\/?elementor_library=product-intro-loop",
+            "type": "loop-item",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-loop",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "loop-item",
+                "additional_template_information": [
+                    "This is a \"Loop Item\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor Pro",
+            "version": "3.29.2",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor",
+            "version": "3.29.2",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Skyboot Custom Icons for Elementor - Elementor Icons library",
+            "version": "1.0.9",
+            "file": "skyboot-custom-icons-for-elementor\/skyboot-custom-icons-for-elementor.php",
+            "author": "Skybootstrap"
+        },
+        {
+            "name": "The Plus Addons for Elementor",
+            "version": "6.3.6",
+            "file": "the-plus-addons-for-elementor-page-builder\/theplus_elementor_addon.php",
+            "author": "POSIMYTH"
+        },
+        {
+            "name": "WooCommerce",
+            "version": "9.8.5",
+            "file": "woocommerce\/woocommerce.php",
+            "author": "Automattic"
+        }
+    ],
+    "images": [
+        {
+            "filename": "header.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/header-800x205.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/my-account.json",
+                    "name": "My Account"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/blog.json",
+                    "name": "Blog"
+                },
+                {
+                    "source": "templates\/cart.json",
+                    "name": "Cart"
+                },
+                {
+                    "source": "templates\/checkout.json",
+                    "name": "Checkout"
+                },
+                {
+                    "source": "templates\/search-results.json",
+                    "name": "Search Results"
+                },
+                {
+                    "source": "templates\/shop.json",
+                    "name": "Shop"
+                }
+            ],
+            "filesize": 201217,
+            "dimensions": [
+                2110,
+                540
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "placeholder.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/placeholder-800x533.png",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 6146,
+            "dimensions": [
+                1200,
+                800
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "image18251.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/image18251-800x534.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 111274,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "image17871.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/image17871-800x534.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 105968,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "reel.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/reel.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 12962,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "net-2.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/net-2.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 15038,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "rod.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/rod.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 10498,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "float.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/float.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 9746,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "hook.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/hook.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 7957,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "image18081.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/image18081-800x534.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/shop.json",
+                    "name": "Shop"
+                }
+            ],
+            "filesize": 105795,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "featured.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/featured.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/shop.json",
+                    "name": "Shop"
+                }
+            ],
+            "filesize": 27979,
+            "dimensions": [
+                401,
+                285
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "image8371.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/image8371-800x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 67110,
+            "dimensions": [
+                1000,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "blog5.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/blog5-800x578.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 159682,
+            "dimensions": [
+                1800,
+                1300
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "image82011.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/image82011-800x800.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 86281,
+            "dimensions": [
+                900,
+                900
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "g2056.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/g2056-800x391.png",
+            "templates": [
+                {
+                    "source": "templates\/404.json",
+                    "name": "404"
+                }
+            ],
+            "filesize": 97689,
+            "dimensions": [
+                1836,
+                898
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "text819.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/text819.png",
+            "templates": [
+                {
+                    "source": "templates\/popup.json",
+                    "name": "Popup"
+                },
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                }
+            ],
+            "filesize": 31774,
+            "dimensions": [
+                660,
+                174
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "image35941.jpg",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/image35941.jpg",
+            "templates": [
+                {
+                    "source": "templates\/popup.json",
+                    "name": "Popup"
+                }
+            ],
+            "filesize": 41226,
+            "dimensions": [
+                500,
+                731
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "placeholder-1.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/placeholder-1-800x533.png",
+            "templates": [
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                }
+            ],
+            "filesize": 6146,
+            "dimensions": [
+                1200,
+                800
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        },
+        {
+            "filename": "placeholder.png",
+            "thumbnail_url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/11\/placeholder-800x533.png",
+            "templates": [
+                {
+                    "source": "templates\/product-intro-loop.json",
+                    "name": "Product Intro Loop"
+                }
+            ],
+            "filesize": 6146,
+            "dimensions": [
+                1200,
+                800
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        }
+    ]
+}

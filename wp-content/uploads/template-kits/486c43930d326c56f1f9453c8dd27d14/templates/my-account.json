@@ -1,0 +1,259 @@
+{
+    "version": "0.4",
+    "title": "My Account",
+    "type": "single-page",
+    "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "elementor_library_type": "single-page",
+        "elementor_pro_conditions": [
+            "include\/singular\/page\/9"
+        ],
+        "additional_template_information": [
+            "This is a \"Single Page\" template for Elementor Pro.",
+            "This template will display on: Page #9."
+        ],
+        "wp_page_template": "default"
+    },
+    "content": [
+        {
+            "id": "48b58a64",
+            "settings": {
+                "background_background": "classic",
+                "background_image": {
+                    "url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/header.jpg",
+                    "id": 573,
+                    "size": "",
+                    "alt": "",
+                    "source": "library"
+                },
+                "background_position": "bottom right",
+                "background_attachment": "scroll",
+                "background_repeat": "no-repeat",
+                "background_size": "cover",
+                "background_overlay_background": "classic",
+                "background_overlay_opacity": {
+                    "unit": "px",
+                    "size": 0.4,
+                    "sizes": []
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "60",
+                    "right": "0",
+                    "bottom": "60",
+                    "left": "0",
+                    "isLinked": false
+                },
+                "__globals__": {
+                    "background_overlay_color": "globals\/colors?id=accent"
+                }
+            },
+            "elements": [
+                {
+                    "id": "50763f0a",
+                    "settings": {
+                        "title": "My Account",
+                        "sub_title": "",
+                        "title_s": "",
+                        "sub_title_tag": "h1",
+                        "as_bs_lists": [],
+                        "as_bs_lists_h": [],
+                        "as_ts_lists": [],
+                        "as_ts_lists_h": [],
+                        "as_ds_lists": [],
+                        "as_ds_lists_h": [],
+                        "__globals__": {
+                            "title_solid_color": "globals\/colors?id=ad74965",
+                            "sub_title_solid_color": "globals\/colors?id=ad74965",
+                            "title_typography_typography": "globals\/typography?id=9dde35e"
+                        },
+                        "sub_title_solid_color": "#FFFFFF",
+                        "_background_color_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_color_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_color_b_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_color_b_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_gradient_angle_tablet": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_gradient_angle_mobile": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_b_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_b_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_gradient_angle_tablet": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_gradient_angle_mobile": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "title_h": "h1"
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "tp-heading-title",
+                    "elType": "widget"
+                }
+            ],
+            "isInner": false,
+            "elType": "container"
+        },
+        {
+            "id": "76b9fcf5",
+            "settings": {
+                "padding": {
+                    "unit": "px",
+                    "top": "70",
+                    "right": "0",
+                    "bottom": "60",
+                    "left": "0",
+                    "isLinked": false
+                },
+                "padding_tablet": {
+                    "unit": "px",
+                    "top": "70",
+                    "right": "20",
+                    "bottom": "60",
+                    "left": "20",
+                    "isLinked": false
+                }
+            },
+            "elements": [
+                {
+                    "id": "473a6f7d",
+                    "settings": {
+                        "tabs_layout": "horizontal",
+                        "tabs": [
+                            {
+                                "field_key": "dashboard",
+                                "field_label": "Dashboard",
+                                "tab_name": "Dashboard",
+                                "_id": "220560f"
+                            },
+                            {
+                                "field_key": "orders",
+                                "field_label": "Orders",
+                                "tab_name": "Orders",
+                                "_id": "020223c"
+                            },
+                            {
+                                "field_key": "downloads",
+                                "field_label": "Downloads",
+                                "tab_name": "Downloads",
+                                "_id": "691b082"
+                            },
+                            {
+                                "field_key": "edit-address",
+                                "field_label": "Addresses",
+                                "tab_name": "Addresses",
+                                "_id": "cc4560e"
+                            },
+                            {
+                                "field_key": "edit-account",
+                                "field_label": "Account Details",
+                                "tab_name": "Account Details",
+                                "_id": "54957d3"
+                            },
+                            {
+                                "field_key": "customer-logout",
+                                "field_label": "Logout",
+                                "tab_name": "Logout",
+                                "_id": "f8c24f5"
+                            }
+                        ],
+                        "tabs_normal_background_background": "classic",
+                        "tabs_normal_background_color": "#F5F5F5",
+                        "tabs_normal_color": "#161614",
+                        "tabs_border_type": "none",
+                        "tabs_border_width": {
+                            "unit": "px",
+                            "top": "1",
+                            "right": "1",
+                            "bottom": "1",
+                            "left": "1",
+                            "isLinked": true
+                        },
+                        "tabs_border_color": "#3ABEFF",
+                        "tabs_border_radius": {
+                            "unit": "px",
+                            "top": "3",
+                            "right": "3",
+                            "bottom": "3",
+                            "left": "3",
+                            "isLinked": true
+                        },
+                        "tabs_divider_weight": {
+                            "unit": "px",
+                            "size": 1,
+                            "sizes": []
+                        },
+                        "section_title_spacing": {
+                            "unit": "px",
+                            "size": 20,
+                            "sizes": []
+                        },
+                        "forms_buttons_background_background": "classic",
+                        "__globals__": {
+                            "tabs_normal_color": "globals\/colors?id=secondary",
+                            "tabs_normal_background_color": "globals\/colors?id=0cb35d7",
+                            "tabs_border_color": "globals\/colors?id=primary",
+                            "tabs_divider_color": "globals\/colors?id=37ee5e3",
+                            "tabs_active_color": "globals\/colors?id=accent",
+                            "forms_buttons_background_color": "globals\/colors?id=accent",
+                            "section_titles_typography_typography": "globals\/typography?id=3d7f757"
+                        }
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "woocommerce-my-account",
+                    "elType": "widget"
+                }
+            ],
+            "isInner": false,
+            "elType": "container"
+        }
+    ]
+}

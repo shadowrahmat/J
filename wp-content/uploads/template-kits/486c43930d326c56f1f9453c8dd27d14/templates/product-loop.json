@@ -1,0 +1,177 @@
+{
+    "version": "0.4",
+    "title": "Product Loop",
+    "type": "loop-item",
+    "metadata": {
+        "template_type": "section-loop",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "elementor_library_type": "loop-item",
+        "additional_template_information": [
+            "This is a \"Loop Item\" template for Elementor Pro."
+        ],
+        "wp_page_template": "default"
+    },
+    "content": [
+        {
+            "id": "255a3d92",
+            "settings": {
+                "flex_gap": {
+                    "column": "5",
+                    "row": "5",
+                    "isLinked": true,
+                    "unit": "px",
+                    "size": 5
+                },
+                "border_border": "solid",
+                "border_width": {
+                    "unit": "px",
+                    "top": "1",
+                    "right": "1",
+                    "bottom": "1",
+                    "left": "1",
+                    "isLinked": true
+                },
+                "border_radius": {
+                    "unit": "px",
+                    "top": "3",
+                    "right": "3",
+                    "bottom": "3",
+                    "left": "3",
+                    "isLinked": true
+                },
+                "__globals__": {
+                    "border_color": "globals\/colors?id=37ee5e3",
+                    "background_color": "globals\/colors?id=ad74965"
+                },
+                "background_background": "classic"
+            },
+            "elements": [
+                {
+                    "id": "21bfb699",
+                    "settings": {
+                        "__dynamic__": {
+                            "image": "[elementor-tag id=\"\" name=\"post-featured-image\" settings=\"%7B%22fallback%22%3A%7B%22url%22%3A%22%22%2C%22id%22%3A%22%22%2C%22size%22%3A%22%22%7D%7D\"]"
+                        },
+                        "image_size": "full",
+                        "_margin": {
+                            "unit": "px",
+                            "top": "20",
+                            "right": "20",
+                            "bottom": "10",
+                            "left": "20",
+                            "isLinked": false
+                        },
+                        "hover_animation": "grow"
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "theme-post-featured-image",
+                    "elType": "widget"
+                },
+                {
+                    "id": "59bfccd4",
+                    "settings": {
+                        "__dynamic__": {
+                            "title": "[elementor-tag id=\"\" name=\"woocommerce-product-title-tag\" settings=\"%7B%22product_id%22%3Afalse%2C%22before%22%3A%22%22%2C%22after%22%3A%22%22%2C%22fallback%22%3A%22%22%7D\"]",
+                            "link": "[elementor-tag id=\"0d83aea\" name=\"post-url\" settings=\"%7B%7D\"]"
+                        },
+                        "title": "Add Your Heading Text Here",
+                        "header_size": "h3",
+                        "_margin": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "20",
+                            "bottom": "0",
+                            "left": "20",
+                            "isLinked": false
+                        },
+                        "__globals__": {
+                            "typography_typography": "globals\/typography?id=8d7aed7",
+                            "title_color": "globals\/colors?id=secondary"
+                        }
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "woocommerce-product-title",
+                    "elType": "widget"
+                },
+                {
+                    "id": "41894ef",
+                    "settings": {
+                        "_margin": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "20",
+                            "bottom": "0",
+                            "left": "20",
+                            "isLinked": false
+                        },
+                        "__globals__": {
+                            "typography_typography": "globals\/typography?id=dbb590a",
+                            "price_color": "globals\/colors?id=secondary"
+                        }
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "woocommerce-product-price",
+                    "elType": "widget"
+                },
+                {
+                    "id": "455f4ff2",
+                    "settings": {
+                        "text": "ADD TO CART",
+                        "icon_align": "row-reverse",
+                        "align": "justify",
+                        "content_align": "space-between",
+                        "selected_icon": {
+                            "value": "fas fa-cart-plus",
+                            "library": "fa-solid"
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "3",
+                            "right": "3",
+                            "bottom": "3",
+                            "left": "3",
+                            "isLinked": false
+                        },
+                        "text_padding": {
+                            "unit": "px",
+                            "top": "16",
+                            "right": "20",
+                            "bottom": "16",
+                            "left": "20",
+                            "isLinked": false
+                        },
+                        "__globals__": {
+                            "background_color": "globals\/colors?id=accent",
+                            "typography_typography": "globals\/typography?id=a3190c1",
+                            "button_text_color": "globals\/colors?id=ad74965",
+                            "button_background_hover_color": "globals\/colors?id=primary",
+                            "hover_color": "globals\/colors?id=ad74965"
+                        },
+                        "_margin": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "20",
+                            "bottom": "20",
+                            "left": "20",
+                            "isLinked": false
+                        },
+                        "quantity": 0,
+                        "__dynamic__": {
+                            "button_css_id": "[elementor-tag id=\"26d186e\" name=\"post-id\" settings=\"%7B%7D\"]"
+                        }
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "wc-add-to-cart",
+                    "elType": "widget"
+                }
+            ],
+            "isInner": false,
+            "elType": "container"
+        }
+    ]
+}

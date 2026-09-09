@@ -1,0 +1,333 @@
+{
+    "version": "0.4",
+    "title": "Checkout",
+    "type": "single-page",
+    "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "elementor_library_type": "single-page",
+        "elementor_pro_conditions": [
+            "include\/singular\/page\/8"
+        ],
+        "additional_template_information": [
+            "This is a \"Single Page\" template for Elementor Pro.",
+            "This template will display on: Page #8."
+        ],
+        "wp_page_template": "default"
+    },
+    "content": [
+        {
+            "id": "6444fbda",
+            "settings": {
+                "background_background": "classic",
+                "background_image": {
+                    "url": "https:\/\/store.rabonadev.com\/awima\/wp-content\/uploads\/sites\/2\/2024\/12\/header.jpg",
+                    "id": 573,
+                    "size": "",
+                    "alt": "",
+                    "source": "library"
+                },
+                "background_position": "bottom right",
+                "background_attachment": "scroll",
+                "background_repeat": "no-repeat",
+                "background_size": "cover",
+                "background_overlay_background": "classic",
+                "background_overlay_opacity": {
+                    "unit": "px",
+                    "size": 0.4,
+                    "sizes": []
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "60",
+                    "right": "0",
+                    "bottom": "60",
+                    "left": "0",
+                    "isLinked": false
+                },
+                "__globals__": {
+                    "background_overlay_color": "globals\/colors?id=accent"
+                }
+            },
+            "elements": [
+                {
+                    "id": "2baf3a98",
+                    "settings": {
+                        "title": "Checkout",
+                        "sub_title": "",
+                        "title_s": "",
+                        "sub_title_tag": "h1",
+                        "as_bs_lists": [],
+                        "as_bs_lists_h": [],
+                        "as_ts_lists": [],
+                        "as_ts_lists_h": [],
+                        "as_ds_lists": [],
+                        "as_ds_lists_h": [],
+                        "__globals__": {
+                            "title_solid_color": "globals\/colors?id=ad74965",
+                            "sub_title_solid_color": "globals\/colors?id=ad74965",
+                            "title_typography_typography": "globals\/typography?id=9dde35e"
+                        },
+                        "sub_title_solid_color": "#FFFFFF",
+                        "_background_color_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_color_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_color_b_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_color_b_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_gradient_angle_tablet": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_gradient_angle_mobile": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_b_stop_tablet": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_color_b_stop_mobile": {
+                            "unit": "%",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_gradient_angle_tablet": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "_background_hover_gradient_angle_mobile": {
+                            "unit": "deg",
+                            "size": "",
+                            "sizes": []
+                        },
+                        "title_h": "h1"
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "tp-heading-title",
+                    "elType": "widget"
+                }
+            ],
+            "isInner": false,
+            "elType": "container"
+        },
+        {
+            "id": "3e65fcd",
+            "settings": {
+                "background_background": "classic",
+                "padding": {
+                    "unit": "px",
+                    "top": "70",
+                    "right": "0",
+                    "bottom": "60",
+                    "left": "0",
+                    "isLinked": false
+                },
+                "padding_tablet": {
+                    "unit": "px",
+                    "top": "70",
+                    "right": "20",
+                    "bottom": "60",
+                    "left": "20",
+                    "isLinked": false
+                },
+                "__globals__": {
+                    "background_color": "globals\/colors?id=0cb35d7"
+                }
+            },
+            "elements": [
+                {
+                    "id": "51970846",
+                    "settings": {
+                        "sticky_right_column": "yes",
+                        "billing_details_section_title": "Billing Details",
+                        "billing_details_form_fields": [
+                            {
+                                "field_key": "billing_first_name",
+                                "field_label": "First Name",
+                                "label": "First Name",
+                                "placeholder": "First Name",
+                                "_id": "61dde78"
+                            },
+                            {
+                                "field_key": "billing_last_name",
+                                "field_label": "Last Name",
+                                "label": "Last Name",
+                                "placeholder": "Last Name",
+                                "_id": "f4a4182"
+                            },
+                            {
+                                "field_key": "billing_company",
+                                "field_label": "Company Name",
+                                "label": "Company Name",
+                                "placeholder": "Company Name",
+                                "_id": "549b2f4"
+                            },
+                            {
+                                "field_key": "billing_country",
+                                "field_label": "Country \/ Region",
+                                "label": "Country \/ Region",
+                                "placeholder": "Country \/ Region",
+                                "repeater_state": "locale",
+                                "_id": "772a89a"
+                            },
+                            {
+                                "field_key": "billing_address_1",
+                                "field_label": "Street Address",
+                                "label": "Street Address",
+                                "placeholder": "Street Address",
+                                "repeater_state": "locale",
+                                "_id": "bec3dbc"
+                            },
+                            {
+                                "field_key": "billing_postcode",
+                                "field_label": "Post Code",
+                                "label": "Post Code",
+                                "placeholder": "Post Code",
+                                "repeater_state": "locale",
+                                "_id": "f5e266e"
+                            },
+                            {
+                                "field_key": "billing_city",
+                                "field_label": "Town \/ City",
+                                "label": "Town \/ City",
+                                "placeholder": "Town \/ City",
+                                "repeater_state": "locale",
+                                "_id": "62ac952"
+                            },
+                            {
+                                "field_key": "billing_state",
+                                "field_label": "State",
+                                "label": "State",
+                                "placeholder": "State",
+                                "repeater_state": "locale",
+                                "_id": "3d4925f"
+                            },
+                            {
+                                "field_key": "billing_phone",
+                                "field_label": "Phone",
+                                "label": "Phone",
+                                "placeholder": "Phone",
+                                "_id": "680b39b"
+                            },
+                            {
+                                "field_key": "billing_email",
+                                "field_label": "Email Address",
+                                "label": "Email Address",
+                                "placeholder": "Email Address",
+                                "_id": "305ffb1"
+                            }
+                        ],
+                        "additional_information_form_fields": [
+                            {
+                                "field_key": "order_comments",
+                                "field_label": "Order Notes",
+                                "label": "Order Notes",
+                                "placeholder": "Notes about your order, e.g. special notes for delivery.",
+                                "_id": "2a69989"
+                            }
+                        ],
+                        "order_summary_section_title": "Your Order",
+                        "coupon_section_title_text": "Have a coupon?",
+                        "coupon_section_title_link_text": "Click here to enter your coupon code",
+                        "terms_conditions_message_text": "I have read and agree to the website",
+                        "terms_conditions_link_text": "terms and conditions",
+                        "forms_fields_normal_background_background": "classic",
+                        "forms_fields_border_border": "solid",
+                        "forms_fields_border_width": {
+                            "unit": "px",
+                            "top": "1",
+                            "right": "1",
+                            "bottom": "1",
+                            "left": "1",
+                            "isLinked": true
+                        },
+                        "forms_fields_border_radius": {
+                            "unit": "px",
+                            "top": "3",
+                            "right": "3",
+                            "bottom": "3",
+                            "left": "3",
+                            "isLinked": true
+                        },
+                        "forms_buttons_hover_background_background": "classic",
+                        "forms_buttons_border_type": "solid",
+                        "forms_buttons_border_width": {
+                            "unit": "px",
+                            "top": "2",
+                            "right": "2",
+                            "bottom": "2",
+                            "left": "2",
+                            "isLinked": true
+                        },
+                        "forms_buttons_border_radius": {
+                            "unit": "px",
+                            "top": "3",
+                            "right": "3",
+                            "bottom": "3",
+                            "left": "3",
+                            "isLinked": true
+                        },
+                        "order_summary_rows_gap": {
+                            "unit": "px",
+                            "size": 11,
+                            "sizes": []
+                        },
+                        "purchase_button_normal_background_background": "classic",
+                        "purchase_button_hover_background_background": "classic",
+                        "__globals__": {
+                            "sections_title_color": "globals\/colors?id=secondary",
+                            "sections_titles_typography_typography": "globals\/typography?id=578c394",
+                            "forms_label_color": "globals\/colors?id=secondary",
+                            "forms_fields_normal_background_color": "globals\/colors?id=0cb35d7",
+                            "forms_fields_border_color": "globals\/colors?id=37ee5e3",
+                            "purchase_button_normal_background_color": "globals\/colors?id=accent",
+                            "purchase_button_hover_background_color": "globals\/colors?id=primary",
+                            "forms_buttons_border_color": "globals\/colors?id=accent",
+                            "forms_buttons_normal_text_color": "globals\/colors?id=accent",
+                            "forms_buttons_hover_background_color": "globals\/colors?id=accent",
+                            "forms_buttons_hover_text_color": "globals\/colors?id=ad74965",
+                            "links_normal_color": "globals\/colors?id=accent"
+                        }
+                    },
+                    "elements": [],
+                    "isInner": false,
+                    "widgetType": "woocommerce-checkout-page",
+                    "elType": "widget"
+                }
+            ],
+            "isInner": false,
+            "elType": "container"
+        }
+    ]
+}

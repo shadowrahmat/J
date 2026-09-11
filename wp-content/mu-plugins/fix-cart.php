@@ -45,6 +45,198 @@ add_action('wp_head', function() {
         overflow: hidden !important;
         touch-action: none !important;
     }
+
+    /* ====================================================
+       MOBILE OFF-CANVAS DRAWER (WHITE BG, ANIMATION, NO JITTER)
+       ==================================================== */
+    @media (max-width: 1024px) {
+        /* Strict zero border radius */
+        .elementor-menu-toggle,
+        .elementor-nav-menu--dropdown,
+        .elementor-nav-menu--dropdown ul,
+        .elementor-nav-menu--dropdown li,
+        .elementor-nav-menu--dropdown a {
+            border-radius: 0px !important;
+        }
+
+        /* Toggle Button when active over white drawer */
+        .elementor-menu-toggle.elementor-active {
+            background-color: #00447c !important;
+            border: 1px solid #003360 !important;
+            border-radius: 0px !important;
+            box-shadow: 0 4px 14px rgba(0, 68, 124, 0.35) !important;
+        }
+        .elementor-menu-toggle.elementor-active svg {
+            fill: #ffffff !important;
+        }
+
+        /* White Off-Canvas Drawer Container */
+        .elementor-widget-nav-menu .elementor-nav-menu--dropdown.elementor-nav-menu__container,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown.elementor-nav-menu__container {
+            position: fixed !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            right: 0 !important;
+            left: auto !important;
+            width: 300px !important;
+            max-width: 82vw !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            max-height: 100vh !important;
+            margin: 0 !important;
+            padding: 95px 20px 30px !important;
+            box-sizing: border-box !important;
+            background: #ffffff !important;
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.16) !important;
+            border-left: 1px solid #e5e7eb !important;
+            border-top: none !important;
+            border-right: none !important;
+            border-bottom: none !important;
+            border-radius: 0px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            z-index: 999998 !important;
+            animation: none !important;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease, visibility 0.4s ease !important;
+        }
+
+        /* Closed State: Slid out to the right */
+        .elementor-widget-nav-menu .elementor-menu-toggle:not(.elementor-active) + .elementor-nav-menu__container,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle:not(.elementor-active) + .elementor-nav-menu__container {
+            transform: translate3d(100%, 0, 0) !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            max-height: 100vh !important;
+        }
+
+        /* Open State: Slid in smoothly */
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container {
+            transform: translate3d(0, 0, 0) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            max-height: 100vh !important;
+            animation: none !important;
+        }
+
+        /* Cascading Menu Items Entrance Animation */
+        @keyframes juhaniDrawerItemCascade {
+            0% {
+                opacity: 0;
+                transform: translate3d(24px, 0, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li {
+            animation: juhaniDrawerItemCascade 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(1),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(1) { animation-delay: 0.05s; }
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(2),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(2) { animation-delay: 0.10s; }
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(3),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(3) { animation-delay: 0.15s; }
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(4),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(4) { animation-delay: 0.20s; }
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(5),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(5) { animation-delay: 0.25s; }
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(6),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(6) { animation-delay: 0.30s; }
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(7),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(7) { animation-delay: 0.35s; }
+        .elementor-widget-nav-menu .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(8),
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container li:nth-child(8) { animation-delay: 0.40s; }
+
+        .elementor-widget-nav-menu .elementor-menu-toggle:not(.elementor-active) + .elementor-nav-menu__container li,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle:not(.elementor-active) + .elementor-nav-menu__container li {
+            animation: none !important;
+        }
+
+        /* Menu Items List inside Drawer */
+        .elementor-nav-menu--dropdown ul.elementor-nav-menu,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown ul.elementor-nav-menu {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 3px !important;
+            background: #ffffff !important;
+        }
+
+        .elementor-nav-menu--dropdown li,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown li {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+        }
+
+        /* Clean Stable Menu Links (Anti-Jitter / Kapakapi Fix) */
+        .elementor-nav-menu--dropdown a,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown a {
+            color: #1f2937 !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 14.5px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            padding: 13px 18px !important;
+            border-radius: 0px !important;
+            border-bottom: 1px solid #f3f4f6 !important;
+            border-left: 3px solid transparent !important;
+            border-top: none !important;
+            border-right: none !important;
+            border-inline-start: 3px solid transparent !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease !important;
+            background: transparent !important;
+            box-sizing: border-box !important;
+            transform: none !important;
+        }
+
+        /* Disable glitchy Elementor pointer lines */
+        .elementor-nav-menu--dropdown a:before,
+        .elementor-nav-menu--dropdown a:after,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown a:before,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown a:after {
+            display: none !important;
+            content: none !important;
+        }
+
+        .elementor-nav-menu--dropdown li:last-child a,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown li:last-child a {
+            border-bottom: none !important;
+        }
+
+        /* Stable Hover and Active States - EXACT SAME PADDING (13px 18px), ZERO JITTER */
+        .elementor-nav-menu--dropdown a:hover,
+        .elementor-nav-menu--dropdown a:focus,
+        .elementor-nav-menu--dropdown a.elementor-item-active,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown a:hover,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown a:focus,
+        .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--dropdown a.elementor-item-active {
+            color: #00447c !important;
+            background-color: #f0f7fd !important;
+            border-left: 3px solid #00447c !important;
+            border-inline-start: 3px solid #00447c !important;
+            padding: 13px 18px !important;
+            transform: none !important;
+        }
+    }
     </style>
     <?php
 }, 100);

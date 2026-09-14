@@ -1,4 +1,4 @@
-.mxswpf-root{--mx-brand:#4CA2D9;--mx-brand-hover:#358ec7;--mx-brand-dark:#10395E;--mx-black:#4CA2D9;--mx-line:#e7e7e7;--mx-muted:#737373;font-family:"Red Hat Display",Arial,sans-serif;display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:28px;align-items:start;width:100%;color:#161614}
+\.mxswpf-root{--mx-brand:#4CA2D9;--mx-brand-hover:#358ec7;--mx-brand-dark:#10395E;--mx-black:#4CA2D9;--mx-line:#e7e7e7;--mx-muted:#737373;font-family:"Red Hat Display",Arial,sans-serif;display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:28px;align-items:start;width:100%;color:#161614}
 .mxswpf-root *{box-sizing:border-box}
 .mxswpf-root .mixora-sidebar{background:#fff;border:1px solid #e6e6e6;border-radius:0px;max-height:calc(100vh - 120px);overflow-y:auto;position:sticky;top:100px;scrollbar-width:thin}
 .mxswpf-root .mixora-sidebar-head{display:flex;align-items:center;gap:12px;padding:20px 22px;border-bottom:1px solid var(--mx-line);position:sticky;top:0;background:#fff;z-index:2}
@@ -666,9 +666,44 @@ body.mixora-filter-lock{
     margin-bottom:20px!important;
 }
 
-/* Ensure desktop toggle is never displayed */
+/* Desktop filter toggle - visible on desktop, hidden on mobile */
 .mxswpf-root .mixora-filter-toggle-desktop{
-    display:none!important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    height:44px !important;
+    padding:0 18px !important;
+    background:#fff !important;
+    color:#161614 !important;
+    border:1px solid #d8d8d8 !important;
+    border-radius:0 !important;
+    font-family:"Red Hat Display",Arial,sans-serif !important;
+    font-size:15px !important;
+    font-weight:600 !important;
+    cursor:pointer !important;
+    white-space:nowrap !important;
+    flex:0 0 auto !important;
+    transition: all .2s ease !important;
+}
+.mxswpf-root .mixora-filter-toggle-desktop:hover,
+.mxswpf-root .mixora-filter-toggle-desktop:focus{
+    background:#4CA2D9 !important;
+    border-color:#4CA2D9 !important;
+    color:#fff !important;
+    outline:none !important;
+}
+.mxswpf-root .mixora-filter-toggle-desktop .mixora-filter-icon{
+    font-size:18px !important;
+    line-height:1 !important;
+}
+.mxswpf-root .mixora-filter-toggle-desktop .mixora-filter-label{
+    font-size:15px !important;
+}
+@media(max-width:767px){
+    .mxswpf-root .mixora-filter-toggle-desktop{
+        display:none !important;
+    }
 }
 
 /* Mobile toolbar layout */
@@ -1116,4 +1151,36 @@ body.mixora-filter-lock{
 .mxswpf-root select,
 .mxswpf-root a {
     border-radius: 0px !important;
+}
+
+/* === FIX: Mobile single filter button (hide desktop toggle on mobile) === */
+@media(max-width:767px){
+    .mxswpf-root .mixora-filter-toggle-desktop,
+    .mxswpf-root .mixora-results-head .mixora-filter-toggle-desktop{
+        display:none !important;
+        visibility:hidden !important;
+        opacity:0 !important;
+        pointer-events:none !important;
+        width:0 !important;
+        height:0 !important;
+        min-width:0 !important;
+        min-height:0 !important;
+        padding:0 !important;
+        margin:0 !important;
+        overflow:hidden !important;
+        border:0 !important;
+    }
+    /* Ensure mobile toolbar stays single filter + sort */
+    .mxswpf-root .mixora-mobile-toolbar{
+        display:grid !important;
+        grid-template-columns:1fr 1fr !important;
+    }
+}
+@media(min-width:768px){
+    .mxswpf-root .mixora-mobile-toolbar{
+        display:none !important;
+    }
+    .mxswpf-root .mixora-filter-toggle-desktop{
+        display:inline-flex !important;
+    }
 }

@@ -2,14 +2,14 @@
 /**
  * Plugin Name: Mixora Smart WooCommerce Product Filter
  * Description: User-friendly AJAX WooCommerce product filter with responsive sidebar/drawer, categories, category-aware attributes, price range, sorting, pagination and product cards.
- * Version: 2.0.30
+ * Version: 2.0.31
  * Author: Mixora
  * Requires Plugins: woocommerce
  */
 if (!defined('ABSPATH')) exit;
 
 class Mixora_Smart_Product_Filter {
-    const VERSION = '2.0.30';
+    const VERSION = '2.0.31';
 
     public function __construct() {
         add_shortcode('mixora_product_filter', [$this, 'shortcode']);
@@ -334,6 +334,11 @@ class Mixora_Smart_Product_Filter {
                         <div class="mixora-results-title" aria-live="polite"><?php echo esc_html($current_category_name); ?></div>
                         <div class="mixora-result-count" aria-live="polite"><?php echo esc_html($initial_query->found_posts . ' Products'); ?></div>
                     </div>
+                    <button type="button" class="mixora-filter-toggle mixora-filter-toggle-desktop" aria-label="Open product filters" aria-expanded="false">
+                        <span class="mixora-filter-icon" aria-hidden="true">☰</span>
+                        <span class="mixora-filter-label">Filters</span>
+                        <span class="mixora-active-count" aria-live="polite"></span>
+                    </button>
                     <select class="mixora-sort mixora-sort-desktop" aria-label="Sort products">
                         <option value="menu_order">Featured</option>
                         <option value="date">Newest</option>

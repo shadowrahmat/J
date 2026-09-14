@@ -93,6 +93,37 @@ add_action( 'wp_head', function() {
 		-moz-border-radius: 0px !important;
 	}
 
+	/* ============================================================
+	   PRODUCT PARENT SECTION - REMOVE ONLY OUTER CARD BORDER
+	   Keep inner variation table / quantity / tabs borders intact
+	   ============================================================ */
+	/* Only the thin outer border around the full product container/card */
+	.elementor-element-68036ea0,
+	.elementor-element-68036ea0 > .e-con-inner {
+		border: none !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		box-shadow: none !important;
+	}
+
+	/* Outer product image card - remove its surrounding border only */
+	.elementor-element-780ec386 {
+		border: none !important;
+		border-width: 0 !important;
+		--border-width: 0px !important;
+		box-shadow: none !important;
+	}
+	.elementor-element-780ec386 .woocommerce-product-gallery__trigger + .woocommerce-product-gallery__wrapper,
+	.elementor-element-780ec386 .flex-viewport {
+		border: none !important;
+	}
+
+	/* Do NOT touch inner elements:
+	   - table.variations, .variable-item, .quantity, .juhani-qty-btn,
+	   - .woocommerce-tabs ul.wc-tabs / .woocommerce-Tabs-panel keep their 1px borders
+	 */
+
 	/* 1. Variations Table Layout: Labels left, Swatches right (Compact Gaps) */
 	table.variations {
 		width: 100% !important;
@@ -312,12 +343,13 @@ add_action( 'wp_head', function() {
 		margin: 2px 0 4px 0 !important;
 	}
 
-	.woocommerce-variation-add-to-cart {
+	.woocommerce-variation-add-to-cart,
+	form.cart:not(.variations_form) {
 		display: flex !important;
 		align-items: center !important;
 		gap: 12px !important;
-		margin-top: 4px !important;
-		margin-bottom: 0px !important;
+		margin-top: 18px !important;
+		margin-bottom: 16px !important;
 		flex-wrap: wrap !important;
 	}
 
@@ -505,36 +537,234 @@ add_action( 'wp_head', function() {
 		margin-top: 2px !important;
 	}
 
-	/* Responsive for Mobile */
-	@media (max-width: 640px) {
-		table.variations tr {
-			flex-direction: column !important;
-			align-items: flex-start !important;
-			gap: 8px !important;
+	/* Responsive for Mobile Devices (<= 767px) */
+	@media (max-width: 767px) {
+		/* 1. Attribute Label & Options on Same Horizontal Row & Aligned */
+		table.variations {
+			width: 100% !important;
+			margin-bottom: 6px !important;
 		}
+
+		table.variations tr {
+			display: flex !important;
+			flex-direction: row !important;
+			align-items: flex-start !important;
+			gap: 6px !important;
+			margin-bottom: 8px !important;
+			padding: 0 !important;
+			width: 100% !important;
+		}
+
 		table.variations tr:last-child {
 			margin-bottom: 0px !important;
 		}
+
 		table.variations th.label {
+			flex: 0 0 106px !important;
+			width: 106px !important;
+			max-width: 106px !important;
+			min-height: 34px !important;
+			display: flex !important;
+			align-items: center !important;
+			padding: 0 6px 0 0 !important;
+			margin: 0 !important;
+			box-sizing: border-box !important;
+			text-align: left !important;
+		}
+
+		table.variations th.label label {
+			font-size: 13px !important;
+			font-weight: 700 !important;
+			color: #0f172a !important;
+			line-height: 1.25 !important;
+			margin: 0 !important;
+			text-transform: capitalize !important;
+		}
+
+		table.variations td.value {
+			flex: 1 1 auto !important;
+			width: calc(100% - 112px) !important;
+			display: flex !important;
+			align-items: center !important;
+			flex-wrap: wrap !important;
+			padding: 0 !important;
+			margin: 0 !important;
+			min-height: 34px !important;
+		}
+
+		.woo-variation-swatches .variable-items-wrapper {
+			display: flex !important;
+			flex-wrap: wrap !important;
+			gap: 6px !important;
+			align-items: center !important;
+			margin: 0 !important;
+			padding: 0 !important;
 			width: 100% !important;
-			max-width: 100% !important;
 		}
-		.woocommerce-variation-add-to-cart {
-			gap: 10px !important;
-			margin-top: 4px !important;
-			margin-bottom: 0px !important;
+
+		.woo-variation-swatches .variable-items-wrapper .variable-item:not(.radio-variable-item) {
+			min-width: 36px !important;
+			height: 34px !important;
+			font-size: 12.5px !important;
+			padding: 4px 10px !important;
 		}
+
+		a.reset_variations {
+			margin: 4px 0 0 0 !important;
+			font-size: 12px !important;
+		}
+
+		/* 2. Organized 1-Row Add to Cart Action Bar (Qty + Order Now + Wishlist) */
+		.woocommerce-variation-add-to-cart,
+		form.cart:not(.variations_form) {
+			display: flex !important;
+			flex-direction: row !important;
+			flex-wrap: nowrap !important;
+			align-items: center !important;
+			gap: 8px !important;
+			margin-top: 14px !important;
+			margin-bottom: 14px !important;
+			width: 100% !important;
+			box-sizing: border-box !important;
+		}
+
+		/* Quantity Stepper [ -  1  + ] */
+		.woocommerce-variation-add-to-cart .quantity {
+			display: inline-flex !important;
+			align-items: center !important;
+			height: 46px !important;
+			width: 98px !important;
+			min-width: 98px !important;
+			max-width: 98px !important;
+			flex: 0 0 98px !important;
+			box-sizing: border-box !important;
+			margin: 0 !important;
+			border: 1.5px solid #d1d5db !important;
+		}
+
+		.juhani-qty-btn {
+			width: 29px !important;
+			height: 100% !important;
+			font-size: 16px !important;
+			flex-shrink: 0 !important;
+		}
+
+		.woocommerce-variation-add-to-cart .quantity input.qty {
+			width: 40px !important;
+			height: 100% !important;
+			font-size: 15px !important;
+			font-weight: 700 !important;
+			padding: 0 !important;
+			flex-grow: 1 !important;
+		}
+
+		/* Order Now Primary Button */
 		.woocommerce-variation-add-to-cart button.single_add_to_cart_button.button {
-			flex: 1 !important;
-			min-width: 180px !important;
-			padding: 0 16px !important;
+			display: inline-flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			gap: 6px !important;
+			height: 46px !important;
+			flex: 1 1 auto !important;
+			min-width: 0 !important;
+			width: auto !important;
+			padding: 0 12px !important;
+			margin: 0 !important;
+			font-size: 14.5px !important;
+			font-weight: 700 !important;
+			letter-spacing: 0.2px !important;
+			white-space: nowrap !important;
+			background-color: #00447c !important;
+			box-shadow: 0 2px 6px rgba(0, 68, 124, 0.25) !important;
+			border: none !important;
+			border-radius: 0px !important;
+			cursor: pointer !important;
 		}
+
+		.juhani-btn-cart-icon {
+			width: 18px !important;
+			height: 18px !important;
+			margin-right: 4px !important;
+			flex-shrink: 0 !important;
+		}
+
+		/* Wishlist Button */
+		.juhani-wishlist-btn {
+			display: inline-flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			width: 46px !important;
+			min-width: 46px !important;
+			max-width: 46px !important;
+			height: 46px !important;
+			flex: 0 0 46px !important;
+			box-sizing: border-box !important;
+			margin: 0 !important;
+			border: 1.5px solid #d1d5db !important;
+			border-radius: 0px !important;
+			background: #ffffff !important;
+		}
+
+		.juhani-wishlist-btn svg {
+			width: 19px !important;
+			height: 19px !important;
+		}
+
+		/* 3. Modern Compact Trust Badges Grid */
 		.juhani-product-trust-badges {
-			flex-direction: column !important;
-			align-items: flex-start !important;
-			gap: 14px !important;
+			display: grid !important;
+			grid-template-columns: repeat(3, 1fr) !important;
+			gap: 8px !important;
 			margin-top: 14px !important;
 			padding-top: 14px !important;
+			border-top: 1px solid #e2e8f0 !important;
+			width: 100% !important;
+			box-sizing: border-box !important;
+		}
+
+		.juhani-trust-col {
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+			text-align: center !important;
+			padding: 8px 4px !important;
+			background: #f8fafc !important;
+			border: 1px solid #e2e8f0 !important;
+			border-radius: 0px !important;
+			gap: 4px !important;
+			text-decoration: none !important;
+			box-sizing: border-box !important;
+			min-height: 64px !important;
+		}
+
+		.juhani-trust-icon-box {
+			width: 26px !important;
+			height: 26px !important;
+		}
+
+		.juhani-trust-icon-box svg {
+			width: 22px !important;
+			height: 22px !important;
+		}
+
+		.juhani-trust-text {
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+		}
+
+		.juhani-trust-title {
+			font-size: 11px !important;
+			font-weight: 700 !important;
+			color: #0f172a !important;
+			line-height: 1.2 !important;
+			text-align: center !important;
+		}
+
+		.juhani-trust-desc {
+			display: none !important;
 		}
 	}
 	</style>

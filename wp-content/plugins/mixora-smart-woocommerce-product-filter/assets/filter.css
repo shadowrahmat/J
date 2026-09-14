@@ -1,4 +1,4 @@
-\.mxswpf-root{--mx-brand:#4CA2D9;--mx-brand-hover:#358ec7;--mx-brand-dark:#10395E;--mx-black:#4CA2D9;--mx-line:#e7e7e7;--mx-muted:#737373;font-family:"Red Hat Display",Arial,sans-serif;display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:28px;align-items:start;width:100%;color:#161614}
+\.mxswpf-root{--mx-brand:#10395E;--mx-brand-hover:#4CA2D9;--mx-brand-dark:#10395E;--mx-black:#10395E;--mx-line:#e7e7e7;--mx-muted:#737373;font-family:"Red Hat Display",Arial,sans-serif;display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:28px;align-items:start;width:100%;color:#161614}
 .mxswpf-root *{box-sizing:border-box}
 .mxswpf-root .mixora-sidebar{background:#fff;border:1px solid #e6e6e6;border-radius:0px;max-height:calc(100vh - 120px);overflow-y:auto;position:sticky;top:100px;scrollbar-width:thin}
 .mxswpf-root .mixora-sidebar-head{display:flex;align-items:center;gap:12px;padding:20px 22px;border-bottom:1px solid var(--mx-line);position:sticky;top:0;background:#fff;z-index:2}
@@ -1138,6 +1138,100 @@ body.mixora-filter-lock{
 }
 .mxswpf-root .mixora-close:hover,
 .mxswpf-root .mixora-close:focus {
+    background: #4CA2D9 !important;
+    border-color: #4CA2D9 !important;
+    color: #ffffff !important;
+}
+
+/* === JUHANI SHOP PAGE BUTTON COLORS: bg #10395E / hover #4CA2D9 | filter, reset, cross icon === */
+.mxswpf-root .mixora-product-action,
+.mxswpf-root .mixora-apply,
+.mxswpf-root .mixora-order,
+.mxswpf-root .mixora-no-results-reset,
+.mxswpf-root .mixora-sidebar .mixora-apply,
+.mxswpf-root .mixora-product-card .mixora-product-action,
+.mxswpf-root .mixora-product-card a.button,
+.mxswpf-root .mixora-product-card button,
+.mxswpf-root button.mixora-apply,
+.mxswpf-root .mixora-reset,
+.mxswpf-root .mixora-sidebar-head .mixora-reset {
+    background: #10395E !important;
+    border: 1px solid #10395E !important;
+    color: #ffffff !important;
+}
+.mxswpf-root .mixora-product-action:hover,
+.mxswpf-root .mixora-product-action:focus,
+.mxswpf-root .mixora-apply:hover,
+.mxswpf-root .mixora-apply:focus,
+.mxswpf-root .mixora-order:hover,
+.mxswpf-root .mixora-no-results-reset:hover,
+.mxswpf-root .mixora-sidebar .mixora-apply:hover,
+.mxswpf-root .mixora-product-card .mixora-product-action:hover,
+.mxswpf-root .mixora-product-card a.button:hover,
+.mxswpf-root .mixora-product-card button:hover,
+.mxswpf-root button.mixora-apply:hover,
+.mxswpf-root .mixora-reset:hover,
+.mxswpf-root .mixora-sidebar-head .mixora-reset:hover {
+    background: #4CA2D9 !important;
+    border-color: #4CA2D9 !important;
+    color: #ffffff !important;
+}
+/* Filter button (mobile + desktop) */
+.mxswpf-root .mixora-filter-toggle,
+.mxswpf-root .mixora-filter-toggle-desktop {
+    background: #10395E !important;
+    border-color: #10395E !important;
+    color: #ffffff !important;
+}
+.mxswpf-root .mixora-filter-toggle .mixora-filter-icon,
+.mxswpf-root .mixora-filter-toggle .mixora-filter-label,
+.mxswpf-root .mixora-filter-toggle-desktop .mixora-filter-icon,
+.mxswpf-root .mixora-filter-toggle-desktop .mixora-filter-label {
+    color: #ffffff !important;
+}
+.mxswpf-root .mixora-filter-toggle:hover,
+.mxswpf-root .mixora-filter-toggle:focus,
+.mxswpf-root .mixora-filter-toggle-desktop:hover,
+.mxswpf-root .mixora-filter-toggle-desktop:focus {
+    background: #4CA2D9 !important;
+    border-color: #4CA2D9 !important;
+    color: #ffffff !important;
+}
+.mxswpf-root .mixora-filter-toggle:hover .mixora-filter-icon,
+.mxswpf-root .mixora-filter-toggle:hover .mixora-filter-label,
+.mxswpf-root .mixora-filter-toggle-desktop:hover .mixora-filter-icon,
+.mxswpf-root .mixora-filter-toggle-desktop:hover .mixora-filter-label {
+    color: #ffffff !important;
+}
+/* Cross icon (drawer close button) */
+.mxswpf-root .mixora-close {
+    background: #ffffff !important;
+    border-color: #10395E !important;
+    color: #10395E !important;
+}
+.mxswpf-root .mixora-close:hover,
+.mxswpf-root .mixora-close:focus {
+    background: #4CA2D9 !important;
+    border-color: #4CA2D9 !important;
+    color: #ffffff !important;
+}
+.mxswpf-root .mixora-close:hover .mixora-close-icon,
+.mxswpf-root .mixora-close:focus .mixora-close-icon {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+/* Badge & pagination active keep brand but use hover color for consistency */
+.mxswpf-root .mixora-badge,
+.mxswpf-root .mixora-active-count {
+    background: #10395E !important;
+}
+.mxswpf-root .mixora-pagination button.is-active,
+.mxswpf-root .mixora-pagination button.active {
+    background: #10395E !important;
+    border-color: #10395E !important;
+    color: #ffffff !important;
+}
+.mxswpf-root .mixora-pagination button:hover {
     background: #4CA2D9 !important;
     border-color: #4CA2D9 !important;
     color: #ffffff !important;

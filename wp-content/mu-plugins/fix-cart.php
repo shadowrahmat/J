@@ -13,6 +13,51 @@ add_action('wp_enqueue_scripts', function() {
     }
 }, 20);
 
+// AJAX: Update mini-cart quantity from drawer stepper
+add_action('wp_ajax_juhani_update_cart_qty', 'juhani_update_cart_qty');
+add_action('wp_ajax_nopriv_juhani_update_cart_qty', 'juhani_update_cart_qty');
+function juhani_update_cart_qty() {
+    if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'juhani_cart_nonce')) {
+        wp_send_json_error(['message' => 'Invalid nonce'], 403);
+    }
+    if (!function_exists('WC') || !WC()->cart) {
+        wp_send_json_error(['message' => 'Cart not available'], 400);
+    }
+    $cart_item_key = isset($_POST['cart_item_key']) ? sanitize_text_field(wp_unslash($_POST['cart_item_key'])) : '';
+    $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 0;
+    if (!$cart_item_key) {
+        wp_send_json_error(['message' => 'Missing cart item key'], 400);
+    }
+    if ($quantity < 0) $quantity = 0;
+    // Validate stock / max
+    $cart = WC()->cart->get_cart();
+    if (!isset($cart[$cart_item_key])) {
+        wp_send_json_error(['message' => 'Item not found'], 404);
+    }
+    if ($quantity === 0) {
+        WC()->cart->remove_cart_item($cart_item_key);
+    } else {
+        // Check product max quantity if set
+        $cart_item = $cart[$cart_item_key];
+        $_product = $cart_item['data'] ?? null;
+        if ($_product && method_exists($_product, 'get_max_purchase_quantity')) {
+            $max = $_product->get_max_purchase_quantity();
+            if ($max > 0 && $quantity > $max) $quantity = $max;
+        }
+        WC()->cart->set_quantity($cart_item_key, $quantity, true);
+    }
+    WC()->cart->calculate_totals();
+    // Return refreshed fragments so drawer updates instantly
+    if (function_exists('WC')) {
+        WC()->cart->maybe_set_cart_cookies();
+    }
+    wp_send_json_success([
+        'quantity' => $quantity,
+        'cart_hash' => WC()->cart->get_cart_hash(),
+        'fragments' => apply_filters('woocommerce_add_to_cart_fragments', []),
+    ]);
+}
+
 add_action('wp_head', function() {
     ?>
     <style id="juhani-cart-fix">
@@ -115,8 +160,8 @@ add_action('wp_head', function() {
     }
 
     body .juhani-mini-cart-header {
-        min-height: 58px !important;
-        padding: 16px 22px 12px 18px !important;
+        min-height: 52px !important;
+        padding: 12px 18px 10px 18px !important;
         border-bottom: 1px solid #e4ebf2 !important;
         background: #ffffff !important;
         display: flex !important;
@@ -219,7 +264,7 @@ add_action('wp_head', function() {
     body .elementor-menu-cart__products {
         flex: 1 1 auto !important;
         min-height: 0 !important;
-        padding: 16px 18px 18px !important;
+        padding: 8px 18px 4px 18px !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch !important;
@@ -247,10 +292,15 @@ add_action('wp_head', function() {
         padding-top: 14px !important;
     }
 
+    body .elementor-menu-cart__product:last-child,
+    body .woocommerce-mini-cart .woocommerce-mini-cart-item:last-child {
+        margin-bottom: 0 !important;
+    }
+
     body .elementor-menu-cart__product-image,
     body .woocommerce-mini-cart .woocommerce-mini-cart-item > a:not(.remove):has(img) {
         grid-column: 1 !important;
-        grid-row: 1 / span 3 !important;
+        grid-row: 1 / span 2 !important;
         width: 96px !important;
         min-width: 96px !important;
         align-self: start !important;
@@ -359,7 +409,7 @@ add_action('wp_head', function() {
     body .elementor-menu-cart__product .variation,
     body .woocommerce-mini-cart .variation {
         grid-column: 1 / -1 !important;
-        grid-row: 4 !important;
+        grid-row: 3 !important;
         display: grid !important;
         grid-template-columns: minmax(110px, 0.85fr) minmax(0, 1.15fr) !important;
         gap: 0 18px !important;
@@ -425,7 +475,7 @@ add_action('wp_head', function() {
 
     body .juhani-mini-cart-qty {
         grid-column: 2 !important;
-        grid-row: 3 !important;
+        grid-row: 2 !important;
         display: inline-flex !important;
         width: 124px !important;
         max-width: 100% !important;
@@ -1339,6 +1389,81 @@ add_action('wp_footer', function() {
                     jQuery(document.body).off('wc_fragments_refreshed.juhaniMiniCart added_to_cart.juhaniMiniCart removed_from_cart.juhaniMiniCart');
                     jQuery(document.body).on('wc_fragments_refreshed.juhaniMiniCart added_to_cart.juhaniMiniCart removed_from_cart.juhaniMiniCart', function() {
                         setTimeout(enhanceMiniCartDrawer, 80);
+                    });
+                }
+
+                // ===== MINI-CART QUANTITY STEPPER (AJAX) - delegated =====
+                if (!document.body.dataset.juhaniQtyBound) {
+                    document.body.dataset.juhaniQtyBound = '1';
+                    document.addEventListener('click', function(e) {
+                        const btn = e.target.closest('.juhani-mini-cart-minus, .juhani-mini-cart-plus');
+                        if (!btn) return;
+                        const item = btn.closest('.elementor-menu-cart__product, .woocommerce-mini-cart-item');
+                        if (!item) return;
+                        const drawer = document.querySelector('.elementor-menu-cart__main');
+                        if (drawer && !drawer.contains(item)) return;
+                        const removeLink = item.querySelector('a.remove[data-cart_item_key], a[data-cart_item_key], a.remove');
+                        const cartItemKey = removeLink ? (removeLink.dataset.cart_item_key || removeLink.getAttribute('data-cart_item_key')) : null;
+                        if (!cartItemKey) {
+                            console.warn('[Juhani Cart] cart_item_key not found for qty update');
+                            return;
+                        }
+                        const qtyWrap = btn.closest('.juhani-mini-cart-qty');
+                        const qtySpan = qtyWrap ? qtyWrap.querySelector('span') : null;
+                        if (!qtySpan) return;
+                        let currentQty = parseInt(qtySpan.textContent, 10) || 1;
+                        let newQty = currentQty;
+                        if (btn.classList.contains('juhani-mini-cart-minus')) {
+                            newQty = Math.max(1, currentQty - 1);
+                        } else {
+                            newQty = currentQty + 1;
+                        }
+                        if (newQty === currentQty) return;
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (btn.disabled) return;
+                        const originalText = qtySpan.textContent;
+                        qtySpan.textContent = newQty;
+                        qtySpan.style.opacity = '0.5';
+                        item.querySelectorAll('.juhani-mini-cart-minus, .juhani-mini-cart-plus').forEach(function(b){
+                            b.style.pointerEvents = 'none';
+                            b.disabled = true;
+                        });
+                        if (window.jQuery) {
+                            jQuery.ajax({
+                                url: '<?php echo esc_js(admin_url('admin-ajax.php')); ?>',
+                                type: 'POST',
+                                dataType: 'json',
+                                data: {
+                                    action: 'juhani_update_cart_qty',
+                                    cart_item_key: cartItemKey,
+                                    quantity: newQty,
+                                    nonce: '<?php echo esc_js(wp_create_nonce('juhani_cart_nonce')); ?>'
+                                },
+                                success: function(resp) {
+                                    if (resp && resp.success) {
+                                        // Trigger Woo fragments refresh to update subtotal/counts/prices
+                                        jQuery(document.body).trigger('wc_fragment_refresh');
+                                        jQuery(document.body).trigger('updated_wc_div');
+                                        qtySpan.textContent = newQty;
+                                    } else {
+                                        qtySpan.textContent = originalText;
+                                        console.warn('[Juhani Cart] qty update failed', resp);
+                                    }
+                                },
+                                error: function(xhr) {
+                                    qtySpan.textContent = originalText;
+                                    console.warn('[Juhani Cart] ajax error', xhr);
+                                },
+                                complete: function() {
+                                    qtySpan.style.opacity = '';
+                                    item.querySelectorAll('.juhani-mini-cart-minus, .juhani-mini-cart-plus').forEach(function(b){
+                                        b.style.pointerEvents = '';
+                                        b.disabled = false;
+                                    });
+                                }
+                            });
+                        }
                     });
                 }
 

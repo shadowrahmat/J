@@ -68,13 +68,22 @@ function juhani_cart_custom_styles_and_scripts() {
 		background-color: #F5F8FA !important;
 	}
 
-	/* Elementor Container 2-column Grid Layout (65% / 35%) */
+	/* Elementor Container 2-column Grid Layout - Desktop 1350px */
+	body.woocommerce-cart .elementor-13 .elementor-element.elementor-element-545fcaa5,
+	body.woocommerce-cart .elementor-13 .elementor-element.elementor-element-545fcaa5 > .e-con-inner,
+	body.woocommerce-cart .elementor-widget-woocommerce-cart {
+		max-width: 1350px !important;
+		width: 100% !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
 	body.woocommerce-cart .elementor-widget-woocommerce-cart .e-cart__container {
 		display: grid !important;
 		grid-template-columns: minmax(0, 1fr) 380px !important;
 		gap: 36px !important;
 		width: 100% !important;
-		max-width: 1240px !important;
+		max-width: 1350px !important;
 		margin: 0 auto !important;
 		padding: 20px 16px 60px !important;
 		box-sizing: border-box !important;
@@ -167,21 +176,21 @@ function juhani_cart_custom_styles_and_scripts() {
 	   ============================================================ */
 	.juhani-cart-card {
 		background: #FFFFFF !important;
-		border: 1px solid #E4EAF0 !important;
-		border-radius: 4px !important;
-		box-shadow: 0 2px 8px rgba(13, 42, 67, 0.04) !important;
-		padding: 24px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		padding: 0px !important;
 		position: relative !important;
 		display: flex !important;
 		flex-direction: column !important;
-		gap: 16px !important;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+		gap: 12px !important;
+		transition: none !important;
 		width: 100% !important;
 	}
 
 	.juhani-cart-card:hover {
-		border-color: #D3DFE9 !important;
-		box-shadow: 0 4px 14px rgba(13, 42, 67, 0.06) !important;
+		border-color: transparent !important;
+		box-shadow: none !important;
 	}
 
 	/* Top Section: Thumb + Meta + Remove */
@@ -634,9 +643,9 @@ function juhani_cart_custom_styles_and_scripts() {
 	   ============================================================ */
 	body.woocommerce-cart .cart_totals {
 		background: #FFFFFF !important;
-		border: 1px solid #E4EAF0 !important;
-		border-radius: 4px !important;
-		box-shadow: 0 2px 8px rgba(13, 42, 67, 0.04) !important;
+		border: none !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
 		padding: 24px !important;
 		width: 100% !important;
 		float: none !important;
@@ -923,10 +932,12 @@ function juhani_cart_custom_styles_and_scripts() {
 		body.woocommerce-cart .elementor-widget-woocommerce-cart .e-cart__container {
 			grid-template-columns: minmax(0, 1fr) 340px !important;
 			gap: 24px !important;
+			width: 92% !important;
+			max-width: 1350px !important;
 		}
 
 		.juhani-cart-card {
-			padding: 20px !important;
+			padding: 0px !important;
 		}
 
 		.juhani-cart-card__thumb {
@@ -941,8 +952,10 @@ function juhani_cart_custom_styles_and_scripts() {
 		body.woocommerce-cart .elementor-widget-woocommerce-cart .e-cart__container {
 			display: flex !important;
 			flex-direction: column !important;
-			gap: 24px !important;
-			padding: 16px 12px 40px !important;
+			gap: 20px !important;
+			width: 95% !important;
+			max-width: 1350px !important;
+			padding: 12px 0 32px !important;
 		}
 
 		body.woocommerce-cart .e-cart__column-start,
@@ -952,38 +965,43 @@ function juhani_cart_custom_styles_and_scripts() {
 			position: static !important;
 		}
 
+		/* Product Card - organized mobile */
 		.juhani-cart-card {
-			padding: 18px 16px !important;
+			padding: 0px !important;
+			gap: 12px !important;
 		}
 
 		.juhani-cart-card__header {
-			gap: 14px !important;
+			gap: 12px !important;
 			padding-right: 36px !important;
+			align-items: center !important;
 		}
 
 		.juhani-cart-card__thumb {
-			width: 90px !important;
-			height: 90px !important;
-			min-width: 90px !important;
-			max-width: 90px !important;
+			width: 84px !important;
+			height: 84px !important;
+			min-width: 84px !important;
+			max-width: 84px !important;
 		}
 
 		.juhani-cart-card__title,
 		.juhani-cart-card__title a {
 			font-size: 15px !important;
+			line-height: 1.3 !important;
 			margin-bottom: 4px !important;
 		}
 
-		.juhani-cart-card__unit-price {
+		.juhani-cart-card__unit-price,
+		.juhani-cart-card__unit-price .amount {
 			font-size: 14px !important;
 		}
 
 		.juhani-cart-card__details {
-			padding: 12px 14px !important;
+			padding: 10px 12px !important;
 		}
 
 		.juhani-cart-card__details dl.variation {
-			grid-template-columns: minmax(110px, auto) 1fr !important;
+			grid-template-columns: minmax(100px, auto) 1fr !important;
 			row-gap: 6px !important;
 			column-gap: 12px !important;
 		}
@@ -994,6 +1012,95 @@ function juhani_cart_custom_styles_and_scripts() {
 			padding: 3px 0 !important;
 		}
 
+		/* Footer - keep qty + subtotal in one clean row */
+		.juhani-cart-card__footer {
+			padding-top: 12px !important;
+			gap: 12px !important;
+			flex-wrap: nowrap !important;
+			align-items: center !important;
+		}
+
+		.juhani-cart-card__qty-col {
+			gap: 8px !important;
+		}
+
+		.juhani-qty-label {
+			font-size: 13px !important;
+		}
+
+		.juhani-qty-stepper {
+			height: 36px !important;
+		}
+
+		.juhani-qty-btn {
+			width: 32px !important;
+			min-width: 32px !important;
+			height: 36px !important;
+			font-size: 16px !important;
+		}
+
+		.juhani-qty-stepper .quantity input.qty {
+			width: 42px !important;
+			height: 36px !important;
+			min-height: 36px !important;
+			font-size: 14px !important;
+		}
+
+		.juhani-subtotal-label {
+			font-size: 11px !important;
+		}
+
+		.juhani-subtotal-amount,
+		.juhani-subtotal-amount .amount {
+			font-size: 16px !important;
+		}
+
+		/* Cart Totals - organized */
+		body.woocommerce-cart .cart_totals {
+			padding: 18px !important;
+		}
+
+		body.woocommerce-cart .cart_totals h2 {
+			font-size: 17px !important;
+			padding-bottom: 12px !important;
+			margin-bottom: 12px !important;
+		}
+
+		body.woocommerce-cart .cart_totals tr.cart-subtotal {
+			padding: 10px 0 !important;
+		}
+
+		body.woocommerce-cart .cart_totals tr.woocommerce-shipping-totals.shipping {
+			padding: 12px 0 !important;
+		}
+
+		body.woocommerce-cart .cart_totals tr.order-total th {
+			font-size: 15px !important;
+		}
+
+		body.woocommerce-cart .cart_totals tr.order-total td,
+		body.woocommerce-cart .cart_totals tr.order-total strong,
+		body.woocommerce-cart .cart_totals tr.order-total .amount {
+			font-size: 19px !important;
+		}
+
+		/* Coupon - full width organized */
+		.juhani-coupon-wrapper {
+			max-width: 100% !important;
+			gap: 8px !important;
+		}
+
+		.juhani-coupon-input {
+			height: 40px !important;
+			font-size: 13px !important;
+		}
+
+		.juhani-coupon-btn {
+			height: 40px !important;
+			padding: 0 14px !important;
+			font-size: 12px !important;
+		}
+
 		.juhani-continue-shopping-btn {
 			width: 100% !important;
 			justify-content: center !important;
@@ -1001,18 +1108,79 @@ function juhani_cart_custom_styles_and_scripts() {
 	}
 
 	@media (max-width: 480px) {
+		body.woocommerce-cart .elementor-widget-woocommerce-cart .e-cart__container {
+			width: 100% !important;
+			padding: 10px 12px 28px !important;
+			gap: 16px !important;
+		}
+
+		.juhani-cart-card {
+			padding: 12px !important;
+		}
+
+		.juhani-cart-card__header {
+			gap: 10px !important;
+			padding-right: 32px !important;
+		}
+
+		.juhani-cart-card__thumb {
+			width: 72px !important;
+			height: 72px !important;
+			min-width: 72px !important;
+			max-width: 72px !important;
+		}
+
+		.juhani-cart-card__title,
+		.juhani-cart-card__title a {
+			font-size: 14px !important;
+		}
+
+		.juhani-cart-card__unit-price,
+		.juhani-cart-card__unit-price .amount {
+			font-size: 13px !important;
+		}
+
+		.juhani-cart-card__details {
+			padding: 8px 10px !important;
+		}
+
+		/* Keep footer in single row - no dashed wrap */
 		.juhani-cart-card__footer {
-			flex-wrap: wrap !important;
-			gap: 12px !important;
+			flex-wrap: nowrap !important;
+			gap: 10px !important;
+			padding-top: 10px !important;
 		}
 
 		.juhani-cart-card__subtotal-col {
-			align-items: flex-start !important;
-			text-align: left !important;
+			align-items: flex-end !important;
+			text-align: right !important;
+			width: auto !important;
+			border-top: none !important;
+			padding-top: 0 !important;
+			margin-top: 0 !important;
+			flex: 0 0 auto !important;
+		}
+
+		.juhani-qty-label {
+			display: none !important; /* hide label to save space */
+		}
+
+		.juhani-coupon-wrapper {
+			flex-direction: column !important;
+			align-items: stretch !important;
+		}
+
+		.juhani-coupon-input,
+		.juhani-coupon-btn {
 			width: 100% !important;
-			border-top: 1px dashed #EDF2F7 !important;
-			padding-top: 10px !important;
-			margin-top: 4px !important;
+		}
+
+		body.woocommerce-cart .cart_totals {
+			padding: 14px !important;
+		}
+
+		body.woocommerce-cart .cart_totals h2 {
+			font-size: 16px !important;
 		}
 	}
 	</style>

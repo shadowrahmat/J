@@ -967,7 +967,7 @@ function juhani_cart_custom_styles_and_scripts() {
 
 		/* Product Card - organized mobile */
 		.juhani-cart-card {
-			padding: 0px !important;
+			padding: 30px 10px !important;
 			gap: 12px !important;
 		}
 
@@ -1115,7 +1115,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		}
 
 		.juhani-cart-card {
-			padding: 12px !important;
+			padding: 30px 10px !important;
 		}
 
 		.juhani-cart-card__header {

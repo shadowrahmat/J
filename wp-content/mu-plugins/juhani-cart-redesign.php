@@ -19,6 +19,12 @@ function juhani_cart_locate_template( $template, $template_name, $template_path 
 			return $custom;
 		}
 	}
+	if ( 'checkout/review-order.php' === $template_name ) {
+		$custom = __DIR__ . '/templates/review-order.php';
+		if ( file_exists( $custom ) ) {
+			return $custom;
+		}
+	}
 	return $template;
 }
 

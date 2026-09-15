@@ -158,9 +158,87 @@ if ( ! function_exists( 'hello_elementor_scripts_styles' ) ) {
 				HELLO_ELEMENTOR_VERSION
 			);
 		}
+
 	}
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_scripts_styles' );
+
+function juhani_mobile_fixes_styles() {
+	wp_enqueue_style(
+		'juhani-mobile-fixes',
+		HELLO_THEME_STYLE_URL . 'juhani-mobile-fixes.css',
+		[],
+		filemtime( HELLO_THEME_STYLE_PATH . 'juhani-mobile-fixes.css' )
+	);
+}
+add_action( 'wp_enqueue_scripts', 'juhani_mobile_fixes_styles', 99 );
+
+function juhani_product_variation_fixes_scripts() {
+	if ( ! is_product() ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'juhani-product-variation-fixes',
+		HELLO_THEME_SCRIPTS_URL . 'juhani-product-variation-fixes.js',
+		[ 'jquery', 'wc-add-to-cart-variation' ],
+		filemtime( HELLO_THEME_SCRIPTS_PATH . 'juhani-product-variation-fixes.js' ),
+		true
+	);
+
+	$product = wc_get_product( get_queried_object_id() );
+
+	if ( $product && $product->is_type( 'variable' ) ) {
+		$available_variations = array_map(
+			function( $variation ) {
+				return [
+					'attributes'     => isset( $variation['attributes'] ) ? $variation['attributes'] : [],
+					'is_in_stock'    => ! empty( $variation['is_in_stock'] ),
+					'is_purchasable' => ! empty( $variation['is_purchasable'] ),
+				];
+			},
+			$product->get_available_variations()
+		);
+
+		wp_localize_script(
+			'juhani-product-variation-fixes',
+			'juhaniVariationData',
+			[
+				'productId'  => $product->get_id(),
+				'variations' => $available_variations,
+			]
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'juhani_product_variation_fixes_scripts', 99 );
+
+function juhani_remove_mobile_drawer_logo_tooltip() {
+	?>
+	<script>
+	(function() {
+		function removeDrawerLogoTitle() {
+			document.querySelectorAll('.juhani-drawer-logo-wrap[title]').forEach(function(link) {
+				link.removeAttribute('title');
+			});
+		}
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', removeDrawerLogoTitle);
+		} else {
+			removeDrawerLogoTitle();
+		}
+
+		window.addEventListener('load', removeDrawerLogoTitle);
+
+		new MutationObserver(removeDrawerLogoTitle).observe(document.documentElement, {
+			childList: true,
+			subtree: true
+		});
+	})();
+	</script>
+	<?php
+}
+add_action( 'wp_footer', 'juhani_remove_mobile_drawer_logo_tooltip', 99 );
 
 if ( ! function_exists( 'hello_elementor_register_elementor_locations' ) ) {
 	/**

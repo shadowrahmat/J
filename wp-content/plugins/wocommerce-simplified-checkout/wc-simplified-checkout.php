@@ -204,202 +204,438 @@ function woocommerce_add_to_cart_button_text_archives() {
 }
 
 /**
- * Add quantity buttons to Elementor checkout page
+ * Checkout review order quantity handlers & styling
  */
 function add_quantity_buttons_to_elementor_checkout() {
-    if (!is_checkout()) return;
-    
-    // Get cart items with their keys
-    $cart_items = array();
-    if (WC()->cart) {
-        foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
-            $cart_items[] = array(
-                'key' => $cart_item_key,
-                'name' => $cart_item['data']->get_name(),
-                'quantity' => $cart_item['quantity']
-            );
-        }
-    }
+    if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) return;
     ?>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
-        var cartItems = <?php echo json_encode($cart_items); ?>;
-        
-        // Function to add quantity buttons
-        function addQuantityButtons() {
-            // Find all product rows in the checkout table
-            var $productRows = $('.woocommerce-checkout-review-order-table tr.cart_item');
-            
-            $productRows.each(function(index) {
-                var $row = $(this);
-                
-                // Find the product quantity element inside product-name td
-                var $productNameCell = $row.find('td.product-name');
-                var $quantityElement = $productNameCell.find('.product-quantity');
-                
-                if ($quantityElement.length === 0) {
-                    return;
-                }
-                
-                // Skip if already has our controls
-                if ($quantityElement.find('.checkout-quantity-wrapper').length > 0) {
-                    return;
-                }
-                
-                // Get current quantity from the text
-                var quantityText = $quantityElement.text();
-                var match = quantityText.match(/×\s*(\d+)/);
-                if (!match) {
-                    return;
-                }
-                
-                var currentQty = parseInt(match[1]);
-                
-                // Get product key from our cart items
-                var productKey = cartItems[index] ? cartItems[index].key : null;
-                if (!productKey) {
-                    return;
-                }
-                
-                // Create quantity controls HTML
-                var quantityHTML = `
-                    <br><div class="checkout-quantity-wrapper" style="display: inline-flex; align-items: center; gap: 8px;">
-                        <button type="button" class="checkout-qty-minus">-</button>
-                        <span class="checkout-qty-display" style="min-width: 30px; text-align: center; font-weight: bold; font-size: 14px;">${currentQty}</span>
-                        <button type="button" class="checkout-qty-plus">+</button>
-                    </div>
-                `;
-                
-                // Replace the entire quantity element with our controls
-                $quantityElement.replaceWith(quantityHTML);
-                $row.data('product-key', productKey);
-            });
-        }
-        
-        // AJAX function to update quantity
-        function updateQuantity(productKey, newQty, $row) {
-            // Show loading state
-            var $wrapper = $row.find('.checkout-quantity-wrapper');
+        function updateQuantity(productKey, newQty, $wrapper) {
             $wrapper.addClass('updating');
-            
             $.ajax({
                 type: 'POST',
-                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                url: '<?php echo admin_url("admin-ajax.php"); ?>',
                 data: {
                     action: 'update_checkout_quantity',
                     product_key: productKey,
                     quantity: newQty,
-                    nonce: '<?php echo wp_create_nonce('update_checkout_quantity_nonce'); ?>'
+                    nonce: '<?php echo wp_create_nonce("update_checkout_quantity_nonce"); ?>'
                 },
                 success: function(response) {
                     $wrapper.removeClass('updating');
-                    
-                    if (response.success) {
-                        // Update the display
-                        $wrapper.find('.checkout-qty-display').text(newQty);
-                        // Trigger checkout update
+                    if (response && response.success) {
                         $(document.body).trigger('update_checkout');
                     } else {
-                        // Reload as fallback
                         location.reload();
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function() {
                     $wrapper.removeClass('updating');
                     location.reload();
                 }
             });
         }
-        
-        // Initialize immediately when DOM is ready
-        addQuantityButtons();
-        
-        // Also initialize when window is fully loaded (for any dynamic content)
-        $(window).on('load', function() {
-            addQuantityButtons();
-        });
-        
-        // Re-setup when checkout updates
-        $(document.body).on('updated_checkout', function() {
-            addQuantityButtons();
-        });
-        
-        // Handle button clicks
+
         $(document).on('click', '.checkout-qty-plus', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
             var $wrapper = $(this).closest('.checkout-quantity-wrapper');
-            var $row = $wrapper.closest('tr.cart_item');
-            var productKey = $row.data('product-key');
+            var productKey = $wrapper.data('product-key');
             var $display = $wrapper.find('.checkout-qty-display');
-            var currentQty = parseInt($display.text());
+            var currentQty = parseInt($display.text(), 10) || 1;
             var newQty = currentQty + 1;
-            
             if (productKey) {
                 $display.text(newQty);
-                updateQuantity(productKey, newQty, $row);
+                updateQuantity(productKey, newQty, $wrapper);
             }
         });
-        
+
         $(document).on('click', '.checkout-qty-minus', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
             var $wrapper = $(this).closest('.checkout-quantity-wrapper');
-            var $row = $wrapper.closest('tr.cart_item');
-            var productKey = $row.data('product-key');
+            var productKey = $wrapper.data('product-key');
             var $display = $wrapper.find('.checkout-qty-display');
-            var currentQty = parseInt($display.text());
+            var currentQty = parseInt($display.text(), 10) || 1;
             var newQty = currentQty - 1;
-            
             if (newQty > 0 && productKey) {
                 $display.text(newQty);
-                updateQuantity(productKey, newQty, $row);
+                updateQuantity(productKey, newQty, $wrapper);
             }
         });
     });
     </script>
-    
-    <style>
-    .checkout-quantity-wrapper button:hover {
-        background-color: var(--order-summary-totals-color)!important;
-        border-color: #978241 !important;
+
+    <style id="juhani-checkout-review-order-css">
+    /* ====================================================
+       JUHANI CHECKOUT REVIEW ORDER (CLEAN 2-COL ALIGNED)
+       ==================================================== */
+
+    /* Kill any Elementor / WooCommerce responsive before pseudo-elements */
+    .woocommerce-checkout table.shop_table_responsive tr td::before,
+    .woocommerce-checkout table.shop_table_responsive tr th::before,
+    .woocommerce-checkout table.shop_table_responsive tr::before,
+    .woocommerce table.shop_table_responsive tr td::before,
+    .elementor-widget-woocommerce-checkout-page table.shop_table_responsive tr td::before,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tr td::before,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tr th::before {
+        display: none !important;
+        content: none !important;
     }
-    .checkout-quantity-wrapper button:active {
-        background-color: var(--order-summary-totals-color) !important;
+
+    /* Outer order review table */
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table {
+        border: 0 !important;
+        border-collapse: collapse !important;
+        width: 100% !important;
+        display: table !important;
+        margin: 0 !important;
+    }
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table thead {
+        display: none !important;
+    }
+
+    /* Cart item rows - full width card container */
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tbody {
+        display: block !important;
+        width: 100% !important;
+    }
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tbody tr.juhani-checkout-cart-item-row {
+        display: block !important;
+        width: 100% !important;
+        border: 0 !important;
+        padding: 0 !important;
+        margin: 0 0 16px 0 !important;
+        background: transparent !important;
+    }
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tbody td.juhani-checkout-cart-item-cell {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        text-align: left !important;
+    }
+
+    /* Card container */
+    .juhani-checkout-card {
+        width: 100% !important;
+        background: #ffffff !important;
+        border: 1px solid #dce6ef !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+
+    /* Each row: CSS GRID with 140px label and remaining width for value */
+    .juhani-co-row {
+        display: grid !important;
+        grid-template-columns: 140px minmax(0, 1fr) !important;
+        align-items: center !important;
+        border-bottom: 1px solid #eef2f7 !important;
+        box-sizing: border-box !important;
+        min-height: 42px !important;
+    }
+    .juhani-co-row:last-child {
+        border-bottom: 0 !important;
+    }
+
+    /* Left column (Labels): Product, Quantity, Suta, Haat, etc. */
+    .juhani-co-label {
+        padding: 10px 14px !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: #4a607a !important;
+        background: #fbfcfd !important;
+        border-right: 1px solid #edf2f7 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        text-align: left !important;
+        line-height: 1.35 !important;
+    }
+
+    /* Right column (Values) */
+    .juhani-co-value {
+        padding: 10px 14px !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 13.5px !important;
+        font-weight: 500 !important;
+        color: #0f2238 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        align-items: center !important;
+        word-break: break-word !important;
+        line-height: 1.35 !important;
+        text-align: left !important;
+    }
+
+    /* Row 1: Product Name header */
+    .juhani-co-row--product {
+        background: #f0f6fb !important;
+        border-bottom: 1px solid #d8e5f0 !important;
+    }
+    .juhani-co-row--product .juhani-co-label {
+        background: #eaf2f8 !important;
+        color: #10395E !important;
+        font-size: 11.5px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+    .juhani-co-row--product .juhani-co-value strong {
+        font-size: 14.5px !important;
+        font-weight: 700 !important;
+        color: #10395E !important;
+    }
+
+    /* Row Last: Subtotal footer */
+    .juhani-co-row--subtotal {
+        background: #f4f8fb !important;
+        border-top: 1.5px solid #d8e5f0 !important;
+    }
+    .juhani-co-row--subtotal .juhani-co-label {
+        background: #eaf2f8 !important;
+        color: #10395E !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.4px !important;
+    }
+    .juhani-co-subtotal-val {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: #10395E !important;
+    }
+    .juhani-co-subtotal-val .amount {
+        color: #10395E !important;
+        font-weight: 800 !important;
+    }
+
+    /* Quantity stepper */
+    .checkout-quantity-wrapper {
+        display: inline-flex !important;
+        align-items: center !important;
+        border: 1.5px solid #10395E !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+        height: 34px !important;
+        width: auto !important;
+        box-shadow: none !important;
     }
     .checkout-quantity-wrapper.updating {
-        opacity: 0.6;
-        pointer-events: none;
+        opacity: 0.5 !important;
+        pointer-events: none !important;
     }
-	.checkout-quantity-wrapper{
-	border: 1px solid;
-    border-radius: 4px;
-    border-color: var(--e-global-color-primary);
-	margin: 5px 0px;
-		}
-		.checkout-qty-minus{
-			width: 28px; 
-			height: 28px; 
-			cursor: pointer; 
-			font-size: 20px; 
-			display: flex; 
-			align-items: center; 
-			justify-content: center;
-			border-radius: 0px!important;
-		}
-		.checkout-qty-plus{
-			width: 28px; 
-			height: 28px; 
-			cursor: pointer; 
-			font-size: 20px; 
-			display: flex; 
-			align-items: center; 
-			justify-content: center;
-			border-radius: 0px!important;
-		}
-		
+    .checkout-qty-minus,
+    .checkout-qty-plus {
+        width: 32px !important;
+        height: 34px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #10395E !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        color: #ffffff !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        cursor: pointer !important;
+        transition: background-color 0.16s ease !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important;
+    }
+    .checkout-qty-minus:hover,
+    .checkout-qty-plus:hover {
+        background: #0f2e4a !important;
+    }
+    .checkout-qty-display {
+        min-width: 44px !important;
+        max-width: 44px !important;
+        width: 44px !important;
+        height: 34px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: "Poppins", sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
+        color: #0f2238 !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Table Footer (Subtotal / Shipping / Total) */
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot {
+        display: block !important;
+        width: 100% !important;
+        margin-top: 14px !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot tr {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-top: 1px solid #e5edf5 !important;
+        padding: 12px 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr.woocommerce-shipping-totals,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot tr.woocommerce-shipping-totals {
+        align-items: center !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot th,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot th {
+        border: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #344b63 !important;
+        text-align: left !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        flex: 0 0 auto !important;
+        line-height: 1 !important;
+        background: transparent !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot td,
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table .woocommerce-shipping-totals td,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-shipping-totals td,
+    .elementor-widget-woocommerce-checkout-page .woocommerce .woocommerce-shipping-totals td,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot td {
+        border: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        font-family: "Poppins", sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #0f2238 !important;
+        text-align: right !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        flex: 1 1 auto !important;
+        line-height: 1 !important;
+        background: transparent !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot th + td,
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot td + td {
+        margin-top: 0 !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr.order-total,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot tr.order-total {
+        border-top: 2px solid #10395E !important;
+        padding-top: 16px !important;
+        padding-bottom: 6px !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr.order-total th,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot tr.order-total th {
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        color: #10395E !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr.order-total td,
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr.order-total td .amount,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot tr.order-total td .amount {
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        color: #10395E !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot .shipping ul,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot .shipping ul {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 16px !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot .shipping ul li,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot .shipping ul li {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot .shipping ul li input[type="radio"],
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot .shipping ul li input[type="radio"] {
+        margin: 0 !important;
+        padding: 0 !important;
+        vertical-align: middle !important;
+        cursor: pointer !important;
+    }
+    body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot .shipping ul li label,
+    .elementor-widget-woocommerce-checkout-page .woocommerce-checkout-review-order-table tfoot .shipping ul li label {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #0d2a43 !important;
+        line-height: 1 !important;
+        cursor: pointer !important;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 767px) {
+        .juhani-co-row {
+            grid-template-columns: 110px minmax(0, 1fr) !important;
+        }
+        .juhani-co-label {
+            padding: 8px 10px !important;
+            font-size: 12px !important;
+        }
+        .juhani-co-value {
+            padding: 8px 10px !important;
+            font-size: 12.5px !important;
+        }
+        .checkout-quantity-wrapper {
+            height: 30px !important;
+        }
+        .checkout-qty-minus,
+        .checkout-qty-plus {
+            width: 28px !important;
+            min-width: 28px !important;
+            max-width: 28px !important;
+            height: 30px !important;
+            font-size: 16px !important;
+        }
+        .checkout-qty-display {
+            min-width: 36px !important;
+            max-width: 36px !important;
+            width: 36px !important;
+            height: 30px !important;
+            font-size: 13px !important;
+        }
+    }
     </style>
     <?php
 }

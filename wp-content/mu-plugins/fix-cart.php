@@ -125,6 +125,192 @@ add_action('wp_head', function() {
     }
 
     /* ====================================================
+       MOBILE FLOATING FOOTER BAR
+       ==================================================== */
+    @media (max-width: 767px) {
+        body {
+            padding-bottom: 65px !important;
+        }
+        .elementor-element-34832f4 {
+            position: fixed !important;
+            bottom: 0 !important;
+            top: auto !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            background: #ffffff !important;
+            box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08) !important;
+            z-index: 99990 !important;
+            border-top: 1px solid #eaeaea !important;
+            transform: none !important;
+        }
+        .elementor-element-34832f4 .e-con-inner {
+            padding: 0 !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        .elementor-element-3949973 {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            justify-content: space-around !important;
+            align-items: center !important;
+            width: 100% !important;
+            padding: 8px 0 6px 0 !important;
+            gap: 0 !important;
+        }
+        .elementor-element-3949973 > .e-con {
+            flex: 1 1 0 !important;
+            max-width: 20% !important;
+            min-width: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            cursor: pointer !important;
+        }
+        .elementor-element-3949973 .elementor-widget-icon-box {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+        .elementor-element-3949973 .elementor-icon-box-wrapper {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            gap: 3px !important;
+        }
+        .elementor-element-3949973 .elementor-icon-box-icon {
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            height: 26px !important;
+        }
+        .elementor-element-3949973 .elementor-icon {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #10395E !important;
+            fill: #10395E !important;
+            font-size: 22px !important;
+            line-height: 1 !important;
+        }
+        .elementor-element-3949973 .elementor-icon svg {
+            width: 22px !important;
+            height: 22px !important;
+            fill: #10395E !important;
+        }
+        .elementor-element-3949973 .elementor-icon i {
+            font-size: 22px !important;
+            line-height: 1 !important;
+            color: #10395E !important;
+        }
+        .elementor-element-3949973 .elementor-icon-box-title {
+            margin: 0 !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            line-height: 1.2 !important;
+            color: #10395E !important;
+            text-transform: capitalize !important;
+            letter-spacing: 0.2px !important;
+        }
+        .elementor-element-3949973 .elementor-icon-box-title a {
+            color: #10395E !important;
+            text-decoration: none !important;
+        }
+        .elementor-element-3949973 .elementor-icon-box-description {
+            display: none !important;
+        }
+
+        /* Cart Widget in Mobile Bottom Bar */
+        .elementor-element-77a58cb {
+            cursor: pointer !important;
+        }
+        .elementor-element-77a58cb .elementor-widget-woocommerce-menu-cart {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+        .elementor-element-77a58cb .elementor-menu-cart__wrapper {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        .elementor-element-77a58cb .elementor-menu-cart__toggle_wrapper {
+            width: 100% !important;
+            text-align: center !important;
+        }
+        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: none !important;
+        }
+        .elementor-element-77a58cb .elementor-button-text {
+            display: none !important;
+        }
+        .elementor-element-77a58cb .elementor-button-icon {
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 3px !important;
+        }
+        .elementor-element-77a58cb .elementor-button-icon svg {
+            width: 22px !important;
+            height: 22px !important;
+            fill: #10395E !important;
+        }
+        .elementor-element-77a58cb .elementor-button-icon-qty {
+            position: absolute !important;
+            top: -5px !important;
+            right: 8px !important;
+            background: #1AA7EC !important;
+            color: #ffffff !important;
+            font-size: 10px !important;
+            font-weight: 700 !important;
+            min-width: 16px !important;
+            height: 16px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 3px !important;
+            line-height: 1 !important;
+            z-index: 2 !important;
+        }
+        .elementor-element-77a58cb .elementor-screen-only {
+            position: static !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+            overflow: visible !important;
+            clip: auto !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            line-height: 1.2 !important;
+            color: #10395E !important;
+            text-transform: capitalize !important;
+            letter-spacing: 0.2px !important;
+            display: block !important;
+        }
+    }
+
+    /* ====================================================
        PREMIUM WOOCOMMERCE MINI-CART DRAWER
        ==================================================== */
     body .elementor-menu-cart__container,
@@ -1572,10 +1758,21 @@ add_action('wp_footer', function() {
                         });
                     }
 
+                    // Footer Bar Menu Toggle Click
+                    document.addEventListener('click', function(e) {
+                        const menuTrigger = e.target.closest('[data-id="menu60abcea"], .elementor-element-menu60abcea, .elementor-element-menu74918f8, a[href="#juhani-mobile-menu"]');
+                        if (menuTrigger) {
+                            e.preventDefault();
+                            if (menuToggle) {
+                                menuToggle.click();
+                            }
+                        }
+                    });
+
                     // Click outside drawer closes menu
                     document.addEventListener('click', function(e) {
                         const target = e.target;
-                        if (menuToggle.contains(target) || menuDropdown.contains(target) || overlay.contains(target)) return;
+                        if (menuToggle.contains(target) || menuDropdown.contains(target) || overlay.contains(target) || target.closest('[data-id="menu60abcea"], .elementor-element-menu60abcea, .elementor-element-menu74918f8, a[href="#juhani-mobile-menu"]')) return;
                         if (menuToggle.classList.contains('elementor-active')) {
                             closeDrawer();
                         }

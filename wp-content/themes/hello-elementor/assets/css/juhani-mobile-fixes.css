@@ -2003,14 +2003,21 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	}
 }
 
-/* Product variation selector polish. */
+/* Single Product: Tighten Price & Title Spacing */
+body.single-product .elementor-widget-woocommerce-product-price,
+body.single-product .elementor-widget-woocommerce-product-price .price,
+body.single-product .price {
+	margin-bottom: 6px !important;
+}
+
+/* Product variation selector polish & compact gaps */
 body.single-product form.variations_form table.variations {
 	display: table !important;
 	width: 100% !important;
-	max-width: 560px !important;
-	margin: 18px 0 20px !important;
+	max-width: 650px !important;
+	margin: 4px 0 8px !important;
 	border-collapse: separate !important;
-	border-spacing: 0 12px !important;
+	border-spacing: 0 !important;
 	overflow: visible !important;
 }
 
@@ -2021,21 +2028,41 @@ body.single-product form.variations_form table.variations td {
 	background: transparent !important;
 }
 
+body.single-product form.variations_form table.variations tr {
+	display: grid !important;
+	grid-template-columns: 155px minmax(0, 1fr) !important;
+	column-gap: 12px !important;
+	align-items: center !important;
+	margin: 0 0 10px !important;
+}
+
+body.single-product form.variations_form table.variations tr:last-child {
+	margin-bottom: 0 !important;
+}
+
 body.single-product form.variations_form table.variations th.label {
 	width: 155px !important;
-	padding: 0 16px 0 0 !important;
+	min-width: 155px !important;
+	padding: 0 12px 0 0 !important;
+	align-self: center !important;
 	vertical-align: middle !important;
 	text-align: left !important;
 }
 
 body.single-product form.variations_form table.variations th.label label {
+	display: flex !important;
+	align-items: center !important;
+	min-height: 40px !important;
+	margin: 0 !important;
 	color: #0d2a43 !important;
 	font-size: 14px !important;
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	line-height: 1.35 !important;
+	white-space: nowrap !important;
 }
 
 body.single-product form.variations_form table.variations td.value {
+	align-self: center !important;
 	padding: 0 !important;
 	vertical-align: middle !important;
 }
@@ -2066,14 +2093,29 @@ body.single-product form.variations_form table.variations option:disabled {
 	color: #9aaaba !important;
 }
 
+/* Reset variations (Clear) link handling */
+body.single-product form.variations_form .reset_variations[style*="visibility: hidden"],
+body.single-product form.variations_form .reset_variations[style*="display: none"],
+body.single-product form.variations_form .reset_variations:empty {
+	display: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	height: 0 !important;
+	width: 0 !important;
+	overflow: hidden !important;
+	pointer-events: none !important;
+}
+
 body.single-product form.variations_form .reset_variations {
 	display: inline-flex !important;
 	align-items: center !important;
-	margin: 10px 0 0 !important;
+	width: fit-content !important;
+	margin: 6px 0 0 !important;
 	color: #4CA2D9 !important;
 	font-size: 13px !important;
-	font-weight: 800 !important;
+	font-weight: 700 !important;
 	text-decoration: none !important;
+	transition: color 0.15s ease !important;
 }
 
 body.single-product form.variations_form .reset_variations:hover {
@@ -2095,8 +2137,29 @@ body.single-product form.variations_form .juhani-variation-helper {
 	line-height: 1.45;
 }
 
-body.single-product form.variations_form .woocommerce-variation.single_variation {
-	margin-top: 14px !important;
+body.single-product form.variations_form .single_variation_wrap {
+	display: flex !important;
+	flex-direction: column !important;
+	width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+body.single-product form.variations_form .woocommerce-variation.single_variation:empty,
+body.single-product form.variations_form .woocommerce-variation.single_variation[style*="display: none"] {
+	display: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	height: 0 !important;
+}
+
+body.single-product form.variations_form .woocommerce-variation-add-to-cart,
+.woocommerce-variation-add-to-cart {
+	display: flex !important;
+	align-items: center !important;
+	gap: 10px !important;
+	margin-top: 8px !important;
+	margin-bottom: 14px !important;
 }
 
 body.single-product form.variations_form .woocommerce-variation-description,
@@ -2132,30 +2195,97 @@ body.single-product form.variations_form.juhani-variation-in-progress::after {
 }
 
 @media (max-width: 767px) {
-	body.single-product form.variations_form table.variations,
-	body.single-product form.variations_form table.variations tbody,
-	body.single-product form.variations_form table.variations tr,
-	body.single-product form.variations_form table.variations th,
-	body.single-product form.variations_form table.variations td {
-		display: block !important;
-		width: 100% !important;
-	}
-
 	body.single-product form.variations_form table.variations {
 		max-width: 100% !important;
+		margin: 4px 0 8px !important;
 		border-spacing: 0 !important;
 	}
 
 	body.single-product form.variations_form table.variations tr {
-		margin-bottom: 13px !important;
+		display: grid !important;
+		grid-template-columns: 120px minmax(0, 1fr) !important;
+		column-gap: 12px !important;
+		align-items: center !important;
+		margin-bottom: 10px !important;
+	}
+
+	body.single-product form.variations_form table.variations tr:last-child {
+		margin-bottom: 0 !important;
 	}
 
 	body.single-product form.variations_form table.variations th.label {
-		padding: 0 0 7px !important;
+		width: 120px !important;
+		min-width: 120px !important;
+		padding: 0 !important;
+		align-self: center !important;
+	}
+
+	body.single-product form.variations_form table.variations th.label label {
+		font-size: 12px !important;
+		min-height: 40px !important;
+		white-space: nowrap !important;
+	}
+
+	body.single-product form.variations_form table.variations td.value {
+		align-self: center !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		flex: 1 1 auto !important;
+		display: flex !important;
+		align-items: center !important;
+		flex-wrap: wrap !important;
+	}
+
+	body.single-product form.variations_form table.variations td.value .variable-items-wrapper {
+		display: flex !important;
+		flex-wrap: wrap !important;
+		gap: 6px !important;
+		width: 100% !important;
+		max-width: 100% !important;
 	}
 
 	body.single-product form.variations_form table.variations select {
 		min-height: 48px !important;
 		font-size: 15px !important;
+	}
+
+	body.single-product form.variations_form .woocommerce-variation-add-to-cart {
+		display: grid !important;
+		grid-template-columns: auto minmax(0, 1fr) 48px !important;
+		align-items: stretch !important;
+		gap: 8px !important;
+		width: 100% !important;
+		margin: 8px 0 12px !important;
+		padding: 0 !important;
+	}
+
+	body.single-product form.variations_form .woocommerce-variation-add-to-cart .quantity {
+		width: 106px !important;
+		min-width: 106px !important;
+		height: 48px !important;
+	}
+
+	body.single-product form.variations_form .woocommerce-variation-add-to-cart .quantity .juhani-qty-btn,
+	body.single-product form.variations_form .woocommerce-variation-add-to-cart .quantity button {
+		width: 32px !important;
+		flex: 0 0 32px !important;
+	}
+
+	body.single-product form.variations_form .woocommerce-variation-add-to-cart .quantity input.qty {
+		width: 42px !important;
+		min-width: 42px !important;
+	}
+
+	body.single-product form.variations_form .woocommerce-variation-add-to-cart button.single_add_to_cart_button.button {
+		min-height: 48px !important;
+		height: 48px !important;
+		padding: 0 12px !important;
+		font-size: 14px !important;
+	}
+
+	body.single-product form.variations_form .woocommerce-variation-add-to-cart .juhani-wishlist-btn {
+		width: 48px !important;
+		min-width: 48px !important;
+		height: 48px !important;
 	}
 }

@@ -72,11 +72,11 @@ add_action('wp_head', function() {
     .elementor-location-header .elementor-menu-cart__container {
         position: fixed !important;
     }
-    /* Mobile & Tablet: ensure shopping cart is hidden as requested */
+    /* Mobile & Tablet: ensure shopping cart in header is hidden as requested */
     @media (max-width: 1024px) {
         .elementor-element-4358431,
         .elementor-element-8d170ad,
-        .elementor-widget-woocommerce-menu-cart {
+        .elementor-location-header .elementor-widget-woocommerce-menu-cart {
             display: none !important;
             visibility: hidden !important;
             width: 0 !important;

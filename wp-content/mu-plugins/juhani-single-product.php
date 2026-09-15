@@ -348,8 +348,8 @@ add_action( 'wp_head', function() {
 		display: flex !important;
 		align-items: center !important;
 		gap: 12px !important;
-		margin-top: 18px !important;
-		margin-bottom: 16px !important;
+		margin-top: 8px !important;
+		margin-bottom: 14px !important;
 		flex-wrap: wrap !important;
 	}
 

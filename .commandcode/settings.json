@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(php -r \" require 'wp-load.php'; global \\$wpdb; \\$mid = 71; \\$m = get_post_meta(\\$mid, '_elementor_data', true); if (\\$m) { \\$j=json_decode(\\$m,true); echo json_encode(\\$j, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES); } else { echo 'no _elementor_data'; } \")"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

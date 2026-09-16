@@ -85,10 +85,71 @@ add_action('wp_head', function() {
             pointer-events: none !important;
         }
     }
-    /* Lock body scrolling when side drawer is open */
-    body.juhani-drawer-open {
+    /* Lock body scrolling when side drawer is open - separate for cart and menu */
+    body.juhani-drawer-open,
+    body.juhani-cart-open {
         overflow: hidden !important;
         touch-action: none !important;
+    }
+    /* Ensure cart container hidden/shown correctly via aria-hidden for all viewports - fixes desktop stuck open */
+    .elementor-menu-cart__container[aria-hidden="true"] {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    .elementor-menu-cart__container[aria-hidden="false"] {
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    /* Ensure cart drawer at body level is visible when cart open - global z-index above header/footer */
+    body.juhani-cart-open .elementor-menu-cart__container {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        z-index: 999998 !important;
+    }
+    body.juhani-cart-open .elementor-menu-cart__main {
+        transform: translateX(0) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 999999 !important;
+    }
+    /* Ensure cart drawer appears above header/footer when open - header must not overlap drawer */
+    body.juhani-cart-open .elementor-location-header,
+    body.juhani-cart-open .elementor-71 .elementor-element.elementor-element-1d9f82b,
+    body.juhani-cart-open [data-id="1d9f82b"] {
+        z-index: 10 !important;
+    }
+    body.juhani-cart-open .elementor-element-34832f4 {
+        z-index: 999998 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    body.juhani-cart-open .elementor-element-34832f4 .elementor-element-3949973 {
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+    body.juhani-cart-open .elementor-element-34832f4 .elementor-menu-cart__container {
+        z-index: 999998 !important;
+    }
+    body.juhani-cart-open .elementor-element-34832f4 .elementor-menu-cart__main {
+        z-index: 999999 !important;
+    }
+    /* Ensure close button is visible - fix cross icon */
+    body .juhani-mini-cart-close {
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+        position: relative !important;
+        display: inline-flex !important;
+    }
+    body .juhani-mini-cart-close::before,
+    body .juhani-mini-cart-close::after {
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     /* Ensure Header Container has stable high z-index */
@@ -199,87 +260,156 @@ add_action('wp_head', function() {
             justify-content: center !important;
             color: #10395E !important;
             fill: #10395E !important;
-            font-size: 22px !important;
+            font-size: 24px !important;
             line-height: 1 !important;
         }
         .elementor-element-3949973 .elementor-icon svg {
-            width: 22px !important;
-            height: 22px !important;
+            width: 24px !important;
+            height: 24px !important;
             fill: #10395E !important;
         }
         .elementor-element-3949973 .elementor-icon i {
-            font-size: 22px !important;
+            font-size: 24px !important;
             line-height: 1 !important;
             color: #10395E !important;
         }
-        .elementor-element-3949973 .elementor-icon-box-title {
+        .elementor-element-3949973 .elementor-icon-box-title,
+        .elementor-element-3949973 .elementor-icon-box-title a {
             margin: 0 !important;
             font-family: 'Poppins', sans-serif !important;
-            font-size: 11px !important;
-            font-weight: 500 !important;
-            line-height: 1.2 !important;
+            font-size: 16px !important;
+            font-weight: 400 !important;
+            line-height: 19.2px !important;
             color: #10395E !important;
             text-transform: capitalize !important;
-            letter-spacing: 0.2px !important;
-        }
-        .elementor-element-3949973 .elementor-icon-box-title a {
-            color: #10395E !important;
+            letter-spacing: normal !important;
             text-decoration: none !important;
         }
         .elementor-element-3949973 .elementor-icon-box-description {
             display: none !important;
         }
 
-        /* Cart Widget in Mobile Bottom Bar */
+        /* Cart Widget in Mobile Bottom Bar — 1:1 match with icon-box (Home/Search/Shop) */
         .elementor-element-77a58cb {
+            flex: 1 1 0 !important;
+            max-width: 20% !important;
+            min-width: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            padding: 0 !important;
+            margin: 0 !important;
             cursor: pointer !important;
+            height: 48.1875px !important;
+            gap: 3px !important;
         }
         .elementor-element-77a58cb .elementor-widget-woocommerce-menu-cart {
             width: 100% !important;
+            height: 26px !important;
+            min-height: 26px !important;
+            max-height: 26px !important;
             margin: 0 !important;
-        }
-        .elementor-element-77a58cb .elementor-menu-cart__wrapper {
+            padding: 0 !important;
             display: flex !important;
-            justify-content: center !important;
             align-items: center !important;
+            justify-content: center !important;
         }
-        .elementor-element-77a58cb .elementor-menu-cart__toggle_wrapper {
+        .elementor-element-77a58cb .elementor-widget-container,
+        .elementor-element-77a58cb .elementor-menu-cart__wrapper,
+        .elementor-element-77a58cb .elementor-menu-cart__toggle_wrapper,
+        .elementor-element-77a58cb .elementor-menu-cart__toggle {
             width: 100% !important;
-            text-align: center !important;
+            height: 26px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
-        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button {
+        .elementor-element-77a58cb #elementor-menu-cart__toggle_button,
+        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button,
+        .elementor-element-77a58cb .elementor-button {
             background: transparent !important;
             border: none !important;
             padding: 0 !important;
             margin: 0 !important;
             display: flex !important;
-            flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
             box-shadow: none !important;
+            width: 100% !important;
+            height: 26px !important;
+            min-height: 26px !important;
+            line-height: 1 !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            position: relative !important;
         }
-        .elementor-element-77a58cb .elementor-button-text {
+        .elementor-element-77a58cb .elementor-button-text,
+        .elementor-element-77a58cb .elementor-screen-only {
             display: none !important;
         }
         .elementor-element-77a58cb .elementor-button-icon {
-            position: relative !important;
-            display: flex !important;
-            flex-direction: column !important;
+            display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            gap: 3px !important;
+            height: 26px !important;
+            width: 24px !important;
+            min-width: 24px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            position: relative !important;
+            line-height: 1 !important;
         }
-        .elementor-element-77a58cb .elementor-button-icon svg {
-            width: 22px !important;
-            height: 22px !important;
+        /* Cart icon — 1:1 match with Home/Search/Shop (Themify line style, 24px) */
+        .elementor-element-77a58cb .elementor-button-icon i,
+        .elementor-element-77a58cb .elementor-button-icon svg,
+        .elementor-element-77a58cb .elementor-button-icon i[class*="ti-"],
+        .elementor-element-77a58cb .elementor-button-icon i.eicon {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 24px !important;
+            line-height: 1 !important;
+            color: #10395E !important;
             fill: #10395E !important;
+            stroke: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            position: relative !important;
+        }
+        .elementor-element-77a58cb .elementor-button-icon i[class*="ti-"] {
+            font-family: "themify" !important;
+            font-weight: 400 !important;
+            speak: none !important;
+            font-style: normal !important;
+        }
+        .elementor-element-77a58cb .elementor-button-icon svg,
+        .elementor-element-77a58cb .elementor-button-icon svg.juhani-cart-svg {
+            display: none !important;
+        }
+        .elementor-element-77a58cb .elementor-button-icon.juhani-no-font svg.juhani-cart-svg {
+            display: block !important;
+            stroke: #10395E !important;
+            fill: none !important;
+            width: 24px !important;
+            height: 24px !important;
+        }
+        .elementor-element-77a58cb .elementor-button-icon.juhani-no-font i {
+            display: none !important;
         }
         .elementor-element-77a58cb .elementor-button-icon-qty {
             position: absolute !important;
-            top: -5px !important;
-            right: 8px !important;
+            top: -4px !important;
+            right: -8px !important;
+            left: auto !important;
             background: #1AA7EC !important;
             color: #ffffff !important;
+            font-family: 'Poppins', sans-serif !important;
             font-size: 10px !important;
             font-weight: 700 !important;
             min-width: 16px !important;
@@ -291,22 +421,77 @@ add_action('wp_head', function() {
             padding: 0 3px !important;
             line-height: 1 !important;
             z-index: 2 !important;
+            border: 1px solid #ffffff !important;
+            box-sizing: border-box !important;
         }
-        .elementor-element-77a58cb .elementor-screen-only {
-            position: static !important;
-            width: auto !important;
-            height: auto !important;
+
+        /* The user's Heading Widget styling: exact match with Home/Search/Shop titles */
+        .elementor-element-77a58cb .elementor-widget-heading {
+            width: 100% !important;
             margin: 0 !important;
-            overflow: visible !important;
-            clip: auto !important;
+            padding: 0 !important;
+            height: 19.1875px !important;
+            min-height: 19.1875px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            cursor: pointer !important;
+        }
+        .elementor-element-77a58cb .elementor-widget-heading .elementor-heading-title,
+        .elementor-element-77a58cb .elementor-heading-title {
+            margin: 0 !important;
+            padding: 0 !important;
             font-family: 'Poppins', sans-serif !important;
-            font-size: 11px !important;
-            font-weight: 500 !important;
-            line-height: 1.2 !important;
+            font-size: 16px !important;
+            font-weight: 400 !important;
+            line-height: 19.2px !important;
             color: #10395E !important;
             text-transform: capitalize !important;
-            letter-spacing: 0.2px !important;
-            display: block !important;
+            letter-spacing: normal !important;
+            text-align: center !important;
+            width: 100% !important;
+            cursor: pointer !important;
+            transition: color 0.16s ease !important;
+        }
+
+        /* ====================================================
+           FOOTER CART TOGGLE — HOVER ALIGNED WITH DESKTOP CART
+           Mirrors desktop cart/drawer hover: same accent
+           #4CA2D9 / #10395E, same transitions (0.16s ease)
+           — ensures footer-triggered drawer toggle feels
+           identical to desktop header cart icon hover
+           ==================================================== */
+        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button {
+            transition: opacity 0.16s ease, transform 0.16s ease !important;
+        }
+        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button:hover {
+            opacity: 0.92 !important;
+        }
+        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button:hover .elementor-button-icon svg {
+            fill: #4CA2D9 !important;
+            transition: fill 0.16s ease !important;
+        }
+        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button:hover .elementor-screen-only {
+            color: #4CA2D9 !important;
+            transition: color 0.16s ease !important;
+        }
+        .elementor-element-77a58cb .elementor-menu-cart__toggle .elementor-button:hover .elementor-button-icon-qty {
+            background: #10395E !important;
+            transition: background-color 0.16s ease !important;
+        }
+        /* Footer Bar Icon-Box hover — unified with desktop nav drawer hover (#4CA2D9 on #f2f9fd) */
+        .elementor-element-3949973 > .e-con:hover .elementor-icon,
+        .elementor-element-3949973 > .e-con:hover .elementor-icon svg,
+        .elementor-element-3949973 > .e-con:hover .elementor-icon i {
+            color: #4CA2D9 !important;
+            fill: #4CA2D9 !important;
+            transition: color 0.16s ease, fill 0.16s ease !important;
+        }
+        .elementor-element-3949973 > .e-con:hover .elementor-icon-box-title,
+        .elementor-element-3949973 > .e-con:hover .elementor-icon-box-title a {
+            color: #4CA2D9 !important;
+            transition: color 0.16s ease !important;
         }
     }
 
@@ -847,98 +1032,578 @@ add_action('wp_head', function() {
         text-align: center !important;
     }
 
+    /* Desktop Header Cart Toggle — hover aligned with footer toggle (same 0.16s ease, opacity) */
+    @media (min-width: 768px) {
+        body .elementor-element-8d170ad .elementor-menu-cart__toggle .elementor-button,
+        body .elementor-location-header .elementor-menu-cart__toggle .elementor-button {
+            transition: opacity 0.16s ease !important;
+        }
+        body .elementor-element-8d170ad .elementor-menu-cart__toggle .elementor-button:hover,
+        body .elementor-location-header .elementor-menu-cart__toggle .elementor-button:hover {
+            opacity: 0.92 !important;
+        }
+    }
+
+    /* ====================================================
+       MOBILE CART DRAWER — RESPONSIVE VERSION OF DESKTOP
+       ==================================================== */
     @media (max-width: 767px) {
-        body .elementor-menu-cart__main {
+        /* Backdrop Overlay (Left portion visible, blur effect) */
+        body .elementor-menu-cart__container {
+            position: fixed !important;
+            inset: 0 !important;
             width: 100vw !important;
-            max-width: 100vw !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            background: rgba(4, 18, 32, 0.55) !important;
+            backdrop-filter: blur(3px) !important;
+            -webkit-backdrop-filter: blur(3px) !important;
+            z-index: 999998 !important;
+            display: flex !important;
+            justify-content: flex-end !important;
+            align-items: stretch !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            transition: opacity 0.32s ease, visibility 0.32s ease !important;
+        }
+        body.juhani-cart-open .elementor-menu-cart__container,
+        body .elementor-widget-woocommerce-menu-cart.elementor-menu-cart--shown .elementor-menu-cart__container {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
         }
 
-        body .elementor-menu-cart__header {
+        /* 1. Mobile Drawer Width & Position: 88vw max 420px, right-aligned */
+        body .elementor-menu-cart__main {
+            position: fixed !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: auto !important;
+            width: 88vw !important;
+            max-width: 420px !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            max-height: 100dvh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow: hidden !important;
+            background: #ffffff !important;
+            border-left: none !important;
+            box-shadow: -8px 0 28px rgba(7, 21, 38, 0.16) !important;
+            z-index: 999999 !important;
+            box-sizing: border-box !important;
+            padding: 0 !important;
+            transform: translateX(100%) !important;
+            transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        body.juhani-cart-open .elementor-menu-cart__main,
+        body .elementor-widget-woocommerce-menu-cart.elementor-menu-cart--shown .elementor-menu-cart__main {
+            transform: translateX(0) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        @media (max-width: 380px) {
+            body .elementor-menu-cart__main {
+                width: 90vw !important;
+                max-width: 90vw !important;
+            }
+        }
+
+        /* 2. Header & Close Button */
+        body .juhani-mini-cart-header {
+            flex: 0 0 auto !important;
             min-height: 56px !important;
-            padding: 12px 14px !important;
+            padding: 14px 14px 12px 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            border-bottom: 1px solid #e4ebf2 !important;
+            background: #ffffff !important;
+            box-sizing: border-box !important;
+        }
+        body .juhani-mini-cart-title {
+            font-family: "Poppins", sans-serif !important;
+            font-size: 17px !important;
+            font-weight: 800 !important;
+            color: #06395f !important;
+            text-transform: uppercase !important;
+            margin: 0 !important;
+            letter-spacing: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        body .juhani-mini-cart-count {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: #42576e !important;
+        }
+        body .juhani-mini-cart-close {
+            width: 38px !important;
+            height: 38px !important;
+            min-width: 38px !important;
+            min-height: 38px !important;
+            border: 1px solid #d7e0e8 !important;
+            background: #ffffff !important;
+            color: #061d33 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 !important;
+            cursor: pointer !important;
+            border-radius: 0 !important;
+            flex-shrink: 0 !important;
+            transition: background-color 0.18s ease, border-color 0.18s ease !important;
+        }
+        body .juhani-mini-cart-close:hover {
+            background: #f2f7fb !important;
+            border-color: #c8d7e4 !important;
+        }
+        body .juhani-mini-cart-close svg {
+            display: block !important;
+            width: 18px !important;
+            height: 18px !important;
+            stroke: #061d33 !important;
+            pointer-events: none !important;
+        }
+        body .juhani-mini-cart-close::before,
+        body .juhani-mini-cart-close::after {
+            display: none !important;
+            content: none !important;
         }
 
-        body .elementor-menu-cart__header .elementor-menu-cart__heading {
-            font-size: 18px !important;
+        /* Essential Flex Column Container for Cart Content */
+        body .elementor-menu-cart__main .widget_shopping_cart_content {
+            flex: 1 1 auto !important;
+            min-height: 0 !important;
+            height: 100% !important;
+            max-height: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
         }
 
-        body .elementor-menu-cart__products {
-            padding: 12px 12px 14px !important;
+        /* 3. Product Remove X Button */
+        body .elementor-menu-cart__product-remove,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove {
+            position: absolute !important;
+            top: 10px !important;
+            right: 10px !important;
+            width: 34px !important;
+            height: 34px !important;
+            min-width: 34px !important;
+            min-height: 34px !important;
+            border: 1px solid #e0e8f0 !important;
+            background: #ffffff !important;
+            color: #0b2d4a !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            font-size: 0 !important;
+            cursor: pointer !important;
+            z-index: 5 !important;
+            transition: background-color 0.18s ease, border-color 0.18s ease !important;
+        }
+        body .elementor-menu-cart__product-remove:hover,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove:hover {
+            background: #f7fafc !important;
+            border-color: #cfdce8 !important;
+        }
+        body .elementor-menu-cart__product-remove a {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 2 !important;
+            display: block !important;
+            font-size: 0 !important;
+            line-height: 0 !important;
+            color: transparent !important;
+            text-decoration: none !important;
+            cursor: pointer !important;
+        }
+        body .elementor-menu-cart__product-remove a:not(:first-child) {
+            display: none !important;
+        }
+        body .elementor-menu-cart__product-remove svg,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove svg {
+            display: none !important;
+        }
+        body .elementor-menu-cart__product-remove::before,
+        body .elementor-menu-cart__product-remove::after,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove::before,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove::after {
+            content: "" !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            width: 14px !important;
+            height: 2px !important;
+            background: #0b2d4a !important;
+            opacity: 1 !important;
+            display: block !important;
+            pointer-events: none !important;
+            border-radius: 1px !important;
+            z-index: 1 !important;
+        }
+        body .elementor-menu-cart__product-remove::before,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove::before {
+            transform: translate(-50%, -50%) rotate(45deg) !important;
+        }
+        body .elementor-menu-cart__product-remove::after,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove::after {
+            transform: translate(-50%, -50%) rotate(-45deg) !important;
         }
 
+        /* 4. Product Container & Top Row */
         body .elementor-menu-cart__product,
         body .woocommerce-mini-cart .woocommerce-mini-cart-item,
         body .widget_shopping_cart_content .woocommerce-mini-cart-item {
-            grid-template-columns: 86px minmax(0, 1fr) !important;
-            column-gap: 10px !important;
-            row-gap: 6px !important;
-            padding: 12px !important;
-            margin-bottom: 12px !important;
-            border: none !important;
-            border-width: 0 !important;
+            display: grid !important;
+            grid-template-columns: 96px minmax(0, 1fr) !important;
+            grid-template-rows: auto auto auto auto !important;
+            column-gap: 12px !important;
+            row-gap: 0 !important;
+            padding: 12px 12px 14px 12px !important;
+            margin: 0 0 12px !important;
+            border: 1px solid #e5edf5 !important;
+            border-radius: 0 !important;
+            background: #ffffff !important;
+            box-shadow: none !important;
+            position: relative !important;
+            align-items: start !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
-
+        body .elementor-menu-cart__product:last-child,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item:last-child {
+            margin-bottom: 0 !important;
+        }
         body .elementor-menu-cart__product-image,
-        body .woocommerce-mini-cart .woocommerce-mini-cart-item > a:not(.remove):has(img),
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item > a:not(.remove):has(img) {
+            grid-column: 1 !important;
+            grid-row: 1 / span 2 !important;
+            width: 96px !important;
+            min-width: 96px !important;
+            max-width: 96px !important;
+            height: 96px !important;
+            aspect-ratio: 1 / 1 !important;
+            align-self: start !important;
+            flex-shrink: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
         body .elementor-menu-cart__product-image img,
         body .woocommerce-mini-cart .woocommerce-mini-cart-item img {
-            width: 86px !important;
-            height: 86px !important;
-            min-width: 86px !important;
+            width: 96px !important;
+            height: 96px !important;
+            object-fit: cover !important;
+            aspect-ratio: 1 / 1 !important;
+            border-radius: 0 !important;
+            border: 0 !important;
+            display: block !important;
         }
-
         body .elementor-menu-cart__product-name,
         body .woocommerce-mini-cart .woocommerce-mini-cart-item > a:not(.remove) {
-            font-size: 13px !important;
-            padding-right: 32px !important;
+            grid-column: 2 !important;
+            grid-row: 1 !important;
+            min-width: 0 !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            line-height: 1.35 !important;
+            color: #0b2d4a !important;
+            padding-right: 40px !important;
+            padding-left: 0 !important;
+            margin: 0 0 8px 0 !important;
+            align-self: start !important;
+            text-align: left !important;
+            text-decoration: none !important;
+            word-break: break-word !important;
         }
 
+        /* 5. Quantity Control */
+        body .juhani-mini-cart-qty {
+            grid-column: 2 !important;
+            grid-row: 2 !important;
+            display: inline-flex !important;
+            align-items: stretch !important;
+            height: 40px !important;
+            width: auto !important;
+            margin: 0 !important;
+            align-self: start !important;
+            justify-self: start !important;
+            border: 1px solid #d7e0e8 !important;
+            background: #ffffff !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+        }
+        body .juhani-mini-cart-qty button {
+            width: 40px !important;
+            height: 38px !important;
+            min-width: 40px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            font-family: inherit !important;
+            font-size: 19px !important;
+            font-weight: 700 !important;
+            color: #064b7e !important;
+            background: #ffffff !important;
+            border: none !important;
+            border-right: 1px solid #d7e0e8 !important;
+            line-height: 1 !important;
+            cursor: pointer !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            transition: background-color 0.16s ease !important;
+        }
+        body .juhani-mini-cart-qty button:last-child {
+            border-right: none !important;
+            border-left: 1px solid #d7e0e8 !important;
+        }
+        body .juhani-mini-cart-qty button:hover {
+            background: #eaf3fa !important;
+            color: #002f52 !important;
+        }
+        body .juhani-mini-cart-qty button::before,
+        body .juhani-mini-cart-qty button::after,
+        body .juhani-mini-cart-qty .juhani-mini-cart-minus::before,
+        body .juhani-mini-cart-qty .juhani-mini-cart-minus::after,
+        body .juhani-mini-cart-qty .juhani-mini-cart-plus::before,
+        body .juhani-mini-cart-qty .juhani-mini-cart-plus::after,
+        body .juhani-mini-cart-qty button:first-child::before,
+        body .juhani-mini-cart-qty button:first-child::after,
+        body .juhani-mini-cart-qty button:last-child::before,
+        body .juhani-mini-cart-qty button:last-child::after {
+            content: none !important;
+            display: none !important;
+        }
+        body .juhani-mini-cart-qty span {
+            width: 46px !important;
+            height: 38px !important;
+            min-width: 46px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            color: #061d33 !important;
+            background: #ffffff !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* 6. Attribute Box */
         body .elementor-menu-cart__product .variation,
         body .woocommerce-mini-cart .variation {
-            grid-template-columns: minmax(86px, 0.85fr) minmax(0, 1.15fr) !important;
-            gap: 0 10px !important;
-            padding: 10px !important;
+            grid-column: 1 / -1 !important;
+            grid-row: 3 !important;
+            display: grid !important;
+            grid-template-columns: minmax(110px, 40%) 1fr !important;
+            gap: 10px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            margin: 12px 0 0 0 !important;
+            padding: 12px 14px !important;
+            background: #f4f7fa !important;
+            border: 1px solid #e5ebf2 !important;
         }
-
         body .elementor-menu-cart__product .variation dt,
         body .woocommerce-mini-cart .variation dt {
-            font-size: 10px !important;
+            color: #344b63 !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            line-height: 1.4 !important;
+            padding: 5px 0 !important;
+            border-bottom: 1px solid #e6edf3 !important;
+            display: flex !important;
+            align-items: center !important;
+            margin: 0 !important;
         }
-
         body .elementor-menu-cart__product .variation dd,
         body .woocommerce-mini-cart .variation dd {
-            font-size: 11px !important;
+            color: #0f2238 !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+            line-height: 1.4 !important;
+            padding: 5px 0 !important;
+            border-bottom: 1px solid #e6edf3 !important;
+            display: flex !important;
+            align-items: center !important;
+            margin: 0 !important;
+        }
+        body .elementor-menu-cart__product .variation dd p,
+        body .woocommerce-mini-cart .variation dd p {
+            margin: 0 !important;
+        }
+        body .elementor-menu-cart__product .variation dt:nth-last-of-type(1),
+        body .woocommerce-mini-cart .variation dt:nth-last-of-type(1),
+        body .elementor-menu-cart__product .variation dd:last-child,
+        body .woocommerce-mini-cart .variation dd:last-child {
+            border-bottom: none !important;
         }
 
-        body .elementor-menu-cart__subtotal,
-        body .elementor-menu-cart__footer-buttons {
-            padding-left: 14px !important;
-            padding-right: 14px !important;
-        }
-
-        body .juhani-mini-cart-qty {
-            width: 112px !important;
-            margin-top: -1px !important;
-        }
-
-        body .juhani-mini-cart-qty button,
-        body .juhani-mini-cart-qty span {
-            height: 36px !important;
-            width: 34px !important;
-            min-width: 34px !important;
-            max-width: 34px !important;
-            font-size: 14px !important;
-        }
-
-        body .juhani-mini-cart-qty span {
-            width: 44px !important;
-            min-width: 44px !important;
-            max-width: 44px !important;
-        }
-
+        /* 7. Price Below Attributes: Single clean price */
+        body .juhani-mini-cart-qty-source,
+        body .elementor-menu-cart__product-price,
+        body .woocommerce-mini-cart .woocommerce-mini-cart-item .quantity,
         body .juhani-mini-cart-line-total,
         body .elementor-menu-cart__product-subtotal {
-            font-size: 15px !important;
+            display: none !important;
+        }
+        body .juhani-mobile-price {
+            display: block !important;
+            grid-column: 1 / -1 !important;
+            grid-row: 4 !important;
+            width: 100% !important;
+            margin-top: 10px !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 17px !important;
+            font-weight: 700 !important;
+            line-height: 1.3 !important;
+            color: #064b7e !important;
+            text-align: left !important;
+            padding: 0 !important;
+        }
+        body .juhani-mobile-price .amount {
+            font-size: 17px !important;
+            font-weight: 700 !important;
+            color: #064b7e !important;
+        }
+
+        /* 8. Cart Body Spacing */
+        body .elementor-menu-cart__products,
+        body .widget_shopping_cart_content .woocommerce-mini-cart {
+            flex: 1 1 auto !important;
+            min-height: 0 !important;
+            max-height: none !important;
+            height: auto !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            padding: 12px 12px !important;
+            -webkit-overflow-scrolling: touch !important;
+            background: #ffffff !important;
+        }
+
+        /* 9. Subtotal + Buttons */
+        body .elementor-menu-cart__subtotal {
+            flex: 0 0 auto !important;
+            margin: 0 !important;
+            padding: 12px 12px 8px 12px !important;
+            background: #ffffff !important;
+            border-top: 1px solid #eef1f5 !important;
+            border-bottom: none !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            font-family: "Poppins", sans-serif !important;
+        }
+        body .elementor-menu-cart__subtotal strong {
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            color: #0f2238 !important;
+            margin: 0 !important;
+        }
+        body .elementor-menu-cart__subtotal .amount {
+            font-size: 18px !important;
+            font-weight: 800 !important;
+            color: #0f2238 !important;
+        }
+        body .elementor-menu-cart__footer-buttons {
+            flex: 0 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 10px 12px calc(24px + env(safe-area-inset-bottom, 0px)) 12px !important;
+            background: #ffffff !important;
+            gap: 12px !important;
+            border-top: none !important;
+            box-shadow: none !important;
+            display: flex !important;
+            flex-direction: column !important;
+            box-sizing: border-box !important;
+            overflow: visible !important;
+        }
+        body .elementor-menu-cart__products,
+        body .elementor-menu-cart__product {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            overflow-x: hidden !important;
+        }
+        body .elementor-menu-cart__footer-buttons a,
+        body .elementor-menu-cart__footer-buttons .elementor-button,
+        body .woocommerce-mini-cart__buttons a {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            min-height: 48px !important;
+            height: 48px !important;
+            max-height: 48px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: "Poppins", sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.3px !important;
+            text-transform: uppercase !important;
+            border-radius: 0 !important;
+            padding: 0 16px !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+            text-decoration: none !important;
+            overflow: hidden !important;
+            transition: filter 0.18s ease, background-color 0.18s ease !important;
+        }
+        body .elementor-menu-cart__footer-buttons a:hover,
+        body .elementor-menu-cart__footer-buttons .elementor-button:hover,
+        body .woocommerce-mini-cart__buttons a:hover {
+            filter: brightness(0.96) !important;
+        }
+        body .elementor-menu-cart__footer-buttons a:first-child,
+        body .elementor-menu-cart__footer-buttons .elementor-button--view-cart,
+        body .woocommerce-mini-cart__buttons a:first-child {
+            background: #ffffff !important;
+            border: 2px solid #003b68 !important;
+            color: #0b2d4a !important;
+        }
+        body .elementor-menu-cart__footer-buttons a:first-child *,
+        body .elementor-menu-cart__footer-buttons .elementor-button--view-cart * {
+            color: #0b2d4a !important;
+        }
+        body .elementor-menu-cart__footer-buttons a:last-child,
+        body .elementor-menu-cart__footer-buttons .elementor-button--checkout,
+        body .woocommerce-mini-cart__buttons a:last-child {
+            background: #003f6d !important;
+            border: 2px solid #003f6d !important;
+            color: #ffffff !important;
+        }
+        body .elementor-menu-cart__footer-buttons a:last-child *,
+        body .elementor-menu-cart__footer-buttons .elementor-button--checkout * {
+            color: #ffffff !important;
+        }
+        body .elementor-menu-cart__main {
+            gap: 0 !important;
         }
     }
 
@@ -1324,259 +1989,244 @@ add_action('wp_footer', function() {
 
             // Wait for elementor frontend
             const tryInit = () => {
-                const cartWidget = document.querySelector('.elementor-widget-woocommerce-menu-cart');
-                const toggleBtn = document.getElementById('elementor-menu-cart__toggle_button');
-                const container = document.querySelector('.elementor-menu-cart__container');
-                const main = document.querySelector('.elementor-menu-cart__main');
-                const wrapper = document.querySelector('.elementor-menu-cart__wrapper');
+                const cartWidgets = document.querySelectorAll('.elementor-widget-woocommerce-menu-cart');
+                const toggleBtns = document.querySelectorAll('#elementor-menu-cart__toggle_button, .elementor-menu-cart__toggle_button, .elementor-menu-cart__toggle');
 
-                if (!cartWidget || !toggleBtn) {
-                    // Retry shortly if not yet rendered
-                    setTimeout(tryInit, 500);
+                if (!cartWidgets.length || !toggleBtns.length) {
+                    setTimeout(tryInit, 400);
                     return;
                 }
 
-                console.log('[Juhani Cart Fix] Found cart widget, applying fixes');
+                console.log('[Juhani Cart Fix] Found cart widgets (' + cartWidgets.length + '), initializing multi-instance fixes');
 
-                // Fix 1: Move container to body to escape transformed header ancestor (critical for fixed header with transform)
-                // The Elementor side-cart is position:fixed but inside a transformed parent, so it becomes relative to header not viewport.
-                // Moving it to body after init ensures it overlays correctly.
-                // We detach container and re-append to body, but keep reference for Elementor JS.
-                // Instead of moving, we can just ensure CSS override works. However, if still broken, we move via JS.
-                // Check if container is inside header with transform
-                const headerEl = document.querySelector('.elementor-location-header, [data-id="1d9f82b"]');
-                let hasTransformParent = false;
-                let el = container;
-                while (el && el !== document.body) {
-                    const style = window.getComputedStyle(el.parentElement);
-                    if (style.transform && style.transform !== 'none') {
-                        hasTransformParent = true;
-                        break;
-                    }
-                    el = el.parentElement;
-                }
-                if (hasTransformParent && container && !container.dataset.moved) {
-                    console.log('[Juhani Cart Fix] Detected transform parent, container will be handled via CSS override (margin auto header fix already applied).');
-                    // Note: Header fix already removed transform, so this should be false now. Keep as safety.
-                }
+                const closeSvg = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+                const removeSvg = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+                const cartSvg = '<svg class="juhani-cart-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#10395E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"></circle><circle cx="20" cy="21" r="1.5"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>';
 
-                // Fix 2: Ensure toggle button has correct href fallback and click handler
-                // If Elementor JS fails, fallback to direct navigation to cart page
-                let fallbackEnabled = false;
-                const cartUrl = '<?php echo esc_js($cart_url); ?>';
-                
-                // Check if Elementor handler is bound by testing if widget has class toggle working after 1s
-                setTimeout(() => {
-                    // Test if click would work - if no elementor handler, add our own
-                    const hasElementorHandler = $._data && toggleBtn && $._data(toggleBtn, 'events');
-                    // Simpler: always add fallback that works with or without Elementor
-                    if (!toggleBtn.dataset.juhaniFixed) {
-                        toggleBtn.dataset.juhaniFixed = '1';
-                        
-                        // Add manual toggle as backup (if Elementor's handler is broken)
-                        toggleBtn.addEventListener('click', function(e) {
-                            // If Elementor already handled, it will have added class. Check after short delay.
-                            // We implement our own toggle as fallback if Elementor class not toggling.
-                            const widget = document.querySelector('.elementor-widget-woocommerce-menu-cart');
-                            const isShown = widget && widget.classList.contains('elementor-menu-cart--shown');
-                            
-                            // If Elementor JS is working, it will toggle within 100ms. We wait to see.
-                            setTimeout(() => {
-                                const nowShown = widget && widget.classList.contains('elementor-menu-cart--shown');
-                                if (nowShown === isShown) {
-                                    // Elementor didn't toggle, so we do it manually
-                                    console.log('[Juhani Cart Fix] Manual toggle fallback triggered');
-                                    if (!nowShown) {
-                                        widget.classList.add('elementor-menu-cart--shown');
-                                        if (container) container.setAttribute('aria-hidden', 'false');
-                                        if (main) main.setAttribute('aria-hidden', 'false');
-                                        toggleBtn.setAttribute('aria-expanded', 'true');
-                                        document.body.style.overflow = 'hidden'; // prevent background scroll
-                                    } else {
-                                        widget.classList.remove('elementor-menu-cart--shown');
-                                        if (container) container.setAttribute('aria-hidden', 'true');
-                                        if (main) main.setAttribute('aria-hidden', 'true');
-                                        toggleBtn.setAttribute('aria-expanded', 'false');
-                                        document.body.style.overflow = '';
-                                    }
-                                }
-                            }, 150);
-                        });
-                        console.log('[Juhani Cart Fix] Fallback click handler added');
-                    }
-                }, 800);
-
-                // Fix 3: Close button handler fallback
-                const closeBtn = document.querySelector('.elementor-menu-cart__close-button, .elementor-menu-cart__close-button-custom');
-                if (closeBtn && !closeBtn.dataset.juhaniFixed) {
-                    closeBtn.dataset.juhaniFixed = '1';
-                    closeBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const widget = document.querySelector('.elementor-widget-woocommerce-menu-cart');
-                        if (widget) {
-                            widget.classList.remove('elementor-menu-cart--shown');
-                            const c = document.querySelector('.elementor-menu-cart__container');
-                            const m = document.querySelector('.elementor-menu-cart__main');
-                            const t = document.getElementById('elementor-menu-cart__toggle_button');
-                            if (c) c.setAttribute('aria-hidden', 'true');
-                            if (m) m.setAttribute('aria-hidden', 'true');
-                            if (t) t.setAttribute('aria-expanded', 'false');
-                            document.body.style.overflow = '';
-                        }
+                // Centralized close for cart drawer - single source, does NOT touch mobile menu state
+                function closeJuhaniCartDrawer() {
+                    document.querySelectorAll('.elementor-widget-woocommerce-menu-cart.elementor-menu-cart--shown').forEach(w => w.classList.remove('elementor-menu-cart--shown'));
+                    document.querySelectorAll('.elementor-menu-cart__container').forEach(c => {
+                        c.setAttribute('aria-hidden', 'true');
+                        c.style.opacity = '';
+                        c.style.visibility = '';
+                        c.style.pointerEvents = '';
+                        c.style.backdropFilter = '';
                     });
-                }
-
-                // Fix 4: Click outside to close (fallback)
-                document.addEventListener('click', function(e) {
-                    const widget = document.querySelector('.elementor-widget-woocommerce-menu-cart');
-                    if (!widget || !widget.classList.contains('elementor-menu-cart--shown')) return;
-                    const target = e.target;
-                    const mainEl = document.querySelector('.elementor-menu-cart__main');
-                    const toggleEl = document.querySelector('.elementor-menu-cart__toggle');
-                    if (mainEl && mainEl.contains(target)) return;
-                    if (toggleEl && toggleEl.contains(target)) return;
-                    // Close
-                    widget.classList.remove('elementor-menu-cart--shown');
-                    const c = document.querySelector('.elementor-menu-cart__container');
-                    const m = document.querySelector('.elementor-menu-cart__main');
-                    const t = document.getElementById('elementor-menu-cart__toggle_button');
-                    if (c) c.setAttribute('aria-hidden', 'true');
-                    if (m) m.setAttribute('aria-hidden', 'true');
-                    if (t) t.setAttribute('aria-expanded', 'false');
+                    document.querySelectorAll('.elementor-menu-cart__main').forEach(m => {
+                        m.setAttribute('aria-hidden', 'true');
+                        m.style.transform = '';
+                        m.style.opacity = '';
+                        m.style.visibility = '';
+                    });
+                    document.querySelectorAll('#elementor-menu-cart__toggle_button, .elementor-menu-cart__toggle_button, .elementor-menu-cart__toggle').forEach(t => t.setAttribute('aria-expanded', 'false'));
                     document.body.style.overflow = '';
-                });
+                    document.body.style.pointerEvents = '';
+                    document.body.classList.remove('juhani-cart-open');
+                    document.body.style.removeProperty('overflow');
+                    document.body.style.removeProperty('pointer-events');
+                }
+                window.closeJuhaniCartDrawer = closeJuhaniCartDrawer;
 
-                // Fix 5: ESC key fallback
-                document.addEventListener('keyup', function(e) {
-                    if (e.keyCode === 27) {
-                        const widget = document.querySelector('.elementor-widget-woocommerce-menu-cart');
-                        if (widget && widget.classList.contains('elementor-menu-cart--shown')) {
-                            widget.classList.remove('elementor-menu-cart--shown');
-                            const c = document.querySelector('.elementor-menu-cart__container');
-                            const m = document.querySelector('.elementor-menu-cart__main');
-                            const t = document.getElementById('elementor-menu-cart__toggle_button');
-                            if (c) c.setAttribute('aria-hidden', 'true');
-                            if (m) m.setAttribute('aria-hidden', 'true');
-                            if (t) t.setAttribute('aria-expanded', 'false');
-                            document.body.style.overflow = '';
-                        }
-                    }
-                });
-
-                // Fix 6: If cart is empty, still show "No products" message properly, don't hide via JS
-                // Ensure container is clickable even when empty
-
+                // Enhance all mini-cart drawers across DOM (both desktop header & mobile footer widgets)
                 const enhanceMiniCartDrawer = () => {
-                    const drawer = document.querySelector('.elementor-menu-cart__main');
-                    if (!drawer) return;
+                    const drawers = document.querySelectorAll('.elementor-menu-cart__main');
+                    if (!drawers.length) return;
 
-                    let customHeader = drawer.querySelector('.juhani-mini-cart-header');
-                    if (!customHeader) {
-                        customHeader = document.createElement('div');
-                        customHeader.className = 'juhani-mini-cart-header';
-                        customHeader.innerHTML = '<span class="juhani-mini-cart-title">YOUR CART</span><button type="button" class="juhani-mini-cart-close" aria-label="Close cart"></button>';
-                        drawer.insertBefore(customHeader, drawer.firstChild);
-
-                        customHeader.querySelector('.juhani-mini-cart-close').addEventListener('click', function(e) {
-                            e.preventDefault();
-                            const nativeClose = drawer.querySelector('.elementor-menu-cart__close-button, .elementor-menu-cart__close-button-custom');
-                            if (nativeClose) {
-                                nativeClose.click();
-                                return;
+                    drawers.forEach(drawer => {
+                        // 1. Inject or update custom header with title, count and clean close button
+                        let customHeader = drawer.querySelector('.juhani-mini-cart-header');
+                        if (!customHeader) {
+                            customHeader = document.createElement('div');
+                            customHeader.className = 'juhani-mini-cart-header';
+                            customHeader.innerHTML = '<span class="juhani-mini-cart-title">YOUR CART</span><button type="button" class="juhani-mini-cart-close" aria-label="Close cart">' + closeSvg + '</button>';
+                            drawer.insertBefore(customHeader, drawer.firstChild);
+                        } else {
+                            const closeBtn = customHeader.querySelector('.juhani-mini-cart-close');
+                            if (closeBtn && !closeBtn.querySelector('svg')) {
+                                closeBtn.innerHTML = closeSvg;
                             }
-                            const widget = document.querySelector('.elementor-widget-woocommerce-menu-cart');
-                            const c = document.querySelector('.elementor-menu-cart__container');
-                            const m = document.querySelector('.elementor-menu-cart__main');
-                            const t = document.getElementById('elementor-menu-cart__toggle_button');
-                            if (widget) widget.classList.remove('elementor-menu-cart--shown');
-                            if (c) c.setAttribute('aria-hidden', 'true');
-                            if (m) m.setAttribute('aria-hidden', 'true');
-                            if (t) t.setAttribute('aria-expanded', 'false');
-                            document.body.style.overflow = '';
+                        }
+
+                        // Calculate items count
+                        const items = drawer.querySelectorAll('.elementor-menu-cart__product, .woocommerce-mini-cart-item');
+                        const itemCount = items.length;
+
+                        const title = drawer.querySelector('.juhani-mini-cart-title');
+                        if (title) {
+                            title.innerHTML = 'YOUR CART' + (itemCount ? ' <span class="juhani-mini-cart-count">(' + itemCount + ')</span>' : '');
+                        }
+                        const heading = drawer.querySelector('.elementor-menu-cart__heading');
+                        if (heading) {
+                            heading.innerHTML = 'Your Cart' + (itemCount ? ' <span class="juhani-mini-cart-count">(' + itemCount + ')</span>' : '');
+                        }
+
+                        // Remove redundant total notes
+                        drawer.querySelectorAll('.juhani-mini-cart-tax-note').forEach(note => note.remove());
+                        drawer.querySelectorAll('.woocommerce-mini-cart__total, p.total').forEach(total => {
+                            if (!total.classList.contains('elementor-menu-cart__subtotal')) {
+                                total.style.display = 'none';
+                            }
                         });
-                    }
 
-                    const heading = drawer.querySelector('.elementor-menu-cart__heading');
-                    if (heading) {
-                        const itemCount = drawer.querySelectorAll('.elementor-menu-cart__product, .woocommerce-mini-cart-item').length;
-                        heading.innerHTML = 'Your Cart' + (itemCount ? ' <span class="juhani-mini-cart-count">(' + itemCount + ')</span>' : '');
-                    }
-
-                    const title = drawer.querySelector('.juhani-mini-cart-title');
-                    if (title) {
-                        const itemCount = drawer.querySelectorAll('.elementor-menu-cart__product, .woocommerce-mini-cart-item').length;
-                        title.innerHTML = 'YOUR CART' + (itemCount ? ' <span class="juhani-mini-cart-count">(' + itemCount + ')</span>' : '');
-                    }
-
-                    drawer.querySelectorAll('.juhani-mini-cart-tax-note').forEach(note => note.remove());
-                    drawer.querySelectorAll('.woocommerce-mini-cart__total, p.total').forEach(total => {
-                        if (!total.classList.contains('elementor-menu-cart__subtotal')) {
-                            total.style.display = 'none';
-                        }
-                    });
-
-                    const footerButtons = drawer.querySelector('.elementor-menu-cart__footer-buttons');
-                    if (footerButtons) {
-                        const buttons = footerButtons.querySelectorAll('a, .elementor-button');
-                        if (buttons[0]) {
-                            buttons[0].textContent = 'VIEW CART';
-                        }
-                        if (buttons[1]) {
-                            buttons[1].textContent = 'PROCEED TO CHECKOUT';
-                        }
-                    }
-
-                    drawer.querySelectorAll('.elementor-menu-cart__product, .woocommerce-mini-cart-item').forEach(item => {
-                        if (!item.dataset.juhaniMiniCartEnhanced) {
-                            item.dataset.juhaniMiniCartEnhanced = '1';
+                        // Footer buttons text
+                        const footerButtons = drawer.querySelector('.elementor-menu-cart__footer-buttons');
+                        if (footerButtons) {
+                            const buttons = footerButtons.querySelectorAll('a, .elementor-button');
+                            if (buttons[0]) buttons[0].textContent = 'VIEW CART';
+                            if (buttons[1]) buttons[1].textContent = 'PROCEED TO CHECKOUT';
                         }
 
-                        const variation = item.querySelector('.variation');
-                        if (variation && variation.parentElement !== item) {
-                            item.appendChild(variation);
-                        }
-
-                        const qtyEl = item.querySelector('.quantity:not(.juhani-mini-cart-qty-source), .elementor-menu-cart__product-price');
-                        if (qtyEl && !item.querySelector('.juhani-mini-cart-qty')) {
-                            const qtyText = qtyEl.textContent.replace(/\s+/g, ' ').trim();
-                            const qtyMatch = qtyText.match(/(?:\u00d7|x)?\s*(\d+)/i);
-                            const priceMatch = qtyText.match(/(?:\u00d7|x)\s*\d+\s*(.*)$/i);
-                            const qty = qtyMatch ? qtyMatch[1] : '1';
-                            const unitPrice = priceMatch && priceMatch[1] ? priceMatch[1].trim() : '';
-                            const amount = qtyEl.querySelector('.amount') || item.querySelector('.amount');
-                            const amountHtml = amount ? amount.outerHTML : unitPrice;
-
-                            qtyEl.classList.add('juhani-mini-cart-qty-source');
-                            if (unitPrice) {
-                                qtyEl.innerHTML = amountHtml;
+                        // 2. Enhance each product item
+                        items.forEach(item => {
+                            if (!item.dataset.juhaniMiniCartEnhanced) {
+                                item.dataset.juhaniMiniCartEnhanced = '1';
                             }
 
-                            const qtyControl = document.createElement('div');
-                            qtyControl.className = 'juhani-mini-cart-qty';
-                            qtyControl.setAttribute('aria-label', 'Quantity');
-                            qtyControl.innerHTML = '<button type="button" class="juhani-mini-cart-minus" aria-label="Decrease quantity" tabindex="-1">-</button><span>' + qty + '</span><button type="button" class="juhani-mini-cart-plus" aria-label="Increase quantity" tabindex="-1">+</button>';
-                            qtyEl.insertAdjacentElement('afterend', qtyControl);
+                            // Ensure remove button has clean SVG without breaking inner <a> attributes
+                            const removeLinks = item.querySelectorAll('.elementor_remove_from_cart_button, .remove_from_cart_button, a.remove, a[data-cart_item_key]');
+                            removeLinks.forEach(link => {
+                                const key = link.dataset.cart_item_key || link.getAttribute('data-cart_item_key');
+                                if (key) item.dataset.cartItemKey = key;
+                                if (!link.querySelector('svg')) {
+                                    link.innerHTML = removeSvg;
+                                }
+                            });
+                            if (!item.dataset.cartItemKey) {
+                                const anyLink = item.querySelector('a[href*="remove_item="]');
+                                if (anyLink) {
+                                    const m = anyLink.href.match(/remove_item=([a-f0-9]+)/i);
+                                    if (m) item.dataset.cartItemKey = m[1];
+                                }
+                            }
 
-                            item.querySelectorAll('.juhani-mini-cart-line-total, .elementor-menu-cart__product-subtotal').forEach(total => total.remove());
-                        }
+                            // Keep variation list inside item container
+                            const variation = item.querySelector('.variation');
+                            if (variation && variation.parentElement !== item) {
+                                item.appendChild(variation);
+                            }
 
-                        item.querySelectorAll('.variation dt').forEach(label => {
-                            label.textContent = label.textContent
-                                .replace(/:/g, '')
-                                .replace(/^pa[-_\s]*/i, '')
-                                .replace(/[-_]+/g, ' ')
-                                .trim();
+                            // Clean up variation attribute labels
+                            item.querySelectorAll('.variation dt').forEach(label => {
+                                label.textContent = label.textContent
+                                    .replace(/:/g, '')
+                                    .replace(/^pa[-_\s]*/i, '')
+                                    .replace(/[-_]+/g, ' ')
+                                    .trim();
+                            });
+
+                            // Extract quantity and unit price
+                            const qtyEl = item.querySelector('.quantity:not(.juhani-mini-cart-qty-source), .elementor-menu-cart__product-price');
+                            if (qtyEl && !item.querySelector('.juhani-mini-cart-qty')) {
+                                const qtyText = qtyEl.textContent.replace(/\s+/g, ' ').trim();
+                                const qtyMatch = qtyText.match(/(?:\u00d7|x)?\s*(\d+)/i);
+                                const priceMatch = qtyText.match(/(?:\u00d7|x)\s*\d+\s*(.*)$/i);
+                                const qty = qtyMatch ? qtyMatch[1] : '1';
+                                const unitPrice = priceMatch && priceMatch[1] ? priceMatch[1].trim() : '';
+                                const amount = qtyEl.querySelector('.amount') || item.querySelector('.amount');
+                                const amountHtml = amount ? amount.outerHTML : unitPrice;
+
+                                qtyEl.classList.add('juhani-mini-cart-qty-source');
+                                if (unitPrice) {
+                                    qtyEl.innerHTML = amountHtml;
+                                }
+
+                                // Stepper: single clean minus, number, plus
+                                const qtyControl = document.createElement('div');
+                                qtyControl.className = 'juhani-mini-cart-qty';
+                                qtyControl.setAttribute('aria-label', 'Quantity');
+                                qtyControl.innerHTML = '<button type="button" class="juhani-mini-cart-minus" aria-label="Decrease quantity" tabindex="-1">&#8722;</button><span>' + qty + '</span><button type="button" class="juhani-mini-cart-plus" aria-label="Increase quantity" tabindex="-1">&#43;</button>';
+                                qtyEl.insertAdjacentElement('afterend', qtyControl);
+
+                                // Single clean price below attributes
+                                let mobilePrice = item.querySelector('.juhani-mobile-price');
+                                if (!mobilePrice) {
+                                    mobilePrice = document.createElement('div');
+                                    mobilePrice.className = 'juhani-mobile-price';
+                                    const varEl = item.querySelector('.variation');
+                                    if (varEl) varEl.insertAdjacentElement('afterend', mobilePrice);
+                                    else qtyControl.insertAdjacentElement('afterend', mobilePrice);
+                                }
+                                mobilePrice.innerHTML = qty + ' &times; ' + amountHtml;
+
+                                item.querySelectorAll('.juhani-mini-cart-line-total, .elementor-menu-cart__product-subtotal').forEach(total => total.remove());
+                            }
+
+                            // Update mobile price if qty span changed
+                            const existingQtyControl = item.querySelector('.juhani-mini-cart-qty span');
+                            const existingMobilePrice = item.querySelector('.juhani-mobile-price');
+                            if (existingQtyControl && existingMobilePrice) {
+                                const qtyElUpdate = item.querySelector('.juhani-mini-cart-qty-source');
+                                const amt = qtyElUpdate ? qtyElUpdate.querySelector('.amount') : item.querySelector('.amount');
+                                const amtHtml = amt ? amt.outerHTML : '';
+                                if (amtHtml) {
+                                    existingMobilePrice.innerHTML = existingQtyControl.textContent.trim() + ' &times; ' + amtHtml;
+                                }
+                            }
                         });
                     });
                 };
 
+                // Ensure cart icon visible: prefer font, inject SVG fallback only if font missing
+                const injectFooterCartIcon = () => {
+                    const btns = document.querySelectorAll('.elementor-element-77a58cb .elementor-button-icon');
+                    btns.forEach(icon => {
+                        if (!icon.querySelector('svg.juhani-cart-svg')) {
+                            const qty = icon.querySelector('.elementor-button-icon-qty');
+                            const holder = document.createElement('span');
+                            holder.innerHTML = cartSvg;
+                            const svgEl = holder.firstChild;
+                            if (qty) icon.insertBefore(svgEl, qty);
+                            else icon.appendChild(svgEl);
+                        }
+                        const eicon = icon.querySelector('i.eicon, i[class*="fa-"], i');
+                        let fontOk = false;
+                        if (eicon) {
+                            const cs = window.getComputedStyle(eicon, '::before');
+                            const c = cs && cs.getPropertyValue('content');
+                            fontOk = c && c !== 'none' && c !== '""' && c !== "''" && c.length > 2;
+                        }
+                        if (fontOk) {
+                            icon.classList.remove('juhani-no-font');
+                        } else {
+                            icon.classList.add('juhani-no-font');
+                        }
+                    });
+                };
+
+                window.enhanceMiniCartDrawer = enhanceMiniCartDrawer;
+                window.injectFooterCartIcon = injectFooterCartIcon;
+                injectFooterCartIcon();
                 enhanceMiniCartDrawer();
+
+                // Listen for WooCommerce cart events to re-enhance mini cart
                 if (window.jQuery) {
                     jQuery(document.body).off('wc_fragments_refreshed.juhaniMiniCart added_to_cart.juhaniMiniCart removed_from_cart.juhaniMiniCart');
                     jQuery(document.body).on('wc_fragments_refreshed.juhaniMiniCart added_to_cart.juhaniMiniCart removed_from_cart.juhaniMiniCart', function() {
-                        setTimeout(enhanceMiniCartDrawer, 80);
+                        setTimeout(() => { injectFooterCartIcon(); enhanceMiniCartDrawer(); }, 60);
                     });
                 }
+
+                // MutationObserver on all cart widgets to keep body.juhani-cart-open in sync
+                const cartObserver = new MutationObserver(() => {
+                    let hasShown = false;
+                    document.querySelectorAll('.elementor-widget-woocommerce-menu-cart').forEach(w => {
+                        if (w.classList.contains('elementor-menu-cart--shown')) hasShown = true;
+                    });
+                    if (hasShown) {
+                        if (!document.body.classList.contains('juhani-cart-open')) {
+                            document.body.classList.add('juhani-cart-open');
+                            document.body.style.overflow = 'hidden';
+                        }
+                        enhanceMiniCartDrawer();
+                    } else if (!hasShown && document.body.classList.contains('juhani-cart-open')) {
+                        document.body.classList.remove('juhani-cart-open');
+                        document.body.style.removeProperty('overflow');
+                    }
+                });
+                document.querySelectorAll('.elementor-widget-woocommerce-menu-cart').forEach(w => {
+                    cartObserver.observe(w, { attributes: true, attributeFilter: ['class'] });
+                });
 
                 // ===== MINI-CART QUANTITY STEPPER (AJAX) - delegated =====
                 if (!document.body.dataset.juhaniQtyBound) {
@@ -1586,10 +2236,19 @@ add_action('wp_footer', function() {
                         if (!btn) return;
                         const item = btn.closest('.elementor-menu-cart__product, .woocommerce-mini-cart-item');
                         if (!item) return;
-                        const drawer = document.querySelector('.elementor-menu-cart__main');
-                        if (drawer && !drawer.contains(item)) return;
-                        const removeLink = item.querySelector('a.remove[data-cart_item_key], a[data-cart_item_key], a.remove');
-                        const cartItemKey = removeLink ? (removeLink.dataset.cart_item_key || removeLink.getAttribute('data-cart_item_key')) : null;
+                        const drawer = item.closest('.elementor-menu-cart__main');
+                        if (!drawer) return;
+                        let cartItemKey = item.dataset.cartItemKey;
+                        if (!cartItemKey) {
+                            const removeLink = item.querySelector('a[data-cart_item_key], a.remove, a.elementor_remove_from_cart_button, a[href*="remove_item="]');
+                            if (removeLink) {
+                                cartItemKey = removeLink.dataset.cart_item_key || removeLink.getAttribute('data-cart_item_key');
+                                if (!cartItemKey && removeLink.href) {
+                                    const m = removeLink.href.match(/remove_item=([a-f0-9]+)/i);
+                                    if (m) cartItemKey = m[1];
+                                }
+                            }
+                        }
                         if (!cartItemKey) {
                             console.warn('[Juhani Cart] cart_item_key not found for qty update');
                             return;
@@ -1628,7 +2287,6 @@ add_action('wp_footer', function() {
                                 },
                                 success: function(resp) {
                                     if (resp && resp.success) {
-                                        // Trigger Woo fragments refresh to update subtotal/counts/prices
                                         jQuery(document.body).trigger('wc_fragment_refresh');
                                         jQuery(document.body).trigger('updated_wc_div');
                                         qtySpan.textContent = newQty;
@@ -1652,6 +2310,70 @@ add_action('wp_footer', function() {
                         }
                     });
                 }
+
+                // Delegated Close button click (capture phase for immediate responsive reaction)
+                document.addEventListener('click', function(e) {
+                    const closeBtn = e.target.closest('.juhani-mini-cart-close, .elementor-menu-cart__close-button, .elementor-menu-cart__close-button-custom');
+                    if (closeBtn) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeJuhaniCartDrawer();
+                    }
+                }, true);
+
+                // Overlay click: clicking outside the drawer (.elementor-menu-cart__container)
+                document.addEventListener('click', function(e) {
+                    const target = e.target;
+                    if (target && target.classList && target.classList.contains('elementor-menu-cart__container')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        closeJuhaniCartDrawer();
+                        return;
+                    }
+                }, true);
+
+                // ESC key closes cart drawer
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' || e.keyCode === 27) {
+                        if (document.body.classList.contains('juhani-cart-open') || document.querySelector('.elementor-widget-woocommerce-menu-cart.elementor-menu-cart--shown')) {
+                            e.preventDefault();
+                            closeJuhaniCartDrawer();
+                        }
+                    }
+                });
+
+                // Toggle Click handling: works for both desktop header cart and mobile bottom bar cart (including heading widget)
+                document.addEventListener('click', function(e) {
+                    const toggle = e.target.closest('#elementor-menu-cart__toggle_button, .elementor-menu-cart__toggle, .elementor-element-0133b7d #elementor-menu-cart__toggle_button, .elementor-element-77a58cb #elementor-menu-cart__toggle_button, [data-id="0133b7d"] #elementor-menu-cart__toggle_button, [data-id="77a58cb"] #elementor-menu-cart__toggle_button, .elementor-element-77a58cb .elementor-widget-heading, .elementor-element-77a58cb .elementor-heading-title');
+                    if (toggle) {
+                        const parentWidget = toggle.closest('.elementor-widget-woocommerce-menu-cart') || document.querySelector('.elementor-element-77a58cb .elementor-widget-woocommerce-menu-cart');
+                        setTimeout(() => {
+                            const isShown = parentWidget && parentWidget.classList.contains('elementor-menu-cart--shown');
+                            const anyShown = document.querySelector('.elementor-widget-woocommerce-menu-cart.elementor-menu-cart--shown');
+                            if (isShown || anyShown) {
+                                document.body.classList.add('juhani-cart-open');
+                                document.body.style.overflow = 'hidden';
+                                enhanceMiniCartDrawer();
+                            } else if (parentWidget && !isShown) {
+                                // Fallback open if native Elementor JS did not trigger
+                                parentWidget.classList.add('elementor-menu-cart--shown');
+                                const container = parentWidget.querySelector('.elementor-menu-cart__container');
+                                const main = parentWidget.querySelector('.elementor-menu-cart__main');
+                                if (container) {
+                                    container.setAttribute('aria-hidden', 'false');
+                                    container.style.opacity = '1';
+                                    container.style.visibility = 'visible';
+                                    container.style.pointerEvents = 'auto';
+                                }
+                                if (main) main.setAttribute('aria-hidden', 'false');
+                                toggle.setAttribute('aria-expanded', 'true');
+                                document.body.classList.add('juhani-cart-open');
+                                document.body.style.overflow = 'hidden';
+                                enhanceMiniCartDrawer();
+                            }
+                        }, 50);
+                    }
+                });
 
                 console.log('[Juhani Cart Fix] All fixes applied');
             };

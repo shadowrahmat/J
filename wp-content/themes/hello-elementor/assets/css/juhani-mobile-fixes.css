@@ -1080,8 +1080,8 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	.mxswpf-root .mixora-close:hover,
 	.mxswpf-root .mixora-close:focus,
 	.mxswpf-root .mixora-close:focus-visible {
-		background: #4CA2D9 !important;
-		border-color: #4CA2D9 !important;
+		background: #10395E !important;
+		border-color: #10395E !important;
 		color: #ffffff !important;
 	}
 
@@ -2311,4 +2311,59 @@ body.single-product form.variations_form.juhani-variation-in-progress::after {
 		min-width: 48px !important;
 		height: 48px !important;
 	}
+}
+
+.mxswpf-root .mixora-close {
+	appearance: none !important;
+	-webkit-appearance: none !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 42px !important;
+	min-width: 42px !important;
+	height: 42px !important;
+	min-height: 42px !important;
+	padding: 0 !important;
+	background: #10395E !important;
+	border: 1px solid #10395E !important;
+	border-radius: 0 !important;
+	color: #ffffff !important;
+	cursor: pointer !important;
+	line-height: 1 !important;
+	text-align: center !important;
+	box-shadow: none !important;
+	opacity: 1 !important;
+	transition: background-color .2s ease, border-color .2s ease, color .2s ease !important;
+}
+
+.mxswpf-root .mixora-close:hover,
+.mxswpf-root .mixora-close:focus,
+.mxswpf-root .mixora-close:focus-visible {
+	background: #10395E !important;
+	border-color: #10395E !important;
+	color: #ffffff !important;
+	outline: none !important;
+}
+
+.mxswpf-root .mixora-close:hover {
+	background: #4CA2D9 !important;
+	border-color: #4CA2D9 !important;
+	color: #ffffff !important;
+	outline: none !important;
+}
+
+.mxswpf-root .mixora-close .mixora-close-icon,
+.mxswpf-root .mixora-close .mixora-close-icon path,
+.mxswpf-root .mixora-close:hover .mixora-close-icon,
+.mxswpf-root .mixora-close:hover .mixora-close-icon path,
+.mxswpf-root .mixora-close:focus .mixora-close-icon,
+.mxswpf-root .mixora-close:focus .mixora-close-icon path,
+.mxswpf-root .mixora-close:focus-visible .mixora-close-icon,
+.mxswpf-root .mixora-close:focus-visible .mixora-close-icon path {
+.mxswpf-root .mixora-close .mixora-close-icon path {
+	color: #ffffff !important;
+	stroke: #ffffff !important;
+	fill: none !important;
+	width: 18px !important;
+	height: 18px !important;
 }

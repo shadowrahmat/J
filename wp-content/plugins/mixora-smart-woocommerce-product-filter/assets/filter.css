@@ -1204,21 +1204,49 @@ body.mixora-filter-lock{
     color: #ffffff !important;
 }
 /* Cross icon (drawer close button) */
+/* Cross icon (drawer close button) - match reset button style */
 .mxswpf-root .mixora-close {
     background: #ffffff !important;
+    background: #10395E !important;
+    border: 1px solid #10395E !important;
+    color: #ffffff !important;
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 0 !important;
+    border-radius: 0px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all .2s ease !important;
+}
+.mxswpf-root .mixora-close:focus,
+.mxswpf-root .mixora-close:focus-visible {
+    background: #10395E !important;
     border-color: #10395E !important;
     color: #10395E !important;
+    color: #ffffff !important;
+    outline: none !important;
 }
 .mxswpf-root .mixora-close:hover,
 .mxswpf-root .mixora-close:focus {
+.mxswpf-root .mixora-close:hover {
     background: #4CA2D9 !important;
     border-color: #4CA2D9 !important;
     color: #ffffff !important;
 }
 .mxswpf-root .mixora-close:hover .mixora-close-icon,
 .mxswpf-root .mixora-close:focus .mixora-close-icon {
+.mxswpf-root .mixora-close .mixora-close-icon,
+.mxswpf-root .mixora-close .mixora-close-icon path {
     color: #ffffff !important;
     fill: #ffffff !important;
+    stroke: #ffffff !important;
+    fill: none !important;
+    width: 18px !important;
+    height: 18px !important;
 }
 /* Badge & pagination active keep brand but use hover color for consistency */
 .mxswpf-root .mixora-badge,

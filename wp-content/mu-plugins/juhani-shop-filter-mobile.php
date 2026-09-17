@@ -67,7 +67,14 @@ add_action( 'wp_head', function() {
 			min-height: 54px !important;
 			padding: 0 18px !important;
 			font-size: 17px !important;
+			min-height: 42px !important;
+			height: 42px !important;
+			padding: 0 16px !important;
+			font-size: 15px !important;
 			white-space: nowrap !important;
+			background: #10395E !important;
+			border: 1px solid #10395E !important;
+			color: #ffffff !important;
 		}
 
 		.mxswpf-root .mixora-close {
@@ -75,6 +82,13 @@ add_action( 'wp_head', function() {
 			height: 54px !important;
 			min-width: 54px !important;
 			min-height: 54px !important;
+			width: 42px !important;
+			height: 42px !important;
+			min-width: 42px !important;
+			min-height: 42px !important;
+			background: #10395E !important;
+			border: 1px solid #10395E !important;
+			color: #ffffff !important;
 		}
 
 		.mxswpf-root .mixora-sidebar .mixora-group {

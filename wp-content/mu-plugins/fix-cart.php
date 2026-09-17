@@ -116,11 +116,26 @@ add_action('wp_head', function() {
         opacity: 1 !important;
         z-index: 999999 !important;
     }
-    /* Ensure cart drawer appears above header/footer when open - header must not overlap drawer */
-    body.juhani-cart-open .elementor-location-header,
-    body.juhani-cart-open .elementor-71 .elementor-element.elementor-element-1d9f82b,
-    body.juhani-cart-open [data-id="1d9f82b"] {
-        z-index: 10 !important;
+    /* Ensure cart drawer appears above header/footer when open on mobile */
+    @media (max-width: 1024px) {
+        body.juhani-cart-open .elementor-location-header,
+        body.juhani-cart-open .elementor-71 .elementor-element.elementor-element-1d9f82b,
+        body.juhani-cart-open [data-id="1d9f82b"] {
+            z-index: 10 !important;
+        }
+    }
+
+    /* Single Product Gallery Zoom / Lightbox Trigger: Hide when cart drawer or menu is open */
+    .woocommerce-product-gallery__trigger {
+        z-index: 5 !important;
+    }
+    body.juhani-cart-open .woocommerce-product-gallery__trigger,
+    body.juhani-drawer-open .woocommerce-product-gallery__trigger,
+    body:has(.elementor-menu-cart--shown) .woocommerce-product-gallery__trigger {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
     }
     body.juhani-cart-open .elementor-element-34832f4 {
         z-index: 999998 !important;

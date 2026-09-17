@@ -309,7 +309,7 @@ body.mixora-filter-lock{overflow:hidden}
 
 .mxswpf-root{
     display:block!important;
-    padding:0 14px!important;
+    padding:0!important;
 }
 
 .mxswpf-root .mixora-mobile-bar{
@@ -1335,7 +1335,7 @@ body.mixora-filter-lock{
     /* Options: flex wrap chips, fills remaining width, aligned to name */
     .mxswpf-root .mixora-attribute-group .mixora-options{
         flex:1 1 auto !important;
-        width:calc(100% - 116px) !important;
+        width:100% !important;
         min-width:0 !important;
         display:flex !important;
         flex-wrap:wrap !important;

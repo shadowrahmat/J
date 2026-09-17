@@ -99,7 +99,7 @@
 /* Start custom CSS for container, class: .elementor-element-1d9f82b *//* ====================================================
    DESKTOP FLOATING GLASS HEADER
    ==================================================== */
-/* Base Header Container */
+/* Base Header Container - Modern Frosted Ocean Glass with Zero Border */
 .elementor-71 .elementor-element.elementor-element-1d9f82b {
     position: fixed !important;
     top: 24px !important;
@@ -114,47 +114,76 @@
     padding: 8px 0px !important;
     border-radius: 0 !important;
 
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22) !important;
 
     transition: all 0.3s ease !important;
     z-index: 99999 !important;
 }
 
-/* Glass Background Layer */
+/* Frosted Glass Underlayer - Keeps backdrop-filter off parent to prevent containing-block trap on fixed cart drawer */
 .elementor-71 .elementor-element.elementor-element-1d9f82b::before {
     content: "";
     position: absolute;
     inset: 0;
 
-    background: rgba(18, 45, 75, 0.32) !important;
-    backdrop-filter: blur(18px) saturate(140%) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+    background: rgba(22, 68, 110, 0.82) !important;
+    opacity: 1 !important;
+    backdrop-filter: blur(24px) saturate(170%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(170%) !important;
+    border: none !important;
+    outline: none !important;
 
     pointer-events: none;
     z-index: 0;
 }
 
-/* Top Subtle Glow */
+/* Hide extra gradient */
 .elementor-71 .elementor-element.elementor-element-1d9f82b::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+    display: none !important;
+}
 
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.12) 0%,
-        transparent 40%
-    ),
-    radial-gradient(
-        circle at top left,
-        rgba(255, 255, 255, 0.08),
-        transparent 45%
-    );
+/* Menu Items Readability - Bold, Crisp, High Contrast */
+.elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--main .elementor-item,
+.elementor-71 .elementor-nav-menu--main .elementor-item {
+    font-family: "Poppins", Sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.8px !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28) !important;
+    padding: 10px 16px !important;
+    transition: color 0.2s ease !important;
+}
 
-    pointer-events: none;
-    z-index: 1;
+.elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--main .elementor-item:hover,
+.elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--main .elementor-item.elementor-item-active,
+.elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-nav-menu--main .elementor-item.highlighted {
+    color: #4CA2D9 !important;
+}
+
+/* Search Bar High Contrast */
+.elementor-71 .elementor-element.elementor-element-681c745 input[type="search"] {
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+    color: #FFFFFF !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.elementor-71 .elementor-element.elementor-element-681c745 input[type="search"]::placeholder {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.4px !important;
+}
+
+.elementor-71 .elementor-element.elementor-element-681c745 button[type="submit"] svg,
+.elementor-71 .elementor-element.elementor-element-681c745 button[type="submit"] i {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
 }
 
 /* Header Content Layer */
@@ -198,12 +227,26 @@
    TABLET & MOBILE RESPONSIVE HEADER (<= 1024px)
    ==================================================== */
 @media (max-width: 1024px) {
-    /* Header Bar Floating Container */
+            /* Header Bar Floating Container - Borderless Glass */
     .elementor-71 .elementor-element.elementor-element-1d9f82b {
         top: 16px !important;
         width: 92% !important;
         padding: 6px 0px !important;
         flex-wrap: nowrap !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+    }
+    .elementor-71 .elementor-element.elementor-element-1d9f82b::before {
+        background: rgba(22, 68, 110, 0.94) !important;
+        opacity: 1 !important;
+        backdrop-filter: blur(20px) saturate(170%) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(170%) !important;
+        border: none !important;
+        outline: none !important;
     }
 
     /* Inner Row: Space-between Logo (left) and Hamburger (right) */
@@ -295,7 +338,7 @@
     }
 
     .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle:hover {
-        background-color: var(--e-global-color-accent, #10395E) !important;
+        background-color: var(--e-global-color-accent, #1e5687) !important;
         transform: scale(1.04) !important;
     }
 
@@ -308,7 +351,7 @@
 
     .elementor-71 .elementor-element.elementor-element-3e464c6 .elementor-menu-toggle.elementor-active {
         background-color: rgba(255, 255, 255, 0.16) !important;
-        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        border: none !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35) !important;
     }
 

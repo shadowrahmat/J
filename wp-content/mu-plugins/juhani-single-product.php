@@ -584,9 +584,9 @@ add_action( 'wp_head', function() {
 		}
 
 		table.variations tr {
-			display: flex !important;
-			flex-direction: row !important;
-			align-items: center !important;
+			display: grid !important;
+			grid-template-columns: 160px minmax(0, 1fr) !important;
+			align-items: flex-start !important;
 			gap: 6px !important;
 			margin-bottom: 8px !important;
 			padding: 0 !important;
@@ -598,13 +598,14 @@ add_action( 'wp_head', function() {
 		}
 
 		table.variations th.label {
-			flex: 0 0 106px !important;
-			width: 106px !important;
-			max-width: 106px !important;
+			flex: none !important;
+			width: 160px !important;
+			max-width: 160px !important;
 			min-height: 34px !important;
 			display: flex !important;
-			align-items: center !important;
-			padding: 0 6px 0 0 !important;
+			align-items: flex-start !important;
+			align-self: start !important;
+			padding: 9px 8px 0 0 !important;
 			margin: 0 !important;
 			box-sizing: border-box !important;
 			text-align: left !important;
@@ -620,10 +621,10 @@ add_action( 'wp_head', function() {
 		}
 
 		table.variations td.value {
-			flex: 1 1 auto !important;
-			width: calc(100% - 112px) !important;
+			flex: none !important;
+			width: 100% !important;
 			display: flex !important;
-			align-items: center !important;
+			align-items: flex-start !important;
 			justify-content: flex-start !important;
 			flex-wrap: wrap !important;
 			padding: 0 !important;

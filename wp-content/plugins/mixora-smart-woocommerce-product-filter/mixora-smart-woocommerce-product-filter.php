@@ -9,7 +9,7 @@
 if (!defined('ABSPATH')) exit;
 
 class Mixora_Smart_Product_Filter {
-    const VERSION = '2.0.33';
+    const VERSION = '2.0.31';
 
     public function __construct() {
         add_shortcode('mixora_product_filter', [$this, 'shortcode']);
@@ -63,27 +63,13 @@ class Mixora_Smart_Product_Filter {
 
     private function sort_terms($terms, $label = '', $taxonomy = '') {
         $is_size = sanitize_title($label) === 'size' || sanitize_title(str_replace('pa_', '', $taxonomy)) === 'size';
-        $tax_key = sanitize_title(str_replace('pa_', '', $taxonomy));
-        $label_key = sanitize_title($label);
-        $is_numeric_attr = in_array($tax_key, ['suta','haat','rock-weight-kg','rock-weight','rockweight'], true)
-            || in_array($label_key, ['suta','haat','rock-weight-kg','rock-weight','rockweight'], true)
-            || $taxonomy === 'pa_suta' || $taxonomy === 'pa_haat' || $taxonomy === 'pa_rock-weight-kg';
-        usort($terms, function($a, $b) use ($is_size, $is_numeric_attr) {
+        usort($terms, function($a, $b) use ($is_size) {
             $an = is_object($a) ? $a->name : ($a['name'] ?? '');
             $bn = is_object($b) ? $b->name : ($b['name'] ?? '');
             if ($is_size) {
                 $ap = $this->size_rank($an);
                 $bp = $this->size_rank($bn);
                 if ($ap !== $bp) return $ap <=> $bp;
-            }
-            if ($is_numeric_attr) {
-                $an_num = is_numeric($an) ? (float) $an : null;
-                $bn_num = is_numeric($bn) ? (float) $bn : null;
-                if ($an_num !== null && $bn_num !== null && $an_num !== $bn_num) {
-                    return $an_num <=> $bn_num;
-                }
-                if ($an_num !== null && $bn_num === null) return -1;
-                if ($an_num === null && $bn_num !== null) return 1;
             }
             return strnatcasecmp((string) $an, (string) $bn);
         });
@@ -97,7 +83,7 @@ class Mixora_Smart_Product_Filter {
      */
     private function get_attributes($category_id = 0) {
         $category_ids = array_values(array_filter(array_map('absint', (array) $category_id)));
-        $cache_key = 'mx_attrs_v2_' . self::VERSION . '_' . md5(json_encode($category_ids));
+        $cache_key = 'mx_attrs_' . md5(json_encode($category_ids));
         $cached = get_transient($cache_key);
         if ($cached !== false && is_array($cached)) {
             return $cached;
@@ -200,28 +186,6 @@ class Mixora_Smart_Product_Filter {
             $attribute['terms'] = $this->sort_terms(array_values($attribute['terms']), $attribute['label'], $taxonomy);
             $out[] = $attribute;
         }
-
-        // Juhani shop: enforce requested attribute order on mobile/desktop
-        // Desired order: Suta -> Haat -> Making Type -> Git Type -> Rock Weight
-        $order_map = [
-            'pa_suta'           => 0,
-            'pa_haat'           => 1,
-            'pa_making-type'    => 2,
-            'pa_making_type'    => 2,
-            'pa_git-type'       => 3,
-            'pa_git_type'       => 3,
-            'pa_rock-weight-kg' => 4,
-            'pa_rock_weight_kg' => 4,
-            'pa_rock-weight'    => 4,
-        ];
-        usort($out, function($a, $b) use ($order_map) {
-            $a_tax = $a['taxonomy'] ?? '';
-            $b_tax = $b['taxonomy'] ?? '';
-            $a_pos = $order_map[$a_tax] ?? 999;
-            $b_pos = $order_map[$b_tax] ?? 999;
-            if ($a_pos !== $b_pos) return $a_pos <=> $b_pos;
-            return strcasecmp($a['label'] ?? '', $b['label'] ?? '');
-        });
 
         set_transient($cache_key, $out, HOUR_IN_SECONDS);
         return $out;

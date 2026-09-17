@@ -272,19 +272,140 @@ add_action("wp_head", function(){
         max-width:100% !important;
         margin-left:0 !important;
         margin-right:0 !important;
+        margin-bottom:10px !important;
+        padding:0 !important;
+        background:#ffffff !important;
+        border:1px solid #e2e8f0 !important;
+        border-radius:0 !important;
+        box-shadow:0 2px 6px rgba(16,57,94,.04) !important;
+        box-sizing:border-box !important;
+        overflow:hidden !important;
+        transition:border-color .18s ease, box-shadow .18s ease !important;
+      }
+      .e-search-results-container .elementor-element-d8a74b5:hover{
+        border-color:#4CA2D9 !important;
+        box-shadow:0 4px 12px rgba(76,162,217,.12) !important;
+      }
+
+      /* Card inner row: top-aligned, clean padding, smaller image */
+      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-element-f1f3ea9,
+      .e-search-results-container .elementor-element-f1f3ea9{
+        display:flex !important;
+        flex-direction:row !important;
+        flex-wrap:nowrap !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        gap:12px !important;
+        padding:10px !important;
+        border:none !important;
+        box-shadow:none !important;
+        background:transparent !important;
+        width:100% !important;
         box-sizing:border-box !important;
       }
 
-      /* Keep row: 46% image + 54% text */
-      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-element-f1f3ea9{
-        flex-direction:row !important; flex-wrap:nowrap !important; align-items:center !important; gap:10px !important;
+      /* Image thumbnail: compact, sharp, beautiful size (72x72px) */
+      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-element-8042cc7,
+      .e-search-results-container .elementor-element-8042cc7{
+        flex:0 0 72px !important;
+        max-width:72px !important;
+        width:72px !important;
+        height:72px !important;
+        min-width:72px !important;
+        min-height:72px !important;
+        margin:0 !important;
+        padding:0 !important;
+        overflow:hidden !important;
+        background:#f8fafc !important;
+        border:1px solid #f1f5f9 !important;
+        box-sizing:border-box !important;
       }
-      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-element-8042cc7{ flex:0 0 46% !important; max-width:46% !important; width:46% !important; }
-      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-element-048affb{ flex:1 1 auto !important; min-width:0 !important; }
+      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-widget-image,
+      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-widget-image img,
+      .e-search-results-container .elementor-widget-image,
+      .e-search-results-container .elementor-widget-image img,
+      .e-search-results-container .theme-post-featured-image img{
+        width:72px !important;
+        height:72px !important;
+        max-width:72px !important;
+        max-height:72px !important;
+        object-fit:cover !important;
+        display:block !important;
+        margin:0 !important;
+        padding:0 !important;
+      }
+
+      /* Text column: aligned to top next to thumbnail */
+      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-element-048affb,
+      .e-search-results-container .elementor-element-048affb{
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:flex-start !important;
+        justify-content:flex-start !important;
+        align-self:flex-start !important;
+        flex:1 1 auto !important;
+        min-width:0 !important;
+        padding:0 !important;
+        margin:0 !important;
+        gap:4px !important;
+      }
+
+      /* Product title: top-aligned, clean typography */
+      .e-search-results-container .elementor-widget-woocommerce-product-title,
+      .e-search-results-container .elementor-widget-heading{
+        margin:0 !important;
+        padding:0 !important;
+        align-self:flex-start !important;
+        width:100% !important;
+      }
+      .e-search-results-container .elementor-widget-woocommerce-product-title .elementor-heading-title,
+      .e-search-results-container .elementor-widget-woocommerce-product-title a,
+      .e-search-results-container .elementor-heading-title{
+        font-family:"Poppins",sans-serif !important;
+        font-size:13.5px !important;
+        font-weight:600 !important;
+        color:#10395E !important;
+        line-height:1.3 !important;
+        text-align:left !important;
+        display:-webkit-box !important;
+        -webkit-line-clamp:2 !important;
+        -webkit-box-orient:vertical !important;
+        overflow:hidden !important;
+        margin:0 !important;
+        padding:0 !important;
+      }
+
+      /* Product price: directly beneath title at top */
+      .e-search-results-container .elementor-widget-woocommerce-product-price{
+        margin:2px 0 0 0 !important;
+        padding:0 !important;
+        align-self:flex-start !important;
+        width:100% !important;
+      }
+      .e-search-results-container .elementor-widget-woocommerce-product-price .price,
+      .e-search-results-container .price{
+        font-family:"Poppins",sans-serif !important;
+        font-size:13.5px !important;
+        font-weight:700 !important;
+        color:#10395E !important;
+        line-height:1.2 !important;
+        text-align:left !important;
+        margin:0 !important;
+        display:block !important;
+      }
+      .e-search-results-container .price del{
+        font-size:12px !important;
+        color:#94a3b8 !important;
+        font-weight:400 !important;
+        margin-right:4px !important;
+      }
+      .e-search-results-container .price ins{
+        text-decoration:none !important;
+        color:#10395E !important;
+      }
+
       .elementor-1214 .elementor-element-b579efa .e-search-input,
       .elementor-1208 .elementor-element-2a92cc5f .e-search-input{ padding:12px 10px !important; }
-      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-widget-image,
-      .elementor-1214 .e-search-results-container .elementor-1212 .elementor-widget-image img{ width:100% !important; max-width:100% !important; }
     }
     /* Global zero-radius safety for search popup — override any Elementor inline radius */
     #elementor-popup-modal-1214 .dialog-widget-content *,

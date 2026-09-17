@@ -9,7 +9,7 @@
 if (!defined('ABSPATH')) exit;
 
 class Mixora_Smart_Product_Filter {
-    const VERSION = '2.0.32';
+    const VERSION = '2.0.33';
 
     public function __construct() {
         add_shortcode('mixora_product_filter', [$this, 'shortcode']);

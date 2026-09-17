@@ -1296,38 +1296,56 @@ body.mixora-filter-lock{
 
 /* === JUHANI MOBILE SHOP ATTRIBUTE ORGANIZED LAYOUT ===
    Requested order: Suta -> Haat -> Making Type -> Git Type -> Rock Weight
-   Mobile drawer: pill/chip buttons [4] [6] etc, clean grouped rows
+   Mobile drawer: name left + pill chips right, perfectly aligned row
    Scoped to @media max-width:767px to preserve desktop
 */
 @media(max-width:767px){
-    /* Attribute group container — tight, organized */
+    /* Attribute group — name + values in ONE aligned row (not stacked) */
     .mxswpf-root .mixora-attribute-group{
-        padding:14px 0 !important;
+        display:flex !important;
+        flex-direction:row !important;
+        align-items:flex-start !important;
+        gap:10px !important;
+        padding:12px 0 !important;
         border-bottom:1px solid #ededed !important;
     }
     .mxswpf-root .mixora-attribute-group:last-child{
         border-bottom:none !important;
     }
     .mxswpf-root .mixora-attribute-group h4{
+        flex:0 0 106px !important;
+        width:106px !important;
+        max-width:106px !important;
+        min-width:106px !important;
+        min-height:36px !important;
+        display:flex !important;
+        align-items:center !important;
+        margin:0 !important;
+        padding:0 6px 0 0 !important;
+        box-sizing:border-box !important;
+        text-align:left !important;
         font-family:"Red Hat Display", sans-serif !important;
         font-size:13px !important;
         font-weight:700 !important;
-        line-height:1.2 !important;
+        line-height:1.25 !important;
         letter-spacing:.4px !important;
         text-transform:uppercase !important;
         color:#0f172a !important;
-        margin:0 0 10px !important;
-        padding:0 !important;
     }
-    /* Options: flex wrap chips, not grid checkbox rows */
+    /* Options: flex wrap chips, fills remaining width, aligned to name */
     .mxswpf-root .mixora-attribute-group .mixora-options{
+        flex:1 1 auto !important;
+        width:calc(100% - 116px) !important;
+        min-width:0 !important;
         display:flex !important;
         flex-wrap:wrap !important;
         gap:8px !important;
         grid-template-columns:none !important;
         column-gap:8px !important;
         row-gap:8px !important;
-        align-items:flex-start !important;
+        align-items:center !important;
+        align-content:flex-start !important;
+        min-height:36px !important;
     }
     /* Label reset — pill wrapper */
     .mxswpf-root .mixora-attribute-group .mixora-options label{
@@ -1410,6 +1428,23 @@ body.mixora-filter-lock{
     /* Ensure drawer groups breathe */
     .mxswpf-root .mixora-dynamic-attributes{
         display:block !important;
+    }
+}
+/* Narrow phones — tighten label width so pills have room */
+@media(max-width:380px){
+    .mxswpf-root .mixora-attribute-group{
+        gap:8px !important;
+    }
+    .mxswpf-root .mixora-attribute-group h4{
+        flex:0 0 90px !important;
+        width:90px !important;
+        max-width:90px !important;
+        min-width:90px !important;
+        font-size:12px !important;
+    }
+    .mxswpf-root .mixora-attribute-group .mixora-options{
+        width:calc(100% - 98px) !important;
+        gap:6px !important;
     }
 }
 

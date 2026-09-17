@@ -140,10 +140,11 @@ add_action( 'wp_head', function() {
 	}
 
 	table.variations tr {
-		display: flex !important;
-		flex-direction: row !important;
-		align-items: center !important;
-		margin-bottom: 6px !important;
+		display: grid !important;
+		grid-template-columns: 155px minmax(0, 1fr) !important;
+		column-gap: 12px !important;
+		align-items: flex-start !important;
+		margin-bottom: 10px !important;
 		background: transparent !important;
 		border: none !important;
 		padding: 0 !important;
@@ -155,11 +156,12 @@ add_action( 'wp_head', function() {
 	}
 
 	table.variations th.label {
-		flex: 0 0 125px !important;
-		width: 125px !important;
-		max-width: 125px !important;
+		flex: 0 0 155px !important;
+		width: 155px !important;
+		max-width: 155px !important;
 		text-align: left !important;
-		padding: 0 8px 0 0 !important;
+		padding: 4px 12px 0 0 !important;
+		align-self: flex-start !important;
 		margin: 0 !important;
 		border: none !important;
 		background: transparent !important;
@@ -171,9 +173,18 @@ add_action( 'wp_head', function() {
 		color: #111827 !important;
 		margin: 0 !important;
 		line-height: 1.2 !important;
-		display: block !important;
+		display: flex !important;
+		align-items: center !important;
+		min-height: 34px !important;
+		height: 34px !important;
 		text-transform: capitalize !important;
 		letter-spacing: 0.1px !important;
+		white-space: nowrap !important;
+	}
+
+	table.variations td.value {
+		align-self: flex-start !important;
+		padding: 0 !important;
 	}
 
 	/* Hide selected attribute value label under attribute name (e.g. : 3, : 6.5, etc.) */
@@ -585,10 +596,10 @@ add_action( 'wp_head', function() {
 
 		table.variations tr {
 			display: grid !important;
-			grid-template-columns: 160px minmax(0, 1fr) !important;
+			grid-template-columns: 120px minmax(0, 1fr) !important;
+			column-gap: 12px !important;
 			align-items: flex-start !important;
-			gap: 6px !important;
-			margin-bottom: 8px !important;
+			margin-bottom: 10px !important;
 			padding: 0 !important;
 			width: 100% !important;
 		}
@@ -599,37 +610,40 @@ add_action( 'wp_head', function() {
 
 		table.variations th.label {
 			flex: none !important;
-			width: 160px !important;
-			max-width: 160px !important;
-			min-height: 34px !important;
-			display: flex !important;
-			align-items: flex-start !important;
-			align-self: start !important;
-			padding: 9px 8px 0 0 !important;
+			width: 120px !important;
+			min-width: 120px !important;
+			max-width: 120px !important;
+			padding: 4px 0 0 0 !important;
+			align-self: flex-start !important;
 			margin: 0 !important;
 			box-sizing: border-box !important;
 			text-align: left !important;
 		}
 
 		table.variations th.label label {
+			display: flex !important;
+			align-items: center !important;
 			font-size: 13px !important;
 			font-weight: 700 !important;
 			color: #0f172a !important;
-			line-height: 1.25 !important;
+			min-height: 34px !important;
+			height: 34px !important;
 			margin: 0 !important;
+			line-height: 1.2 !important;
+			white-space: nowrap !important;
 			text-transform: capitalize !important;
 		}
 
 		table.variations td.value {
-			flex: none !important;
+			align-self: flex-start !important;
 			width: 100% !important;
+			max-width: 100% !important;
+			flex: 1 1 auto !important;
 			display: flex !important;
 			align-items: flex-start !important;
-			justify-content: flex-start !important;
 			flex-wrap: wrap !important;
 			padding: 0 !important;
 			margin: 0 !important;
-			min-height: 34px !important;
 		}
 
 		.woo-variation-swatches .variable-items-wrapper {

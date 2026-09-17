@@ -2032,7 +2032,7 @@ body.single-product form.variations_form table.variations tr {
 	display: grid !important;
 	grid-template-columns: 155px minmax(0, 1fr) !important;
 	column-gap: 12px !important;
-	align-items: center !important;
+	align-items: flex-start !important;
 	margin: 0 0 10px !important;
 }
 
@@ -2043,28 +2043,29 @@ body.single-product form.variations_form table.variations tr:last-child {
 body.single-product form.variations_form table.variations th.label {
 	width: 155px !important;
 	min-width: 155px !important;
-	padding: 0 12px 0 0 !important;
-	align-self: center !important;
-	vertical-align: middle !important;
+	padding: 4px 12px 0 0 !important;
+	align-self: flex-start !important;
+	vertical-align: top !important;
 	text-align: left !important;
 }
 
 body.single-product form.variations_form table.variations th.label label {
 	display: flex !important;
 	align-items: center !important;
-	min-height: 40px !important;
+	min-height: 34px !important;
+	height: 34px !important;
 	margin: 0 !important;
 	color: #0d2a43 !important;
 	font-size: 14px !important;
 	font-weight: 700 !important;
-	line-height: 1.35 !important;
+	line-height: 1.2 !important;
 	white-space: nowrap !important;
 }
 
 body.single-product form.variations_form table.variations td.value {
-	align-self: center !important;
+	align-self: flex-start !important;
 	padding: 0 !important;
-	vertical-align: middle !important;
+	vertical-align: top !important;
 }
 
 body.single-product form.variations_form table.variations select {
@@ -2205,7 +2206,7 @@ body.single-product form.variations_form.juhani-variation-in-progress::after {
 		display: grid !important;
 		grid-template-columns: 120px minmax(0, 1fr) !important;
 		column-gap: 12px !important;
-		align-items: center !important;
+		align-items: flex-start !important;
 		margin-bottom: 10px !important;
 	}
 
@@ -2216,29 +2217,35 @@ body.single-product form.variations_form.juhani-variation-in-progress::after {
 	body.single-product form.variations_form table.variations th.label {
 		width: 120px !important;
 		min-width: 120px !important;
-		padding: 0 !important;
-		align-self: center !important;
+		padding: 4px 0 0 0 !important;
+		align-self: flex-start !important;
 	}
 
 	body.single-product form.variations_form table.variations th.label label {
-		font-size: 12px !important;
-		min-height: 40px !important;
+		display: flex !important;
+		align-items: center !important;
+		font-size: 13px !important;
+		min-height: 34px !important;
+		height: 34px !important;
+		margin: 0 !important;
+		line-height: 1.2 !important;
 		white-space: nowrap !important;
 	}
 
 	body.single-product form.variations_form table.variations td.value {
-		align-self: center !important;
+		align-self: flex-start !important;
 		width: 100% !important;
 		max-width: 100% !important;
 		flex: 1 1 auto !important;
 		display: flex !important;
-		align-items: center !important;
+		align-items: flex-start !important;
 		flex-wrap: wrap !important;
 	}
 
 	body.single-product form.variations_form table.variations td.value .variable-items-wrapper {
 		display: flex !important;
 		flex-wrap: wrap !important;
+		align-items: flex-start !important;
 		gap: 6px !important;
 		width: 100% !important;
 		max-width: 100% !important;

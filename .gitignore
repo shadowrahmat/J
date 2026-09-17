@@ -1,0 +1,42 @@
+﻿# Debug / scratch files (one-off dev scripts)
+scratch_*.php
+scratch/
+scratch-*.php
+
+# Audit backups & temp snapshots
+_audit_backup_*/
+_audit_backup*/
+_audit_*/
+.review/
+.backup/
+backup/
+*.bak
+*.backup
+source-*.zip
+
+# Logs (WooCommerce & PHP) - keep .htaccess
+wp-content/uploads/wc-logs/*.log
+*.log
+debug.log
+error_log
+fatal-errors-*.log
+place-order-debug-*.log
+transactional-emails-*.log
+wc-analytics-*.log
+wc_logger-*.log
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+*~
+*.sublime-*
+
+# Node / temp
+node_modules/
+.cache/
+.tmp/
+
+# Uploads cache (regeneratable)
+wp-content/uploads/cache/

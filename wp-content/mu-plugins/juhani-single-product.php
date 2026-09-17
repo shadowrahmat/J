@@ -294,6 +294,7 @@ add_action( 'wp_head', function() {
 		font-weight: 600 !important;
 		text-decoration: underline !important;
 		margin-left: 14px !important;
+		padding-left: 6px !important;
 		display: inline-block !important;
 	}
 
@@ -345,10 +346,13 @@ add_action( 'wp_head', function() {
 		visibility: visible !important;
 		height: auto !important;
 		margin: 0 !important;
-		padding: 12px 14px !important;
+		padding: 4px 0 !important;
 		overflow: visible !important;
-		background: #f8fafc !important;
-		border: 1px solid #e2e8f0 !important;
+		background: transparent !important;
+		background-color: transparent !important;
+		border: none !important;
+		border-width: 0 !important;
+		box-shadow: none !important;
 		border-radius: 0 !important;
 		text-align: left !important;
 	}
@@ -648,6 +652,7 @@ add_action( 'wp_head', function() {
 
 		a.reset_variations {
 			margin: 6px 0 0 14px !important;
+			padding-left: 6px !important;
 			font-size: 12px !important;
 		}
 
@@ -656,7 +661,9 @@ add_action( 'wp_head', function() {
 			margin: 12px 0 8px !important;
 		}
 		.woocommerce-variation-price {
-			padding: 10px 12px !important;
+			padding: 4px 0 !important;
+			background: transparent !important;
+			border: none !important;
 		}
 		.woocommerce-variation-price .price,
 		.woocommerce-variation-price .amount {

@@ -1457,6 +1457,22 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
    ORDER RECEIVED / THANK YOU PAGE REDESIGN
    ==================================================== */
 
+/* Zero Border Radius for all layouts and elements on Order Received page */
+.woocommerce-order,
+.woocommerce-order *,
+.woocommerce-order p.woocommerce-notice,
+.woocommerce-order ul.woocommerce-order-overview,
+.woocommerce-order table.woocommerce-table--order-details,
+.woocommerce-order .woocommerce-customer-details,
+.woocommerce-order .woocommerce-customer-details address,
+.woocommerce-order .woocommerce-bacs-bank-details,
+.woocommerce-order .woocommerce-order-downloads,
+.woocommerce-order .woocommerce-table {
+	border-radius: 0 !important;
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+}
+
 /* Main Container max-width & centering */
 .woocommerce-order {
 	max-width: 960px !important;
@@ -1470,7 +1486,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	background: #f0fdf4 !important;
 	border: 1px solid #bbf7d0 !important;
 	border-left: 5px solid #22c55e !important;
-	border-radius: 8px !important;
+	border-radius: 0 !important;
 	padding: 16px 20px !important;
 	color: #15803d !important;
 	font-family: "Poppins", sans-serif !important;
@@ -1509,7 +1525,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	gap: 0 !important;
 	background: #ffffff !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 8px !important;
+	border-radius: 0 !important;
 	padding: 20px 24px !important;
 	margin: 0 0 28px 0 !important;
 	box-shadow: 0 4px 16px rgba(16, 57, 94, 0.05) !important;
@@ -1582,7 +1598,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	width: 4px !important;
 	height: 20px !important;
 	background: #10395E !important;
-	border-radius: 2px !important;
+	border-radius: 0 !important;
 }
 
 /* The Table / Card */
@@ -1595,7 +1611,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	border-spacing: 0 !important;
 	background: #ffffff !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 8px !important;
+	border-radius: 0 !important;
 	overflow: hidden !important;
 	box-shadow: 0 4px 16px rgba(16, 57, 94, 0.05) !important;
 	margin: 0 !important;
@@ -1663,7 +1679,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	background: #eaf2f8 !important;
 	color: #10395E !important;
 	border: 1px solid #d0e0ed !important;
-	border-radius: 4px !important;
+	border-radius: 0 !important;
 	font-size: 12px !important;
 	font-weight: 700 !important;
 	vertical-align: middle !important;
@@ -1683,7 +1699,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	padding: 4px 10px !important;
 	background: #f4f8fb !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 4px !important;
+	border-radius: 0 !important;
 	display: inline-flex !important;
 	align-items: center !important;
 	gap: 5px !important;
@@ -1753,7 +1769,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	background: #eaf2f8 !important;
 	color: #10395E !important;
 	padding: 2px 8px !important;
-	border-radius: 4px !important;
+	border-radius: 0 !important;
 	font-size: 12px !important;
 	font-weight: 600 !important;
 	margin-left: 6px !important;
@@ -1829,12 +1845,12 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	width: 4px !important;
 	height: 18px !important;
 	background: #10395E !important;
-	border-radius: 2px !important;
+	border-radius: 0 !important;
 }
 .woocommerce-order .woocommerce-customer-details address {
 	background: #ffffff !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 8px !important;
+	border-radius: 0 !important;
 	padding: 20px 24px !important;
 	box-shadow: 0 4px 16px rgba(16, 57, 94, 0.05) !important;
 	font-family: "Poppins", sans-serif !important;

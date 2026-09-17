@@ -293,7 +293,7 @@ add_action( 'wp_head', function() {
 		color: #ef4444 !important;
 		font-weight: 600 !important;
 		text-decoration: underline !important;
-		margin-left: 8px !important;
+		margin-left: 14px !important;
 		display: inline-block !important;
 	}
 
@@ -326,17 +326,51 @@ add_action( 'wp_head', function() {
 		height: 0 !important;
 	}
 
-	/* Hide dynamic variation price below attributes (main price displayed at top) */
-	.woocommerce-variation-price,
-	.single_variation .woocommerce-variation-price,
-	.woocommerce-variation.single_variation .woocommerce-variation-price,
-	.woocommerce-variation.single_variation .price {
+	/* Variation Price — show below when all attributes selected */
+	.woocommerce-variation.single_variation {
+		margin: 14px 0 10px !important;
+		padding: 0 !important;
+		background: transparent !important;
+		border: none !important;
+	}
+	.woocommerce-variation.single_variation:empty,
+	.woocommerce-variation.single_variation[style*="display: none"] {
 		display: none !important;
-		visibility: hidden !important;
-		height: 0 !important;
 		margin: 0 !important;
 		padding: 0 !important;
-		overflow: hidden !important;
+		height: 0 !important;
+	}
+	.woocommerce-variation-price {
+		display: block !important;
+		visibility: visible !important;
+		height: auto !important;
+		margin: 0 !important;
+		padding: 12px 14px !important;
+		overflow: visible !important;
+		background: #f8fafc !important;
+		border: 1px solid #e2e8f0 !important;
+		border-radius: 0 !important;
+		text-align: left !important;
+	}
+	.woocommerce-variation-price .price,
+	.single_variation .woocommerce-variation-price .price,
+	.woocommerce-variation.single_variation .price {
+		display: block !important;
+		visibility: visible !important;
+		height: auto !important;
+		overflow: visible !important;
+		font-size: 22px !important;
+		font-weight: 800 !important;
+		color: #0f172a !important;
+		line-height: 1.2 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	.woocommerce-variation-price .price .amount,
+	.woocommerce-variation-price .amount {
+		font-size: 22px !important;
+		font-weight: 800 !important;
+		color: #0f172a !important;
 	}
 
 	.woocommerce-variation-availability {
@@ -613,8 +647,20 @@ add_action( 'wp_head', function() {
 		}
 
 		a.reset_variations {
-			margin: 4px 0 0 0 !important;
+			margin: 6px 0 0 14px !important;
 			font-size: 12px !important;
+		}
+
+		/* Variation price below when all attributes selected — mobile compact */
+		.woocommerce-variation.single_variation {
+			margin: 12px 0 8px !important;
+		}
+		.woocommerce-variation-price {
+			padding: 10px 12px !important;
+		}
+		.woocommerce-variation-price .price,
+		.woocommerce-variation-price .amount {
+			font-size: 18px !important;
 		}
 
 		/* 2. Organized 1-Row Add to Cart Action Bar (Qty + Order Now + Wishlist) */
@@ -860,11 +906,8 @@ add_action( 'wp_footer', function() {
 				}
 			});
 
-			// 3. Clean up any selected variation text under attribute names & dynamic price
+			// 3. Clean up any selected variation text under attribute names
 			document.querySelectorAll('.woo-selected-variation-item-name').forEach(el => el.remove());
-			document.querySelectorAll('.woocommerce-variation-price').forEach(el => {
-				el.style.display = 'none';
-			});
 
 			// 4. Dynamic Top Price Syncing on Variation Change
 			function getSingleProductTopPrice($form) {
@@ -950,7 +993,6 @@ add_action( 'wp_footer', function() {
 		if (window.jQuery) {
 			jQuery(document).on('woocommerce_variation_has_changed show_variation hide_variation wvs-selected-item', function() {
 				jQuery('.woo-selected-variation-item-name').remove();
-				jQuery('.woocommerce-variation-price').hide();
 				setTimeout(initJuhaniProductEnhancements, 50);
 			});
 		}

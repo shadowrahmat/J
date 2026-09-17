@@ -548,7 +548,7 @@ add_action( 'wp_head', function() {
 		table.variations tr {
 			display: flex !important;
 			flex-direction: row !important;
-			align-items: flex-start !important;
+			align-items: center !important;
 			gap: 6px !important;
 			margin-bottom: 8px !important;
 			padding: 0 !important;
@@ -586,6 +586,7 @@ add_action( 'wp_head', function() {
 			width: calc(100% - 112px) !important;
 			display: flex !important;
 			align-items: center !important;
+			justify-content: flex-start !important;
 			flex-wrap: wrap !important;
 			padding: 0 !important;
 			margin: 0 !important;
@@ -597,6 +598,8 @@ add_action( 'wp_head', function() {
 			flex-wrap: wrap !important;
 			gap: 6px !important;
 			align-items: center !important;
+			align-content: flex-start !important;
+			justify-content: flex-start !important;
 			margin: 0 !important;
 			padding: 0 !important;
 			width: 100% !important;

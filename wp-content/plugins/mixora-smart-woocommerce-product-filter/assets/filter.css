@@ -1278,3 +1278,138 @@ body.mixora-filter-lock{
         display:inline-flex !important;
     }
 }
+
+/* Modern Filter SVG Icon styling */
+.mxswpf-root .mixora-filter-icon svg.mixora-filter-svg,
+.mxswpf-root .mixora-filter-toggle .mixora-filter-icon svg,
+.mxswpf-root .mixora-filter-toggle-desktop .mixora-filter-icon svg{
+    display:inline-block !important;
+    vertical-align:middle !important;
+    width:18px !important;
+    height:18px !important;
+    stroke:currentColor !important;
+    fill:none !important;
+    stroke-width:2px !important;
+    stroke-linecap:round !important;
+    stroke-linejoin:round !important;
+}
+
+/* === JUHANI MOBILE SHOP ATTRIBUTE ORGANIZED LAYOUT ===
+   Requested order: Suta -> Haat -> Making Type -> Git Type -> Rock Weight
+   Mobile drawer: pill/chip buttons [4] [6] etc, clean grouped rows
+   Scoped to @media max-width:767px to preserve desktop
+*/
+@media(max-width:767px){
+    /* Attribute group container — tight, organized */
+    .mxswpf-root .mixora-attribute-group{
+        padding:14px 0 !important;
+        border-bottom:1px solid #ededed !important;
+    }
+    .mxswpf-root .mixora-attribute-group:last-child{
+        border-bottom:none !important;
+    }
+    .mxswpf-root .mixora-attribute-group h4{
+        font-family:"Red Hat Display", sans-serif !important;
+        font-size:13px !important;
+        font-weight:700 !important;
+        line-height:1.2 !important;
+        letter-spacing:.4px !important;
+        text-transform:uppercase !important;
+        color:#0f172a !important;
+        margin:0 0 10px !important;
+        padding:0 !important;
+    }
+    /* Options: flex wrap chips, not grid checkbox rows */
+    .mxswpf-root .mixora-attribute-group .mixora-options{
+        display:flex !important;
+        flex-wrap:wrap !important;
+        gap:8px !important;
+        grid-template-columns:none !important;
+        column-gap:8px !important;
+        row-gap:8px !important;
+        align-items:flex-start !important;
+    }
+    /* Label reset — pill wrapper */
+    .mxswpf-root .mixora-attribute-group .mixora-options label{
+        display:inline-flex !important;
+        grid-template-columns:none !important;
+        align-items:center !important;
+        justify-content:center !important;
+        gap:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        cursor:pointer !important;
+        font-size:0 !important; /* hide stray text */
+        line-height:1 !important;
+        border:none !important;
+        background:transparent !important;
+    }
+    /* Hide native checkbox */
+    .mxswpf-root .mixora-attribute-group .mixora-options input[type="checkbox"]{
+        position:absolute !important;
+        opacity:0 !important;
+        width:0 !important;
+        height:0 !important;
+        min-width:0 !important;
+        min-height:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        pointer-events:none !important;
+        appearance:none !important;
+        -webkit-appearance:none !important;
+    }
+    /* Pill button — default */
+    .mxswpf-root .mixora-attribute-group .mixora-options label span{
+        display:inline-flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        min-width:44px !important;
+        height:36px !important;
+        padding:6px 14px !important;
+        background:#ffffff !important;
+        border:1.5px solid #d1d5db !important;
+        border-radius:0 !important;
+        color:#1f2937 !important;
+        font-family:"Red Hat Display", sans-serif !important;
+        font-size:13px !important;
+        font-weight:600 !important;
+        line-height:1 !important;
+        text-align:center !important;
+        white-space:nowrap !important;
+        box-sizing:border-box !important;
+        transition:all .15s ease !important;
+        user-select:none !important;
+    }
+    /* Hover — brand accent */
+    .mxswpf-root .mixora-attribute-group .mixora-options label:hover span{
+        border-color:#4CA2D9 !important;
+        color:#4CA2D9 !important;
+        background:#f0f7fd !important;
+    }
+    /* Checked — navy solid */
+    .mxswpf-root .mixora-attribute-group .mixora-options input:checked + span{
+        background:#10395E !important;
+        border-color:#10395E !important;
+        color:#ffffff !important;
+        font-weight:700 !important;
+        box-shadow:0 1px 3px rgba(16,57,94,.18) !important;
+    }
+    .mxswpf-root .mixora-attribute-group .mixora-options input:checked + span:hover{
+        background:#10395E !important;
+        border-color:#10395E !important;
+        color:#ffffff !important;
+    }
+    /* Hide count badge on mobile for clean chips */
+    .mxswpf-root .mixora-attribute-group .mixora-options em{
+        display:none !important;
+    }
+    /* Long text pills (Hand Made, Comilla Bandha) — auto width, keep height */
+    .mxswpf-root .mixora-attribute-group .mixora-options label span{
+        max-width:100% !important;
+    }
+    /* Ensure drawer groups breathe */
+    .mxswpf-root .mixora-dynamic-attributes{
+        display:block !important;
+    }
+}
+

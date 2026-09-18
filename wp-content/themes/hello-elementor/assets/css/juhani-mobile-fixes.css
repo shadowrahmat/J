@@ -1473,12 +1473,37 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 	-moz-border-radius: 0 !important;
 }
 
-/* Main Container max-width & centering */
-.woocommerce-order {
-	max-width: 960px !important;
-	margin: 0 auto !important;
+/* Main Container max-width & centering - Aligned with Floating Header */
+body.woocommerce-order-received .elementor-element-30c5431,
+.elementor-1175 .elementor-element-30c5431 {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
+.elementor-1175 .elementor-element-30c5431 > .e-con-inner {
+	max-width: 100% !important;
 	width: 100% !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.woocommerce-order {
+	width: 90% !important;
+	max-width: 1350px !important;
+	margin-left: auto !important;
+	margin-right: auto !important;
 	box-sizing: border-box !important;
+}
+@media (max-width: 1024px) {
+	.woocommerce-order {
+		width: 92% !important;
+		max-width: 100% !important;
+	}
+}
+@media (max-width: 767px) {
+	.woocommerce-order {
+		width: 95% !important;
+		max-width: 100% !important;
+	}
 }
 
 /* 1. Thank You Notice */
@@ -1603,6 +1628,7 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 
 /* The Table / Card */
 .woocommerce-order table.woocommerce-table--order-details {
+	display: table !important;
 	width: 100% !important;
 	max-width: 100% !important;
 	padding: 0 !important;
@@ -1619,7 +1645,13 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 
 /* Table Header */
 .woocommerce-order table.woocommerce-table--order-details thead {
+	display: table-header-group !important;
+	width: 100% !important;
 	background: #eaf2f8 !important;
+}
+.woocommerce-order table.woocommerce-table--order-details thead tr {
+	display: table-row !important;
+	width: 100% !important;
 }
 .woocommerce-order table.woocommerce-table--order-details thead th {
 	padding: 14px 22px !important;
@@ -1640,7 +1672,13 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 }
 
 /* Table Body */
+.woocommerce-order table.woocommerce-table--order-details tbody {
+	display: table-row-group !important;
+	width: 100% !important;
+}
 .woocommerce-order table.woocommerce-table--order-details tbody tr {
+	display: table-row !important;
+	width: 100% !important;
 	border-bottom: 1px solid #edf3f8 !important;
 	transition: background-color 0.15s ease !important;
 }
@@ -1736,7 +1774,13 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 }
 
 /* Table Footer (Subtotal, Shipping, Total, Payment Method) */
+.woocommerce-order table.woocommerce-table--order-details tfoot {
+	display: table-footer-group !important;
+	width: 100% !important;
+}
 .woocommerce-order table.woocommerce-table--order-details tfoot tr {
+	display: table-row !important;
+	width: 100% !important;
 	border-top: 1px solid #edf3f8 !important;
 }
 .woocommerce-order table.woocommerce-table--order-details tfoot th {
@@ -1898,7 +1942,35 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 		padding: 0 !important;
 	}
 	.woocommerce-order table.woocommerce-table--order-details thead {
-		display: none !important;
+		display: flex !important;
+		justify-content: space-between !important;
+		align-items: center !important;
+		width: 100% !important;
+		background: #eaf2f8 !important;
+		border-bottom: 2px solid #d4e3f0 !important;
+		box-sizing: border-box !important;
+	}
+	.woocommerce-order table.woocommerce-table--order-details thead tr {
+		display: flex !important;
+		justify-content: space-between !important;
+		align-items: center !important;
+		width: 100% !important;
+		padding: 10px 16px !important;
+		box-sizing: border-box !important;
+	}
+	.woocommerce-order table.woocommerce-table--order-details thead th {
+		display: block !important;
+		padding: 0 !important;
+		border: 0 !important;
+		font-family: "Poppins", sans-serif !important;
+		font-size: 12px !important;
+		font-weight: 700 !important;
+		color: #10395E !important;
+		text-transform: uppercase !important;
+		letter-spacing: 0.5px !important;
+	}
+	.woocommerce-order table.woocommerce-table--order-details thead th.product-total {
+		text-align: right !important;
 	}
 	.woocommerce-order table.woocommerce-table--order-details tbody {
 		display: block !important;

@@ -76,9 +76,12 @@ define('WP_POST_REVISIONS', false);
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
-
-define( 'FS_METHOD', 'direct' );
+define('WP_DEBUG', false);
+define('WP_DEBUG_DISPLAY', false);
+define('WP_DEBUG_LOG', false);
+define('SCRIPT_DEBUG', false);
+define('WP_CACHE', false);
+define('FS_METHOD', 'direct' );
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */

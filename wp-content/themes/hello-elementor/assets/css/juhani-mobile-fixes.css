@@ -2360,10 +2360,29 @@ body.single-product form.variations_form.juhani-variation-in-progress::after {
 .mxswpf-root .mixora-close:focus .mixora-close-icon path,
 .mxswpf-root .mixora-close:focus-visible .mixora-close-icon,
 .mxswpf-root .mixora-close:focus-visible .mixora-close-icon path {
-.mxswpf-root .mixora-close .mixora-close-icon path {
 	color: #ffffff !important;
 	stroke: #ffffff !important;
 	fill: none !important;
 	width: 18px !important;
 	height: 18px !important;
 }
+
+/* Checkout Desktop: Sticky Billing Details Column */
+@media (min-width: 1025px) {
+	.woocommerce-checkout .e-checkout__container {
+		align-items: stretch !important;
+	}
+	.woocommerce-checkout .e-checkout__column.e-checkout__column-start {
+		position: relative !important;
+		height: 100% !important;
+	}
+	.woocommerce-checkout .e-checkout__column-start #customer_details,
+	.woocommerce-checkout #customer_details.col2-set {
+		position: -webkit-sticky !important;
+		position: sticky !important;
+		top: 105px !important;
+		z-index: 10 !important;
+		align-self: flex-start !important;
+	}
+}
+

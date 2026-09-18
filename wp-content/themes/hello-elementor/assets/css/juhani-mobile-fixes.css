@@ -2386,3 +2386,37 @@ body.single-product form.variations_form.juhani-variation-in-progress::after {
 	}
 }
 
+/* Cart Desktop: Sticky Cart Totals Column */
+@media (min-width: 1025px) {
+	.woocommerce-cart .e-cart__container {
+		align-items: stretch !important;
+	}
+	.woocommerce-cart .e-cart__column.e-cart__column-end {
+		position: relative !important;
+		height: 100% !important;
+		align-self: stretch !important;
+		top: auto !important;
+	}
+	.woocommerce-cart .e-cart__column-end .e-cart__column-inner,
+	.woocommerce-cart .e-cart__column-end .e-sticky-right-column,
+	.woocommerce-cart .cart_totals {
+		position: -webkit-sticky !important;
+		position: sticky !important;
+		top: 105px !important;
+		z-index: 10 !important;
+		align-self: flex-start !important;
+	}
+}
+
+/* Cart Mobile/Tablet: Ensure Cart Totals is static */
+@media (max-width: 1024.98px) {
+	.woocommerce-cart .e-cart__column-end .e-cart__column-inner,
+	.woocommerce-cart .e-cart__column-end .e-sticky-right-column,
+	.woocommerce-cart .cart_totals {
+		position: static !important;
+		top: auto !important;
+	}
+}
+
+
+

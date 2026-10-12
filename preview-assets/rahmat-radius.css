@@ -1,0 +1,4 @@
+/* Native widgets use Elementor controls; this bridge follows the Accordion's native radius. */
+:where(.elementor-1261 .rahmat-page .faq-list details){border-radius:var(--n-accordion-border-radius,12px)}
+/* The HTML collection filter has a low-specificity default. */
+:where(.elementor-1261 .rahmat-page .collection-search){border-radius:12px}

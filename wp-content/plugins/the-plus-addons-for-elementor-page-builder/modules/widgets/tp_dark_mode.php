@@ -1068,7 +1068,7 @@ class ThePlus_Dark_Mode extends Plus_Widget_Base {
 			}
 		}
 
-		echo '<div class="tp-dark-mode-wrapper" data-time="0.' . esc_attr( $dm_time ) . 's" data-dm_mixcolor="#fff" data-bgcolor="' . esc_attr( $dm_bgc ) . '" data-save-cookies="' . esc_attr( $dm_save_in_cookies ) . '" data-auto-match-os-theme="' . esc_attr( $os_theme ) . '" data-style="' . esc_attr( $dm_style ) . '">';
+		echo '<div class="tp-dark-mode-wrapper" data-time="0.' . esc_attr( $dm_time ) . 's" data-dm_mixcolor="#fff" data-bgcolor="' . esc_attr( $dm_bgc ) . '" data-save-cookies="' . esc_attr( $dm_save_in_cookies ) . '" data-auto-match-os-theme="' . esc_attr( $os_theme ) . '" data-style="' . esc_attr( $dm_style ) . '" data-toggle-label="' . esc_attr__( 'Toggle dark mode', 'tpebl' ) . '">';
 
 		if ( ! empty( $dm_ingnor ) ) {
 			$dm_ignore_js = 'jQuery(document).ready(function() {

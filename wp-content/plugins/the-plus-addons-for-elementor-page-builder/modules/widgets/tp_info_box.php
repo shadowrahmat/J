@@ -81,7 +81,18 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 	 * @version 5.4.2
 	 */
 	public function get_keywords() {
-		return array( 'Tp Info Box', 'Infobox Layout', 'Info Box Carousel', 'Info Box Listing', 'Animated Info Box', 'Lottie Info Box', 'SVG Info Box', 'Linked Info Box', 'Icon Info Box', 'Image Info Box' );
+		/*
+		 * F14 (widget-test/infobox, Low): removed 'Lottie Info Box' -- Free has
+		 * zero Lottie code anywhere in this widget (the word appeared only in
+		 * this keyword list), so searching "lottie" surfaced Info Box with no
+		 * way to act on it. 'SVG Info Box' and 'Info Box Carousel' are left as
+		 * they at least correspond to real, if Pro-gated, options an author
+		 * can see in this widget's own dropdowns (image_icon's 'svg', and
+		 * info_box_layout's 'carousel_layout') -- F1's fix now makes those
+		 * choices show a clear "available in Pro" notice at the point of
+		 * selection, rather than a silently empty box.
+		 */
+		return array( 'Tp Info Box', 'Infobox Layout', 'Info Box Carousel', 'Info Box Listing', 'Animated Info Box', 'SVG Info Box', 'Linked Info Box', 'Icon Info Box', 'Image Info Box' );
 	}
 
 	/**
@@ -142,13 +153,25 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 				'label'     => esc_html__( 'Info Box Style', 'tpebl' ),
 				'type'      => Controls_Manager::SELECT,
 				'default'   => 'style_1',
+				/*
+				 * F10 (widget-test/infobox, Low): "Style N" was hyphenated here
+				 * ("Style-1") but spaced in Button Style ("Style 1"), and the
+				 * Pro badge was "(Pro)" here vs "(PRO)" on Select Icon.
+				 * Standardised on the spaced "Style N (Pro)" form used
+				 * elsewhere in this same panel. Values (style_1/2/3/4/7/11) are
+				 * unchanged. Note for anyone matching a support ticket's label
+				 * back to a stored value: the numbering is not 1:1 -- style_7
+				 * is labelled "Style 5" and style_11 is labelled "Style 6".
+				 * That divergence predates this fix and is left as-is (renumbering
+				 * the values would be a breaking change for saved pages).
+				 */
 				'options'   => array(
-					'style_1'  => esc_html__( 'Style-1', 'tpebl' ),
-					'style_2'  => esc_html__( 'Style-2 (Pro)', 'tpebl' ),
-					'style_3'  => esc_html__( 'Style-3', 'tpebl' ),
-					'style_4'  => esc_html__( 'Style-4', 'tpebl' ),
-					'style_7'  => esc_html__( 'Style-5 (Pro)', 'tpebl' ),
-					'style_11' => esc_html__( 'Style-6 (Pro)', 'tpebl' ),
+					'style_1'  => esc_html__( 'Style 1', 'tpebl' ),
+					'style_2'  => esc_html__( 'Style 2 (Pro)', 'tpebl' ),
+					'style_3'  => esc_html__( 'Style 3', 'tpebl' ),
+					'style_4'  => esc_html__( 'Style 4', 'tpebl' ),
+					'style_7'  => esc_html__( 'Style 5 (Pro)', 'tpebl' ),
+					'style_11' => esc_html__( 'Style 6 (Pro)', 'tpebl' ),
 				),
 				'condition' => array(
 					'info_box_layout' => 'single_layout',
@@ -203,9 +226,17 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'title',
 			array(
-				'label'     => esc_html__( 'Title Of Info Box', 'tpebl' ),
+				// F8/F11: "Title Of Info Box" was both an odd word order and an outlier capitalisation ("Of"); renamed to match this panel's other "Info Box <Field>" labels.
+				'label'     => esc_html__( 'Info Box Title', 'tpebl' ),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => esc_html__( 'The Plus', 'tpebl' ),
+				/*
+				 * F15 (widget-test/infobox, Low): defaulted to the vendor's own
+				 * brand name, so an untouched Info Box put "The Plus" on the
+				 * customer's page -- TPAE was the only widget of six compared
+				 * whose default title is its own vendor's name. Neutral
+				 * placeholder instead; only affects brand-new widget instances.
+				 */
+				'default'   => esc_html__( 'Info Box Title', 'tpebl' ),
 				'dynamic'   => array(
 					'active' => true,
 				),
@@ -220,7 +251,14 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			array(
 				'label'       => esc_html__( 'Description', 'tpebl' ),
 				'type'        => Controls_Manager::WYSIWYG,
-				'default'     => esc_html__( 'I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'tpebl' ),
+				/*
+				 * F15 (widget-test/infobox, Low): "I am text block..." describes
+				 * a different widget entirely (there is no "edit button" on an
+				 * Info Box) and ships Lorem ipsum as if it were real placeholder
+				 * copy. Neutral one-line description instead; only affects
+				 * brand-new widget instances.
+				 */
+				'default'     => esc_html__( 'Add a short description for this info box.', 'tpebl' ),
 				'placeholder' => esc_html__( 'Type your description here', 'tpebl' ),
 				'dynamic'     => array(
 					'active' => true,
@@ -292,7 +330,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 					'icon'  => esc_html__( 'Icon', 'tpebl' ),
 					'image' => esc_html__( 'Image', 'tpebl' ),
 					'text'  => esc_html__( 'Text', 'tpebl' ),
-					'svg'   => esc_html__( 'Svg (PRO)', 'tpebl' ),
+					// F10/F11: "SVG" was capitalised 3 different ways across this panel ("Svg", "SVG"), and the Pro badge as both "(PRO)" and "(Pro)"; standardised on "SVG" and "(Pro)".
+					'svg'   => esc_html__( 'SVG (Pro)', 'tpebl' ),
 				),
 				'separator' => 'before',
 				'condition' => array(
@@ -346,7 +385,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'select_image',
 			array(
-				'label'      => esc_html__( 'Use Image As icon', 'tpebl' ),
+				// F11: mixed capitalisation ("As" / "icon"); title-cased to match this panel's other labels.
+				'label'      => esc_html__( 'Use Image as Icon', 'tpebl' ),
 				'type'       => Controls_Manager::MEDIA,
 				'default'    => array(
 					'url' => '',
@@ -380,6 +420,19 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Icon Font', 'tpebl' ),
 				'type'      => Controls_Manager::SELECT,
+				/*
+				 * F20 (widget-test/infobox) was reverted on 2026-09-12. Flipping this
+				 * default to 'font_awesome_5' looked like an editor-only change, but
+				 * Elementor resolves a control default at RENDER time for any control
+				 * the user never touched. A published Info Box whose author picked an
+				 * FA4 icon without opening this dropdown has no saved icon_font_style,
+				 * so it would take the font_awesome_5 branch in render(), read the
+				 * unsaved icon_fontawesome_5, and fall back to that control's own
+				 * default -- replacing the author's icon with a generic "fas fa-plus".
+				 * Same failure mode as the Team Member Source default reverted the day
+				 * before. Do not flip it again without a migration. F19 does not depend
+				 * on this: its aria-hidden fix is in the FA4 render branch itself.
+				 */
 				'default'   => 'font_awesome',
 				'options'   => array(
 					'font_awesome'   => esc_html__( 'Font Awesome', 'tpebl' ),
@@ -498,9 +551,18 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 				'type'      => Controls_Manager::SELECT,
 				'label'     => esc_html__( 'Button Style', 'tpebl' ),
 				'default'   => 'style-8',
+				/*
+				 * F3 (widget-test/infobox, Medium): the free option ('style-8')
+				 * was labelled "Style 2" while the Pro-locked option shown first
+				 * ('style-7') read "Style 1" -- so the default, only-usable-in-
+				 * Free choice didn't read as the first/primary option. Values
+				 * (style-7/8/9) are unchanged, so existing saved widgets are
+				 * unaffected; only the dropdown's labels and display order
+				 * change, to put the free option first as "Style 1".
+				 */
 				'options'   => array(
-					'style-7' => esc_html__( 'Style 1 (Pro)', 'tpebl' ),
-					'style-8' => esc_html__( 'Style 2', 'tpebl' ),
+					'style-8' => esc_html__( 'Style 1', 'tpebl' ),
+					'style-7' => esc_html__( 'Style 2 (Pro)', 'tpebl' ),
 					'style-9' => esc_html__( 'Style 3 (Pro)', 'tpebl' ),
 				),
 				'condition' => array(
@@ -535,11 +597,26 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 				),
 				'default'     => esc_html__( 'Read More', 'tpebl' ),
 				'placeholder' => esc_html__( 'Read More', 'tpebl' ),
+				/*
+				 * F3 (widget-test/infobox, Medium): this condition used to
+				 * require 'button_style' => 'style-8' too, so picking either
+				 * Pro-locked button style hid the Button Text field from the
+				 * panel entirely -- but render_text() (~line 3510) reads
+				 * $settings['button_text'] and prints it regardless of
+				 * button_style; only the icon wrapping around it is
+				 * style-8-specific. The field's value was always rendered, the
+				 * author just lost the ability to edit it as a side effect of
+				 * previewing a Pro style. Dropped the button_style condition so
+				 * the field stays editable for every button style, matching
+				 * what render_text() actually does. Icon Position/Icon Spacing
+				 * below intentionally keep their button_style! condition -- for
+				 * the Pro styles, render_text() never applies icon wrapping, so
+				 * those two controls genuinely have no effect there.
+				 */
 				'condition'   => array(
 					'info_box_layout' => 'single_layout',
 					'main_style'      => array( 'style_1', 'style_3', 'style_4' ),
 					'display_button'  => 'yes',
-					'button_style'    => 'style-8',
 				),
 			)
 		);
@@ -551,7 +628,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 				'dynamic'     => array(
 					'active' => true,
 				),
-				'placeholder' => esc_html__( 'https://www.demo-link.com', 'tpebl' ),
+				// F17: matched url_link's placeholder above -- same concept (a link field's example URL), two different placeholder strings in one widget.
+				'placeholder' => esc_html__( 'https://your-link.com', 'tpebl' ),
 				'default'     => array(
 					'url' => '#',
 				),
@@ -676,7 +754,17 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'hover_info_button',
 			array(
-				'label'     => esc_html__( 'Hover Button InfoBox', 'tpebl' ),
+				/*
+				 * F8/F9 (widget-test/infobox, Medium): "Hover Button InfoBox"
+				 * stacked three nouns in an order that didn't say what the
+				 * control does (this only shows the button on hover), and used
+				 * yet another spelling of "Info Box" ("InfoBox") on top of
+				 * "Info Box" (widget title, most controls) and "Infobox" (Full
+				 * Infobox Link) elsewhere in the same panel. Reworded rather
+				 * than just re-spelled, since the clearer phrasing also drops
+				 * the redundant widget-name reference entirely.
+				 */
+				'label'     => esc_html__( 'Show Button on Hover', 'tpebl' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'label_on'  => esc_html__( 'Show', 'tpebl' ),
 				'label_off' => esc_html__( 'Hide', 'tpebl' ),
@@ -722,7 +810,18 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Title Tag', 'tpebl' ),
 				'type'      => Controls_Manager::SELECT,
-				'default'   => 'div',
+				/*
+				 * F5 (widget-test/infobox, Medium): 'div' meant an untouched
+				 * Info Box had no heading semantics at all. All 5 competitor
+				 * widgets default to a heading (2 of them h2); TPAE's own
+				 * Heading Title and Team Member widgets already default to
+				 * h2/h3. This is the registered control default that
+				 * get_settings_for_display() actually resolves to -- the
+				 * render()-side fallback near "$title_tag =" is a secondary,
+				 * effectively unreachable guard, fixed to match for the same
+				 * reason.
+				 */
+				'default'   => 'h3',
 				'options'   => l_theplus_get_tags_options(),
 				'separator' => 'before',
 				'condition' => array(
@@ -734,16 +833,32 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'full_infobox_switch',
 			array(
-				'label'     => esc_html__( 'Full Infobox Link', 'tpebl' ),
+				// F8: "Info Box" spelled 3 ways across this panel (Info Box / InfoBox / Infobox); standardised on "Info Box" to match the widget title.
+				'label'     => esc_html__( 'Full Info Box Link', 'tpebl' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'label_on'  => esc_html__( 'Enable', 'tpebl' ),
 				'label_off' => esc_html__( 'Disable', 'tpebl' ),
 				'default'   => 'no',
 				'separator' => 'before',
+				/*
+				 * F2 (widget-test/infobox, Medium): full_infobox_switch is never
+				 * read in render() in Free -- toggling it on changes nothing in
+				 * the output, it only reveals the Pro-feature notice registered
+				 * right below it ('full_infobox_switch_options'), the same
+				 * teaser pattern this widget already uses for other Pro-only
+				 * toggles (display_pin_text, connection_switch). The old
+				 * description didn't say that: it promised real behaviour ("all
+				 * other individual links... will be removed") that this build
+				 * does not have. Implementing the feature in Free would be a new
+				 * feature, out of scope for this fix -- corrected the copy
+				 * instead so it doesn't describe behaviour the build doesn't
+				 * ship, matching how the notice control below it already frames
+				 * this as Pro-only.
+				 */
 				'description' => wp_kses_post(
 					sprintf(
 						'<p class="tp-controller-label-text"><i> %s <a class="tp-docs-link" href="%s" target="_blank" rel="noopener noreferrer"> %s </a></i></p>',
-						esc_html__( 'Enable this to make the entire Info Box clickable using a single link.When enabled, all other individual links inside the Info Box will be removed.', 'tpebl' ),
+						esc_html__( 'This is a Pro feature. In the Pro version, enabling this makes the entire Info Box clickable using a single link and removes all other individual links inside the Info Box.', 'tpebl' ),
 						esc_url( $this->tp_doc . 'add-link-to-the-info-box-in-elementor/?utm_source=wpbackend&utm_medium=elementoreditor&utm_campaign=widget' ),
 						esc_html__( 'Learn More', 'tpebl' ),
 					)
@@ -1294,7 +1409,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'desc_color',
 			array(
-				'label'     => esc_html__( 'Desc Color', 'tpebl' ),
+				// F16: "Desc" abbreviated a word the section header ("Description") already spells out in full, and no other label in this panel abbreviates.
+				'label'     => esc_html__( 'Description Color', 'tpebl' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_info_box .info-box-inner .service-desc,{{WRAPPER}} .pt_plus_info_box .info-box-inner .service-desc p' => 'color: {{VALUE}}',
@@ -1304,7 +1420,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'desc_hover_color',
 			array(
-				'label'     => esc_html__( 'Desc Hover Color', 'tpebl' ),
+				// F16: same abbreviation as desc_color above.
+				'label'     => esc_html__( 'Description Hover Color', 'tpebl' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .pt_plus_info_box .info-box-inner:hover .service-desc,{{WRAPPER}} .pt_plus_info_box .info-box-inner:hover .service-desc p,
@@ -1459,7 +1576,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'border_check_right',
 			array(
-				'label'     => esc_html__( 'Side image Border', 'tpebl' ),
+				// F11: "image" wasn't capitalised, unlike every other word in this label.
+				'label'     => esc_html__( 'Side Image Border', 'tpebl' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'label_on'  => esc_html__( 'Show', 'tpebl' ),
 				'label_off' => esc_html__( 'Hide', 'tpebl' ),
@@ -1484,7 +1602,15 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'background_options',
 			array(
-				'label'     => esc_html__( 'Background Options', 'tpebl' ),
+				/*
+				 * F17 (widget-test/infobox, Low): this heading shares its exact
+				 * text with the section it lives inside (section_bg_option_styling,
+				 * "Background Options"). Renamed the sub-heading to name what it
+				 * actually introduces -- the animation dropdown and the
+				 * Normal/Hover background colour tabs right below it, as opposed
+				 * to the section's border and shadow controls.
+				 */
+				'label'     => esc_html__( 'Background Style', 'tpebl' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -1501,7 +1627,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 					'hover_slide_left'   => esc_html__( 'SlideInLeft (Pro)', 'tpebl' ),
 					'hover_slide_right'  => esc_html__( 'SlideInRight (Pro)', 'tpebl' ),
 					'hover_slide_top'    => esc_html__( 'SlideInTop (Pro)', 'tpebl' ),
-					'hover_slide_bottom' => esc_html__( 'SlideInBotton (Pro)', 'tpebl' ),
+					// F11: shipped typo, "Botton" -> "Bottom".
+					'hover_slide_bottom' => esc_html__( 'SlideInBottom (Pro)', 'tpebl' ),
 				),
 			)
 		);
@@ -1624,7 +1751,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			'button_top_space',
 			array(
 				'type'        => Controls_Manager::SLIDER,
-				'label'       => esc_html__( 'Button Above Space', 'tpebl' ),
+				// F16: "Button Above Space" reads back-to-front; reworded to a normal noun phrase.
+				'label'       => esc_html__( 'Spacing Above Button', 'tpebl' ),
 				'size_units'  => array( 'px' ),
 				'range'       => array(
 					'px' => array(
@@ -1894,7 +2022,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->start_controls_section(
 			'section_svg_styling',
 			array(
-				'label'     => esc_html__( 'Svg', 'tpebl' ),
+				// F10/F11: standardised capitalisation, see image_icon's 'svg' option above.
+				'label'     => esc_html__( 'SVG', 'tpebl' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					'image_icon' => array( 'svg' ),
@@ -1916,7 +2045,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->start_controls_section(
 			'section_icon_styling',
 			array(
-				'label'      => esc_html__( 'Icon ', 'tpebl' ),
+				// F11: trailing space -- languages/tpebl.pot carries both "Icon " and "Icon" as separate msgids because of it.
+				'label'      => esc_html__( 'Icon', 'tpebl' ),
 				'tab'        => Controls_Manager::TAB_STYLE,
 				'conditions' => array(
 					'relation' => 'or',
@@ -2829,8 +2959,18 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Vertical Center', 'tpebl' ),
 				'type'      => Controls_Manager::SWITCHER,
-				'label_on'  => esc_html__( 'On', 'tpebl' ),
-				'label_off' => esc_html__( 'Off', 'tpebl' ),
+				/*
+				 * F7 (widget-test/infobox, Medium): this widget's 18 switchers
+				 * used 4 different on/off vocabularies (Show/Hide, Enable/
+				 * Disable, On/Off, Yes/No), sometimes 3 of them on consecutive
+				 * rows of the same section. Standardised on Enable/Disable for
+				 * feature toggles (this file's own majority convention for
+				 * anything that isn't showing/hiding an existing element) and
+				 * retired On/Off and Yes/No; Show/Hide is untouched where it
+				 * was already used correctly for visibility toggles.
+				 */
+				'label_on'  => esc_html__( 'Enable', 'tpebl' ),
+				'label_off' => esc_html__( 'Disable', 'tpebl' ),
 				'default'   => 'no',
 				'condition' => array(
 					'main_style' => array( 'style_1', 'style_4' ),
@@ -2843,8 +2983,11 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			array(
 				'label'       => esc_html__( 'Tilt 3D Parallax', 'tpebl' ),
 				'type'        => Controls_Manager::SWITCHER,
-				'label_on'    => esc_html__( 'Yes', 'tpebl' ),
-				'label_off'   => esc_html__( 'No', 'tpebl' ),
+				// F7: On/Off and Yes/No retired in favour of Enable/Disable; see vertical_center above for the full rationale.
+				'label_on'    => esc_html__( 'Enable', 'tpebl' ),
+				'label_off'   => esc_html__( 'Disable', 'tpebl' ),
+				// F17: the 17 sibling switchers in this file all declare an explicit 'default' => 'no'; this one didn't.
+				'default'     => 'no',
 				'render_type' => 'template',
 				'separator'   => 'before',
 				'condition'   => array(
@@ -2865,10 +3008,18 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'messy_column',
 			array(
-				'label'     => esc_html__( 'Messy Columns', 'tpebl' ),
+				/*
+				 * F16 (widget-test/infobox, Low): "Messy Columns" is this
+				 * widget's own internal term for staggered column offsets and
+				 * means nothing to an author reading the panel. Renamed to
+				 * describe what it does, using the same wording the audit
+				 * itself used to explain the control.
+				 */
+				'label'     => esc_html__( 'Staggered Columns', 'tpebl' ),
 				'type'      => Controls_Manager::SWITCHER,
-				'label_on'  => esc_html__( 'On', 'tpebl' ),
-				'label_off' => esc_html__( 'Off', 'tpebl' ),
+				// F7: On/Off retired in favour of Enable/Disable; see vertical_center above.
+				'label_on'  => esc_html__( 'Enable', 'tpebl' ),
+				'label_off' => esc_html__( 'Disable', 'tpebl' ),
 				'default'   => 'no',
 				'condition' => array(
 					'info_box_layout' => 'carousel_layout',
@@ -2889,11 +3040,22 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 		$this->add_control(
 			'min_height_section',
 			array(
-				'label'     => esc_html__( 'Minimum Height Section', 'tpebl' ),
+				/*
+				 * F16 (widget-test/infobox, Low): "Minimum Height Section" reads
+				 * awkwardly and the audit suggested it "inverts naturally into
+				 * Minimum Height" -- but the very next control (minimum_height,
+				 * the slider this switcher gates) is already labelled "Minimum
+				 * Height", so that exact rename would leave two adjacent panel
+				 * rows with the same label. Used "Enable Minimum Height"
+				 * instead: it drops the meaningless "Section" suffix without
+				 * colliding with the slider's own label.
+				 */
+				'label'     => esc_html__( 'Enable Minimum Height', 'tpebl' ),
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'no',
-				'label_on'  => esc_html__( 'Yes', 'tpebl' ),
-				'label_off' => esc_html__( 'No', 'tpebl' ),
+				// F7: Yes/No retired in favour of Enable/Disable; see vertical_center above.
+				'label_on'  => esc_html__( 'Enable', 'tpebl' ),
+				'label_off' => esc_html__( 'Disable', 'tpebl' ),
 				'separator' => 'before',
 			)
 		);
@@ -2999,6 +3161,11 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -3016,6 +3183,40 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 
 		$info_box_layout = ! empty( $settings['info_box_layout'] ) ? $settings['info_box_layout'] : '';
 		$main_style      = ! empty( $settings['main_style'] ) ? $settings['main_style'] : '';
+
+		/*
+		 * F1 (widget-test/infobox, High): 'Carousel' (info_box_layout) and the
+		 * Pro-only Info Box Styles (style_2, style_7 "Style 5", style_11
+		 * "Style 6") are all freely selectable in Free, but render() below only
+		 * has branches for style_1/3/4, and Free ships no carousel markup, CSS,
+		 * JS, or data model. The content controls (title, description, icon,
+		 * button...) are themselves hidden by these same conditions, so there
+		 * is no entered content to fall back to -- picking one of these options
+		 * previously produced a zero-height, contentless element (carousel_layout
+		 * additionally degraded the outer class to the malformed "info-box-"
+		 * with an empty style suffix, since 'main_style' has no value there),
+		 * on both the frontend and the editor preview, with nothing telling the
+		 * author why. Mirrors the fix already shipped for the same class of bug
+		 * in Dynamic Categories (B7, see tp_dynamic_categories.php render()):
+		 * render nothing on the live frontend, and an editor-only notice (the
+		 * same already-styled '.theplus-posts-not-found' class that notice
+		 * uses) naming the gate so the author isn't left guessing. Pro has full
+		 * render() branches for all six styles and for carousel_layout, so it
+		 * does not have this bug and needs no equivalent change.
+		 *
+		 * This changes the rendered output of any existing page already saved
+		 * with one of these options selected: previously an empty 0px wrapper
+		 * div was emitted (with a malformed class, for carousel); now nothing
+		 * is emitted on the frontend (visually identical -- both are
+		 * invisible), and the editor shows a notice where none existed before.
+		 */
+		$free_main_styles = array( 'style_1', 'style_3', 'style_4' );
+		if ( 'carousel_layout' === $info_box_layout || ( 'single_layout' === $info_box_layout && ! in_array( $main_style, $free_main_styles, true ) ) ) {
+			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+				echo '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Info Box Style/Layout is available in the Pro version.', 'tpebl' ) . '</h3>';
+			}
+			return;
+		}
 
 		$hover_class       = '';
 		$box_hover_effects = ! empty( $settings['box_hover_effects'] ) ? $settings['box_hover_effects'] : '';
@@ -3144,7 +3345,14 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 				if ( ! empty( $icon_fstyle ) && 'font_awesome_5' === $icon_fstyle ) {
 					$service_img = '<div class="service-icon-wrap"><span class=" service-icon ' . $si_bg . ' ' . esc_attr( $service_icon_style ) . '">' . $icons . '</span></div>';
 				} else {
-					$service_img = '<div class="service-icon-wrap"><i class=" ' . esc_attr( $icons ) . ' service-icon ' . $si_bg . ' ' . esc_attr( $service_icon_style ) . '"></i></div>';
+					/*
+					 * F19 (widget-test/infobox, Medium): the legacy Font Awesome 4
+					 * path (this widget's own default icon font) emitted a bare
+					 * <i> with no aria-hidden, so AT could announce the decorative
+					 * glyph as content. The font_awesome_5 branch above is fine --
+					 * Icons_Manager::render_icon() already adds it.
+					 */
+					$service_img = '<div class="service-icon-wrap"><i aria-hidden="true" class=" ' . esc_attr( $icons ) . ' service-icon ' . $si_bg . ' ' . esc_attr( $service_icon_style ) . '"></i></div>';
 				}
 			}
 		}
@@ -3167,11 +3375,37 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			$border_right_css .= '"';
 		}
 
-		$title_tag  = ! empty( $settings['title_tag'] ) ? $settings['title_tag'] : 'div';
+		/*
+		 * F5 (widget-test/infobox, Medium): defaulted to 'div', so an untouched
+		 * Info Box had no heading semantics at all -- no document outline entry,
+		 * nothing for screen-reader heading navigation. All 5 competitor widgets
+		 * default to a heading (2 of them h2); TPAE's own Heading Title and Team
+		 * Member widgets already default to h2/h3. .service-title's font-size,
+		 * weight, line-height and margins are all set explicitly in
+		 * plus-infobox-style.css and by this widget's own Typography control,
+		 * so switching the default tag doesn't change how it looks.
+		 */
+		$title_tag  = ! empty( $settings['title_tag'] ) ? $settings['title_tag'] : 'h3';
 		$info_title = ! empty( $settings['title'] ) ? $settings['title'] : '';
 
 		if ( ! empty( $info_title ) ) {
-			$service_title = '<a ' . $this->get_render_attribute_string( 'box_link' ) . ' ><' . l_theplus_validate_html_tag( $title_tag ) . ' class="service-title "> ' . wp_kses_post( $info_title ) . ' </' . l_theplus_validate_html_tag( $title_tag ) . '></a>';
+			/*
+			 * F4 (widget-test/infobox, Medium): was unconditional, so a box with
+			 * no Link value still got <a><div class="service-title">...</div></a>
+			 * -- an anchor with no href, not a link, just a stray element (5 of
+			 * 10 measured anchors on the test page had no href). The image
+			 * branch just above already gets this right via $service_a_start;
+			 * mirrored here.
+			 */
+			$service_title_a_start = '';
+			$service_title_a_end   = '';
+
+			if ( ! empty( $url_link['url'] ) ) {
+				$service_title_a_start = '<a ' . $this->get_render_attribute_string( 'box_link' ) . ' >';
+				$service_title_a_end   = '</a>';
+			}
+
+			$service_title = $service_title_a_start . '<' . l_theplus_validate_html_tag( $title_tag ) . ' class="service-title "> ' . wp_kses_post( $info_title ) . ' </' . l_theplus_validate_html_tag( $title_tag ) . '>' . $service_title_a_end;
 		}
 
 		$border_check = ! empty( $settings['border_check'] ) ? $settings['border_check'] : '';
@@ -3212,7 +3446,17 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 
 			$hover_box_class = ! empty( $settings['hover_info_button'] ) && 'yes' === $settings['hover_info_button'] ? ' hover_box_button' . $hbc_bg : '';
 			$this->add_render_attribute( 'button', 'class', $hover_box_class );
-			$this->add_render_attribute( 'button', 'role', 'button' );
+
+			/*
+			 * F6 (widget-test/infobox, Low): role="button" was applied
+			 * unconditionally to what is always a real <a href="...">
+			 * (button_link defaults to '#', never empty) -- an anchor with an
+			 * href is already correctly announced as a link by AT; overriding
+			 * that with role="button" makes it announce as a button while still
+			 * behaving as a link (Enter activates, Space does not). Same
+			 * root-cause class as Button/Pricing Table's role="button" fix.
+			 */
+
 
 			$button_type_switch        = ! empty( $settings['button_type_switch'] ) ? $settings['button_type_switch'] : 'basic';
 			$button_global_style_preset = ! empty( $settings['button_global_style_preset'] ) ? $settings['button_global_style_preset'] : '';
@@ -3401,7 +3645,8 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			if ( ! empty( $icon_font ) && 'font_awesome_5' === $icon_font ) {
 				$icons_before = '<span class="btn-icon button-before">' . $icons . '</span>';
 			} else {
-				$icons_before = '<i class="btn-icon button-before ' . esc_attr( $icons ) . '"></i>';
+				// F19: same aria-hidden gap on the legacy FA4 path, button icon.
+				$icons_before = '<i aria-hidden="true" class="btn-icon button-before ' . esc_attr( $icons ) . '"></i>';
 			}
 		}
 
@@ -3410,12 +3655,24 @@ class L_ThePlus_Info_Box extends Plus_Widget_Base {
 			if ( ! empty( $icon_font ) && 'font_awesome_5' === $icon_font ) {
 				$icons_after = '<span class="btn-icon button-after">' . $icons . '</span>';
 			} else {
-				$icons_after = '<i class="btn-icon button-after ' . esc_attr( $icons ) . '"></i>';
+				// F19: same aria-hidden gap on the legacy FA4 path, button icon.
+				$icons_after = '<i aria-hidden="true" class="btn-icon button-after ' . esc_attr( $icons ) . '"></i>';
 			}
 		}
 
+		/*
+		 * Escape unconditionally. Previously only the style-8 branch ran
+		 * wp_kses_post(), so style-7 and style-9 -- both selectable in the free
+		 * UI -- returned the raw saved button_text straight into the rendered
+		 * anchor. button_text is a plain TEXT control with no save-time
+		 * sanitisation, so any Contributor could store markup that executed for
+		 * every visitor. wp_kses_post() keeps the formatting tags this field has
+		 * always accepted, so legitimate content renders exactly as before.
+		 */
+		$button_text = wp_kses_post( $button_text );
+
 		if ( 'style-8' === $button_style ) {
-			$button_text = $icons_before . wp_kses_post( $button_text ) . $icons_after;
+			$button_text = $icons_before . $button_text . $icons_after;
 		}
 
 		return $button_text;

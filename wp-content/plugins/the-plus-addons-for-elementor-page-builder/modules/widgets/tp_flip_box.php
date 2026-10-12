@@ -2669,8 +2669,19 @@ class L_ThePlus_Flip_Box extends Plus_Widget_Base {
 			}
 		}
 
+		/*
+		 * Escape unconditionally. Previously only the style-8 branch ran
+		 * wp_kses_post(), so style-7 and style-9 -- both selectable in the free
+		 * UI -- returned the raw saved button_text straight into the rendered
+		 * anchor. button_text is a plain TEXT control with no save-time
+		 * sanitisation, so any Contributor could store markup that executed for
+		 * every visitor. wp_kses_post() keeps the formatting tags this field has
+		 * always accepted, so legitimate content renders exactly as before.
+		 */
+		$button_text = wp_kses_post( $button_text );
+
 		if ( 'style-8' === $button_style ) {
-			$button_text = $icons_before . wp_kses_post( $button_text ) . $icons_after;
+			$button_text = $icons_before . $button_text . $icons_after;
 		}
 
 		return $button_text;

@@ -1178,5 +1178,61 @@
 				<field type="WP Login and Register: Email Message" editor_type="VISUAL">tp_cst_email_lost_message</field>
 			</fields>
         </widget>
+        <widget name="tp-carousel-anything">
+            <conditions>
+                <condition key="widgetType">tp-carousel-anything</condition>
+            </conditions>
+            <fields-in-item items_of="carousel_content">
+                <field type="Carousel Anything: Slide Title" editor_type="LINE">tab_title</field>
+            </fields-in-item>
+        </widget>
+        <widget name="tp-icon">
+            <conditions>
+                <condition key="widgetType">tp-icon</condition>
+            </conditions>
+            <fields>
+                <field type="Icon: Link" editor_type="LINK" key_of="tp_icon_link">url</field>
+            </fields>
+        </widget>
+        <widget name="tp-navigation-menu-lite">
+            <conditions>
+                <condition key="widgetType">tp-navigation-menu-lite</condition>
+            </conditions>
+            <fields-in-item items_of="ItemMenu">
+                <field type="Navigation Menu: Link" editor_type="LINK" key_of="LinkFilter">url</field>
+                <field type="Navigation Menu: Menu Text" editor_type="LINE">filterlabel</field>
+                <field type="Navigation Menu: Mobile Link" editor_type="LINK" key_of="MLinkFilter">url</field>
+                <field type="Navigation Menu: Mobile Menu Text" editor_type="LINE">Mfilterlabel</field>
+                <field type="Navigation Menu: Title" editor_type="LINE">labeltxt</field>
+                <field type="Navigation Menu: Description" editor_type="AREA">navDesc</field>
+            </fields-in-item>
+        </widget>
+        <widget name="tp-post-comment">
+            <conditions>
+                <condition key="widgetType">tp-post-comment</condition>
+            </conditions>
+            <fields>
+                <field type="Post Comment: Title" editor_type="LINE">PostTitle</field>
+                <field type="Post Comment: Button Text" editor_type="LINE">BtnTitle</field>
+                <field type="Post Comment: Placeholder Text" editor_type="LINE">PlaceholderTxt</field>
+                <field type="Post Comment: Leave Reply Text" editor_type="LINE">LeaveTxt</field>
+                <field type="Post Comment: Cancel Reply Text" editor_type="LINE">CancelTxt</field>
+            </fields>
+        </widget>
+        <widget name="tp-testimonial-listout">
+            <conditions>
+                <condition key="widgetType">tp-testimonial-listout</condition>
+            </conditions>
+            <fields-in-item items_of="testiAllList">
+                <field type="Testimonial: Content" editor_type="VISUAL">testiAuthor</field>
+                <field type="Testimonial: Title" editor_type="LINE">testiTitle</field>
+                <field type="Testimonial: Author Name" editor_type="LINE">testiLabel</field>
+                <field type="Testimonial: Author Designation" editor_type="LINE">testiDesign</field>
+            </fields-in-item>
+            <fields>
+                <field type="Testimonial: Read More Text" editor_type="LINE">redmorTxt</field>
+                <field type="Testimonial: Read Less Text" editor_type="LINE">redlesTxt</field>
+            </fields>
+        </widget>
 	</elementor-widgets>
 </wpml-config>

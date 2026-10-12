@@ -88,9 +88,9 @@ add_action( 'wp_head', function() {
 	.juhani-wishlist-btn,
 	.juhani-product-trust-badges,
 	.juhani-product-trust-badges * {
-		border-radius: 0px !important;
-		-webkit-border-radius: 0px !important;
-		-moz-border-radius: 0px !important;
+
+
+
 	}
 
 	/* ============================================================
@@ -226,7 +226,7 @@ add_action( 'wp_head', function() {
 	.woo-variation-swatches .variable-items-wrapper .variable-item:not(.radio-variable-item) {
 		background-color: #ffffff !important;
 		border: 1.5px solid #d1d5db !important;
-		border-radius: 0px !important;
+
 		color: #1f2937 !important;
 		font-size: 13px !important;
 		font-weight: 600 !important;
@@ -364,7 +364,7 @@ add_action( 'wp_head', function() {
 		border: none !important;
 		border-width: 0 !important;
 		box-shadow: none !important;
-		border-radius: 0 !important;
+
 		text-align: left !important;
 	}
 	.woocommerce-variation-price .price,
@@ -411,7 +411,7 @@ add_action( 'wp_head', function() {
 		height: 48px !important;
 		padding: 0 !important;
 		margin: 0 !important;
-		border-radius: 0px !important;
+
 		box-sizing: border-box !important;
 	}
 
@@ -429,7 +429,7 @@ add_action( 'wp_head', function() {
 		justify-content: center !important;
 		padding: 0 !important;
 		margin: 0 !important;
-		border-radius: 0px !important;
+
 		transition: background-color 0.15s ease !important;
 		user-select: none !important;
 	}
@@ -450,7 +450,7 @@ add_action( 'wp_head', function() {
 		color: #111827 !important;
 		padding: 0 !important;
 		margin: 0 !important;
-		border-radius: 0px !important;
+
 		box-shadow: none !important;
 		-moz-appearance: textfield !important;
 	}
@@ -476,7 +476,7 @@ add_action( 'wp_head', function() {
 		font-weight: 700 !important;
 		letter-spacing: 0.3px !important;
 		border: none !important;
-		border-radius: 0px !important;
+
 		box-shadow: 0 2px 5px rgba(0, 68, 124, 0.25) !important;
 		cursor: pointer !important;
 		transition: background-color 0.15s ease, transform 0.1s ease !important;
@@ -501,7 +501,7 @@ add_action( 'wp_head', function() {
 		height: 48px !important;
 		border: 1.5px solid #d1d5db !important;
 		background: #ffffff !important;
-		border-radius: 0px !important;
+
 		display: inline-flex !important;
 		align-items: center !important;
 		justify-content: center !important;
@@ -748,7 +748,7 @@ add_action( 'wp_head', function() {
 			background-color: #00447c !important;
 			box-shadow: 0 2px 6px rgba(0, 68, 124, 0.25) !important;
 			border: none !important;
-			border-radius: 0px !important;
+
 			cursor: pointer !important;
 		}
 
@@ -772,7 +772,7 @@ add_action( 'wp_head', function() {
 			box-sizing: border-box !important;
 			margin: 0 !important;
 			border: 1.5px solid #d1d5db !important;
-			border-radius: 0px !important;
+
 			background: #ffffff !important;
 		}
 
@@ -802,7 +802,7 @@ add_action( 'wp_head', function() {
 			padding: 8px 4px !important;
 			background: #f8fafc !important;
 			border: 1px solid #e2e8f0 !important;
-			border-radius: 0px !important;
+
 			gap: 4px !important;
 			text-decoration: none !important;
 			box-sizing: border-box !important;
@@ -918,7 +918,7 @@ add_action( 'wp_footer', function() {
 					wishBtn.title = 'Add to Wishlist';
 					wishBtn.setAttribute('aria-label', 'Add to Wishlist');
 					wishBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00447c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>';
-					
+
 					wishBtn.addEventListener('click', function(e) {
 						e.preventDefault();
 						wishBtn.classList.toggle('is-active');

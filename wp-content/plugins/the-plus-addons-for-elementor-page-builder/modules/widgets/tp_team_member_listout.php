@@ -1531,6 +1531,11 @@ class L_ThePlus_Team_Member_ListOut extends Plus_Widget_Base {
 		$tp_enable_global_scroll_animation = true;
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -1590,8 +1595,21 @@ class L_ThePlus_Team_Member_ListOut extends Plus_Widget_Base {
 		$data_class  = '';
 
 		if ( ! empty( $layout ) ) {
-			$data_class .= l_theplus_get_layout_list_class( $layout );
-			$layout_attr = l_theplus_get_layout_list_attr( $layout );
+			/*
+			 * TM4 (reports/widget-test/team-member): Free does not implement a
+			 * Carousel layout -- the "Carousel (PRO)" option is still selectable
+			 * here, but l_theplus_get_layout_list_class()/_attr() have no branch
+			 * for it, so no data-layout-type attribute was emitted at all. The
+			 * shared isotope init in
+			 * assets/js/main/posts-listing/plus-posts-listing.js then read
+			 * jQuery's .data('layout-type') as undefined and built the literal
+			 * class string "layout-undefined". Fall back to the Grid layout
+			 * class/attr for Carousel so Free always emits a defined isotope
+			 * layout; $layout itself is left untouched for every other use below.
+			 */
+			$layout_for_isotope = ( 'carousel' === $layout ) ? 'grid' : $layout;
+			$data_class        .= l_theplus_get_layout_list_class( $layout_for_isotope );
+			$layout_attr         = l_theplus_get_layout_list_attr( $layout_for_isotope );
 		} else {
 			$data_class .= ' list-isotope';
 		}
@@ -1685,7 +1703,17 @@ class L_ThePlus_Team_Member_ListOut extends Plus_Widget_Base {
 
 			$output .= '</div>';
 		} else {
-			$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			/*
+			 * B7 (widget-test): this upsell notice was printed to every site
+			 * visitor, in ungrammatical English, whenever a Pro-only style was
+			 * selected while running Free -- confusing for a visitor who has no
+			 * way to act on it. Keep it inside the Elementor editor, where the
+			 * person who picked the style can actually see and fix it; render
+			 * nothing on the live frontend.
+			 */
+			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+				$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			}
 		}
 
 		echo $output;
@@ -1844,28 +1872,28 @@ class L_ThePlus_Team_Member_ListOut extends Plus_Widget_Base {
 				$team_social_contnet .= '<ul class="team-social-list">';
 
 			if ( ! empty( $website ) ) {
-				$team_social_contnet .= '<li class="team-profile-link"><a rel="' . esc_attr( $website_nofollow ) . '" href="' . esc_url( $website ) . '" target="' . esc_attr( $website_blank ) . '"><i class="fa fa-globe" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="team-profile-link"><a aria-label="' . esc_attr__( 'Website', 'tpebl' ) . '" rel="' . esc_attr( $website_nofollow ) . '" href="' . esc_url( $website ) . '" target="' . esc_attr( $website_blank ) . '"><i class="fa fa-globe" aria-hidden="true"></i></a>';
 			}
 			if ( ! empty( $facebook_link ) ) {
-				$team_social_contnet .= '<li class="fb-link"><a rel="' . esc_attr( $fb_link_nofollow ) . '" href="' . esc_url( $facebook_link ) . '" target="' . esc_attr( $fblink_blank ) . '"><i class="fa fa-facebook" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="fb-link"><a aria-label="' . esc_attr__( 'Facebook', 'tpebl' ) . '" rel="' . esc_attr( $fb_link_nofollow ) . '" href="' . esc_url( $facebook_link ) . '" target="' . esc_attr( $fblink_blank ) . '"><i class="fa fa-facebook" aria-hidden="true"></i></a>';
 			}
 			if ( ! empty( $twit_link ) ) {
-				$team_social_contnet .= '<li class="twitter-link"><a rel="' . esc_attr( $twit_link_nofollow ) . '" href="' . esc_url( $twit_link ) . '" target="' . esc_attr( $twit_link_blank ) . '"><i class="fa fa-twitter" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="twitter-link"><a aria-label="' . esc_attr__( 'Twitter', 'tpebl' ) . '" rel="' . esc_attr( $twit_link_nofollow ) . '" href="' . esc_url( $twit_link ) . '" target="' . esc_attr( $twit_link_blank ) . '"><i class="fa fa-twitter" aria-hidden="true"></i></a>';
 			}
 			if ( ! empty( $insta_link ) ) {
-				$team_social_contnet .= '<li class="instagram-link"><a rel="' . esc_attr( $insta_link_nofollow ) . '" href="' . esc_url( $insta_link ) . '" target="' . esc_attr( $insta_link_blank ) . '"><i class="fa fa-instagram" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="instagram-link"><a aria-label="' . esc_attr__( 'Instagram', 'tpebl' ) . '" rel="' . esc_attr( $insta_link_nofollow ) . '" href="' . esc_url( $insta_link ) . '" target="' . esc_attr( $insta_link_blank ) . '"><i class="fa fa-instagram" aria-hidden="true"></i></a>';
 			}
 			if ( ! empty( $google_link ) ) {
-				$team_social_contnet .= '<li class="gplus-link"><a rel="' . esc_attr( $google_link_nofollow ) . '" href="' . esc_url( $google_link ) . '" target="' . esc_attr( $google_link_blank ) . '"><i class="fa fa-google-plus" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="gplus-link"><a aria-label="' . esc_attr__( 'Google Plus', 'tpebl' ) . '" rel="' . esc_attr( $google_link_nofollow ) . '" href="' . esc_url( $google_link ) . '" target="' . esc_attr( $google_link_blank ) . '"><i class="fa fa-google-plus" aria-hidden="true"></i></a>';
 			}
 			if ( ! empty( $linked_link ) ) {
-				$team_social_contnet .= '<li class="linkedin-link"><a rel="' . esc_attr( $linked_link_nofollow ) . '" href="' . esc_url( $linked_link ) . '" target="' . esc_attr( $linked_link_blank ) . '"><i class="fa fa-linkedin" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="linkedin-link"><a aria-label="' . esc_attr__( 'LinkedIn', 'tpebl' ) . '" rel="' . esc_attr( $linked_link_nofollow ) . '" href="' . esc_url( $linked_link ) . '" target="' . esc_attr( $linked_link_blank ) . '"><i class="fa fa-linkedin" aria-hidden="true"></i></a>';
 			}
 			if ( ! empty( $email_link ) ) {
-				$team_social_contnet .= '<li class="team-profile-link"><a rel="' . esc_attr( $email_link_nofollow ) . '" href="' . esc_url( 'mailto:' . sanitize_email( $email_link ), array( 'mailto' ) ) . '" target="' . esc_attr( $email_link_blank ) . '"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="team-profile-link"><a aria-label="' . esc_attr__( 'Email', 'tpebl' ) . '" rel="' . esc_attr( $email_link_nofollow ) . '" href="' . esc_url( 'mailto:' . sanitize_email( $email_link ), array( 'mailto' ) ) . '" target="' . esc_attr( $email_link_blank ) . '"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>';
 			}
 			if ( ! empty( $phone_link ) ) {
-				$team_social_contnet .= '<li class="team-profile-link"><a rel="' . esc_attr( $phone_link_nofollow ) . '" href="' . esc_url( 'tel:' . preg_replace( '/[^0-9+\-\s()]/', '', $phone_link ), array( 'tel' ) ) . '" target="' . esc_attr( $phone_link_blank ) . '"><i class="fa fa-phone" aria-hidden="true"></i></a>';
+				$team_social_contnet .= '<li class="team-profile-link"><a aria-label="' . esc_attr__( 'Phone', 'tpebl' ) . '" rel="' . esc_attr( $phone_link_nofollow ) . '" href="' . esc_url( 'tel:' . preg_replace( '/[^0-9+\-\s()]/', '', $phone_link ), array( 'tel' ) ) . '" target="' . esc_attr( $phone_link_blank ) . '"><i class="fa fa-phone" aria-hidden="true"></i></a>';
 			}
 
 				$team_social_contnet .= '</ul>';

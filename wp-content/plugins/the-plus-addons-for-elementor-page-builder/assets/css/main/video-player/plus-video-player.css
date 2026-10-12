@@ -450,3 +450,45 @@ button.ts-video-play-btn.ts-video-blay-btn-youtube {
     height: 100% !important;
     object-fit: cover;
 }
+
+/* Keyboard pause control for autoplaying self hosted video (WCAG 2.2.2).
+   Added 6.5.2. Uses its own class names only, so no existing rule changes.
+   The container is a zero height positioned box: it anchors the focused
+   button without altering the flow or the wrapper's own positioning. */
+.tpae-video-a11y {
+    position: relative;
+    width: 100%;
+    height: 0;
+}
+
+.tpae-video-a11y__btn {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.tpae-video-a11y__btn:focus {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 9;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 8px 16px;
+    overflow: visible;
+    clip: auto;
+    background: #14181f;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+}

@@ -77,12 +77,18 @@ class ThePlus_Everest_form extends Plus_Widget_Base {
 	}
 
 	/**
-	 * It is use for widget add in catch or not.
+	 * Whether Elementor's Element Cache may freeze this widget's rendered
+	 * HTML into post meta and reuse it for every visitor within the TTL.
+	 * render() delegates to Everest Forms' own shortcode, which embeds a
+	 * fresh CSRF nonce/anti-spam timestamp on every real render -- freezing
+	 * that markup means every visitor after the first gets the same stale
+	 * token, which Everest Forms will treat as invalid on submit. Must
+	 * stay `true` (COMPAT-001).
 	 *
 	 * @since 6.0.6
 	 */
 	public function is_dynamic_content(): bool {
-		return false;
+		return true;
 	}
 
 	/**

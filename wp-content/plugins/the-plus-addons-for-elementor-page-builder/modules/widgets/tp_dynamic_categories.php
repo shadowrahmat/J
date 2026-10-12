@@ -2496,7 +2496,17 @@ class L_ThePlus_Dynamic_Categories extends Plus_Widget_Base {
 		if ( ! $dynamic_categories ) {
 			$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'Terms are not found', 'tpebl' ) . '</h3>';
 		} elseif ( 'carousel' === $layout ) {
-			$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			/*
+			 * B7 (widget-test): this upsell notice was printed to every site
+			 * visitor, in ungrammatical English, whenever a Pro-only style was
+			 * selected while running Free -- confusing for a visitor who has no
+			 * way to act on it. Keep it inside the Elementor editor, where the
+			 * person who picked the style can actually see and fix it; render
+			 * nothing on the live frontend.
+			 */
+			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+				$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			}
 			echo $output;
 		} else {
 			if ( ! is_object( $dynamic_categories ) ) {
@@ -2796,6 +2806,18 @@ class L_ThePlus_Dynamic_Categories extends Plus_Widget_Base {
 				'parent'     => ( ( $settings['hide_sub_cat'] ) && 'yes' === $settings['hide_sub_cat'] ) ? 0 : '',
 			)
 		);
+
+		/*
+		 * get_terms() returns a WP_Error (not an array) for an empty/unregistered
+		 * taxonomy -- e.g. one belonging to a since-deactivated plugin. The caller
+		 * foreach()es the return value and reads ->term_id/->name/->slug off each
+		 * item; iterating a WP_Error object's public properties instead produces
+		 * "Attempt to read property on array" warnings and broken/empty cards
+		 * instead of a clean "no categories" result.
+		 */
+		if ( is_wp_error( $dynamic_categories ) ) {
+			return array();
+		}
 
 		return $dynamic_categories;
 	}

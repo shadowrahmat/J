@@ -1988,6 +1988,11 @@ class L_ThePlus_Process_Steps extends Plus_Widget_Base {
 		);
 		$this->end_controls_section();
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -2040,9 +2045,17 @@ class L_ThePlus_Process_Steps extends Plus_Widget_Base {
 			$mobile_class = 'mobile';
 		}
 
+		/*
+		 * The wrapper used to live inside this same `if`, so an emptied
+		 * repeater rendered nothing at all -- not even the widget's own
+		 * container div, unlike Accordion/Tabs-Tours/Style-List which still
+		 * emit a stable, selectable wrapper for an empty state. Opened here,
+		 * unconditionally, so the widget is never silently invisible.
+		 */
+		$output = '<div id="' . esc_attr( $uid ) . '" class="tp-process-steps-widget ' . esc_attr( $settings['ps_style'] ) . ' ' . esc_attr( $seprator_cusom_img_class ) . ' ' . esc_attr( $mobile_class ) . ' ">';
+
 		if ( ! empty( $settings['loop_content'] ) ) {
-			$output = '<div id="' . esc_attr( $uid ) . '" class="tp-process-steps-widget ' . esc_attr( $settings['ps_style'] ) . ' ' . esc_attr( $seprator_cusom_img_class ) . ' ' . esc_attr( $mobile_class ) . ' ">';
-			$index  = 0;
+			$index = 0;
 
 			$loop_content = $settings['loop_content'];
 			foreach ( $loop_content as $index => $item ) {
@@ -2207,10 +2220,10 @@ class L_ThePlus_Process_Steps extends Plus_Widget_Base {
 				$output .= '</div>';
 				++$index;
 			}
-
-			$output .= '</div>';
-
-			echo $output;
 		}
+
+		$output .= '</div>';
+
+		echo $output;
 	}
 }

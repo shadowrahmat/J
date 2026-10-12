@@ -37,7 +37,7 @@
             }
         }
         function s() {
-            a(window).width() > 767 ? (a(l).addClass("plus-column-rules"),
+            "mobile" !== elementorFrontend.getCurrentDeviceMode() ? (a(l).addClass("plus-column-rules"),
             a(l).removeClass("plus-no-column-rules")) : (a(l).removeClass("plus-column-rules"),
             a(l).addClass("plus-no-column-rules"))
         }

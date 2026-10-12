@@ -36,10 +36,10 @@ if ( ! empty( $testimonial_title ) ) {
 				$title = implode( ' ', $tilimit_words );
 			}
 		} elseif ( $title_by_limit === 'letters' ) {
-			$tiltn             = strlen( $testimonial_title );
-			$tilimit_words     = substr( $testimonial_title, 0, $title_limit );
-			$tiremaining_words = substr( $testimonial_title, $title_limit, $tiltn );
-			if ( strlen( $testimonial_title ) > $title_limit ) {
+			$tiltn             = mb_strlen( $testimonial_title );
+			$tilimit_words     = mb_substr( $testimonial_title, 0, $title_limit );
+			$tiremaining_words = mb_substr( $testimonial_title, $title_limit, $tiltn );
+			if ( mb_strlen( $testimonial_title ) > $title_limit ) {
 				$title = $tilimit_words . '<span class="testi-more-text" style = "display:none" >' . wp_kses_post( $tiremaining_words ) . '</span><a ' . $attr . ' class="testi-readbtn"> ' . esc_html( $redmor_txt ) . ' </a>';
 			} else {
 				$title = $tilimit_words;

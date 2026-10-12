@@ -862,7 +862,17 @@ class ThePlus_Post_Author extends Plus_Widget_Base {
 				$outputrole  .= '<span class="tp-author-role">' . esc_html( $settings['roleLabel'] ) . $author_role . '</span>';
 			}
 			if ( ! empty( $show_avatar ) ) {
-				$outputavatar .= '<a href="' . esc_url( $author_page_url ) . '" rel="' . esc_attr__( 'author', 'tpebl' ) . '" class="author-avatar tp-author-trans"><img src="' . esc_url( $avatar_url ) . '" /></a>';
+				/*
+				 * The avatar had no alt, and it is the ONLY content of this link -- so
+				 * the link had no accessible name at all and a screen reader announced
+				 * the image filename. Naming it after the author gives the link its
+				 * name too.
+				 *
+				 * Resolved directly rather than reusing $author_name: that variable is
+				 * only assigned inside the "show name" branch above, so it is undefined
+				 * whenever the avatar is shown without the name.
+				 */
+				$outputavatar .= '<a href="' . esc_url( $author_page_url ) . '" rel="' . esc_attr__( 'author', 'tpebl' ) . '" class="author-avatar tp-author-trans"><img src="' . esc_url( $avatar_url ) . '" alt="' . esc_attr( get_the_author_meta( 'display_name', $post->post_author ) ) . '" /></a>';
 			}
 			if ( ! empty( $show_bio ) ) {
 				$outputbio .= '<div class="author-bio tp-author-trans" >' . esc_html( $author_bio ) . '</div>';

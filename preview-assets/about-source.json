@@ -1,0 +1,476 @@
+{
+    "page_id": 2,
+    "page_url": "http://localhost/juhani/about/",
+    "meta_hash": "aec6d2393bf73408c917b6fd4d98603fa4faba70ff938f4c5ec7189c5c9c0585",
+    "content": [
+        {
+            "id": "d1a9d61",
+            "type": "container",
+            "content": {
+                "background_image": {
+                    "url": "http://localhost/juhani/wp-content/uploads/2026/04/Banner-02.webp",
+                    "id": 180,
+                    "size": "",
+                    "alt": "",
+                    "source": "library"
+                }
+            }
+        },
+        {
+            "id": "7b3de1c",
+            "type": "container",
+            "content": {
+                "background_image": {
+                    "url": "",
+                    "id": "",
+                    "size": "",
+                    "alt": "",
+                    "source": "library"
+                }
+            }
+        },
+        {
+            "id": "510316d",
+            "type": "heading",
+            "content": {
+                "title": ""
+            }
+        },
+        {
+            "id": "2544339",
+            "type": "text-editor",
+            "content": {
+                "editor": "<p>Stronger Nets Brighter Tomorrows</p>"
+            }
+        },
+        {
+            "id": "6cf19945",
+            "type": "image",
+            "content": {
+                "image": {
+                    "id": 209,
+                    "url": "http://localhost/juhaniwp-content/uploads/2026/04/About-01-1.webp",
+                    "alt": "",
+                    "source": "library",
+                    "size": ""
+                }
+            }
+        },
+        {
+            "id": "32a8b8c",
+            "type": "heading",
+            "content": {
+                "title": "১০+"
+            }
+        },
+        {
+            "id": "3a42885",
+            "type": "text-editor",
+            "content": {
+                "editor": "বছরের অভিজ্ঞতা "
+            }
+        },
+        {
+            "id": "c206ee7",
+            "type": "heading",
+            "content": {
+                "title": "অভিজ্ঞতার শক্তিতে - গুণমানের ধারাবাহিকতায় এগিয়ে "
+            }
+        },
+        {
+            "id": "fefe8ac",
+            "type": "text-editor",
+            "content": {
+                "editor": "আমরা দৈনন্দিন ব্যবহার-উপযোগী টেকসই ফিশিং নেট ও মাছ ধরার অন্যান্য সরঞ্জাম সরবরাহ করি, যাতে জেলে ও মাছচাষিদের কাজ আরও সহজ হয়।"
+            }
+        },
+        {
+            "id": "8b25f60",
+            "type": "heading",
+            "content": {
+                "title": "আমাদের লক্ষ্য"
+            }
+        },
+        {
+            "id": "d7705fe",
+            "type": "heading",
+            "content": {
+                "title": "প্রত্যেক মৎস্যজীবীর জন্য একটি নিরাপদ ও শক্তিশালী ভবিষ্যৎ"
+            }
+        },
+        {
+            "id": "74ea71a",
+            "type": "text-editor",
+            "content": {
+                "editor": "আমরা নির্ভরযোগ্য মাছ ধরার জাল ও সরঞ্জাম সরবরাহে প্রতিশ্রুতিবদ্ধ, যা জেলেদের আত্মবিশ্বাসের সাথে কাজ করতে সহায়তা করে। মানসম্মত পণ্য, কার্যকর সমাধান এবং দীর্ঘমেয়াদী সহায়তার মাধ্যমে আমরা মাছ ধরার অভিজ্ঞতাকে আরও নিরাপদ এবং জনগোষ্ঠীকে আরও শক্তিশালী করে গড়ে তোলার লক্ষ্য রাখি।"
+            }
+        },
+        {
+            "id": "f091549",
+            "type": "heading",
+            "content": {
+                "title": " কেন আমাদেরকেই বেছে নেবেন"
+            }
+        },
+        {
+            "id": "c5e0a10",
+            "type": "text-editor",
+            "content": {
+                "editor": "<p>আমাদের লক্ষ্য - সাশ্রয়ী ও কার্যকর ফিশিং সলিউশন সরবরাহ করা, যা আপনার কাজকে করে আরও সহজ ও দ্রুত।</p>"
+            }
+        },
+        {
+            "id": "43aa4373",
+            "type": "icon-box",
+            "content": {
+                "title_text": "কঠোর মান নিয়ন্ত্রণ",
+                "description_text": "আমাদের প্রতিটি জাল শক্তি এবং স্থায়িত্বের পরীক্ষায় উত্তীর্ণ \n"
+            }
+        },
+        {
+            "id": "5fe0a71c",
+            "type": "icon-box",
+            "content": {
+                "title_text": "দ্রুত ও সুরক্ষিত ডেলিভারি ",
+                "description_text": "প্রতিটি অর্ডার পৌঁছে যায় নিরাপদে এবং নির্ধারিত সময়ে \n"
+            }
+        },
+        {
+            "id": "675c60ce",
+            "type": "icon-box",
+            "content": {
+                "title_text": "মাঠপর্যায়ে পরীক্ষিত ও সমাদৃত",
+                "description_text": "জেলে ও মাছচাষিদের বিশ্বস্ততা ও নির্ভরতার প্রতীক  \n"
+            }
+        },
+        {
+            "id": "7433224",
+            "type": "icon-box",
+            "content": {
+                "title_text": "টেকসই ভবিষ্যৎ",
+                "description_text": "দায়িত্বশীল মৎস্য আহরণ পদ্ধতি ও উপকূলীয় জনগোষ্ঠীকে সহায়তা করা।"
+            }
+        },
+        {
+            "id": "ccdbb65",
+            "type": "container",
+            "content": {
+                "background_image": {
+                    "url": "http://localhost/juhani/wp-content/uploads/2026/09/ChatGPT-Image-Sep-10-2026-12_25_27-PM.png",
+                    "id": 1139,
+                    "size": "",
+                    "alt": "",
+                    "source": "library"
+                }
+            }
+        },
+        {
+            "id": "5cf8a46",
+            "type": "heading",
+            "content": {
+                "title": "আমাদের প্রভাব"
+            }
+        },
+        {
+            "id": "9beb8d9",
+            "type": "heading",
+            "content": {
+                "title": "আরও শক্তিশালী সম্প্রদায়<br>\nআরও সুখী আগামীকাল"
+            }
+        },
+        {
+            "id": "bc1eb6e",
+            "type": "text-editor",
+            "content": {
+                "editor": "সমুদ্রে ও তার বাইরে আরও ভালো সুযোগ সৃষ্টি করে—এমন নির্ভরযোগ্য পণ্য পৌঁছে দেওয়ার লক্ষ্যে আমরা জেলে ও অংশীদারদের সাথে নিবিড়ভাবে কাজ করি।"
+            }
+        },
+        {
+            "id": "fc5e478",
+            "type": "button",
+            "content": {
+                "text": "Contact us"
+            }
+        },
+        {
+            "id": "3cb3e13",
+            "type": "icon-box",
+            "content": {
+                "title_text": "৫০০+",
+                "description_text": "জেলেদের সহায়তা প্রদান"
+            }
+        },
+        {
+            "id": "59eb3a1",
+            "type": "icon-box",
+            "content": {
+                "title_text": "২৫+",
+                "description_text": "উপকূলীয় সম্প্রদায়"
+            }
+        },
+        {
+            "id": "c0919c3",
+            "type": "icon-box",
+            "content": {
+                "title_text": "১০+",
+                "description_text": "দীর্ঘদিনের সম্মিলিত অভিজ্ঞতা"
+            }
+        },
+        {
+            "id": "eb97d80",
+            "type": "heading",
+            "content": {
+                "title": "সর্বশেষ অন্তর্দৃষ্টি ও আপডেট"
+            }
+        },
+        {
+            "id": "b132f1f",
+            "type": "text-editor",
+            "content": {
+                "editor": "বিশেষজ্ঞসুলভ জ্ঞান, মাছ ধরার পরামর্শ এবং সংশ্লিষ্ট শিল্পের হালনাগাদ তথ্য"
+            }
+        },
+        {
+            "id": "1a917d9",
+            "type": "container",
+            "content": {
+                "hide_desktop": "hidden-desktop",
+                "hide_tablet": "hidden-tablet",
+                "hide_mobile": "hidden-mobile"
+            }
+        },
+        {
+            "id": "e24da5e",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "লেটেস্ট ইনসাইট ও এক্সপার্ট গাইড"
+            }
+        },
+        {
+            "id": "d91d431",
+            "type": "button",
+            "content": {
+                "text": "আরও পড়ুন"
+            }
+        },
+        {
+            "id": "7910dc6",
+            "type": "posts",
+            "content": {
+                "text": "Load More"
+            }
+        },
+        {
+            "id": "6f73553",
+            "type": "container",
+            "content": {
+                "hide_desktop": "hidden-desktop",
+                "hide_tablet": "hidden-tablet",
+                "hide_mobile": "hidden-mobile"
+            }
+        },
+        {
+            "id": "0b158d0",
+            "type": "image",
+            "content": {
+                "image": {
+                    "id": 209,
+                    "url": "http://localhost/juhaniwp-content/uploads/2026/04/About-01-1.webp",
+                    "alt": "",
+                    "source": "library",
+                    "size": ""
+                }
+            }
+        },
+        {
+            "id": "15ba19e",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "১০+"
+            }
+        },
+        {
+            "id": "4ac9ffb",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "বছরের অভিজ্ঞতা "
+            }
+        },
+        {
+            "id": "23cd7b1",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "অভিজ্ঞতার শক্তিতে - গুণমানের ধারাবাহিকতায় এগিয়ে "
+            }
+        },
+        {
+            "id": "bc3b4d3",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "আমরা কে/কারা"
+            }
+        },
+        {
+            "id": "90137cf",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "আপনার নির্ভরযোগ্য ফিশিং গিয়ার সাপ্লায়ার"
+            }
+        },
+        {
+            "id": "389da7c",
+            "type": "container",
+            "content": {
+                "hide_desktop": "hidden-desktop",
+                "hide_tablet": "hidden-tablet",
+                "hide_mobile": "hidden-mobile"
+            }
+        },
+        {
+            "id": "b47b0f2",
+            "type": "tp-heading-title",
+            "content": {
+                "title": " কেন আমাদেরকেই বেছে নেবেন"
+            }
+        },
+        {
+            "id": "198c7e3",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "উন্নত মান এবং নির্ভরযোগ্যতার অঙ্গীকার"
+            }
+        },
+        {
+            "id": "a063425",
+            "type": "icon-box",
+            "content": {
+                "title_text": "কঠোর মান নিয়ন্ত্রণ",
+                "description_text": "আমাদের প্রতিটি জাল শক্তি এবং স্থায়িত্বের পরীক্ষায় উত্তীর্ণ \n"
+            }
+        },
+        {
+            "id": "af7eb4d",
+            "type": "icon-box",
+            "content": {
+                "title_text": "দ্রুত ও সুরক্ষিত ডেলিভারি ",
+                "description_text": "প্রতিটি অর্ডার পৌঁছে যায় নিরাপদে এবং নির্ধারিত সময়ে \n"
+            }
+        },
+        {
+            "id": "fbdcc23",
+            "type": "icon-box",
+            "content": {
+                "title_text": "মাঠপর্যায়ে পরীক্ষিত ও সমাদৃত",
+                "description_text": "জেলে ও মাছচাষিদের বিশ্বস্ততা ও নির্ভরতার প্রতীক  \n"
+            }
+        },
+        {
+            "id": "274377a",
+            "type": "image",
+            "content": {
+                "image": {
+                    "id": 210,
+                    "url": "http://localhost/juhaniwp-content/uploads/2026/04/About-02.webp",
+                    "alt": "",
+                    "source": "library",
+                    "size": ""
+                }
+            }
+        },
+        {
+            "id": "7845b08",
+            "type": "container",
+            "content": {
+                "hide_desktop": "hidden-desktop",
+                "hide_tablet": "hidden-tablet",
+                "hide_mobile": "hidden-mobile"
+            }
+        },
+        {
+            "id": "ec2c7dc",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "৪.৯"
+            }
+        },
+        {
+            "id": "af05508",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "এক্সিলেন্ট"
+            }
+        },
+        {
+            "id": "8cff51e",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "৯০০০+ গ্রাহকের মতামত"
+            }
+        },
+        {
+            "id": "143e6e3",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "“চমৎকার মানের এবং খুব টেকসই জাল।”"
+            }
+        },
+        {
+            "id": "f73329c",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "- রহমান ফিশারিজ "
+            }
+        },
+        {
+            "id": "cc6a7b1",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "“পাইকারি অর্ডারের জন্য নির্ভরযোগ্য সরবরাহকারী।”"
+            }
+        },
+        {
+            "id": "54de639",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "- গ্লোবাল অ্যাকুয়া সাপ্লাইস"
+            }
+        },
+        {
+            "id": "980e0fd",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "“শক্তিশালী, হালকা এবং সহজে ব্যবহারযোগ্য।”"
+            }
+        },
+        {
+            "id": "7e83fa1",
+            "type": "tp-heading-title",
+            "content": {
+                "title": "- কামাল হাসান, মৎস্যজীবী "
+            }
+        }
+    ],
+    "posts": [
+        {
+            "id": 206,
+            "title": "বাংলাদেশে মৎস্য চাষে জালের ব্যবহার : প্রয়োজনীয় নির্দেশিকা",
+            "url": "http://localhost/juhani/fishing-nets-for-fish-farming-in-bangladesh-aquaculture-guide/",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/40-ghor-net-03.webp",
+            "excerpt": "বাংলাদেশে মৎস্য চাষের পরিধি দ্রুত বিস্তৃত হচ্ছে। এই অগ্রযাত্রায় অধিক উৎপাদন ও সঠিক ব্যবস্থাপনার জন্য সঠিক জাল নির্বাচন এখন সময়ের দাবি। উন্নত মানের জাল কেবল মাছের নিরাপত্তা নিশ্চিত করে না, বরং চাষিদের কাজকেও করে তোলে আরও সুশৃঙ্খল ও কার্যকর। মৎস্য চাষে জালের গুরুত্ব ও সঠিক নির্বাচনঃ&nbsp; অ্যাকুয়াকালচার বা মৎস্য চাষে সূক্ষ্ম বুননের জালের (Fine Mesh [&hellip;]"
+        },
+        {
+            "id": 205,
+            "title": "বাংলাদেশে নাইলন ফিশিং নেটের ব্যবহার ও এর সুবিধাসমূহ",
+            "url": "http://localhost/juhani/benefits-of-using-nylon-fishing-nets-in-bangladesh/",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/18-ghor-net-02.webp",
+            "excerpt": "বাংলাদেশের মৎস্যজীবী এবং বাণিজ্যিক মৎস্যচাষীদের কাছে নাইলন ফিশিং নেট বর্তমানে অন্যতম জনপ্রিয় নাম। এর শক্তি, নমনীয়তা এবং দীর্ঘমেয়াদী কার্যকারিতা একে মৎস্যশিল্পের অবিচ্ছেদ্য অংশে পরিণত করেছে।&nbsp; স্থায়িত্ব ও সহনক্ষমতাঃ&nbsp; নাইলন জালের সবচাইতে বড় বৈশিষ্ট্য হলো এর দীর্ঘস্থায়ীত্ব। এই জালগুলো সহজে ছিঁড়ে যায় না, যা বাংলাদেশের নদী এবং মৎস্য খামারগুলোর নিয়মিত ব্যবহারের জন্য অত্যন্ত উপযোগী। প্রতিকূল পরিবেশে [&hellip;]"
+        },
+        {
+            "id": 1,
+            "title": "সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট",
+            "url": "http://localhost/juhani/how-to-choose-the-right-fishing-net-in-bangladesh/",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/36-ghor-net-02.webp",
+            "excerpt": "মৎস্য আহরণে কাঙ্ক্ষিত সাফল্য এবং জালের দীর্ঘস্থায়িত্ব নিশ্চিত করতে সঠিক ফিশিং নেট নির্বাচন অত্যন্ত গুরুত্বপূর্ণ। বাংলাদেশের নদী, পুকুর কিংবা বাণিজ্যিক মৎস্য খামার &#8211; সবক্ষেত্রেই জালের সঠিক ব্যবহার কাজের দক্ষতা ও উৎপাদনশীলতাকে বহুগুণ বাড়িয়ে দিতে পারে।&nbsp; সঠিক জাল নির্বাচনে যে বিষয়গুলো বিবেচনা করা জরুরি জালের ছিদ্র বা মেশ সাইজঃ&nbsp; মাছের আকার অনুযায়ী জালের ছিদ্রের মাপ নির্ধারণ [&hellip;]"
+        }
+    ]
+}

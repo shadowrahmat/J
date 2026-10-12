@@ -2854,6 +2854,11 @@ class L_ThePlus_Data_Table extends Plus_Widget_Base {
 
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -3024,9 +3029,11 @@ class L_ThePlus_Data_Table extends Plus_Widget_Base {
 									$toolbox = 'id="' . esc_attr( $uniqid ) . '"' . $this->get_render_attribute_string( 'current_' . $head['_id'] ) . ' data-local="true" ' . $this->get_render_attribute_string( $_tooltip ) . '';
 								}
 
+								$aria_sort = ( 'yes' === $settings['sortable'] && true === $first_row_th ) ? ' aria-sort="none"' : '';
+
 								if ( 'cell' === $head['header_content_type'] ) {
 									?>
-										<th <?php echo $toolbox; ?> scope="col">
+										<th <?php echo $toolbox; ?> scope="col"<?php echo $aria_sort; ?>>
 											<span class="sort-style">
 											<span <?php echo $this->get_render_attribute_string( 'plus_table__text' ); ?>>
 											<?php

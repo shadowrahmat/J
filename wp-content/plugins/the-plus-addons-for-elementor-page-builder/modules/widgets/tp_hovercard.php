@@ -146,7 +146,6 @@ class ThePlus_Hovercard extends Plus_Widget_Base {
 					'h4'   => esc_html__( 'H4', 'tpebl' ),
 					'h5'   => esc_html__( 'H5', 'tpebl' ),
 					'h6'   => esc_html__( 'H6', 'tpebl' ),
-					'h6'   => esc_html__( 'H6', 'tpebl' ),
 					'p'    => esc_html__( 'p', 'tpebl' ),
 					'a'    => esc_html__( 'a', 'tpebl' ),
 					'none' => esc_html__( 'None', 'tpebl' ),
@@ -214,7 +213,6 @@ class ThePlus_Hovercard extends Plus_Widget_Base {
 					'h3'    => esc_html__( 'H3', 'tpebl' ),
 					'h4'    => esc_html__( 'H4', 'tpebl' ),
 					'h5'    => esc_html__( 'H5', 'tpebl' ),
-					'h6'    => esc_html__( 'H6', 'tpebl' ),
 					'h6'    => esc_html__( 'H6', 'tpebl' ),
 					'p'     => esc_html__( 'p', 'tpebl' ),
 					'a'     => esc_html__( 'a', 'tpebl' ),
@@ -2909,15 +2907,34 @@ class ThePlus_Hovercard extends Plus_Widget_Base {
 				if ( $item['content_tag'] === 'html' && ! empty( $item['html_content'] ) ) {
 					$loopitem .= wp_kses_post( $item['html_content'] );
 				}
+				/*
+				 * Raw <style>/<script> was gated on the VIEWER's capability, not the
+				 * AUTHOR's. A Contributor could save script_content and it stayed inert
+				 * for visitors but executed verbatim in the browser of any administrator
+				 * who opened the page — Contributor+ stored XSS into an admin session,
+				 * i.e. privilege escalation. wp_kses_post() is no defence here: it is an
+				 * HTML sanitiser and passes a JavaScript body through untouched.
+				 *
+				 * The author must now also be trusted with unfiltered_html. This gate is
+				 * strictly MORE restrictive than before — it can only ever render less,
+				 * never more — so no site that works today can start behaving differently
+				 * except by no longer executing content it should never have executed.
+				 */
+				$tpae_raw_author_trusted = user_can(
+					(int) get_post_field( 'post_author', get_the_ID() ),
+					'unfiltered_html'
+				);
+
 				if ( $item['content_tag'] === 'style' && ! empty( $item['style_content'] ) ) {
-					if ( current_user_can( 'manage_options' ) ) {
+					if ( $tpae_raw_author_trusted && current_user_can( 'manage_options' ) ) {
 						$sanitized_style = preg_replace( '#</\s*(style|script)#i', '<\\/\\1', (string) $item['style_content'] );
 						$loopitem       .= '<style>' . $sanitized_style . '</style>';
 					}
 				}
 				if ( $item['content_tag'] === 'script' && ! empty( $item['script_content'] ) ) {
-					$sanitized_script = current_user_can( 'manage_options' ) ? wp_kses_post( $item['script_content'] ) : '';
-					$loopitem        .= wp_print_inline_script_tag( $sanitized_script );
+					if ( $tpae_raw_author_trusted && current_user_can( 'manage_options' ) ) {
+						$loopitem .= wp_get_inline_script_tag( $item['script_content'] );
+					}
 				}
 			}
 

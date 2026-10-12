@@ -4198,6 +4198,11 @@ class L_ThePlus_Blog_ListOut extends Plus_Widget_Base {
 		$tp_enable_global_scroll_animation = true;
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -4503,7 +4508,7 @@ class L_ThePlus_Blog_ListOut extends Plus_Widget_Base {
 					}
 
 					$load_more_anchor_attr .= '" data-layout="' . esc_attr( $layout ) . '" data-offset-posts="' . esc_attr( $settings['post_offset'] ) . '" data-load-class="' . esc_attr( $uid ) . '" data-display_post="' . esc_attr( $settings['display_posts'] ) . '" data-post_load_more="' . esc_attr( $settings['load_more_post'] ) . '" data-loaded_posts="' . esc_attr( $loaded_posts_text ) . '" data-tp_loading_text="' . esc_attr( $tp_loading_text ) . '" data-page="1" data-total_page="' . esc_attr( $load_page ) . '" data-loadattr= \'' . $data_loadkey . '\'';
-					$output .= '<a ' . $load_more_anchor_attr . '>' . esc_html( $settings['load_more_btn_text'] ) . '</a>';
+					$output .= '<a role="button" tabindex="0" ' . $load_more_anchor_attr . '>' . esc_html( $settings['load_more_btn_text'] ) . '</a>';
 
 					if ( 'global' === $load_more_btn_type_switch ) {
 						$output .= '</div>';

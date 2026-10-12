@@ -54,7 +54,16 @@ post_class();
 
 				echo '<div class="tp-blog-cetegory-style-5">';
 if ( 'yes' === $display_post_category ) {
-	include L_THEPLUS_WSTYLES . 'blog/blog-category-' . $post_category_style . '.php';
+	/*
+	 * Security: $post_category_style is an Elementor SELECT control value -
+	 * the editor UI only offers a fixed list, but nothing server-side stops
+	 * a saved value outside that list (Elementor does not validate a
+	 * control's saved value against its own options list), and this used to
+	 * reach a raw include() - local file inclusion via ../ path traversal.
+	 * sanitize_file_name() matches the pattern this widget's own line 4405
+	 * already uses for the sibling $style include.
+	 */
+	include L_THEPLUS_WSTYLES . 'blog/blog-category-' . sanitize_file_name( $post_category_style ) . '.php';
 }
 				echo '</div>';
 if ( 'metro' !== $layout ) {

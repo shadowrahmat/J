@@ -24,7 +24,7 @@ if ( ! empty( $featured_image_url ) ) {
 	}
 } else {
 	$featured_image_url = l_theplus_get_thumb_url();
-	$featured_image     = '<img width="600" height="600" loading="lazy" data-src="' . esc_url( $featured_image_url ) . '" src="' . esc_url( $featured_image_url ) . '" class="tp-lazyload" alt="' . esc_attr( get_the_title() ) . '">';
+	$featured_image     = '<img width="600" height="600" data-src="' . esc_url( $featured_image_url ) . '" src="' . esc_url( $featured_image_url ) . '" class="tp-lazyload" alt="' . esc_attr( get_the_title() ) . '">';
 }
 
 ?>

@@ -183,7 +183,7 @@ function juhani_cart_custom_styles_and_scripts() {
 	.juhani-cart-card {
 		background: #FFFFFF !important;
 		border: none !important;
-		border-radius: 0 !important;
+
 		box-shadow: none !important;
 		padding: 0px !important;
 		position: relative !important;
@@ -215,7 +215,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		height: 120px !important;
 		min-width: 120px !important;
 		max-width: 120px !important;
-		border-radius: 2px !important;
+
 		border: 1px solid #E4EAF0 !important;
 		overflow: hidden !important;
 		background: #FFFFFF !important;
@@ -237,7 +237,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		height: 100% !important;
 		object-fit: cover !important;
 		display: block !important;
-		border-radius: 0 !important;
+
 	}
 
 	/* Meta: Title & Price */
@@ -298,7 +298,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		height: 32px !important;
 		min-width: 32px !important;
 		border: 1px solid #E4EAF0 !important;
-		border-radius: 2px !important;
+
 		background: #FFFFFF !important;
 		color: #64748B !important;
 		font-size: 22px !important;
@@ -325,7 +325,7 @@ function juhani_cart_custom_styles_and_scripts() {
 	.juhani-cart-card__details {
 		background: #F8FAFC !important;
 		border: 1px solid #E4EAF0 !important;
-		border-radius: 2px !important;
+
 		padding: 14px 20px !important;
 		margin: 0 !important;
 		width: 100% !important;
@@ -417,7 +417,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		display: inline-flex !important;
 		align-items: center !important;
 		border: 1px solid #E4EAF0 !important;
-		border-radius: 2px !important;
+
 		background: #FFFFFF !important;
 		overflow: hidden !important;
 		height: 38px !important;
@@ -467,7 +467,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		border: none !important;
 		border-left: 1px solid #E4EAF0 !important;
 		border-right: 1px solid #E4EAF0 !important;
-		border-radius: 0 !important;
+
 		text-align: center !important;
 		font-size: 15px !important;
 		font-weight: 600 !important;
@@ -563,7 +563,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		height: 42px !important;
 		padding: 8px 14px !important;
 		border: 1px solid #E4EAF0 !important;
-		border-radius: 2px !important;
+
 		font-size: 14px !important;
 		background: #FFFFFF !important;
 		color: #0D2A43 !important;
@@ -585,7 +585,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		font-size: 13px !important;
 		font-weight: 700 !important;
 		border: none !important;
-		border-radius: 2px !important;
+
 		text-transform: uppercase !important;
 		letter-spacing: 0.3px !important;
 		cursor: pointer !important;
@@ -622,7 +622,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		color: #123F63 !important;
 		background: #FFFFFF !important;
 		border: 1px solid #E4EAF0 !important;
-		border-radius: 2px !important;
+
 		text-decoration: none !important;
 		transition: all 0.2s ease !important;
 		box-shadow: 0 1px 3px rgba(13, 42, 67, 0.04) !important;
@@ -650,7 +650,7 @@ function juhani_cart_custom_styles_and_scripts() {
 	body.woocommerce-cart .cart_totals {
 		background: #FFFFFF !important;
 		border: none !important;
-		border-radius: 0 !important;
+
 		box-shadow: none !important;
 		padding: 24px !important;
 		width: 100% !important;
@@ -835,7 +835,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		padding: 14px !important;
 		background: #F8FAFC !important;
 		border: 1px solid #E4EAF0 !important;
-		border-radius: 2px !important;
+
 	}
 
 	body.woocommerce-cart .shipping-calculator-form p {
@@ -848,7 +848,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		border: 1px solid #E4EAF0 !important;
 		background: #FFFFFF !important;
 		font-size: 13px !important;
-		border-radius: 2px !important;
+
 		padding: 0 10px !important;
 		width: 100% !important;
 	}
@@ -861,7 +861,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		font-size: 13px !important;
 		font-weight: 600 !important;
 		text-transform: uppercase !important;
-		border-radius: 2px !important;
+
 		cursor: pointer !important;
 	}
 
@@ -916,7 +916,7 @@ function juhani_cart_custom_styles_and_scripts() {
 		letter-spacing: 0.5px !important;
 		text-transform: uppercase !important;
 		padding: 16px 20px !important;
-		border-radius: 2px !important;
+
 		border: none !important;
 		box-shadow: 0 4px 14px rgba(13, 42, 67, 0.18) !important;
 		text-decoration: none !important;

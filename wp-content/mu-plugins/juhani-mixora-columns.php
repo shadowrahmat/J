@@ -16,7 +16,7 @@ add_action( 'wp_head', function() {
 	.mxswpf-root article.mixora-product-card {
 		background-color: #ffffff !important;
 		border: 1px solid #e5e7eb !important;
-		border-radius: 0 !important;
+
 		padding: 8px !important;
 		box-shadow: none !important;
 		box-sizing: border-box !important;

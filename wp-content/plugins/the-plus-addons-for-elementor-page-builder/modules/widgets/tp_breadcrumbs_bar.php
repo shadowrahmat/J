@@ -1718,13 +1718,13 @@ class L_ThePlus_Breadcrumbs_Bar extends Plus_Widget_Base {
 				$crumbs_output .= $before . sprintf( $text['search'], get_search_query() ) . $after;
 			} elseif ( is_singular( 'topic' ) ) {
 				$post_type = get_post_type_object( get_post_type() );
-				printf( $link, $homeLink . '/forums/', $post_type->labels->singular_name );
+				printf( $link, $homeLink . '/forums/', ( $post_type && ! empty( $post_type->labels->singular_name ) ) ? $post_type->labels->singular_name : '' );
 			} elseif ( is_singular( 'forum' ) ) {
 				$post_type = get_post_type_object( get_post_type() );
-				printf( $link, $homeLink . '/forums/', $post_type->labels->singular_name );
+				printf( $link, $homeLink . '/forums/', ( $post_type && ! empty( $post_type->labels->singular_name ) ) ? $post_type->labels->singular_name : '' );
 			} elseif ( is_tax( 'topic-tag' ) ) {
 				$post_type = get_post_type_object( get_post_type() );
-				printf( $link, $homeLink . '/forums/', $post_type->labels->singular_name );
+				printf( $link, $homeLink . '/forums/', ( $post_type && ! empty( $post_type->labels->singular_name ) ) ? $post_type->labels->singular_name : '' );
 			} elseif ( is_day() ) {
 				$crumbs_output .= sprintf( $link, get_year_link( get_the_time( 'Y' ) ), get_the_time( 'Y' ) ) . $delimiter;
 				$crumbs_output .= sprintf( $link, get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ), get_the_time( 'F' ) ) . $delimiter;
@@ -1884,8 +1884,8 @@ class L_ThePlus_Breadcrumbs_Bar extends Plus_Widget_Base {
 				}
 			} elseif ( ! is_single() && ! is_page() && get_post_type() != 'post' && ! is_404() ) {
 				$post_type      = get_post_type_object( get_post_type() );
-				$singular_name  = ! empty( $post_type->labels->singular_name ) ? $post_type->labels->singular_name : '';
-				$crumbs_output .= $before . esc_html( $post_type->labels->singular_name ) . $after;
+				$singular_name  = ( $post_type && ! empty( $post_type->labels->singular_name ) ) ? $post_type->labels->singular_name : '';
+				$crumbs_output .= $before . esc_html( $singular_name ) . $after;
 			} elseif ( is_attachment() ) {
 				$parent = get_post( $post->post_parent );
 				$cat    = get_the_category( $parent->ID );

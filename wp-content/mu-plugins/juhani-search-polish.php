@@ -8,7 +8,7 @@ add_action("wp_head", function(){
     /* Popup shell — sharp, no radius per brand */
     #elementor-popup-modal-1214 .dialog-widget-content,
     #elementor-popup-modal-1208 .dialog-widget-content{
-      border-radius: 0 !important;
+
       overflow: hidden !important;
       border: 1px solid #e5e7eb !important;
       box-shadow: 0 20px 60px rgba(16,57,94,.18) !important;
@@ -25,7 +25,7 @@ add_action("wp_head", function(){
       gap:0 !important;
       background:#f8fafc !important;
       border:1px solid #e2e8f0 !important;
-      border-radius:0 !important;
+
       overflow:visible !important;
       padding:0 !important;
       position:relative !important;
@@ -45,7 +45,7 @@ add_action("wp_head", function(){
       min-width:0 !important;
       background:transparent !important;
       border:none !important;
-      border-radius:0 !important;
+
       box-shadow:none !important;
       padding:10px 6px 10px 12px !important;
       height:36px !important;
@@ -75,7 +75,7 @@ add_action("wp_head", function(){
       padding:0 !important;
       background:transparent !important;
       border:none !important;
-      border-radius:0 !important;
+
       box-shadow:none !important;
       color:#10395E !important;
     }
@@ -107,7 +107,7 @@ add_action("wp_head", function(){
     }
     .elementor-1214 .e-search-results-container .elementor-1212,
     .elementor-1214 .e-search-results-container .elementor-134{
-      border-radius:0 !important;
+
       overflow:hidden !important;
     }
 
@@ -116,7 +116,7 @@ add_action("wp_head", function(){
     .e-search-results-container .elementor-1212 .elementor-element-f1f3ea9{
       background:#ffffff !important;
       border:1px solid var(--card-border) !important;
-      border-radius:0 !important;
+
       overflow:hidden !important;
       box-shadow:var(--card-shadow) !important;
       transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease !important;
@@ -130,7 +130,7 @@ add_action("wp_head", function(){
     /* Image polish — zero radius */
     .e-search-results-container .elementor-1212 .elementor-widget-image img,
     .e-search-results-container .elementor-widget-image img{
-      border-radius:0 !important;
+
       aspect-ratio:1 / 1 !important;
       object-fit:cover !important;
       transition:transform .35s ease !important;
@@ -173,7 +173,7 @@ add_action("wp_head", function(){
       color:#64748b !important;
       background:#f8fafc !important;
       border:1px dashed #e2e8f0 !important;
-      border-radius:0 !important;
+
       padding:18px !important;
       text-align:center !important;
     }
@@ -185,7 +185,7 @@ add_action("wp_head", function(){
     /* Phone only: product card width = search input width */
     @media(max-width:767px){
       #elementor-popup-modal-1214 .dialog-widget-content,
-      #elementor-popup-modal-1208 .dialog-widget-content{ border-radius:0 !important; width:96vw !important; max-width:96vw !important; }
+      #elementor-popup-modal-1208 .dialog-widget-content{  width:96vw !important; max-width:96vw !important; }
       #elementor-popup-modal-1214 .dialog-message,
       #elementor-popup-modal-1208 .dialog-message{ width:100% !important; max-width:100% !important; padding:16px 14px !important; box-sizing:border-box !important; }
       .elementor-1214 .elementor-element-a581a7a,
@@ -276,7 +276,7 @@ add_action("wp_head", function(){
         padding:0 !important;
         background:#ffffff !important;
         border:1px solid #e2e8f0 !important;
-        border-radius:0 !important;
+
         box-shadow:0 2px 6px rgba(16,57,94,.04) !important;
         box-sizing:border-box !important;
         overflow:hidden !important;
@@ -411,6 +411,6 @@ add_action("wp_head", function(){
     #elementor-popup-modal-1214 .dialog-widget-content *,
     #elementor-popup-modal-1208 .dialog-widget-content *,
     .elementor-1214 .e-search-input, .elementor-1208 .e-search-input, .elementor-1207 .e-search-input,
-    .elementor-1214 .elementor-widget-image img, .elementor-1212 .elementor-widget-image img{ border-radius:0 !important; }
+    .elementor-1214 .elementor-widget-image img, .elementor-1212 .elementor-widget-image img{  }
   </style>';
 }, 101);

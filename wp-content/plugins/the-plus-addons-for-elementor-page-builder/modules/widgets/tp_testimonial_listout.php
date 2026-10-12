@@ -2216,6 +2216,11 @@ class L_ThePlus_Testimonial_ListOut extends Plus_Widget_Base {
 		$tp_hide_columns_animation         = true;
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -2354,7 +2359,18 @@ class L_ThePlus_Testimonial_ListOut extends Plus_Widget_Base {
 						$output .= '</div>';
 					$output     .= '</div>';
 				} else {
-					$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+					/*
+					 * B7 (widget-test): this upsell notice was printed to every
+					 * site visitor, in ungrammatical English, whenever a Pro-only
+					 * style was selected while running Free -- confusing for a
+					 * visitor who has no way to act on it. Keep it inside the
+					 * Elementor editor, where the person who picked the style can
+					 * actually see and fix it; render nothing on the live
+					 * frontend.
+					 */
+					if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+						$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+					}
 				}
 			}
 		} elseif ( ! $query->have_posts() ) {
@@ -2387,7 +2403,17 @@ class L_ThePlus_Testimonial_ListOut extends Plus_Widget_Base {
 
 			$output .= '</div>';
 		} else {
-			$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			/*
+			 * B7 (widget-test): this upsell notice was printed to every site
+			 * visitor, in ungrammatical English, whenever a Pro-only style was
+			 * selected while running Free -- confusing for a visitor who has no
+			 * way to act on it. Keep it inside the Elementor editor, where the
+			 * person who picked the style can actually see and fix it; render
+			 * nothing on the live frontend.
+			 */
+			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+				$output .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			}
 		}
 
 		echo $output;

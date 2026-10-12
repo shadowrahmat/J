@@ -554,7 +554,6 @@ class ThePlus_Navigation_Menu_Lite extends Plus_Widget_Base {
 				'label'      => esc_html__( 'Submenu Minimum Width (Px)', 'tpebl' ),
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px' ),
-				'default'    => '',
 				'range'      => array(
 					'px' => array(
 						'min'  => 100,
@@ -1141,9 +1140,6 @@ class ThePlus_Navigation_Menu_Lite extends Plus_Widget_Base {
 				'classes'     => 'tp-template-create-btn',
 				'label_block' => 'true',
 				'condition'   => array(
-					'show_mobile_menu' => 'yes',
-				),
-				'condition'   => array(
 					'show_mobile_menu'    => 'yes',
 					'mobile_menu_content' => 'template-menu',
 				),
@@ -1619,8 +1615,7 @@ class ThePlus_Navigation_Menu_Lite extends Plus_Widget_Base {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .plus-navigation-menu .nav li.dropdown .dropdown-menu' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-					'{{WRAPPER}} .plus-navigation-menu .nav li.dropdown .dropdown-menu .dropdown-menu' => 'margin-top: {{TOP}}{{UNIT}};',
-					'{{WRAPPER}} .plus-navigation-menu .nav li.dropdown .dropdown-menu .dropdown-menu' => 'left: calc(100% + {{RIGHT}}{{UNIT}});',
+					'{{WRAPPER}} .plus-navigation-menu .nav li.dropdown .dropdown-menu .dropdown-menu' => 'margin-top: {{TOP}}{{UNIT}}; left: calc(100% + {{RIGHT}}{{UNIT}});',
 				),
 			)
 		);
@@ -2473,9 +2468,23 @@ class ThePlus_Navigation_Menu_Lite extends Plus_Widget_Base {
 
 		$uid = uniqid( 'nav-menu' );
 
+		/*
+		 * N5 (widget-test/navigation-menu): the widget emitted no <nav> element
+		 * and no aria-label, so screen-reader users navigating by landmark had no
+		 * way to jump to it -- and with more than one menu on a page (header +
+		 * footer), no way to tell them apart. wrap the existing markup in a <nav>
+		 * landmark instead of a plain <div>; nothing else about the markup
+		 * changes, and every CSS/JS selector targeting .plus-navigation-wrap is
+		 * class-based (verified, no tag-qualified selectors), so this is safe.
+		 * Label from the selected WP menu's own name when one is set -- already
+		 * how site admins distinguish "Header Menu" from "Footer Menu" -- with a
+		 * generic fallback when no menu is selected yet.
+		 */
+		$nav_aria_label = ( $nav_menu && ! empty( $nav_menu->name ) ) ? $nav_menu->name : esc_html__( 'Site Navigation', 'tpebl' );
+
 		?>
 
-		<div class="plus-navigation-wrap <?php echo esc_attr( $nav_alignment ); ?> <?php echo esc_attr( $uid ); ?>">
+		<nav class="plus-navigation-wrap <?php echo esc_attr( $nav_alignment ); ?> <?php echo esc_attr( $uid ); ?>" aria-label="<?php echo esc_attr( $nav_aria_label ); ?>">
 			<div class="plus-navigation-inner <?php echo esc_attr( $menu_hover_click ); ?> <?php echo esc_attr( $main_menu_indicator_style ); ?> <?php echo esc_attr( $sub_menu_indicator_style ); ?> " <?php echo $menu_attr; ?>>
 				<div id="theplus-navigation-normal-menu" class="collapse navbar-collapse navbar-ex1-collapse">
 	
@@ -2497,14 +2506,30 @@ class ThePlus_Navigation_Menu_Lite extends Plus_Widget_Base {
 				<?php if ( 'yes' === $mob_menu ) { ?>
 				
 					<div class="plus-mobile-nav-toggle navbar-header mobile-toggle">
-						<div class="mobile-plus-toggle-menu plus-collapsed toggle-style-1" data-target="#plus-mobile-nav-toggle-<?php echo esc_attr( $uid ); ?>">
+						<?php
+						/*
+						 * N1 (widget-test/navigation-menu, Critical): this was a plain <div>
+						 * with no role/tabindex/aria-expanded/aria-controls and no accessible
+						 * name. At mobile width, with the desktop menu list hidden, that left
+						 * ZERO keyboard tab stops in the whole widget -- a keyboard-only,
+						 * switch-access or screen-reader user on mobile could not reach a
+						 * single menu item (WCAG 2.1.1, complete failure, default-enabled
+						 * widget). A real <button> is focusable and Enter/Space-activatable
+						 * with no extra JS; the existing click handler (plus-nav-menu-lite.js)
+						 * binds by class name, not tag, so it fires unchanged. aria-expanded is
+						 * kept in sync by that same handler; the min.css companion gets a
+						 * matching reset so a browser's default button chrome doesn't shift the
+						 * hamburger icon's already-absolutely-positioned bars.
+						 */
+						?>
+						<button type="button" class="mobile-plus-toggle-menu plus-collapsed toggle-style-1" data-target="#plus-mobile-nav-toggle-<?php echo esc_attr( $uid ); ?>" aria-expanded="false" aria-controls="plus-mobile-nav-toggle-<?php echo esc_attr( $uid ); ?>" aria-label="<?php echo esc_attr__( 'Toggle navigation', 'tpebl' ); ?>">
 							<ul class="toggle-lines">
 								<li class="toggle-line"></li>
 								<li class="toggle-line"></li>
 							</ul>
-						</div>
+						</button>
 					</div>
-				
+
 					<div id="plus-mobile-nav-toggle-<?php echo esc_attr( $uid ); ?>"
 						class="plus-mobile-menu  collapse navbar-collapse navbar-ex1-collapse plus-mobile-menu-content <?php echo esc_attr( $temp_menu ); ?>">
 						<?php
@@ -2536,10 +2561,10 @@ class ThePlus_Navigation_Menu_Lite extends Plus_Widget_Base {
 						?>
 					</div>
 				<?php } ?>
-				
+
 			</div>
-		</div>
-		 
+		</nav>
+
 		<?php
 
 		$css_rule = '';

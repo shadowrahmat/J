@@ -83,7 +83,9 @@ class L_ThePlus_Plus_Form extends Plus_Widget_Base {
 	 * @since 6.0.6
 	 */
 	public function is_dynamic_content(): bool {
-		return false;
+		// The submit nonce is minted at render and sealed into the form's data attribute; Elementor's
+		// element cache would freeze it for up to 24h and every submit after that fails (QA FORM-15 / NEW-2).
+		return true;
 	}	/**
 	 * Register controls.
 	 *
@@ -825,7 +827,7 @@ class L_ThePlus_Plus_Form extends Plus_Widget_Base {
 				'description' => wp_kses_post(
 					sprintf(
 						'<p class="tp-controller-label-text"><i>%s</i></p>',
-						esc_html__( 'You can add additional email here, so others also stay notified whenever a form is submitted.', 'tpebl' )
+						esc_html__( 'You can add additional email here, so others also stay notified whenever a form is submitted. Use [value_id="email"] to also send it to the address the visitor typed.', 'tpebl' )
 					)
 				),
 			)
@@ -967,7 +969,7 @@ class L_ThePlus_Plus_Form extends Plus_Widget_Base {
 				'description' => wp_kses_post(
 					sprintf(
 						'<p class="tp-controller-label-text"><i>%s</i></p>',
-						esc_html__( 'You can add the reply-to email address here, so when the person who receives the form submission replies, their response will go directly to this address instead of the default admin email. This makes it easier to manage replies.', 'tpebl' )
+						esc_html__( 'You can add the reply-to email address here, so when the person who receives the form submission replies, their response will go directly to this address instead of the default admin email. This makes it easier to manage replies. Use [value_id="email"] to send replies to the address the visitor typed.', 'tpebl' )
 					)
 				),
 			)
@@ -2077,7 +2079,6 @@ class L_ThePlus_Plus_Form extends Plus_Widget_Base {
 					'default'   => '#fff',
 					'selectors' => array(
 						'{{WRAPPER}} .tpae-form .tpae-form-button svg' => 'fill: {{VALUE}};',
-						'{{WRAPPER}} .tpae-form .tpae-form-button i' => 'fill: {{VALUE}};',
 						'{{WRAPPER}} .tpae-form .tpae-form-button i' => 'color: {{VALUE}};',
 					),
 					'condition' => array(
@@ -3054,15 +3055,15 @@ class L_ThePlus_Plus_Form extends Plus_Widget_Base {
 		);
 
 		$email_data = array(
-			'email_to'        => is_email( $settings['email_to'] ) ? sanitize_email( $settings['email_to'] ) : '',
+			'email_to'        => ! empty( $settings['email_to'] ) ? tpae_sanitize_email_list( $settings['email_to'] ) : '',
 			'email_subject'   => ! empty( $settings['email_subject'] ) ? $settings['email_subject'] : '',
 			'email_message'   => ! empty( $settings['email_message'] ) ? $settings['email_message'] : '',
 			'email_heading'   => ! empty( $settings['email_message'] ) ? $settings['email_heading'] : '',
 			'email_from'      => ! empty( $settings['email_from'] ) ? $settings['email_from'] : '',
 			'email_from_name' => ! empty( $settings['email_from_name'] ) ? $settings['email_from_name'] : '',
 			'email_reply_to'  => ! empty( $settings['email_reply_to'] ) ? $settings['email_reply_to'] : '',
-			'email_cc'        => ! empty( $settings['email_cc'] ) ? sanitize_email( $settings['email_cc'] ) : null,
-			'email_bcc'       => ! empty( $settings['email_bcc'] ) ? sanitize_email( $settings['email_bcc'] ) : null,
+			'email_cc'        => ! empty( $settings['email_cc'] ) ? tpae_sanitize_email_control( $settings['email_cc'] ) : null,
+			'email_bcc'       => ! empty( $settings['email_bcc'] ) ? tpae_sanitize_email_list( $settings['email_bcc'] ) : null,
 			'redirection'     => ! empty( $settings['redirect_to']['url'] ) ?
 			array(
 				'url'         => esc_url( $settings['redirect_to']['url'] ),
@@ -3124,7 +3125,16 @@ class L_ThePlus_Plus_Form extends Plus_Widget_Base {
 			$form_markup .= '<div class="tpae-form-field" data-width="' . esc_attr( $tab_column ) . '" data-tablet-width="' . esc_attr( $tab_column_tablet ) . '" data-mobile-width="' . esc_attr( $tab_column_mobile ) . '"> ';
 
 			if ( 'yes' === $label_display && ! in_array( $tab_field_type, array( 'recaptcha', 'honeypot', 'hidden' ), true ) ) {
-				$form_markup .= '<label for="form_fields[' . esc_attr( $tab_id ) . ']" class="tpae-form-label">';
+				/*
+				 * P1 (widget-test/plus-form, High): this "for" named
+				 * form_fields[<id>], but every field's actual id (below) is just
+				 * <id> -- nothing in the document had the id the label named, so
+				 * 0 of 6 fields resolved (measured: labelClickFocusesField:false,
+				 * every field's accessible name fell back to its placeholder,
+				 * which disappears once the user starts typing). One-line fix:
+				 * match the input's real id.
+				 */
+				$form_markup .= '<label for="' . esc_attr( $tab_id ) . '" class="tpae-form-label">';
 				$form_markup .= esc_html( $tab_label );
 
 				if ( ! empty( $tab_required ) ) {
@@ -3140,7 +3150,7 @@ class L_ThePlus_Plus_Form extends Plus_Widget_Base {
 			if ( in_array( $tab_field_type, array( 'text', 'email', 'number' ), true ) ) {
 				$form_markup .= '<input type="' . esc_attr( $tab_field_type ) . '" name="' . esc_attr( $tab_id ) . '" id="' . esc_attr( $tab_id ) . '" placeholder="' . esc_attr( $tab_placeholder ) . '" ' . $tab_required . ' class="' . esc_attr( $tab_input_size ) . '" value="' . esc_attr( $tab_default ) . '" aria-description="' . esc_attr( $tab_ad ) . '"/><span class="tpae-help-text">' . esc_html( $tab_help ) . '</span>';
 			} elseif ( 'textarea' === $tab_field_type ) {
-				$form_markup .= '<textarea name="' . esc_attr( $tab_id ) . '" rows="' . esc_attr( $tab_textarea_rows ) . '" id="' . esc_attr( $tab_id ) . '" placeholder="' . esc_attr( $tab_placeholder ) . '" ' . $tab_required . ' class="' . esc_attr( $tab_input_size ) . '"aria-description="' . esc_attr( $tab_ad ) . '">' . esc_textarea( $tab_default ) . '</textarea>';
+				$form_markup .= '<textarea name="' . esc_attr( $tab_id ) . '" rows="' . esc_attr( $tab_textarea_rows ) . '" id="' . esc_attr( $tab_id ) . '" placeholder="' . esc_attr( $tab_placeholder ) . '" ' . $tab_required . ' class="' . esc_attr( $tab_input_size ) . '" aria-description="' . esc_attr( $tab_ad ) . '">' . esc_textarea( $tab_default ) . '</textarea>';
 			} elseif ( 'hidden' === $tab_field_type ) {
 				$form_markup .= '<input type="hidden" name="' . esc_attr( $tab_id ) . '" value="' . esc_attr( $tab_default ) . '" />';
 			} elseif ( 'honeypot' === $tab_field_type ) {

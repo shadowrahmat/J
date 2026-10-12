@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Emran Ahmed <emran.bd.08@gmail.com>\n"
-"POT-Creation-Date: 2026-08-20 13:27+0000\n"
+"POT-Creation-Date: 2026-09-17 13:21+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -15,111 +15,139 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../includes/class-woo-variation-swatches-backend.php:134
+#: ../includes/class-woo-variation-swatches-attribute-fields.php:95, ../includes/class-woo-variation-swatches-attribute-fields.php:123, ../includes/class-woo-variation-swatches-settings.php:368
+msgid "Shape Style"
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-attribute-fields.php:97, ../includes/class-woo-variation-swatches-attribute-fields.php:127
+msgid "Global"
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-attribute-fields.php:98, ../includes/class-woo-variation-swatches-attribute-fields.php:128
+msgid "Rounded"
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-attribute-fields.php:99, ../includes/class-woo-variation-swatches-attribute-fields.php:129
+msgid "Squared"
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-attribute-fields.php:103, ../includes/class-woo-variation-swatches-attribute-fields.php:132
+msgid "Attribute wise shape style."
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-attribute-fields.php:104, ../includes/class-woo-variation-swatches-attribute-fields.php:133
+msgid "Global shape style settings."
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-backend.php:141
 msgid "View documentation"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:134, ../includes/html-settings-sidebar.php:7
+#: ../includes/class-woo-variation-swatches-backend.php:141, ../includes/html-settings-sidebar.php:7
 msgid "Documentation"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:135, ../includes/class-woo-variation-swatches-backend.php:135
+#: ../includes/class-woo-variation-swatches-backend.php:142, ../includes/class-woo-variation-swatches-backend.php:142
 msgid "Video Tutorials"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:136, ../includes/class-woo-variation-swatches-backend.php:136
+#: ../includes/class-woo-variation-swatches-backend.php:143, ../includes/class-woo-variation-swatches-backend.php:143
 msgid "Help & Support"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:144
+#: ../includes/class-woo-variation-swatches-backend.php:151
 msgid "View Swatches settings"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:144
+#: ../includes/class-woo-variation-swatches-backend.php:151
 msgid "Settings"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:149, ../includes/class-woo-variation-swatches-backend.php:149
+#: ../includes/class-woo-variation-swatches-backend.php:156, ../includes/class-woo-variation-swatches-backend.php:156
 msgid "Go Pro"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:178
+#: ../includes/class-woo-variation-swatches-backend.php:226
 msgid "Select values"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:199
+#: ../includes/class-woo-variation-swatches-backend.php:273
 msgid "Select all"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:200
+#: ../includes/class-woo-variation-swatches-backend.php:275
 msgid "Select none"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:201
+#: ../includes/class-woo-variation-swatches-backend.php:278
 msgid "Create value"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:245, ../includes/class-woo-variation-swatches-backend.php:336
+#: ../includes/class-woo-variation-swatches-backend.php:319, ../includes/class-woo-variation-swatches-backend.php:424
 msgid "Choose an Image"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:246
+#: ../includes/class-woo-variation-swatches-backend.php:320
 msgid "Add Attribute"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:247
+#: ../includes/class-woo-variation-swatches-backend.php:321
 msgid "Add"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:248
+#: ../includes/class-woo-variation-swatches-backend.php:322
 msgid "Cancel"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:249
+#: ../includes/class-woo-variation-swatches-backend.php:323
 msgid "Use Image"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:250
+#: ../includes/class-woo-variation-swatches-backend.php:324
 msgid "Add Media"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:255
+#: ../includes/class-woo-variation-swatches-backend.php:329
 msgid "Variation Swatches Settings"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:257
+#: ../includes/class-woo-variation-swatches-backend.php:331
 msgid "Are you sure you want to reset it to default setting?"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:258
+#: ../includes/class-woo-variation-swatches-backend.php:332
 msgid "Please save changed first."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:266
+#: ../includes/class-woo-variation-swatches-backend.php:338
 msgid "Select"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:267, ../includes/class-woo-variation-swatches-backend.php:326
+#: ../includes/class-woo-variation-swatches-backend.php:339, ../includes/class-woo-variation-swatches-backend.php:414
 msgid "Color"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:268, ../includes/class-woo-variation-swatches-backend.php:335
+#: ../includes/class-woo-variation-swatches-backend.php:340, ../includes/class-woo-variation-swatches-backend.php:423
 msgid "Image"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:269
+#: ../includes/class-woo-variation-swatches-backend.php:341
 msgid "Button"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:270
+#: ../includes/class-woo-variation-swatches-backend.php:342
 msgid "Radio"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:278
+#: ../includes/class-woo-variation-swatches-backend.php:360
+msgid "Color / image"
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-backend.php:370
 msgid "Mixed"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-backend.php:327
+#: ../includes/class-woo-variation-swatches-backend.php:415
 msgid "Choose a color"
 msgstr ""
 
@@ -218,7 +246,7 @@ msgstr ""
 msgid "%s left"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-product-page.php:844, ../includes/class-woo-variation-swatches-product-page.php:870
+#: ../includes/class-woo-variation-swatches-product-page.php:888, ../includes/class-woo-variation-swatches-product-page.php:913
 msgid "Choose an option"
 msgstr ""
 
@@ -390,10 +418,6 @@ msgstr ""
 msgid "Enable tooltip on each product attribute."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:368
-msgid "Shape Style"
-msgstr ""
-
 #: ../includes/class-woo-variation-swatches-settings.php:370
 msgid "This controls which shape style used by default."
 msgstr ""
@@ -414,344 +438,352 @@ msgstr ""
 msgid "Convert default dropdowns to button."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:392
-msgid "Dropdowns to Image"
-msgstr ""
-
-#: ../includes/class-woo-variation-swatches-settings.php:393
-msgid "Convert default dropdowns to image type if variation has an image."
-msgstr ""
-
-#: ../includes/class-woo-variation-swatches-settings.php:410
+#: ../includes/class-woo-variation-swatches-settings.php:401
 msgid "Media Settings"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:411
+#: ../includes/class-woo-variation-swatches-settings.php:402
 msgid "Regenerate Thumbnails"
 msgstr ""
 
 #. translators: %s: filter name
-#: ../includes/class-woo-variation-swatches-settings.php:414
+#: ../includes/class-woo-variation-swatches-settings.php:405
 msgid "Attribute image size can be changed by %s filter hook. So this option will not apply any effect."
 msgstr ""
 
 #. translators: %1$s = Media Settings Link, %2$s = Regenerate Thumbnails Plugin name
-#: ../includes/class-woo-variation-swatches-settings.php:416
+#: ../includes/class-woo-variation-swatches-settings.php:407
 msgid "Choose attribute image size. %1$s or use %2$s plugin."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:427
+#: ../includes/class-woo-variation-swatches-settings.php:418
 msgid "Advanced options"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:434
+#: ../includes/class-woo-variation-swatches-settings.php:425
 msgid "Clear on Reselect"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:435
+#: ../includes/class-woo-variation-swatches-settings.php:426
 msgid "Clear selected attribute on select again."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:443
+#: ../includes/class-woo-variation-swatches-settings.php:434
 msgid "Disable Out of Stock"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:444
+#: ../includes/class-woo-variation-swatches-settings.php:435
 msgid "Disable Out Of Stock item."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:453
+#: ../includes/class-woo-variation-swatches-settings.php:444
 msgid "Clickable Out Of Stock"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:454
+#: ../includes/class-woo-variation-swatches-settings.php:445
 msgid "Clickable Out Of Stock item."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:463
+#: ../includes/class-woo-variation-swatches-settings.php:454
 msgid "Disabled Attribute style"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:464
+#: ../includes/class-woo-variation-swatches-settings.php:455
 msgid "Disabled / Out Of Stock attribute will be hide / blur / crossed."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:467
+#: ../includes/class-woo-variation-swatches-settings.php:458
 msgid "Blur with cross"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:468
+#: ../includes/class-woo-variation-swatches-settings.php:459
 msgid "Blur without cross"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:469
+#: ../includes/class-woo-variation-swatches-settings.php:460
 msgid "Hide"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:479
+#: ../includes/class-woo-variation-swatches-settings.php:470
 msgid "Attribute image size"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:502
+#: ../includes/class-woo-variation-swatches-settings.php:493
 msgid "Swatches indicator"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:503
+#: ../includes/class-woo-variation-swatches-settings.php:494
 msgid "Change swatches indicator color"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:509
+#: ../includes/class-woo-variation-swatches-settings.php:500
 msgid "Tick Color"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:510
+#: ../includes/class-woo-variation-swatches-settings.php:501
 msgid "Swatches Selected tick color. Default is: #ffffff"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:521
+#: ../includes/class-woo-variation-swatches-settings.php:512
 msgid "Cross Color"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:522
+#: ../includes/class-woo-variation-swatches-settings.php:513
 msgid "Swatches cross color. Default is: #ff0000"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:539
+#: ../includes/class-woo-variation-swatches-settings.php:530
 msgid "Product Page Swatches Size"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:540
+#: ../includes/class-woo-variation-swatches-settings.php:531
 msgid "Change swatches style on product page"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:546
+#: ../includes/class-woo-variation-swatches-settings.php:537
 msgid "Width"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:547
+#: ../includes/class-woo-variation-swatches-settings.php:538
 msgid "Single product variation item width. Default is: 30"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:561
+#: ../includes/class-woo-variation-swatches-settings.php:552
 msgid "Height"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:562
+#: ../includes/class-woo-variation-swatches-settings.php:553
 msgid "Single product variation item height. Default is: 30"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:576
+#: ../includes/class-woo-variation-swatches-settings.php:567
 msgid "Font Size"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:577
+#: ../includes/class-woo-variation-swatches-settings.php:568
 msgid "Single product variation item font size. Default is: 16"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:607
+#: ../includes/class-woo-variation-swatches-settings.php:598
 msgid "Color API Options"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:614
+#: ../includes/class-woo-variation-swatches-settings.php:605
 msgid "Enable Color API"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:615
-msgid "Suggest hex values as you type a color name."
+#: ../includes/class-woo-variation-swatches-settings.php:606
+msgid "Suggest hex values as you type a color name. Collection have 45000+ colors."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:634
+#: ../includes/class-woo-variation-swatches-settings.php:625
 msgid "Single Product Page"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:635
+#: ../includes/class-woo-variation-swatches-settings.php:626
 msgid "Settings for single product page"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:641
+#: ../includes/class-woo-variation-swatches-settings.php:632
 msgid "Show selected attribute"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:642
+#: ../includes/class-woo-variation-swatches-settings.php:633
 msgid "Show selected attribute variation name beside the title."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:650
+#: ../includes/class-woo-variation-swatches-settings.php:641
 msgid "Variation label separator"
 msgstr ""
 
 #. translators: %s: default separator :
-#: ../includes/class-woo-variation-swatches-settings.php:652
+#: ../includes/class-woo-variation-swatches-settings.php:643
 msgid "Variation label separator. Default: %s."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:668, ../includes/class-woo-variation-swatches-settings.php:743
+#: ../includes/class-woo-variation-swatches-settings.php:659, ../includes/class-woo-variation-swatches-settings.php:734
 msgid "Enable Preloader"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:669
+#: ../includes/class-woo-variation-swatches-settings.php:660
 msgid "Enable single product page swatches preloader."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:677
+#: ../includes/class-woo-variation-swatches-settings.php:668
 msgid "Generate variation url"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:678
+#: ../includes/class-woo-variation-swatches-settings.php:669
 msgid "Generate sharable url based on selected variation attributes."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:686
+#: ../includes/class-woo-variation-swatches-settings.php:677
 msgid "Variation stock info"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:687
+#: ../includes/class-woo-variation-swatches-settings.php:678
 msgid "Show variation product stock info."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:696
+#: ../includes/class-woo-variation-swatches-settings.php:687
 msgid "Attribute display limit"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:697
+#: ../includes/class-woo-variation-swatches-settings.php:688
 msgid "Single Product page attribute display limit. Default is 0. Means no limit."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:717
+#: ../includes/class-woo-variation-swatches-settings.php:708
 msgid "Note:"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:718
+#: ../includes/class-woo-variation-swatches-settings.php:709
 msgid "please open a ticket"
 msgstr ""
 
 #. translators: %1$s = Note markup, %2$s = Open ticket link.
-#: ../includes/class-woo-variation-swatches-settings.php:720
+#: ../includes/class-woo-variation-swatches-settings.php:711
 msgid "Show archive swatches position. %1$s Some theme remove default woocommerce hooks that why it's may not work as expected. For theme compatibility %2$s."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:727
+#: ../includes/class-woo-variation-swatches-settings.php:718
 msgid "Visual Section"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:728
+#: ../includes/class-woo-variation-swatches-settings.php:719
 msgid "Advanced change some visual styles on shop / archive page"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:734
+#: ../includes/class-woo-variation-swatches-settings.php:725
 msgid "Enable Swatches"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:735
+#: ../includes/class-woo-variation-swatches-settings.php:726
 msgid "Show swatches on archive / shop page."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:744
+#: ../includes/class-woo-variation-swatches-settings.php:735
 msgid "Enable archive page swatches preloader."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:752
+#: ../includes/class-woo-variation-swatches-settings.php:743
 msgid "Show Product Availability"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:753
+#: ../includes/class-woo-variation-swatches-settings.php:744
 msgid "Show Product availability stock info."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:764
+#: ../includes/class-woo-variation-swatches-settings.php:755
 msgid "Show default selected"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:765
+#: ../includes/class-woo-variation-swatches-settings.php:756
 msgid "Show default selected attribute swatches on archive / shop page."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:774
+#: ../includes/class-woo-variation-swatches-settings.php:765
 msgid "Display position"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:779
+#: ../includes/class-woo-variation-swatches-settings.php:770
 msgid "Before add to cart button"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:780
+#: ../includes/class-woo-variation-swatches-settings.php:771
 msgid "After add to cart button"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:789
+#: ../includes/class-woo-variation-swatches-settings.php:780
 msgid "Swatches align"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:790
+#: ../includes/class-woo-variation-swatches-settings.php:781
 msgid "Swatches align on archive page"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:795
+#: ../includes/class-woo-variation-swatches-settings.php:786
 msgid "Left"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:796
+#: ../includes/class-woo-variation-swatches-settings.php:787
 msgid "Center"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:797
+#: ../includes/class-woo-variation-swatches-settings.php:788
 msgid "Right"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:805
+#: ../includes/class-woo-variation-swatches-settings.php:796
 msgid "Show on filter widget"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:806
+#: ../includes/class-woo-variation-swatches-settings.php:797
 msgid "Show variation swatches on filter widget."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:827
+#: ../includes/class-woo-variation-swatches-settings.php:818
 msgid "Catalog mode"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:828
+#: ../includes/class-woo-variation-swatches-settings.php:819
 msgid "Show single attribute as catalog mode on shop / archive pages. Catalog mode only change image based on selected variation."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:834
+#: ../includes/class-woo-variation-swatches-settings.php:825
 msgid "Show Single Attribute"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:835
+#: ../includes/class-woo-variation-swatches-settings.php:826
 msgid "Show Single Attribute taxonomies on archive page."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:848
+#: ../includes/class-woo-variation-swatches-settings.php:840
 msgid "Single Variation Image Preview"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:849
+#: ../includes/class-woo-variation-swatches-settings.php:841
 msgid "Switch variation image when single attribute selected on product page."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:855
+#: ../includes/class-woo-variation-swatches-settings.php:847
 msgid "Variation Image Preview"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:856
+#: ../includes/class-woo-variation-swatches-settings.php:848
 msgid "Show single attribute variation image based on first attribute select on product page."
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:870
+#: ../includes/class-woo-variation-swatches-settings.php:862
 msgid "Large Size Attribute Section"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:871
+#: ../includes/class-woo-variation-swatches-settings.php:863
 msgid "Make a attribute taxonomies size large on single product"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:877
+#: ../includes/class-woo-variation-swatches-settings.php:869
 msgid "Show First Attribute In Large Size"
 msgstr ""
 
-#: ../includes/class-woo-variation-swatches-settings.php:878
+#: ../includes/class-woo-variation-swatches-settings.php:870
 msgid "Show Attribute taxonomies in large size."
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-settings.php:884
+msgid "Dropdowns to Image"
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-settings.php:885
+msgid "Convert default dropdowns to image type if variation has an image."
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-settings.php:891
+msgid "Assign Image to First Attribute"
+msgstr ""
+
+#: ../includes/class-woo-variation-swatches-settings.php:892
+msgid "Show Attribute image to first attribute in product page."
 msgstr ""
 
 #: ../includes/class-woo-variation-swatches-term-meta.php:422
@@ -763,7 +795,7 @@ msgid "Remove image"
 msgstr ""
 
 #. translators: %1$s = Template location, %2$s = Template Name.
-#: ../includes/class-woo-variation-swatches.php:240
+#: ../includes/class-woo-variation-swatches.php:251
 msgid "\"Variation Swatches for WooCommerce\" Plugin try to load \"%1$s\" but template \"%2$s\" was not found."
 msgstr ""
 

@@ -198,6 +198,18 @@ function l_theplus_loading_bg_image( $postid = '' ) {
  */
 function L_tp_plus_simple_decrypt( $string, $action = 'dy' ) {
 
+	/**
+	 * Callers hand request data straight in (nopriv AJAX included), so an
+	 * absent or array-shaped field must not reach str_replace()/base64_decode(),
+	 * which throw an uncaught TypeError on PHP 8 for a non-string and 500 the
+	 * request. Treat anything that is not a string as "nothing to decrypt".
+	 *
+	 * @since 6.5.2
+	 */
+	if ( ! is_string( $string ) ) {
+		return false;
+	}
+
 	$option_name_key = 'tp_key_random_generate';
     $secret_key = get_option( $option_name_key );
 	

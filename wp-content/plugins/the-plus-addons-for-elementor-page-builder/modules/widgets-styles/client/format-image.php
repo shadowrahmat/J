@@ -31,7 +31,7 @@ if ( ! empty( $featured_image_url ) ) {
 		if ( ! empty( $feat_id ) ) {
 			$featured_image = tp_get_image_rander( $feat_id, 'full' );
 		} else {
-			$featured_image = '<img src="' . esc_url( $featured_image_url ) . '" loading="lazy" class="tp-lazyload" alt="' . esc_attr( $client_lml ) . '">';
+			$featured_image = '<img src="' . esc_url( $featured_image_url ) . '" class="tp-lazyload" alt="' . esc_attr( $client_lml ) . '">';
 		}
 	} else {
 		$featured_image = tp_get_image_rander( get_the_ID(), 'full', array(), 'post' );
@@ -40,9 +40,9 @@ if ( ! empty( $featured_image_url ) ) {
 	$featured_image = l_theplus_get_thumb_url();
 
 	if ( 'clrepeater' === $content_from ) {
-		$featured_image = '<img width="600" height="600" loading="lazy" src="' . esc_url( $featured_image ) . '" class="tp-lazyload" alt="' . esc_attr( $client_lml ) . '">';
+		$featured_image = '<img width="600" height="600" src="' . esc_url( $featured_image ) . '" class="tp-lazyload" alt="' . esc_attr( $client_lml ) . '">';
 	} else {
-		$featured_image = '<img width="600" height="600" loading="lazy" src="' . esc_url( $featured_image ) . '" class="tp-lazyload" alt="' . esc_attr( get_the_title() ) . '">';
+		$featured_image = '<img width="600" height="600" src="' . esc_url( $featured_image ) . '" class="tp-lazyload" alt="' . esc_attr( get_the_title() ) . '">';
 	}
 }
 ?>

@@ -59,8 +59,8 @@ function tpae_mcp_get_theplus_widget_schema_ability(array $input)
         return new WP_Error('missing_widget_type', __('The widget_type parameter is required.', 'tpebl'));
     }
 
-    if (strpos($widget_type, 'tp-') !== 0) {
-        return new WP_Error('invalid_widget_type', __('Only The Plus widget types starting with "tp-" are supported.', 'tpebl'));
+    if (strpos($widget_type, 'tp-') !== 0 && strpos($widget_type, 'tp_') !== 0) {
+        return new WP_Error('invalid_widget_type', __('Only The Plus widget types starting with "tp-" or "tp_" are supported.', 'tpebl'));
     }
 
     if (!tpae_mcp_has_registered_widget($widget_type)) {

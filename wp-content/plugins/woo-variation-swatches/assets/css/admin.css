@@ -2,7 +2,7 @@
  * Variation Swatches for WooCommerce
  *
  * Author: Emran Ahmed ( emran.bd.08@gmail.com )
- * Date: 8/20/2026, 7:27:43 PM
+ * Date: 9/17/2026, 7:21:24 PM
  * Released under the GPLv3 license.
  */
 .button.button-danger {
@@ -33,10 +33,14 @@
 }
 
 #wvs-color-suggestions {
-  margin-block: 10px;
+  margin-block: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+#wvs-color-suggestions:has(#wvs-color-suggestion-list:empty) {
+  margin: 0;
 }
 
 #wvs-color-suggestion-title {

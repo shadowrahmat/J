@@ -1195,6 +1195,19 @@ class ThePlus_Progress_Bar extends Plus_Widget_Base {
 		$subtitle   = ! empty( $settings['sub_title'] ) ? $settings['sub_title'] : '';
 		$image_icon = ! empty( $settings['image_icon'] ) ? $settings['image_icon'] : '';
 
+		/*
+		 * PB1 (widget-test/progress-bar, Medium): the bar had 0 role/ARIA
+		 * attributes anywhere -- built entirely from <div>s with the value in
+		 * a data-width attribute, invisible to AT. The percentage is also
+		 * rendered as visible text (data-width doubles as the width source
+		 * and the same value already appears in the label), so this wasn't a
+		 * WCAG failure, but it's a missed standard ARIA role this widget maps
+		 * onto exactly. aria-valuenow uses the same raw numeric value the fill
+		 * width is computed from.
+		 */
+		$progressbar_value_now = ! empty( $settings['value_width']['size'] ) ? $settings['value_width']['size'] : 0;
+		$progressbar_aria      = ' role="progressbar" aria-valuenow="' . esc_attr( $progressbar_value_now ) . '" aria-valuemin="0" aria-valuemax="100"' . ( '' !== $title ? ' aria-label="' . esc_attr( wp_strip_all_tags( $title ) ) . '"' : '' );
+
 		$icon_p     = ! empty( $settings['icon_postition'] ) ? $settings['icon_postition'] : 'before';
 		$select_img = ! empty( $settings['select_image']['url'] ) ? $settings['select_image']['url'] : '';
 		$select_id  = ! empty( $settings['select_image']['id'] ) ? $settings['select_image']['id'] : '';
@@ -1369,12 +1382,12 @@ class ThePlus_Progress_Bar extends Plus_Widget_Base {
 
 					$progress_bar     .= '</div>';
 					$progress_bar     .= '<div class="progress_bar-skill skill-fill ' . esc_attr( $progress_bar_size ) . '">';
-						$progress_bar .= '<div class="progress_bar-skill-bar-filled ' . $icon_bg . '" data-width="' . esc_attr( $progress_width ) . '">	</div>';
+						$progress_bar .= '<div class="progress_bar-skill-bar-filled ' . $icon_bg . '" data-width="' . esc_attr( $progress_width ) . '"' . $progressbar_aria . '>	</div>';
 					$progress_bar     .= '</div>';
 				} else {
 					$progress_bar .= '<div class="progress_bar-skill skill-fill ' . esc_attr( $progress_bar_size ) . '" >';
 
-						$progress_bar .= '<div class="progress_bar-skill-bar-filled ' . $icon_bg . '" data-width="' . esc_attr( $progress_width ) . '">	</div>';
+						$progress_bar .= '<div class="progress_bar-skill-bar-filled ' . $icon_bg . '" data-width="' . esc_attr( $progress_width ) . '"' . $progressbar_aria . '>	</div>';
 
 						$progress_bar .= '<div class="progress_bar-media ' . esc_attr( $progress_bar_size ) . ' ">';
 
@@ -1405,7 +1418,7 @@ class ThePlus_Progress_Bar extends Plus_Widget_Base {
 
 				$progress_bar .= '<div class="progress_bar-skill skill-fill progress-' . esc_attr( $progressbar_style ) . '" >';
 
-					$progress_bar .= '<div class="progress_bar-skill-bar-filled ' . $icon_bg . '"  data-width="' . esc_attr( $progress_width ) . '">	</div>';
+					$progress_bar .= '<div class="progress_bar-skill-bar-filled ' . $icon_bg . '"  data-width="' . esc_attr( $progress_width ) . '"' . $progressbar_aria . '>	</div>';
 
 				$progress_bar .= '</div>';
 			}

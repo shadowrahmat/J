@@ -1634,6 +1634,11 @@ class L_ThePlus_Accordion extends Plus_Widget_Base {
 
 	    include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -1695,7 +1700,7 @@ class L_ThePlus_Accordion extends Plus_Widget_Base {
 					array(
 						'id'            => $tab_title_id,
 						'class'         => array( 'elementor-tab-title', 'plus-accordion-header', $active_default ),
-						'tabindex'      => $id_int . $tab_count,
+						'tabindex'      => '0',
 						'data-tab'      => $tab_count,
 						'role'          => 'button',
 						'aria-controls' => $tab_content_id,

@@ -387,15 +387,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Settings' ) ) :
 				),
 
 				array(
-					'id'      => 'default_to_image',
-					'type'    => 'checkbox',
-					'title'   => esc_html__( 'Dropdowns to Image', 'woo-variation-swatches' ),
-					'desc'    => esc_html__( 'Convert default dropdowns to image type if variation has an image.', 'woo-variation-swatches' ),
-					'default' => 'yes',
-					'is_pro'  => true,
-				),
-
-				array(
 					'type' => 'sectionend',
 					'id'   => 'general_options',
 				),
@@ -612,7 +603,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Settings' ) ) :
 					'id'      => 'enable_color_api',
 					'type'    => 'checkbox',
 					'title'   => esc_html__( 'Enable Color API', 'woo-variation-swatches' ),
-					'desc'    => esc_html__( 'Suggest hex values as you type a color name.', 'woo-variation-swatches' ),
+					'desc'    => esc_html__( 'Suggest hex values as you type a color name. Collection have 45000+ colors.', 'woo-variation-swatches' ),
 					'default' => 'no',
 					'help_preview' => true,
 				),
@@ -842,6 +833,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Settings' ) ) :
 					'id'   => 'catalog_mode_options',
 				),
 
+				// Single Image Preview
 				array(
 					'id'    => 'single_variation_image_preview_options',
 					'type'  => 'title',
@@ -883,6 +875,28 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Settings' ) ) :
 				array(
 					'type' => 'sectionend',
 					'id'   => 'attr_large_size_options',
+				),
+
+				// Dropdowns to Image
+				array(
+					'id'    => 'default_to_image_options',
+					'type'  => 'title',
+					'title' => esc_html__( 'Dropdowns to Image', 'woo-variation-swatches' ),
+					'desc'  => esc_html__( 'Convert default dropdowns to image type if variation has an image.', 'woo-variation-swatches' ),
+				),
+
+				array(
+					'id'      => 'default_to_image',
+					'type'    => 'checkbox',
+					'title'   => esc_html__( 'Assign Image to First Attribute', 'woo-variation-swatches' ),
+					'desc'    => esc_html__( 'Show Attribute image to first attribute in product page.', 'woo-variation-swatches' ),
+					'default' => 'no',
+					'is_pro'  => true,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'default_to_image_options',
 				),
 			);
 

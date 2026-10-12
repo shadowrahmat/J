@@ -89,6 +89,34 @@ function tpae_elementor_mcp_map_ability_name(string $name): string
 }
 
 /**
+ * ABL-005: verbs ported from elementor-mcp that also have a native, hand-written
+ * tpae/<verb> ability in layout-abilities.php -- true duplicates, not just a
+ * renamed-on-collision entry (2 of the 10 in the collisions list above,
+ * create-page/batch-update, have no native equivalent and are NOT included
+ * here). TPAE's own Angie-bridge README already hides all 10 elementor-* names
+ * from Angie as "redundant mirrors of the bare verbs (same behaviour)" -- this
+ * extends that same, already-established judgment to every other MCP client by
+ * marking these 8 deprecated in favour of their native tpae/<verb> counterpart,
+ * without renaming or removing them (a client already bound to the
+ * elementor-mcp/tpae/elementor-* name keeps working).
+ */
+function tpae_elementor_mcp_deprecated_native_equivalent(string $slug): string
+{
+    $native = [
+        'add-container'      => 'tpae/add-container',
+        'update-container'   => 'tpae/update-container',
+        'update-element'     => 'tpae/update-element',
+        'move-element'       => 'tpae/move-element',
+        'reorder-elements'   => 'tpae/reorder-elements',
+        'remove-element'     => 'tpae/remove-element',
+        'duplicate-element'  => 'tpae/duplicate-element',
+        'get-page-structure' => 'tpae/get-page-structure',
+    ];
+
+    return $native[$slug] ?? '';
+}
+
+/**
  * Register a ported Elementor MCP ability under the Sprout namespace.
  */
 function tpae_elementor_mcp_register_ability(string $name, array $args)
@@ -112,6 +140,28 @@ function tpae_elementor_mcp_register_ability(string $name, array $args)
         ],
         isset($meta['mcp']) && is_array($meta['mcp']) ? $meta['mcp'] : []
     );
+
+    if (str_starts_with($name, 'elementor-mcp/')) {
+        $native = tpae_elementor_mcp_deprecated_native_equivalent(substr($name, strlen('elementor-mcp/')));
+        if ($native !== '') {
+            $meta['deprecated'] = true;
+            $args['description'] = isset($args['description']) && is_string($args['description'])
+                ? $args['description'] . ' (Deprecated: identical behaviour to ' . $native . '; prefer that ability.)'
+                : 'Deprecated: identical behaviour to ' . $native . '; prefer that ability.';
+
+            // #767: the meta/description flags above are enough for a structured
+            // MCP client, but the catalog's own label column -- what a human
+            // skimming it actually sees -- was still byte-identical to the
+            // native ability's label. Suffix it rather than rename, for the
+            // same reason the slug itself is untouched: a client already
+            // reading this label should not see it change out from under it,
+            // it should just stop looking identical to its replacement.
+            if (isset($args['label']) && is_string($args['label'])) {
+                $args['label'] .= ' (Elementor MCP)';
+            }
+        }
+    }
+
     $args['meta'] = $meta;
 
     return wp_register_ability(tpae_elementor_mcp_map_ability_name($name), $args);

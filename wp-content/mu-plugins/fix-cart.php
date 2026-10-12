@@ -429,7 +429,7 @@ add_action('wp_head', function() {
             font-weight: 700 !important;
             min-width: 16px !important;
             height: 16px !important;
-            border-radius: 50% !important;
+
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -517,7 +517,7 @@ add_action('wp_head', function() {
     body .elementor-menu-cart__main,
     body .elementor-menu-cart__main * {
         box-sizing: border-box !important;
-        border-radius: 0 !important;
+
     }
 
     body .elementor-menu-cart__container {
@@ -590,7 +590,7 @@ add_action('wp_head', function() {
         background: #ffffff !important;
         color: #0b2d4a !important;
         font-size: 0 !important;
-        border-radius: 0 !important;
+
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -697,7 +697,7 @@ add_action('wp_head', function() {
         width: 96px !important;
         height: 96px !important;
         object-fit: cover !important;
-        border-radius: 0 !important;
+
         border: 0 !important;
         background: #ffffff !important;
         display: block !important;
@@ -1168,7 +1168,7 @@ add_action('wp_head', function() {
             justify-content: center !important;
             padding: 0 !important;
             cursor: pointer !important;
-            border-radius: 0 !important;
+
             flex-shrink: 0 !important;
             transition: background-color 0.18s ease, border-color 0.18s ease !important;
         }
@@ -1219,7 +1219,7 @@ add_action('wp_head', function() {
             justify-content: center !important;
             padding: 0 !important;
             margin: 0 !important;
-            border-radius: 0 !important;
+
             font-size: 0 !important;
             cursor: pointer !important;
             z-index: 5 !important;
@@ -1265,7 +1265,7 @@ add_action('wp_head', function() {
             opacity: 1 !important;
             display: block !important;
             pointer-events: none !important;
-            border-radius: 1px !important;
+
             z-index: 1 !important;
         }
         body .elementor-menu-cart__product-remove::before,
@@ -1289,7 +1289,7 @@ add_action('wp_head', function() {
             padding: 12px 12px 14px 12px !important;
             margin: 0 0 12px !important;
             border: 1px solid #e5edf5 !important;
-            border-radius: 0 !important;
+
             background: #ffffff !important;
             box-shadow: none !important;
             position: relative !important;
@@ -1321,7 +1321,7 @@ add_action('wp_head', function() {
             height: 96px !important;
             object-fit: cover !important;
             aspect-ratio: 1 / 1 !important;
-            border-radius: 0 !important;
+
             border: 0 !important;
             display: block !important;
         }
@@ -1582,7 +1582,7 @@ add_action('wp_head', function() {
             font-weight: 800 !important;
             letter-spacing: 0.3px !important;
             text-transform: uppercase !important;
-            border-radius: 0 !important;
+
             padding: 0 16px !important;
             margin: 0 !important;
             box-sizing: border-box !important;
@@ -1646,7 +1646,7 @@ add_action('wp_head', function() {
         .juhani-drawer-header,
         .juhani-drawer-close,
         .juhani-drawer-footer {
-            border-radius: 0px !important;
+
         }
 
         /* Modern Hamburger Toggle Button */
@@ -1664,7 +1664,7 @@ add_action('wp_head', function() {
             min-height: 42px !important;
             padding: 0 !important;
             border: none !important;
-            border-radius: 0px !important;
+
             cursor: pointer !important;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) !important;
             transition: background-color 0.25s ease, transform 0.2s ease !important;
@@ -1750,7 +1750,7 @@ add_action('wp_head', function() {
             display: block !important;
             height: 2px !important;
             background-color: #ffffff !important;
-            border-radius: 0px !important;
+
             transition: all 0.22s ease !important;
         }
         .juhani-modern-hamburger span:nth-child(1) { width: 100% !important; }
@@ -1785,7 +1785,7 @@ add_action('wp_head', function() {
             border-top: none !important;
             border-right: none !important;
             border-bottom: none !important;
-            border-radius: 0px !important;
+
             display: flex !important;
             flex-direction: column !important;
             overflow-x: hidden !important;
@@ -1852,7 +1852,7 @@ add_action('wp_head', function() {
         .juhani-drawer-close {
             background: #f1f5f9 !important;
             border: none !important;
-            border-radius: 0px !important;
+
             width: 38px !important;
             height: 38px !important;
             display: inline-flex !important;
@@ -1891,7 +1891,7 @@ add_action('wp_head', function() {
             margin: 0 !important;
             padding: 0 !important;
             background: transparent !important;
-            border-radius: 0px !important;
+
             animation: none !important; /* Disables cascade transform that causes hover jitter */
         }
 
@@ -1905,7 +1905,7 @@ add_action('wp_head', function() {
             letter-spacing: 0.4px !important;
             text-transform: uppercase !important;
             padding: 14px 22px !important;
-            border-radius: 0px !important;
+
             border-bottom: 1px solid #f2f4f7 !important;
             border-left: 3px solid transparent !important;
             border-top: none !important;

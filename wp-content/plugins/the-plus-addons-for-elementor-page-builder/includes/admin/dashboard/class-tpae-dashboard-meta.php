@@ -176,7 +176,6 @@ if ( ! class_exists( 'Tpae_Dashboard_Meta' ) ) {
 						'extensioninstall'  => $next_et_status,
 						'extensionactivate' => $extensionactivate,
 						'tpae'              => true,
-						'dashboard_url'     => admin_url( 'admin.php?page=theplus_welcome_page' ),
 						'tpae_nonce'        => wp_create_nonce( 'tpae-db-nonce' ),
 					);
 

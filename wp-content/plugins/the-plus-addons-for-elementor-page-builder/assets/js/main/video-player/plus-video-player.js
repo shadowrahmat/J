@@ -82,3 +82,34 @@ function initFluidVids(){
 	});
 
 }(jQuery);
+/**
+ * Keyboard pause control for an autoplaying self hosted video (WCAG 2.2.2).
+ * Delegated, so it also covers videos added after load (ajax, lightbox).
+ *
+ * @since 6.5.2
+ */
+( function( $ ) {
+	'use strict';
+
+	$( document ).on( 'click', '.tpae-video-a11y__btn', function( e ) {
+		e.preventDefault();
+
+		var btn   = this,
+			wrap  = btn.closest( '.ts-video-wrapper' ),
+			video = wrap ? wrap.querySelector( 'video' ) : null;
+
+		if ( ! video ) {
+			return;
+		}
+
+		if ( video.paused ) {
+			video.play();
+			btn.setAttribute( 'aria-pressed', 'false' );
+			btn.textContent = btn.getAttribute( 'data-tpae-label-pause' );
+		} else {
+			video.pause();
+			btn.setAttribute( 'aria-pressed', 'true' );
+			btn.textContent = btn.getAttribute( 'data-tpae-label-play' );
+		}
+	} );
+})( jQuery );

@@ -4,6 +4,22 @@
 
     const { __ } = wp.i18n;
 
+    /*
+     * widgetType strings come straight out of the pasted clipboard JSON --
+     * meant to arrive from another site/user (that's the whole point of
+     * "Plus Paste"), so they are untrusted. They used to go straight into an
+     * HTML template string assigned to innerHTML with no escaping, so a
+     * malicious widgetType value (e.g. from a shared/malicious template)
+     * could execute script in the pasting admin's editor session.
+     */
+    const tpaeEscapeHtml = (value) => String(value).replace(/[&<>"']/g, (ch) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+    }[ch]));
+
     const Json_error = __("Warning: The data is not in JSON format", "tpebl");
     const elementor_json_error = __('Warning: This is not a valid Elementor JSON. "tpelecode" not found.', "tpebl");
 
@@ -535,7 +551,7 @@
                 widgetHTML += `
                     <div id="tpae-widget-${index}" class="tpae-widget-row">
                         <span class="tpae-widget-tick loader" id="tpae-widget-status-${index}"></span>
-                        <span class="tpae-widget-name">${widget}</span>
+                        <span class="tpae-widget-name">${tpaeEscapeHtml(widget)}</span>
                     </div>`;
             });
             widgetHTML += `</div>`;

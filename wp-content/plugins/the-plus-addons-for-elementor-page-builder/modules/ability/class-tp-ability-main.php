@@ -99,6 +99,15 @@ if ( ! class_exists( 'Tp_Ability_Main' ) ) {
 		public function __construct() {
 			add_action( 'wp_abilities_api_categories_init', array( $this, 'tp_register_ability_category' ) );
 			add_action( 'wp_abilities_api_init', array( $this, 'tp_register_abilities' ) );
+
+			/**
+			 * Optional in-editor Angie channel; self-gated, dormant until the built
+			 * JS bundle exists (see angie/README.md).
+			 *
+			 * @since 6.5.2
+			 */
+			require_once L_THEPLUS_PATH . 'modules/ability/core-elementor/angie/class-tp-angie-bridge.php';
+			Tp_Angie_Bridge::instance();
 		}
 
 		/**
@@ -146,6 +155,30 @@ if ( ! class_exists( 'Tp_Ability_Main' ) ) {
 				$args['meta']['public'] = true;
 			}
 
+			/**
+			 * When the Angie bundle is present AND Angie is actually active,
+			 * reclassify free tpae/ abilities off mcp.type='tool' so the bridge
+			 * is their sole in-editor channel.
+			 *
+			 * ABL-001: is_built() only checks the bundle JS exists on disk -- true
+			 * on every 6.5.2 install regardless of whether Angie itself is even
+			 * installed. Without the ANGIE_VERSION check this reclassified all 80
+			 * tpae/ abilities to mcp.type='bridge' unconditionally, which every
+			 * standards-based MCP discovery implementation (WP core's own
+			 * reference client, Angie's own generic discovery, Novamira's) filters
+			 * out by only accepting mcp.type==='tool' -- hiding every Free AI
+			 * ability from any non-Angie MCP client on every site, Angie active or
+			 * not.
+			 *
+			 * @since 6.5.2
+			 */
+			if ( defined( 'ANGIE_VERSION' ) && class_exists( 'Tp_Angie_Bridge' ) && Tp_Angie_Bridge::is_built() ) {
+				if ( ! isset( $args['meta']['mcp'] ) || ! is_array( $args['meta']['mcp'] ) ) {
+					$args['meta']['mcp'] = array();
+				}
+				$args['meta']['mcp']['type'] = 'bridge';
+			}
+
 			return $args;
 		}
 
@@ -168,6 +201,8 @@ if ( ! class_exists( 'Tp_Ability_Main' ) ) {
 
 			$ability_dir = L_THEPLUS_PATH . 'modules/ability/widgets-ability';
 			require_once L_THEPLUS_PATH . 'modules/ability/core-elementor/layout-abilities.php';
+			require_once L_THEPLUS_PATH . 'modules/ability/core-elementor/design-guide-ability.php';
+			require_once L_THEPLUS_PATH . 'modules/ability/core-elementor/page-lifecycle-abilities.php';
 			require_once L_THEPLUS_PATH . 'modules/ability/core-elementor/elementor-mcp-bridge.php';
 
 			if ( ! is_dir( $ability_dir ) ) {

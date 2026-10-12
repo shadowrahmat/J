@@ -43,6 +43,7 @@ if ( ! function_exists( 'theplus_free_uninstall_site' ) ) {
 				delete_option('tp-rateus-notice');
 				delete_option('tp_wdkit_preview_popup');
 				delete_option('tp_editor_onbording_popup');
+				delete_option('tpae_uichemy_notice_dismissed');
 			}
 
 			if( 'enable' === $remove_db_alldata ) {
@@ -65,6 +66,92 @@ if ( ! function_exists( 'theplus_free_uninstall_site' ) ) {
 				delete_option('theplus_activation_redirect');
 				delete_option('theplus_white_label');
 
+				/*
+				 * Written by Free but never removed until now (#756). Verified by
+				 * grepping for a writer before adding each one -- two other keys
+				 * that were sitting commented out at the bottom of this file
+				 * (default_plus_options, on_first_load_cache) have NO writer left
+				 * anywhere in either plugin, so they are not reinstated here.
+				 * tpae_version_cache, the third key in that same commented-out
+				 * block, is NOT in that "no writer" group -- it already has its own
+				 * pre-existing delete_option() call further down this file, so it
+				 * was already being removed before this comment was written.
+				 */
+				delete_option('theplus_widgets_settings');
+				delete_option('tpae_menu_notification');
+				delete_option('tpae_onboarding_time');
+				delete_option('tpae_onboarding_version');
+				delete_option('tpae_whats_new_notification');
+				delete_option('tp_update_popup_dismiss');
+				delete_option('tpae_pluginfeatures_notice_dismissed');
+
+				/*
+				 * ARCH-003 (#768): the three CPTs this plugin registers -- clients,
+				 * testimonials, team members (class-tpae-dashboard-listing.php:191,
+				 * 335,483) -- were never purged here, even under this full opt-in
+				 * "remove all data" flag. Each is only registered under a post_type
+				 * status the site owner opted into (empty/'disable' = never
+				 * registered), and each slug can be renamed via post_type_options
+				 * (the *_plugin_name fields) -- so read that option BEFORE deleting
+				 * it below, and fall back to the plugin's own defaults only when a
+				 * site never customised the name. wp_delete_post( , true ) is used
+				 * (not a raw query) so WP core also cleans up each post's own
+				 * postmeta correctly, including any that isn't covered by the
+				 * targeted DELETE two lines below.
+				 */
+				$tpae_cpt_options = get_option( 'post_type_options' );
+				$tpae_cpt_slugs   = array(
+					'client_plugin_name'      => 'theplus_clients',
+					'testimonial_plugin_name' => 'theplus_testimonial',
+					'team_member_plugin_name' => 'theplus_team_member',
+				);
+
+				foreach ( $tpae_cpt_slugs as $tpae_cpt_field => $tpae_cpt_default ) {
+					$tpae_cpt_slug = ! empty( $tpae_cpt_options[ $tpae_cpt_field ] ) ? $tpae_cpt_options[ $tpae_cpt_field ] : $tpae_cpt_default;
+					$tpae_cpt_slug = sanitize_key( $tpae_cpt_slug );
+
+					// The slug is a site-configurable option field; a value of a WP core
+					// post type (page, post, attachment, ...) would purge core content
+					// instead of this plugin's own CPT posts. Not reachable with any of
+					// the plugin's own defaults, but one line is cheap insurance.
+					if ( in_array( $tpae_cpt_slug, get_post_types( array( '_builtin' => true ) ), true ) ) {
+						continue;
+					}
+
+					$tpae_cpt_post_ids = get_posts(
+						array(
+							'post_type'      => $tpae_cpt_slug,
+							'post_status'    => 'any',
+							'numberposts'    => -1,
+							'fields'         => 'ids',
+							'no_found_rows'  => true,
+						)
+					);
+
+					foreach ( $tpae_cpt_post_ids as $tpae_cpt_post_id ) {
+						wp_delete_post( $tpae_cpt_post_id, true );
+					}
+				}
+
+				/*
+				 * post_type_options is genuinely unprefixed (not a tpae_/theplus_
+				 * name), and Pro reads it directly -- includes/plus_addon.php:69,233
+				 * in the Pro repo, which even registers its own
+				 * delete_option_post_type_options cache-invalidation hook, confirming
+				 * Pro treats it as live, actively-used data. A site can have Free
+				 * uninstalled with this full-data-removal flag while Pro stays
+				 * active (a common configuration, not an edge case) -- deleting this
+				 * option here would silently blank Pro's CPT slug configuration
+				 * (team member, testimonial, client post types) out from under it.
+				 * An earlier commit here added this delete_option() call (it had
+				 * previously been commented out deliberately); reverted back to not
+				 * deleting it, since the risk of breaking a co-installed Pro site is
+				 * worse than leaving one generic-named option behind after Free's own
+				 * uninstall. Left as a genuinely open question the option's own name
+				 * should be prefixed to a tpae_-owned key (a data migration, not a
+				 * one-line fix) rather than deleted.
+				 */
+
 				// Bulk-delete TPAE-owned transients. Each prefix below is unambiguously
 				// TPAE — using specific prefixes (not just 'tp_') to avoid collision
 				// with other plugins. Underscores in keys are escaped (\\_) so MySQL
@@ -84,9 +171,20 @@ if ( ! function_exists( 'theplus_free_uninstall_site' ) ) {
 						OR option_name = '_transient_theplus_verify_trans_licence' OR option_name = '_transient_timeout_theplus_verify_trans_licence'"
 				);
 
+				/*
+				 * theplus-term-* is one option row per term (plus-generator.php:269,
+				 * :392), so the orphan count scales with the site's taxonomy, not
+				 * with a fixed list -- a large site is left with hundreds. These are
+				 * real option rows, not transients, so the bulk transient query
+				 * above cannot reach them. Underscores are not escaped here because
+				 * the key uses hyphens; the '-' is a literal in LIKE.
+				 */
+				$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", 'theplus-term-%' ) );
+
 				// Cache-control markers (safe to remove on full uninstall).
 				delete_option( 'tp_save_update_at' );
 				delete_option( 'tpae_version_cache' );
+				delete_option( 'tpae_version_active' );
 
 				// Remove per-post widget-detection meta (written on every Elementor page)
 				// + Pro form-submission meta.
@@ -132,12 +230,15 @@ if ( ! function_exists( 'theplus_free_uninstall_site' ) ) {
 			delete_option( 'tpae_widget_recipes_since' );
 			delete_option( 'tpae_install_time' );
 
-			// if ( file_exists( L_THEPLUS_ASSET_PATH . '/theplus.min.css' ) ) {
-			// 	wp_delete_file( L_THEPLUS_ASSET_PATH . DIRECTORY_SEPARATOR . '/theplus.min.css' );
-			// }
-			// if ( file_exists( L_THEPLUS_ASSET_PATH . '/theplus.min.js' ) ) {
-			// 	wp_delete_file( L_THEPLUS_ASSET_PATH . DIRECTORY_SEPARATOR . '/theplus.min.js' );
-			// }
+			/*
+			 * The deletes above include raw DELETE queries against wp_options,
+			 * wp_postmeta and wp_usermeta, which bypass the object cache. On a site
+			 * with a persistent cache (Redis, Memcached) the `alloptions` entry can
+			 * outlive the DELETE and keep serving values that no longer exist in the
+			 * database. Flush once, after all of them (#756).
+			 */
+			wp_cache_flush();
+
 		}
 	}
 }
@@ -210,11 +311,3 @@ if ( class_exists( 'Posimyth_Tracker_TPAE' ) && method_exists( 'Posimyth_Tracker
 	delete_option( 'posi_consent_snoozed_until_tpae_suite' );
 	delete_option( 'posi_consent_grace_start_tpae_suite' );
 }
-
-// delete_option('default_plus_options');
-
-// delete_option('post_type_options');
-// delete_option('on_first_load_cache');
-
-// delete_option('tp_save_update_at');
-// delete_option('tpae_version_cache');

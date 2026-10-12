@@ -90,12 +90,35 @@ class Tpae_Elementor_MCP_Query_Abilities {
 	/**
 	 * Shared permission callback for read-only tools.
 	 *
-	 * @since 1.0.0
+	 * `edit_posts` is a blanket capability -- true for any Contributor+, regardless
+	 * of which specific post is being asked about. get-page-structure,
+	 * get-element-settings, and find-element all accept a `post_id` in their
+	 * input_schema and their execute_callback reads that post's full Elementor
+	 * data unconditionally; without the per-post check below, a Contributor or
+	 * Author (edit_posts but not edit_others_posts/read_private_posts) could
+	 * read the content of another user's private page or unpublished draft by
+	 * passing its ID here. Same shape as the already-fixed tpae/duplicate-page
+	 * bug (#766): the schema accepted more than this callback checked. Abilities
+	 * with no `post_id` in their schema (list-widgets, get-widget-schema,
+	 * get-container-schema, get-global-settings) are unaffected -- absint() of a
+	 * missing key is 0, which skips the extra check below.
 	 *
+	 * @since 6.5.2
+	 *
+	 * @param array|null $input Ability input; may carry a post_id to target-check.
 	 * @return bool Whether the current user can use read tools.
 	 */
-	public function check_read_permission(): bool {
-		return current_user_can( 'edit_posts' );
+	public function check_read_permission( ?array $input = null ): bool {
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			return false;
+		}
+
+		$post_id = absint( $input['post_id'] ?? 0 );
+		if ( $post_id > 0 && ! current_user_can( 'edit_post', $post_id ) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -929,6 +952,34 @@ class Tpae_Elementor_MCP_Query_Abilities {
 			'orderby'        => 'modified',
 			'order'          => 'DESC',
 		);
+
+		/*
+		 * `post_status` defaults to 'any' -- draft/pending/private posts included --
+		 * and this ability's permission_callback (check_read_permission) only checks
+		 * the blanket `edit_posts` capability, which says nothing about whose posts
+		 * the caller may see. WP_Query performs no capability filtering of its own.
+		 * Without this, a Contributor or Author (edit_posts but not
+		 * edit_others_posts/edit_others_pages) could list every other user's
+		 * non-public Elementor pages, not just their own -- a metadata-disclosure
+		 * instance of the same "schema accepts more than permission_callback checks"
+		 * shape as the already-fixed tpae/duplicate-page bug (#766). Scope to the
+		 * caller's own posts unless they hold the relevant post type's
+		 * edit_others capability for every requested type.
+		 *
+		 * @since 6.5.2
+		 */
+		$requested_types = ! empty( $post_type ) ? array( $post_type ) : array( 'page', 'post' );
+		$can_see_others  = true;
+		foreach ( $requested_types as $requested_type ) {
+			$pto = get_post_type_object( $requested_type );
+			if ( ! $pto || empty( $pto->cap->edit_others_posts ) || ! current_user_can( $pto->cap->edit_others_posts ) ) {
+				$can_see_others = false;
+				break;
+			}
+		}
+		if ( ! $can_see_others ) {
+			$query_args['author'] = get_current_user_id();
+		}
 
 		$query = new \WP_Query( $query_args );
 		$pages = array();

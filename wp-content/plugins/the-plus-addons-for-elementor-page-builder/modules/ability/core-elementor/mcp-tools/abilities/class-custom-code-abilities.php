@@ -233,6 +233,21 @@ class Tpae_Elementor_MCP_Custom_Code_Abilities {
 		$css = preg_replace( '/url\s*\(\s*[\'"]?\s*javascript\s*:/i', 'url(', $css );
 		$css = preg_replace( '/url\s*\(\s*[\'"]?\s*data\s*:\s*text\/html/i', 'url(', $css );
 
+		/*
+		 * Defence in depth, not a demonstrated hole (see #744 review). This
+		 * value ultimately reaches Elementor Pro's own custom_css render
+		 * path -- a separately licensed plugin this workstation cannot
+		 * install, so its output-time escaping could not be tested here.
+		 * Measured: without this line, "</style><img src=x onerror=...>"
+		 * survived every rule above unchanged. If that value is ever echoed
+		 * inside an inline <style> block (as opposed to a linked .css file,
+		 * which cannot execute HTML regardless of content), this closes the
+		 * breakout at the source rather than trusting a plugin we cannot
+		 * verify. Ability already requires unfiltered_html either way, so
+		 * this does not change who can reach it -- only what survives.
+		 */
+		$css = str_ireplace( array( '</style', '<style' ), '', $css );
+
 		if ( ! empty( $element_id ) ) {
 			// Element-level custom CSS.
 			$page_data = $this->data->get_page_data( $post_id );

@@ -178,7 +178,7 @@ add_action( 'wp_head', function() {
 			padding: 6px 2px !important;
 			background: #ffffff !important;
 			border: 1px solid #cfd8e3 !important;
-			border-radius: 0 !important;
+
 			color: #1f2937 !important;
 			font-size: 12px !important;
 			font-weight: 600 !important;

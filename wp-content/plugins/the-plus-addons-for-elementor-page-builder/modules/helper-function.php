@@ -62,7 +62,20 @@ function tp_senitize_role( $capability ) {
  *
  * @since 5.5.0
  * */
-function tp_senitize_js_input( $input ) {
+function tp_sanitize_js_input( $input ) {
+
+	/*
+	 * Callers pass unset widget settings straight in, so $input is regularly null.
+	 * Passing null to preg_replace()'s $subject is deprecated as of PHP 8.1 and was the
+	 * single noisiest TPAE entry in debug.log on PHP 8.4. Reject only what has no string
+	 * form; ints/floats/bools keep coercing exactly as they did before, so no caller that
+	 * relied on a numeric setting changes behaviour.
+	 */
+	if ( null === $input || is_array( $input ) || is_object( $input ) ) {
+		return '';
+	}
+
+	$input = (string) $input;
 
 	$input = preg_replace( '/&#x[0-9a-fA-F]+;/i', '', $input );
 
@@ -84,6 +97,18 @@ function tp_senitize_js_input( $input ) {
     return trim( $input ); // Return the sanitized input, trimmed of whitespace
 }
 
+/**
+ * ARCH-011: back-compat alias for the misspelled original name
+ * (tp_senitize_js_input). Kept because the misspelling already shipped and
+ * third-party code (child themes, snippets) may call it directly; new core
+ * call sites use the correctly-spelled tp_sanitize_js_input() above.
+ *
+ * @since 6.5.2
+ * */
+function tp_senitize_js_input( $input ) {
+	return tp_sanitize_js_input( $input );
+}
+
 // Navigation Get Menu
 function l_theplus_navigation_menulist() {
 	$menus = wp_get_nav_menus();
@@ -98,7 +123,17 @@ class L_Theplus_Navigation_NavWalker extends \Walker_Nav_Menu {
 
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent        = str_repeat( "\t", $depth );
-		$dropdown_menu = "\n$indent<ul role=\"menu\" class=\" dropdown-menu\">\n";
+		/*
+		 * N3 (widget-test/navigation-menu): role="menu" with zero role="menuitem"
+		 * children is invalid ARIA 1.2 -- and worse than no role at all. Left
+		 * alone, <ul>/<li>/<a> is announced correctly as a list of links, exactly
+		 * right for site navigation; the menu role overrides that with a broken
+		 * one and implies application-menu keyboard semantics (arrow keys,
+		 * Home/End, Escape) this widget never implements. Site navigation
+		 * shouldn't use the menu role at all -- that role is for application
+		 * menus (like a desktop app's menu bar), not a website's nav.
+		 */
+		$dropdown_menu = "\n$indent<ul class=\" dropdown-menu\">\n";
 		$dropdown_menu = apply_filters( 'theplus_nav_menu_start_lvl', $dropdown_menu, $indent, $args );
 		$output       .= $dropdown_menu;
 	}
@@ -170,8 +205,33 @@ class L_Theplus_Navigation_NavWalker extends \Walker_Nav_Menu {
 				// $atts['data-toggle'] = 'dropdown';
 				$atts['class']         = 'dropdown-toggle';
 				$atts['aria-haspopup'] = 'true';
+				/*
+				 * N4 (widget-test/navigation-menu): "aria-haspopup without
+				 * aria-expanded" was measured on the desktop dropdown -- the mobile
+				 * toggle button already has its own aria-expanded from an earlier
+				 * fix. Scope this addition to the desktop menu (theme_location
+				 * 'default_navmenu') only, so the mobile tree's markup -- which
+				 * already carried aria-haspopup alone before this change -- is left
+				 * exactly as it was; plus-nav-menu-lite.js's desktop hover-open and
+				 * click-open paths flip this between "true"/"false" as the dropdown
+				 * opens/closes.
+				 */
+				if ( 'default_navmenu' === $args->theme_location ) {
+					$atts['aria-expanded'] = 'false';
+				}
 			} else {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
+			}
+
+			/*
+			 * N6 (widget-test/navigation-menu): the current page was conveyed by
+			 * the "active" CSS class only (see $class_names above), with no
+			 * programmatic signal for assistive tech. Mirrors WordPress core's own
+			 * convention of aria-current="page" on the exact current-item link
+			 * (not on ancestor/parent items, which use a different class).
+			 */
+			if ( in_array( 'current-menu-item', $classes ) ) {
+				$atts['aria-current'] = 'page';
 			}
 
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
@@ -530,7 +590,6 @@ function l_theplus_get_tags_options( $href = '' ) {
 		'h4'  => esc_html__( 'H4', 'tpebl' ),
 		'h5'  => esc_html__( 'H5', 'tpebl' ),
 		'h6'  => esc_html__( 'H6', 'tpebl' ),
-		'h6'  => esc_html__( 'H6', 'tpebl' ),
 		'div' => esc_html__( 'div', 'tpebl' ),
 		'p'   => esc_html__( 'p', 'tpebl' ),
 	);
@@ -580,4 +639,115 @@ function tpae_wl_pluginads_enabled() {
     }
 
     return false;
+}
+
+/**
+ * Sanitise a comma separated list of email addresses.
+ *
+ * Every address is validated on its own so one malformed entry drops out
+ * instead of emptying the whole recipient list, which is what a single
+ * sanitize_email() call on a comma separated string does.
+ *
+ * @since 6.5.2
+ *
+ * @param string $emails Raw comma separated list of addresses.
+ * @return string Comma separated list of the valid addresses, empty when none are valid.
+ */
+function tpae_sanitize_email_list( $emails ) {
+
+	if ( empty( $emails ) || ! is_string( $emails ) ) {
+		return '';
+	}
+
+	$valid = array();
+
+	foreach ( explode( ',', $emails ) as $email ) {
+		$email = trim( $email );
+		$clean = sanitize_email( $email );
+
+		/*
+		 * The entry has to survive sanitize_email() unchanged. A value carrying
+		 * line breaks or header syntax comes back stripped into something that
+		 * still looks like an address, and that is not an address to mail.
+		 */
+		if ( '' !== $clean && $clean === $email && is_email( $clean ) ) {
+			$valid[] = $clean;
+		}
+	}
+
+	return implode( ', ', $valid );
+}
+
+/**
+ * Resolve [value_id="..."] tokens in an email control against the submission.
+ *
+ * Lets an author route replies, or a copy of the notification, to the address the
+ * visitor typed. The resolved value comes from the request, so the result is capped:
+ * an unbounded list would turn the form into a relay.
+ *
+ * @since 6.5.3
+ *
+ * @param string $value       Raw control value, which may mix tokens and plain addresses.
+ * @param array  $form_fields Submitted fields, in the shape the message builder receives.
+ * @param int    $max         Most addresses to keep.
+ * @return string Comma separated list of the valid addresses, empty when none are valid.
+ */
+function tpae_resolve_email_tokens( $value, $form_fields, $max = 3 ) {
+
+	if ( empty( $value ) || ! is_string( $value ) ) {
+		return '';
+	}
+
+	$value = preg_replace_callback(
+		'/\[value_id=("|\')([^"\']+)("|\')\]/',
+		function ( $matches ) use ( $form_fields ) {
+			foreach ( $form_fields as $field ) {
+				if ( ! is_array( $field ) ) {
+					continue;
+				}
+
+				$id   = isset( $field['field_id'] ) ? $field['field_id'] : '';
+				$name = isset( $field['field_name'] ) ? $field['field_name'] : '';
+
+				if ( $matches[2] === $id || $matches[2] === $name ) {
+					return isset( $field['field_value'] ) ? (string) $field['field_value'] : '';
+				}
+			}
+
+			return '';
+		},
+		$value
+	);
+
+	$emails = tpae_sanitize_email_list( $value );
+
+	if ( '' === $emails ) {
+		return '';
+	}
+
+	return implode( ', ', array_slice( explode( ', ', $emails ), 0, $max ) );
+}
+
+/**
+ * Sanitise an email control that is allowed to carry a [value_id="..."] token.
+ *
+ * Runs at render time, where the token cannot be resolved yet, so a value holding
+ * one is passed through as text and the handler resolves it on submission.
+ *
+ * @since 6.5.3
+ *
+ * @param string $value Raw control value.
+ * @return string Value safe to hand to the submission handler.
+ */
+function tpae_sanitize_email_control( $value ) {
+
+	if ( empty( $value ) || ! is_string( $value ) ) {
+		return '';
+	}
+
+	if ( false !== strpos( $value, '[value_id=' ) ) {
+		return sanitize_text_field( $value );
+	}
+
+	return tpae_sanitize_email_list( $value );
 }

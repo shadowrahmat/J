@@ -1,0 +1,530 @@
+{
+    "page": {
+        "id": 1177,
+        "title": "Shop",
+        "url": "http://localhost/juhani/shop/",
+        "elementor_hash": "081d2c79350ab3cfebd1519b1281f28a8bc22dd5efa9715b6179a5081d4148c1"
+    },
+    "products": [
+        {
+            "id": 240,
+            "title": "Cast Net - 15 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-15-ghor/",
+            "type": "variable",
+            "price": "1540",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,540.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>4,220.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,540.00&#2547;&nbsp; through 4,220.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/15-ghor-net-02.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "4",
+                        "6"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "10.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Hand Made",
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Handmade Git",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 330,
+            "title": "Cast Net - 18 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-18-ghor/",
+            "type": "variable",
+            "price": "1540",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,540.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>4,220.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,540.00&#2547;&nbsp; through 4,220.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/18-ghor-net-02.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "4",
+                        "6"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "10.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Hand Made",
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Handmade Git",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 450,
+            "title": "Cast Net - 22 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-22-ghor/",
+            "type": "variable",
+            "price": "1440",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,440.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>4,220.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,440.00&#2547;&nbsp; through 4,220.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/22-ghor-net-01.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "3",
+                        "3/4",
+                        "4"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "10.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Hand Made",
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Handmade Git",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 570,
+            "title": "Cast Net - 25 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-25-ghor/",
+            "type": "variable",
+            "price": "1440",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,440.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>4,720.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,440.00&#2547;&nbsp; through 4,720.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/25-ghor-net-02.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "3",
+                        "3/4",
+                        "4"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "10.5",
+                        "11.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Hand Made",
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Handmade Git",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 720,
+            "title": "Cast Net - 28 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-28-ghor/",
+            "type": "variable",
+            "price": "1640",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,640.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>4,720.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,640.00&#2547;&nbsp; through 4,720.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/28-ghor-net-04.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "3",
+                        "3/4",
+                        "4"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "10.5",
+                        "7.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Hand Made",
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Handmade Git",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 839,
+            "title": "Cast Net - 30 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-30-ghor/",
+            "type": "variable",
+            "price": "1390",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,390.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>4,720.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,390.00&#2547;&nbsp; through 4,720.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/30-ghor-net-04.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "3",
+                        "3/4",
+                        "4"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "6.5",
+                        "7.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Hand Made",
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Handmade Git",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 960,
+            "title": "Cast Net - 36 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-36-ghor/",
+            "type": "variable",
+            "price": "1540",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,540.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>4,720.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,540.00&#2547;&nbsp; through 4,720.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/36-ghor-net-02.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "3"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "6.5",
+                        "7.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Hand Made",
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Handmade Git",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 1020,
+            "title": "Cast Net - 40 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-40-ghor/",
+            "type": "variable",
+            "price": "1540",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,540.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>2,620.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,540.00&#2547;&nbsp; through 2,620.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/44-ghor-net-01-1.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "3"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "6.5",
+                        "7.5",
+                        "8.5",
+                        "9.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        },
+        {
+            "id": 1080,
+            "title": "Cast Net - 44 Ghor",
+            "url": "http://localhost/juhani/product/cast-net-44-ghor/",
+            "type": "variable",
+            "price": "1640",
+            "price_html": "<span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>1,640.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span> <span aria-hidden=\"true\">&ndash;</span> <span class=\"woocommerce-Price-amount amount\" aria-hidden=\"true\"><bdi>2,620.00<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\" dir=\"auto\">&#2547;&nbsp;</span></bdi></span><span class=\"screen-reader-text\">Price range: 1,640.00&#2547;&nbsp; through 2,620.00&#2547;&nbsp;</span>",
+            "stock": "instock",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/44-ghor-net-01-1.webp",
+            "categories": [
+                "Cast Nets"
+            ],
+            "attributes": {
+                "pa_suta": {
+                    "label": "Suta",
+                    "values": [
+                        "3"
+                    ]
+                },
+                "pa_haat": {
+                    "label": "Haat",
+                    "values": [
+                        "6.5",
+                        "7.5",
+                        "8.5"
+                    ]
+                },
+                "pa_making-type": {
+                    "label": "Making Type",
+                    "values": [
+                        "Machine Made"
+                    ]
+                },
+                "pa_git-type": {
+                    "label": "Git Type",
+                    "values": [
+                        "Comilla Bandha",
+                        "Jam Bandha"
+                    ]
+                },
+                "pa_rock-weight-kg": {
+                    "label": "Rock Weight (kg)",
+                    "values": [
+                        "3.5",
+                        "4",
+                        "4.5",
+                        "5",
+                        "5.5",
+                        "6"
+                    ]
+                }
+            }
+        }
+    ],
+    "categories": {
+        "1": {
+            "term_id": 42,
+            "name": "Cast Nets",
+            "slug": "cast-nets",
+            "term_group": 0,
+            "term_taxonomy_id": 42,
+            "taxonomy": "product_cat",
+            "description": "",
+            "parent": 0,
+            "count": 9,
+            "filter": "raw"
+        }
+    }
+}

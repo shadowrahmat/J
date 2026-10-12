@@ -463,10 +463,63 @@ class L_Plus_Generator {
 		}
 	}
 
+	/**
+	 * Whether the front-end globals block has been printed on this request.
+	 *
+	 * @since 6.5.3
+	 *
+	 * @var bool
+	 */
+	protected $tp_inline_printed = false;
+
+	/**
+	 * Whether the globals block is waiting for wp_head to print.
+	 *
+	 * @since 6.5.3
+	 *
+	 * @var bool
+	 */
+	protected $tp_inline_deferred = false;
+
+	/**
+	 * Print the front-end globals (ajax urls, nonce, carousel labels).
+	 *
+	 * This prints straight to the output, so it must not run before the document
+	 * has started. Since 6.5.2 enqueue_assets() runs on every request, and for an
+	 * Elementor Pro Theme Builder template it is reached from
+	 * elementor/theme/register_locations on template_redirect, before the theme
+	 * has sent anything. The block then landed ahead of the doctype and put the
+	 * page in quirks mode. A call made before wp_head is now held back and printed
+	 * at the very start of wp_head, ahead of every enqueued script that reads the
+	 * globals.
+	 *
+	 * It also printed once per caller, so a page got two or three copies. It is
+	 * now printed once per request.
+	 *
+	 * A request that never reaches wp_head (AJAX, REST, feeds) prints nothing.
+	 *
+	 * @since 6.5.3 Deferred to wp_head when called early, and printed only once.
+	 */
 	public function load_inline_script() {
+		if ( $this->tp_inline_printed ) {
+			return;
+		}
+
+		if ( ! did_action( 'wp_head' ) && ! doing_action( 'wp_head' ) ) {
+			if ( ! $this->tp_inline_deferred ) {
+				$this->tp_inline_deferred = true;
+				add_action( 'wp_head', array( $this, 'load_inline_script' ), 0 );
+			}
+			return;
+		}
+
+		$this->tp_inline_printed = true;
+
 		$js_inline1 = 'var theplus_ajax_url = "' . admin_url( 'admin-ajax.php' ) . '";
 		var theplus_ajax_post_url = "' . admin_url( 'admin-post.php' ) . '";
-		var theplus_nonce = "' . ( is_user_logged_in() ? wp_create_nonce( 'theplus-addons' ) : '' ) . '";';
+		var theplus_nonce = "' . wp_create_nonce( 'theplus-addons' ) . '";
+		var theplus_carousel_pause = "' . esc_js( __( 'Pause automatic slideshow', 'tpebl' ) ) . '";
+		var theplus_carousel_play = "' . esc_js( __( 'Play automatic slideshow', 'tpebl' ) ) . '";';
 		wp_print_inline_script_tag( $js_inline1 );
 	}
 
@@ -622,6 +675,24 @@ class L_Plus_Generator {
 			}
 			if ( isset( $separate_path['js'] ) && ! empty( $separate_path['js'] ) ) {
 				$iji = 0;
+
+				/*
+				 * These per-widget scripts are STATIC plugin files that only change on a
+				 * plugin release, so they are versioned with the active plugin versions,
+				 * not the per-post timestamp in $plus_version. get_post_version() returns
+				 * Elementor's own CSS time first, so a plugin update did not change the
+				 * ?ver= string and browsers kept serving a fixed script from their
+				 * one-year cache (reported with the 6.5.2 carousel dots fix). Free and Pro
+				 * are both part of the key, as in the cache version gate, so updating
+				 * either one changes the URL. The generated per-post bundles keep
+				 * $plus_version because their contents genuinely change.
+				 *
+				 * @since 6.5.3
+				 */
+				$tp_release_version = defined( 'THEPLUS_VERSION' )
+					? L_THEPLUS_VERSION . '-pro-' . THEPLUS_VERSION
+					: L_THEPLUS_VERSION;
+
 				foreach ( $separate_path['js'] as $key => $path ) {
 					if ( is_readable( l_theplus_library()->secure_path_url( $path ) ) ) {
 						$js_sep_url = str_replace( $tp_path, $tp_url, $path );
@@ -633,7 +704,7 @@ class L_Plus_Generator {
 						if ( $iji === 0 ) {
 							$load_localize = 'theplus-' . $js_file_key;
 						}
-						wp_enqueue_script( 'theplus-' . $js_file_key, $this->pathurl_security( $js_sep_url ), $load_depend, $plus_version, true );
+						wp_enqueue_script( 'theplus-' . $js_file_key, $this->pathurl_security( $js_sep_url ), $load_depend, $tp_release_version, true );
 						++$iji;
 					}
 				}
@@ -756,18 +827,26 @@ class L_Plus_Generator {
 			? L_THEPLUS_VERSION . '-pro-' . THEPLUS_VERSION
 			: L_THEPLUS_VERSION;
 
-		// Bust the generated cache whenever this version combination has not
-		// been recorded before — i.e. on fresh install and on EVERY upgrade of
-		// either plugin.
+		// Bust the generated cache whenever the ACTIVE version combination
+		// differs from the one recorded on the previous run — i.e. on fresh
+		// install, on every upgrade, and on a ROLLBACK of either plugin.
 		//
-		// The previous logic hard-coded a one-time `in_array( '5.6.0', ... )`
-		// check, so once 5.6.0 was recorded no later upgrade ever purged the
-		// stale global editor cache (theplus.min.css / theplus.min.js). Because
-		// the Elementor editor preview always serves that global merged file
-		// (regenerated only when it is missing), the editor kept rendering
-		// widgets with outdated CSS after every update, while the frontend —
-		// which regenerates per-post caches on save — looked correct.
-		if ( in_array( $current_version, $get_version, true ) ) {
+		// The previous gate keyed on `in_array( $current_version, $get_version )`
+		// — "has this combination ever been seen?". That busts on a forward
+		// upgrade (a new combination), but a rollback returns to a combination
+		// already in the array, so the gate returned early and the stale
+		// assets kept being served. Upgrades through WP's own updater are also
+		// covered by tp_f_on_upgrade() deleting the marker, but a rollback done
+		// outside the updater (manual file swap, host snapshot restore) never
+		// fires that hook, so this gate is the only thing that catches it.
+		//
+		// Compare against a single "last active" marker instead. Any change of
+		// the active combination — in either direction — busts exactly once,
+		// then records the new value and returns early on subsequent loads.
+		$active_option = 'tpae_version_active';
+		$last_active   = get_option( $active_option );
+
+		if ( is_string( $last_active ) && $last_active === $current_version ) {
 			return;
 		}
 
@@ -775,6 +854,10 @@ class L_Plus_Generator {
 		// sites the cache directory can hold tens of thousands of files; if we
 		// invalidated first and the request timed out, the version would never
 		// be recorded and this clear would re-run on every admin load.
+		//
+		// The legacy tpae_version_cache array is kept in sync for continuity
+		// (existing installs and tooling read it), but tpae_version_active is
+		// the value the gate above decides on.
 		$get_version[] = $current_version;
 		$versions      = array_values( array_unique( $get_version ) );
 
@@ -782,6 +865,12 @@ class L_Plus_Generator {
 			add_option( $option_name, $versions, '', 'no' );
 		} else {
 			update_option( $option_name, $versions, false );
+		}
+
+		if ( false === $last_active ) {
+			add_option( $active_option, $current_version, '', 'no' );
+		} else {
+			update_option( $active_option, $current_version, false );
 		}
 
 		// Invalidate cheaply (O(1)) instead of deleting the entire cache dir:
@@ -981,6 +1070,17 @@ class L_Plus_Generator {
 	 */
 	public function tp_trashed_post_transient( $post_id ) {
 		if ( wp_doing_cron() ) {
+			return;
+		}
+
+		/*
+		 * before_delete_post also fires for every revision and autosave of the post
+		 * being deleted. Those never had a bundle of their own, and their post_type
+		 * ( 'revision' ) is not in the post/page/product list below, so each one would
+		 * bump the site-wide tp_save_update_at clock. Deleting a single page with 20
+		 * revisions would invalidate every cached page 20 times over.
+		 */
+		if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
 			return;
 		}
 
@@ -1207,6 +1307,37 @@ class L_Plus_Generator {
 		return $file_name;
 	}
 
+	/**
+	 * Whether assets may be ENQUEUED on this request.
+	 *
+	 * Deliberately not the same question as check_generate_script(). That one asks
+	 * "do the cache files need rebuilding?" and answers false in the normal steady
+	 * state, because requires_update() compares tp_save_update_at against the post's
+	 * tp_widgets['update_at'] and they match once generation has succeeded.
+	 *
+	 * Delivery has to happen on every request regardless of freshness, so this keeps
+	 * the same environment guards and drops the freshness check. Gating enqueue on
+	 * freshness is what stopped theplus-general-preload (plus-extra-adv.min.css)
+	 * loading on every request after the first generation.
+	 *
+	 * @since 6.5.2
+	 */
+	public function check_enqueue_script() {
+		if ( $this->is_background_running() ) {
+			return false;
+		}
+
+		if ( $this->plus_uid === null ) {
+			return false;
+		}
+
+		if ( l_theplus_library()->is_preview_mode() ) {
+			return false;
+		}
+
+		return true;
+	}
+
 	public function check_generate_script() {
 		if ( $this->is_background_running() ) {
 			return false;
@@ -1237,7 +1368,19 @@ class L_Plus_Generator {
 
 	public function header_init_load_data( $post_type = null, $post_id = null ) {
 
-		if ( $this->check_generate_script() === false ) {
+		/*
+		 * Enqueue must not be gated on the regeneration check. check_generate_script()
+		 * returns false in the normal steady state, so every request after the first
+		 * returned here and never reached enqueue_assets(). That silently dropped
+		 * theplus-general-preload (plus-extra-adv.min.css), which is enqueued in
+		 * exactly one place, inside enqueue_assets() below.
+		 *
+		 * Regeneration stays gated on freshness at its own call sites, so opening
+		 * this path up does not rebuild bundles on every request.
+		 *
+		 * @since 6.5.2
+		 */
+		if ( $this->check_enqueue_script() === false ) {
 			return;
 		}
 
@@ -1350,6 +1493,18 @@ class L_Plus_Generator {
 
 		add_action( 'elementor/editor/after_save', array( $this, 'tp_post_save_transient' ), 10, 2 );
 		add_action( 'trashed_post', array( $this, 'tp_trashed_post_transient' ), 10, 1 );
+
+		/*
+		 * Only trashing cleaned up before, so a post deleted permanently -- emptied
+		 * from the trash, removed by a cleanup plugin, or deleted with EMPTY_TRASH_DAYS
+		 * at 0 -- left its generated CSS/JS bundle on disk forever.
+		 *
+		 * before_delete_post, NOT deleted_post: by the time deleted_post fires the row
+		 * is gone, get_post_type() returns false, and the "not a post/page/product"
+		 * branch in the handler would bump the SITE-WIDE tp_save_update_at clock --
+		 * turning one deletion into a cache invalidation across every other page.
+		 */
+		add_action( 'before_delete_post', array( $this, 'tp_trashed_post_transient' ), 10, 1 );
 
 		add_action( 'wp', array( $this, 'init_post_request_data' ) );
 

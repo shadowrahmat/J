@@ -25,8 +25,12 @@ if ( 'clrepeater' !== $content_from ) {
 
 	<div class="client-post-content">
 		
-		<div class="client-content-logo">		
-			<a href="<?php echo esc_url( $client_url ); ?>" target="_blank" rel="noopener noreferrer">
+		<?php
+		/* Inside the 'clrepeater' !== $content_from branch, so this is always the post title. */
+		$client_accessible_label = get_the_title();
+		?>
+		<div class="client-content-logo">
+			<a href="<?php echo esc_url( $client_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $client_accessible_label ); ?>">
 				<?php require L_THEPLUS_WSTYLES . 'client/format-image.php'; ?>
 			</a>
 		</div>

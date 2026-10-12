@@ -3,7 +3,7 @@
  * Plugin Name: The Plus Addons for Elementor
  * Plugin URI: https://theplusaddons.com/
  * Description: Highly Customisable 120+ Advanced Elementor Widgets & Extensions for Performance Driven Website.
- * Version: 6.5.1
+ * Version: 6.5.3
  * Author: POSIMYTH
  * Author URI: https://posimyth.com/
  * Requires at least: 6.0
@@ -13,8 +13,8 @@
  * Domain Path: /languages
  * License: GPLv3
  * License URI: https://opensource.org/licenses/GPL-3.0
- * Elementor tested up to: 4.2
- * Elementor Pro tested up to: 4.2
+ * Elementor tested up to: 4.3
+ * Elementor Pro tested up to: 4.3
  *
  * @package the-plus-addons-for-elementor-page-builder
  */
@@ -23,8 +23,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'L_THEPLUS_VERSION', '6.5.1' );
-define( 'L_THEPLUS_MINIMUM_ELEMENTOR_VERSION', '3.5.0' );
+define( 'L_THEPLUS_VERSION', '6.5.3' );
+
+/**
+ * Minimum Elementor version.
+ *
+ * The registration API this plugin uses dates from Elementor 3.5, but the
+ * control TYPES do not: 23 Free files use Controls_Manager::VISUAL_CHOICE,
+ * which Elementor only added in 3.28.0. Below that the constant is undefined
+ * and every affected widget throws while building its controls, so the real
+ * floor is 3.28.0.
+ *
+ * Verified against Elementor 3.24/3.25/3.26/3.27 (absent) and 3.28/3.30/4.2
+ * (present). All 34 Controls_Manager constants used across Free and Pro exist
+ * in 3.28.0.
+ *
+ * Bump this whenever the plugin starts using a newer Elementor control type or
+ * API.
+ *
+ * @since 6.5.0
+ */
+define( 'L_THEPLUS_MINIMUM_ELEMENTOR_VERSION', '3.28.0' );
 define( 'L_THEPLUS_FILE', __FILE__ );
 define( 'L_THEPLUS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'L_THEPLUS_PBNAME', plugin_basename( __FILE__ ) );
@@ -110,6 +129,30 @@ function tpae_posimyth_is_white_labelled() {
 
 	return false;
 }
+
+/**
+ * COMPAT-005 fix: Declare compatibility with WooCommerce HPOS (Custom Order
+ * Tables). Pro already declares this; Free did not, so a store running Free
+ * alone saw The Plus Addons listed as "incompatible" on the WooCommerce
+ * Features screen and WooCommerce refused to enable HPOS — for no reason,
+ * since Free never touches the orders tables.
+ *
+ * Declaration only: no behaviour changes, no new feature, nothing to migrate.
+ *
+ * @since 6.5.2
+ */
+add_action(
+	'before_woocommerce_init',
+	function () {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility(
+				'custom_order_tables',
+				__FILE__,
+				true
+			);
+		}
+	}
+);
 
 add_action(
 	'plugins_loaded',

@@ -1468,9 +1468,9 @@ body.woocommerce-checkout .woocommerce-checkout-review-order-table tfoot tr {
 .woocommerce-order .woocommerce-bacs-bank-details,
 .woocommerce-order .woocommerce-order-downloads,
 .woocommerce-order .woocommerce-table {
-	border-radius: 0 !important;
-	-webkit-border-radius: 0 !important;
-	-moz-border-radius: 0 !important;
+
+
+
 }
 
 /* Main Container max-width & centering - Aligned with Floating Header */
@@ -1511,7 +1511,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	background: #f0fdf4 !important;
 	border: 1px solid #bbf7d0 !important;
 	border-left: 5px solid #22c55e !important;
-	border-radius: 0 !important;
+
 	padding: 16px 20px !important;
 	color: #15803d !important;
 	font-family: "Poppins", sans-serif !important;
@@ -1532,7 +1532,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	height: 24px !important;
 	background: #22c55e !important;
 	color: #ffffff !important;
-	border-radius: 50% !important;
+
 	font-size: 14px !important;
 	font-weight: 800 !important;
 	flex-shrink: 0 !important;
@@ -1550,7 +1550,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	gap: 0 !important;
 	background: #ffffff !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 0 !important;
+
 	padding: 20px 24px !important;
 	margin: 0 0 28px 0 !important;
 	box-shadow: 0 4px 16px rgba(16, 57, 94, 0.05) !important;
@@ -1623,7 +1623,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	width: 4px !important;
 	height: 20px !important;
 	background: #10395E !important;
-	border-radius: 0 !important;
+
 }
 
 /* The Table / Card */
@@ -1637,7 +1637,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	border-spacing: 0 !important;
 	background: #ffffff !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 0 !important;
+
 	overflow: hidden !important;
 	box-shadow: 0 4px 16px rgba(16, 57, 94, 0.05) !important;
 	margin: 0 !important;
@@ -1717,7 +1717,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	background: #eaf2f8 !important;
 	color: #10395E !important;
 	border: 1px solid #d0e0ed !important;
-	border-radius: 0 !important;
+
 	font-size: 12px !important;
 	font-weight: 700 !important;
 	vertical-align: middle !important;
@@ -1737,7 +1737,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	padding: 4px 10px !important;
 	background: #f4f8fb !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 0 !important;
+
 	display: inline-flex !important;
 	align-items: center !important;
 	gap: 5px !important;
@@ -1813,7 +1813,7 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	background: #eaf2f8 !important;
 	color: #10395E !important;
 	padding: 2px 8px !important;
-	border-radius: 0 !important;
+
 	font-size: 12px !important;
 	font-weight: 600 !important;
 	margin-left: 6px !important;
@@ -1889,12 +1889,12 @@ body.woocommerce-order-received .elementor-element-30c5431 > .e-con-inner,
 	width: 4px !important;
 	height: 18px !important;
 	background: #10395E !important;
-	border-radius: 0 !important;
+
 }
 .woocommerce-order .woocommerce-customer-details address {
 	background: #ffffff !important;
 	border: 1px solid #dce6ef !important;
-	border-radius: 0 !important;
+
 	padding: 20px 24px !important;
 	box-shadow: 0 4px 16px rgba(16, 57, 94, 0.05) !important;
 	font-family: "Poppins", sans-serif !important;
@@ -2161,7 +2161,7 @@ body.single-product form.variations_form table.variations select {
 	min-height: 46px !important;
 	padding: 0 42px 0 14px !important;
 	border: 1px solid #dce7f0 !important;
-	border-radius: 6px !important;
+
 	background-color: #f7fbfe !important;
 	color: #0d2a43 !important;
 	font-size: 14px !important;
@@ -2263,7 +2263,7 @@ body.single-product form.variations_form .woocommerce-error,
 body.single-product form.variations_form .woocommerce-message {
 	border: 1px solid #dce7f0 !important;
 	border-left: 4px solid #4CA2D9 !important;
-	border-radius: 6px !important;
+
 	background: #f7fbfe !important;
 	color: #0d2a43 !important;
 	padding: 12px 14px !important;
@@ -2398,7 +2398,7 @@ body.single-product form.variations_form.juhani-variation-in-progress::after {
 	padding: 0 !important;
 	background: #10395E !important;
 	border: 1px solid #10395E !important;
-	border-radius: 0 !important;
+
 	color: #ffffff !important;
 	cursor: pointer !important;
 	line-height: 1 !important;

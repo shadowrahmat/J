@@ -36,7 +36,7 @@ if ( 'repeater' === $selct_source ) {
 		}
 	} else {
 		$featured_image = l_theplus_get_thumb_url();
-		$featured_image = '<img width="600" height="600" loading="lazy" src="' . esc_url( $featured_image ) . '" data-src="' . esc_url( $featured_image ) . '" class="tp-lazyload" alt="' . esc_attr( get_the_title() ) . '">';
+		$featured_image = '<img width="600" height="600" src="' . esc_url( $featured_image ) . '" data-src="' . esc_url( $featured_image ) . '" class="tp-lazyload" alt="' . esc_attr( get_the_title() ) . '">';
 	}
 }
 

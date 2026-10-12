@@ -233,9 +233,18 @@ if ( ! class_exists( 'Tpae_Hooks' ) ) {
 				$theplus_options['extras_elements'] = array( 'plus_cross_cp', 'plus_global_box_shadow', 'plus_global_gradient_color', 'plus_global_dimensions', 'plus_global_button','plus_dynamic_tag' );
 
 				add_option( 'theplus_options', $theplus_options, '', 'on' );
-			} elseif ( ! is_array( $default_load['check_elements'] ) || ! is_array( $default_load['extras_elements'] ) ) {
-				$theplus_options['check_elements']  = is_array( $default_load['check_elements'] ) ? $default_load['check_elements'] : array();
-				$theplus_options['extras_elements'] = is_array( $default_load['extras_elements'] ) ? $default_load['extras_elements'] : array();
+			} elseif ( ! is_array( $default_load['check_elements'] ?? null ) || ! is_array( $default_load['extras_elements'] ?? null ) ) {
+				/*
+				 * $theplus_options used to start empty here instead of seeded from
+				 * $default_load, so this branch replaced the ENTIRE theplus_options
+				 * value -- every other setting stored under it, not just these two
+				 * keys -- whenever check_elements/extras_elements was malformed.
+				 * This runs on every wp-admin page load (not just activation), so a
+				 * persistently-corrupt value would have kept stripping settings.
+				 */
+				$theplus_options                    = $default_load;
+				$theplus_options['check_elements']  = is_array( $default_load['check_elements'] ?? null ) ? $default_load['check_elements'] : array();
+				$theplus_options['extras_elements'] = is_array( $default_load['extras_elements'] ?? null ) ? $default_load['extras_elements'] : array();
 
 				update_option( 'theplus_options', $theplus_options, 'yes' );
 			}

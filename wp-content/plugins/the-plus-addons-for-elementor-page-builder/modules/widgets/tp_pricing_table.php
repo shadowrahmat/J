@@ -561,7 +561,20 @@ class L_ThePlus_Pricing_Table extends Plus_Widget_Base {
 				'label'       => esc_html__( 'List Description', 'tpebl' ),
 				'type'        => Controls_Manager::WYSIWYG,
 				'ai'          => false,
-				'default'     => esc_html__( 'I am text block.', 'tpebl' ),
+				/*
+				 * PT7 (widget-test/pricing-table, Low): CHANGES AN EXISTING
+				 * DEFAULT, affects only rows added after this fix -- the
+				 * repeater's default text was "I am text block.", copy that
+				 * belongs to the Text Block widget and refers to an edit
+				 * button that does not exist in this context. The three
+				 * seeded feature rows read fine ("List Item 1/2/3", below),
+				 * but the moment an author adds a fourth feature via the
+				 * repeater's own Add Item button, this default is what
+				 * renders. Existing saved pricing tables are unaffected --
+				 * this control only supplies a value for rows that don't
+				 * already have list_description set.
+				 */
+				'default'     => esc_html__( 'List Item', 'tpebl' ),
 				'placeholder' => esc_html__( 'Type your description here', 'tpebl' ),
 				'dynamic'     => array( 'active' => true ),
 			)
@@ -3680,6 +3693,11 @@ class L_ThePlus_Pricing_Table extends Plus_Widget_Base {
 
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -3701,10 +3719,29 @@ class L_ThePlus_Pricing_Table extends Plus_Widget_Base {
 
 		$pricing_subtitle = ! empty( $settings['pricing_subtitle'] ) ? $settings['pricing_subtitle'] : '';
 
-		$title = '';
+		$title    = '';
+		$title_id = '';
 		if ( ! empty( $pricing_title ) ) {
+			/*
+			 * PT1 (widget-test/pricing-table, High): the plan name had no tag
+			 * control at all (unlike Info Box, which at least has one that
+			 * defaults wrongly) -- it was a hardcoded <div>, so a pricing page
+			 * contributed zero headings and screen-reader users could not
+			 * jump between plans or get any document-outline structure for
+			 * the widget's primary content. WCAG 2.1 SC 1.3.1 (Level A).
+			 * Changed to a real heading (h3, matching TPAE's own house
+			 * default used by several other widgets' tag controls) rather
+			 * than adding a new tag-picker control, which would be a new
+			 * feature and out of scope for a fix pass -- same scoping
+			 * decision as this run's Number Counter NC2 fix. $title_id feeds
+			 * PT2's aria-label fix below. margin:0 added in
+			 * plus-pricing-table.css to hold the div's implicit zero margin
+			 * against the browser's default h3 margin, since no control in
+			 * this widget sets margin on .pricing-title.
+			 */
+			$title_id  = 'pricing-title-' . esc_attr( $this->get_id() );
 			$title     .= '<div class="pricing-title-wrap">';
-				$title .= '<div class="pricing-title">' . wp_kses_post( $pricing_title ) . '</div>';
+				$title .= '<h3 id="' . $title_id . '" class="pricing-title">' . wp_kses_post( $pricing_title ) . '</h3>';
 			$title     .= '</div>';
 		}
 
@@ -3860,7 +3897,21 @@ class L_ThePlus_Pricing_Table extends Plus_Widget_Base {
 
 			$previous_price_prefix   = ! empty( $settings['previous_price_prefix'] ) ? $settings['previous_price_prefix'] : '';
 			$previous_price_postfix  = ! empty( $settings['previous_price_postfix'] ) ? $settings['previous_price_postfix'] : '';
-			$previous_price_content .= '<span class="pricing-previous-price-wrap">' . esc_html( $previous_price_prefix ) . esc_html( $previous_price ) . esc_html( $previous_price_postfix ) . '</span>';
+
+			/*
+			 * PT5 (widget-test/pricing-table, Medium): the struck-through old
+			 * price was a <span> with the strikethrough applied only by CSS
+			 * (text-decoration:line-through), so a screen reader announced
+			 * "$99.99 $59.99" with nothing marking the old, higher price as
+			 * superseded -- a user could reasonably conclude the plan costs
+			 * $99.99. WCAG 2.1 SC 1.3.1 (Level A). <del> carries the deletion
+			 * semantic AT announces and is styled line-through by the user
+			 * agent by default; the existing .pricing-previous-price-wrap CSS
+			 * rule is a class selector (not tag-qualified -- confirmed in
+			 * assets/css/main/pricing-table/plus-pricing-table.css), so this
+			 * is a tag change only, no visual change.
+			 */
+			$previous_price_content .= '<del class="pricing-previous-price-wrap">' . esc_html( $previous_price_prefix ) . esc_html( $previous_price ) . esc_html( $previous_price_postfix ) . '</del>';
 		}
 
 		$price = ! empty( $settings['price'] ) ? $settings['price'] : '';
@@ -3908,7 +3959,37 @@ class L_ThePlus_Pricing_Table extends Plus_Widget_Base {
 			$btn_bg = tp_bg_lazyLoad( $settings['button_background_image'], $settings['button_hover_background_image'] );
 
 			$this->add_render_attribute( 'button', 'class', 'button-link-wrap' . $btn_bg );
-			$this->add_render_attribute( 'button', 'role', 'button' );
+
+			/*
+			 * PT2 (widget-test/pricing-table, High): every CTA on a page shared
+			 * one accessible name (e.g. "Free Trial" x5 with no plan context),
+			 * and SC 2.4.4's "in context" escape did not apply -- the card is a
+			 * plain div with no role, and (before PT1) no heading either, so
+			 * none of the criterion's permitted context mechanisms were
+			 * present. Belt-and-braces per the audit: aria-label combining the
+			 * button's own text with the plan name, independent of PT1's fix
+			 * (this reads the raw setting values, not the rendered DOM, so it
+			 * still applies even if the title markup changes again later).
+			 * wp_strip_all_tags() because aria-label must be plain text and
+			 * both fields allow HTML (wp_kses_post) for their visible
+			 * rendering.
+			 */
+			if ( ! empty( $settings['button_text'] ) && ! empty( $pricing_title ) ) {
+				$btn_aria_label = trim( wp_strip_all_tags( $settings['button_text'] ) ) . ', ' . trim( wp_strip_all_tags( $pricing_title ) );
+				if ( '' !== $btn_aria_label ) {
+					$this->add_render_attribute( 'button', 'aria-label', $btn_aria_label );
+				}
+			}
+
+			/*
+			 * widget-test/pricing-table: role="button" was unconditional here even
+			 * though href above is only set when a link URL is configured, and
+			 * even when it is, an ARIA role never makes an element focusable or
+			 * activatable on its own -- measured live: a real Space keypress on
+			 * this button scrolled the page 738px instead of activating it. 0 of
+			 * 6 competitor pricing-table CTAs apply a role here. Same root cause
+			 * and same fix as the standalone Button widget's B2.
+			 */
 
 			$button_type_switch        = ! empty( $settings['button_type_switch'] ) ? $settings['button_type_switch'] : 'basic';
 			$button_global_style_preset = ! empty( $settings['button_global_style_preset'] ) ? $settings['button_global_style_preset'] : '';
@@ -4038,12 +4119,21 @@ class L_ThePlus_Pricing_Table extends Plus_Widget_Base {
 			$icons = $settings['button_icon'];
 		}
 
+		/*
+		 * PT6 (widget-test/pricing-table, Low): this was the only icon in the
+		 * widget without aria-hidden -- the feature-list icons already pass
+		 * 'aria-hidden' => 'true' (FA5 path) or hardcode it (FA4 path), this
+		 * one was simply missed. Impact was small (an <i> with only classes
+		 * has no text content, so the accessible name still computed
+		 * correctly), but it's inconsistent within the widget and part of
+		 * the plugin-wide FA4 aria-hidden gap. Additive only.
+		 */
 		if ( 'before' === $before_after && ! empty( $icons ) ) {
-			$icons_before = '<i class="btn-icon button-before ' . esc_attr( $icons ) . '"></i>';
+			$icons_before = '<i class="btn-icon button-before ' . esc_attr( $icons ) . '" aria-hidden="true"></i>';
 		}
 
 		if ( 'after' === $before_after && ! empty( $icons ) ) {
-			$icons_after = '<i class="btn-icon button-after ' . esc_attr( $icons ) . '"></i>';
+			$icons_after = '<i class="btn-icon button-after ' . esc_attr( $icons ) . '" aria-hidden="true"></i>';
 		}
 
 		if ( 'style-8' === $button_style ) {

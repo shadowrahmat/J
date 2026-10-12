@@ -44,6 +44,24 @@ if ( ! class_exists( 'Tp_Form_Handler' ) ) {
 		public function __construct() {
 			add_action( 'wp_ajax_tpae_form_submission', array( $this, 'tpae_form_submission' ) );
 			add_action( 'wp_ajax_nopriv_tpae_form_submission', array( $this, 'tpae_form_submission' ) );
+			add_action( 'wp_ajax_tpae_form_nonce', array( $this, 'tpae_form_nonce' ) );
+			add_action( 'wp_ajax_nopriv_tpae_form_nonce', array( $this, 'tpae_form_nonce' ) );
+		}
+
+		/**
+		 * Hand out a fresh submit nonce (FORM-15).
+		 *
+		 * The nonce rendered into the page is frozen by any full-page cache (WP Super Cache, a CDN,
+		 * a host-level cache) and expires after 12-24h, after which every submit from the cached
+		 * page fails. The form script asks this uncached admin-ajax endpoint for a current nonce
+		 * just before it submits. It is per-user (uid 0 for visitors), exactly like the nonce that
+		 * was rendered into the page, so it grants nothing the page did not already.
+		 *
+		 * @since 6.5.3
+		 */
+		public function tpae_form_nonce() {
+			nocache_headers();
+			wp_send_json_success( array( 'nonce' => wp_create_nonce( 'tp-form-nonce' ) ) );
 		}
 
 		/**
@@ -69,7 +87,12 @@ if ( ! class_exists( 'Tp_Form_Handler' ) ) {
 				wp_die();
 			}
 
-			$nonce = isset( $email_data['nonce'] ) ? sanitize_text_field( $email_data['nonce'] ) : '';
+			// FORM-15: prefer the nonce the script fetched just before submitting; fall back to the
+			// one sealed into the page at render for clients that did not send one.
+			$nonce = isset( $_POST['security'] ) ? sanitize_text_field( wp_unslash( $_POST['security'] ) ) : '';
+			if ( '' === $nonce ) {
+				$nonce = isset( $email_data['nonce'] ) ? sanitize_text_field( $email_data['nonce'] ) : '';
+			}
 			if ( ! wp_verify_nonce( $nonce, 'tp-form-nonce' ) ) {
 				$result['message'] = 'Nonce verification failed.';
 				wp_send_json( $result );
@@ -229,18 +252,31 @@ if ( ! class_exists( 'Tp_Form_Handler' ) ) {
 		 * @return bool Whether the email was sent successfully.
 		 */
 		private function tpae_prepare_email_settings( $email_data, $form_data, $form_fields ) {
-			$email_to        = ! empty( $email_data['email_to'] ) ? sanitize_email( $email_data['email_to'] ) : get_option( 'admin_email' );
+			// Qualified name on purpose: helper-function.php declares this inside TheplusAddons\Widgets.
+			$email_to        = ! empty( $email_data['email_to'] ) ? \TheplusAddons\Widgets\tpae_sanitize_email_list( $email_data['email_to'] ) : '';
+			$email_to        = ! empty( $email_to ) ? $email_to : get_option( 'admin_email' );
 			$email_subject   = ! empty( $email_data['email_subject'] ) ? sanitize_text_field( $email_data['email_subject'] ) : 'New Form Submission';
 			$email_from      = ! empty( $email_data['email_from'] ) ? sanitize_email( $email_data['email_from'] ) : 'no-reply@example.com';
 			$email_from_name = ! empty( $email_data['email_from_name'] ) ? sanitize_text_field( $email_data['email_from_name'] ) : '';
-			$email_reply_to  = ! empty( $email_data['email_reply_to'] ) ? sanitize_email( $email_data['email_reply_to'] ) : '';
-			$email_cc        = ! empty( $email_data['email_cc'] ) ? sanitize_email( $email_data['email_cc'] ) : '';
-			$email_bcc       = ! empty( $email_data['email_bcc'] ) ? sanitize_email( $email_data['email_bcc'] ) : '';
+			/*
+			 * Reply-To and CC may carry a [value_id="..."] token, so an author can point
+			 * them at the address the visitor typed. To and BCC stay static on purpose:
+			 * they decide where the notification itself lands.
+			 */
+			$email_reply_to  = ! empty( $email_data['email_reply_to'] ) ? \TheplusAddons\Widgets\tpae_resolve_email_tokens( $email_data['email_reply_to'], $form_fields, 1 ) : '';
+			$email_cc        = ! empty( $email_data['email_cc'] ) ? \TheplusAddons\Widgets\tpae_resolve_email_tokens( $email_data['email_cc'], $form_fields ) : '';
+			$email_bcc       = ! empty( $email_data['email_bcc'] ) ? \TheplusAddons\Widgets\tpae_sanitize_email_list( $email_data['email_bcc'] ) : '';
 			$email_heading   = ! empty( $email_data['email_heading'] ) ? sanitize_text_field( $email_data['email_heading'] ) : '';
 
+			/*
+			 * wp_kses_post() rather than sanitize_text_field(): the latter collapses every
+			 * run of whitespace into a single space, so the blank lines an author typed into
+			 * the Message box never reached the mail. The body is sent as text/html, so those
+			 * line breaks are turned into paragraphs in tpae_build_email_message().
+			 */
 			$email_message = isset( $email_data['email_message'] ) && ! empty( $email_data['email_message'] )
-				? sanitize_text_field( $email_data['email_message'] )
-				: 'all-fields';
+				? wp_kses_post( $email_data['email_message'] )
+				: '[all-values]';
 
 			$email_message_content = $this->tpae_build_email_message( $form_data, $form_fields, $email_message, $email_heading );
 
@@ -267,14 +303,22 @@ if ( ! class_exists( 'Tp_Form_Handler' ) ) {
 		 * @param array $email_heading The form data array.
 		 */
 		private function tpae_build_email_message( $form_data, $form_fields, $email_message, $email_heading ) {
-			$email_message = strtolower( trim( $email_message ) );
+			$email_message = trim( $email_message );
 
-			if ( '[all-values]' === $email_message ) {
-				$email_message = ! empty( $email_heading ) ? '<h2>' . esc_html( $email_heading ) . '</h2>' : '';
+			/*
+			 * Built up front but substituted in place further down, so [all-values] also
+			 * works inside a longer message. It used to be compared against the whole
+			 * message, which printed the token verbatim whenever an author wrapped it in
+			 * their own copy.
+			 */
+			$all_values = '';
+
+			if ( false !== stripos( $email_message, '[all-values]' ) ) {
+				$all_values = ! empty( $email_heading ) ? '<h2>' . esc_html( $email_heading ) . '</h2>' : '';
+
 				foreach ( $form_fields as $field ) {
 					if ( isset( $field['field_id'] ) && isset( $field['field_value'] ) && ! empty( $field['field_value'] ) ) {
-						$field_label    = isset( $field['field_id'] ) ? $field['field_id'] : $field['field_id'];
-						$email_message .= '<p>' . wp_kses_post( $field['field_value'] ) . '</p>';
+						$all_values .= '<p>' . wp_kses_post( $field['field_value'] ) . '</p>';
 					}
 				}
 			}
@@ -295,6 +339,16 @@ if ( ! class_exists( 'Tp_Form_Handler' ) ) {
 				},
 				$email_message
 			);
+
+			/*
+			 * The token is parked behind a marker across the wpautop() call so the generated
+			 * block is not wrapped in a stray paragraph, while the author's own blank lines
+			 * still become paragraphs.
+			 */
+			$marker        = '%%tpae-all-values%%';
+			$email_message = preg_replace( '/\[all-values\]/i', $marker, $email_message );
+			$email_message = wpautop( $email_message );
+			$email_message = str_replace( array( '<p>' . $marker . '</p>', $marker ), $all_values, $email_message );
 
 			return $email_message;
 		}

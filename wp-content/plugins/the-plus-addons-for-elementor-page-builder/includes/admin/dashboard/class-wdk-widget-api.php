@@ -98,6 +98,8 @@ class Wdk_Widget_Api {
 			'timeout' => 100,
 		);
 
+		/* Bound the wait: an unreachable endpoint must not hold the request open. */
+		$args['timeout'] = 15;
 		$response = wp_remote_post( $url . $name, $args );
 
 		if ( is_wp_error( $response ) ) {

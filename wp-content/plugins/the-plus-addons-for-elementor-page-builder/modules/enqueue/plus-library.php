@@ -369,7 +369,14 @@ class L_Plus_Library {
 		}
 
 		if ( get_option( 'tpae_backend_cache' ) === false ) {
-			add_option( 'tpae_backend_cache', strtotime( 'now' ), false );
+			/*
+			 * add_option()'s 3rd positional param is the long-deprecated
+			 * (WP 2.3) $deprecated arg, not $autoload -- passing false there
+			 * silently did nothing, so this option autoloaded under WP's
+			 * normal auto-detection instead of the intended opt-out.
+			 * $autoload is the 4th param.
+			 */
+			add_option( 'tpae_backend_cache', strtotime( 'now' ), '', false );
 		} else {
 			update_option( 'tpae_backend_cache', strtotime( 'now' ), false );
 		}

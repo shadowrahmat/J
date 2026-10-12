@@ -170,7 +170,15 @@ if ( ! class_exists( 'Tpae_Gsap_animation' ) ) {
 				$settings  = $element->get_settings_for_display();
 				$gsap_type = ! empty( $settings['plus_gsap_animation_type'] ) ? $settings['plus_gsap_animation_type'] : '';
 
-				if ( 'none' === $gsap_type || 'tp_custom' === $gsap_type ) {
+				/*
+				 * empty($gsap_type) used to fall through here -- the control's
+				 * own registered default is 'none', but a container that never
+				 * touched the control at all (no key in _elementor_data) has
+				 * $gsap_type === '', which only the two explicit-string checks
+				 * caught. Every such container loaded the ~154KB GSAP bundle
+				 * (gsap.min.js + ScrollTrigger.min.js) for nothing.
+				 */
+				if ( empty( $gsap_type ) || 'none' === $gsap_type || 'tp_custom' === $gsap_type ) {
 					return;
 				}
 

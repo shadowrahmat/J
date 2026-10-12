@@ -61,7 +61,6 @@ class TP_GSAP_Global extends Tab_Base {
 			array(
 				'label'              => esc_html__( 'Trigger', 'tpebl' ),
 				'type'               => Controls_Manager::SELECT,
-				'default'            => 'on_scroll',
 				'render_type'        => 'ui',
 				'default'            => 'tp_on_load',
 				'options'            => array(
@@ -69,7 +68,6 @@ class TP_GSAP_Global extends Tab_Base {
 					'tp_on_scroll' => esc_html__( 'On Scroll', 'tpebl' ),
 				),
 				'description'        => esc_html__( 'Select whether the animation triggers upon page load or based on scroll position.', 'tpebl' ),
-				'render_type'        => 'ui',
 				'frontend_available' => true,
 			)
 		);

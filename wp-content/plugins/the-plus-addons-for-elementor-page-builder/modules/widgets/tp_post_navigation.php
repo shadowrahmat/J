@@ -1276,7 +1276,7 @@ class ThePlus_Post_Navigation extends Plus_Widget_Base {
 			} else {
 				$prevpostimg .= '<div class="post-image">';
 
-					$prevpostimg .= '<img src="' . L_THEPLUS_URL . 'assets/images/tp-placeholder.jpg" class="tp-nav-trans" />';
+					$prevpostimg .= '<img src="' . L_THEPLUS_URL . 'assets/images/tp-placeholder.jpg" class="tp-nav-trans" alt="" />';
 
 				$prevpostimg .= '</div>';
 			}
@@ -1336,7 +1336,7 @@ class ThePlus_Post_Navigation extends Plus_Widget_Base {
 			} else {
 				$nextpostimg .= '<div class="post-image">';
 
-					$nextpostimg .= '<img src="' . L_THEPLUS_URL . 'assets/images/tp-placeholder.jpg" class="tp-nav-trans" />';
+					$nextpostimg .= '<img src="' . L_THEPLUS_URL . 'assets/images/tp-placeholder.jpg" class="tp-nav-trans" alt="" />';
 
 				$nextpostimg .= '</div>';
 			}

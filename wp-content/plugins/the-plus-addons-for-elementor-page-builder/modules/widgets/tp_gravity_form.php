@@ -77,12 +77,18 @@ class ThePlus_Gravity_Form extends Plus_Widget_Base {
 	}
 
 	/**
-	 * It is use for widget add in catch or not.
+	 * Whether Elementor's Element Cache may freeze this widget's rendered
+	 * HTML into post meta and reuse it for every visitor within the TTL.
+	 * render() delegates to Gravity Forms' own shortcode, which embeds a
+	 * fresh CSRF nonce/anti-spam timestamp on every real render -- freezing
+	 * that markup means every visitor after the first gets the same stale
+	 * token, which Gravity Forms will treat as invalid on submit. Must
+	 * stay `true` (COMPAT-001).
 	 *
 	 * @since 6.4.13
 	 */
 	public function is_dynamic_content(): bool {
-		return false;
+		return true;
 	}
 
 	/**

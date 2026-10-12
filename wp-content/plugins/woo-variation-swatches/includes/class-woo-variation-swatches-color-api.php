@@ -145,7 +145,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Color_API' ) ) {
 			$api_url = add_query_arg( $args, $this->endpoint() );
 
 			$api_args = array(
-				'user-agent' => 'Woo_Variation_Swatches',
 				'headers' => array(
 					'Accept' => 'application/json'
 				),

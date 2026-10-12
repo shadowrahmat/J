@@ -58,7 +58,7 @@
 							}
 							
 							// F-12 fix: $.isFunction removed in jQuery 4. Use typeof.
-							if ( typeof $.fn.plus_infobox_connection === 'function' ) {
+							if ( typeof plus_infobox_connection === 'function' ) {
 								plus_infobox_connection(parseInt(nextSlide),connection);
 							}						
 							

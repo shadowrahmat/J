@@ -211,7 +211,7 @@
 							if(page==total_page){
 								$(current_click).addClass("hide");
 								$(current_click).attr('data-page', page);
-								$(current_click).parent(".ajax_load_more").append('<div class="plus-all-posts-loaded">'+loaded_posts+'</div>');
+								$(current_click).parent(".ajax_load_more").append($('<div class="plus-all-posts-loaded"></div>').text(loaded_posts));
 							}else{
 								$(current_click).text(current_text);
 								$(current_click).attr('data-page', page);
@@ -293,3 +293,19 @@
 		elementorFrontend.hooks.addAction('frontend/element_ready/global', WidgetThePlusHandler);
 	});
 })(jQuery);
+// Enter/Space activate Load More, an <a> with no href; guarded so it binds once.
+( function( $ ) {
+	'use strict';
+
+	if ( window.tpaeLoadMoreKeyNav ) {
+		return;
+	}
+	window.tpaeLoadMoreKeyNav = true;
+
+	$( document ).on( 'keydown', '.post-load-more', function( e ) {
+		if ( 13 === e.which || 32 === e.which ) {
+			e.preventDefault();
+			$( this ).trigger( 'click' );
+		}
+	} );
+})( jQuery );

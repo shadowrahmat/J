@@ -2458,14 +2458,29 @@ class L_ThePlus_Number_Counter extends Plus_Widget_Base {
 
 		$min_number = $settings['min_number'];
 
+		/*
+		 * NC1 (widget-test/number-counter, Medium): the text node here used to
+		 * be esc_html( $min_number ), so the server (and any non-JS consumer --
+		 * a strict CSP, a script error earlier on the page, a reader/scraper
+		 * that does not execute JavaScript) rendered the animation's *starting*
+		 * value, not the author-configured figure. A counter reading "0" where
+		 * the author wrote 1000 looks like a real (wrong) statistic rather than
+		 * a broken widget. assets/js/extra/numscroller.js's numberRoller()
+		 * reads data-min/data-max/data-delay/data-increment straight off the
+		 * element's attributes (not off the element's current text) to drive
+		 * the count-up, so those attributes are unchanged below -- only the
+		 * initial text node now shows the true target value. Once the widget
+		 * scrolls into view, the existing JS still overwrites this text and
+		 * animates from data-min up to data-max exactly as before.
+		 */
 		if ( ! empty( $symbol ) ) {
 			if ( 'after' === $symbol_position ) {
-				$number_symbol = '<span class="counter-number-inner numscroller" data-min="' . esc_attr( $min_number ) . '" data-max="' . esc_attr( $max_number ) . '" data-delay="' . esc_attr( $delay_number ) . '" data-increment="' . esc_attr( $increment_number ) . '">' . esc_html( $min_number ) . '</span><span class="number-counter-symbol">' . esc_html( $symbol ) . '</span>';
+				$number_symbol = '<span class="counter-number-inner numscroller" data-min="' . esc_attr( $min_number ) . '" data-max="' . esc_attr( $max_number ) . '" data-delay="' . esc_attr( $delay_number ) . '" data-increment="' . esc_attr( $increment_number ) . '">' . esc_html( $max_number ) . '</span><span class="number-counter-symbol">' . esc_html( $symbol ) . '</span>';
 			} elseif ( 'before' === $symbol_position ) {
-				$number_symbol = '<span class="number-counter-symbol">' . esc_html( $symbol ) . '</span><span class="counter-number-inner numscroller"  data-min="' . esc_attr( $min_number ) . '" data-max="' . esc_attr( $max_number ) . '" data-delay="' . esc_attr( $delay_number ) . '" data-increment="' . esc_attr( $increment_number ) . '">' . esc_html( $min_number ) . '</span>';
+				$number_symbol = '<span class="number-counter-symbol">' . esc_html( $symbol ) . '</span><span class="counter-number-inner numscroller"  data-min="' . esc_attr( $min_number ) . '" data-max="' . esc_attr( $max_number ) . '" data-delay="' . esc_attr( $delay_number ) . '" data-increment="' . esc_attr( $increment_number ) . '">' . esc_html( $max_number ) . '</span>';
 			}
 		} else {
-			$number_symbol = '<span class="counter-number-inner numscroller" data-min="' . esc_attr( $min_number ) . '" data-max="' . esc_attr( $max_number ) . '" data-delay="' . esc_attr( $delay_number ) . '" data-increment="' . esc_attr( $increment_number ) . '">' . esc_html( $min_number ) . '</span>';
+			$number_symbol = '<span class="counter-number-inner numscroller" data-min="' . esc_attr( $min_number ) . '" data-max="' . esc_attr( $max_number ) . '" data-delay="' . esc_attr( $delay_number ) . '" data-increment="' . esc_attr( $increment_number ) . '">' . esc_html( $max_number ) . '</span>';
 		}
 
 		$icon_img_ic = '';
@@ -2504,14 +2519,25 @@ class L_ThePlus_Number_Counter extends Plus_Widget_Base {
 			$icon_img_ic .= '</div>';
 		}
 
+		/*
+		 * NC2 (widget-test/number-counter, Medium): the figure and its label
+		 * were hardcoded h5/h6 with no tag control -- so every counter injected
+		 * 2 headings into the document outline, one of them a bare number (a
+		 * 4-counter stats row added 8 headings, 4 of them figures), at levels
+		 * with no relation to the page's actual structure. Neither is a
+		 * heading: the figure is a statistic, the label is a caption for it.
+		 * Changed to div/span (both class-selector-only in CSS, no tag
+		 * selectors depend on h5/h6; typography/margin are already fully
+		 * controlled by this widget's own controls).
+		 */
 		$number_markup = '';
 		if ( $max_number !== '' ) {
-			$number_markup = '<h5 class="counter-number">' . $number_symbol . '</h5>';
+			$number_markup = '<div class="counter-number">' . $number_symbol . '</div>';
 		}
 
 		$title = '';
 		if ( '' !== $num_title ) {
-			$title = '<h6 class="counter-title">' . $icon_link_a . esc_html( $num_title ) . $icon_link_a_close . '</h6>';
+			$title = '<span class="counter-title">' . $icon_link_a . esc_html( $num_title ) . $icon_link_a_close . '</span>';
 		}
 
 		$vertical_center = '';

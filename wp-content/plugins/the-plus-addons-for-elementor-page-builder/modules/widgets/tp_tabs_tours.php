@@ -2029,6 +2029,11 @@ class L_ThePlus_Tabs_Tours extends Plus_Widget_Base {
 
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation.php';
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -2051,7 +2056,18 @@ class L_ThePlus_Tabs_Tours extends Plus_Widget_Base {
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-widget-animation-attr.php';
 
 		$tab_nav      = '<div class="theplus-tabs-nav-wrapper elementor-tabs-wrapper ' . esc_attr( $nav_align ) . ' ' . esc_attr( $nav_vertical_align ) . ' ">';
-			$tab_nav .= '<ul class="plus-tabs-nav">';
+			/*
+			 * role="tablist" on the <ul>, role="presentation" on each <li>
+			 * (A11Y-001): the role="tab" headers below had no role="tablist"
+			 * ancestor at all, and the <li> wrapper sat directly between
+			 * the two -- axe-core flagged both aria-required-parent (tab
+			 * with no tablist ancestor) and aria-required-children
+			 * (tablist with no direct tab children) on this exact markup.
+			 * role="presentation" removes the <li> from the accessibility
+			 * tree only; it changes no CSS, layout, or list semantics a
+			 * script might rely on.
+			 */
+			$tab_nav .= '<ul class="plus-tabs-nav" role="tablist">';
 		foreach ( $tabs as $index => $item ) :
 			$tab_count = $index + 1;
 
@@ -2066,13 +2082,13 @@ class L_ThePlus_Tabs_Tours extends Plus_Widget_Base {
 					'id'            => $tab_title_id,
 					'class'         => array( 'elementor-tab-title', 'elementor-tab-desktop-title', 'plus-tab-header' . $tabh_bg ),
 					'data-tab'      => $tab_count,
-					'tabindex'      => $id_int . $tab_count,
+					'tabindex'      => '0',
 					'role'          => 'tab',
 					'aria-controls' => $tab_content_id,
 				)
 			);
 
-			$tab_nav  .= '<li>';
+			$tab_nav  .= '<li role="presentation">';
 			$tab_nav  .= '<div ' . $this->get_render_attribute_string( $tab_title_setting_key ) . '>';
 			$image_alt = '';
 			$dis_icon  = ! empty( $item['display_icon'] ) ? $item['display_icon'] : '';
@@ -2154,7 +2170,7 @@ class L_ThePlus_Tabs_Tours extends Plus_Widget_Base {
 				$tab_title_mobile_setting_key,
 				array(
 					'class'    => array( 'elementor-tab-title', 'elementor-tab-mobile-title', $acmob_bg, $nav_align ),
-					'tabindex' => $id_int . $tab_count,
+					'tabindex' => '0',
 					'data-tab' => $tab_count,
 					'role'     => 'tab',
 				)

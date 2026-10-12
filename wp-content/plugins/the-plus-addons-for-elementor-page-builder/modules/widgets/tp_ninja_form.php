@@ -75,12 +75,18 @@ class ThePlus_Ninja_form extends Plus_Widget_Base {
 		return array( 'Tp Ninja Form', 'Contact Form 7 Style', 'WPForms Style', 'Ninja Forms Design', 'Gravity Forms Style', 'Everest Forms Design', 'Form Design', 'Form Customization' );
 	}
 	/**
-	 * It is use for widget add in catch or not.
+	 * Whether Elementor's Element Cache may freeze this widget's rendered
+	 * HTML into post meta and reuse it for every visitor within the TTL.
+	 * render() delegates to Ninja Forms' own shortcode, which embeds a
+	 * fresh CSRF nonce/anti-spam timestamp on every real render -- freezing
+	 * that markup means every visitor after the first gets the same stale
+	 * token, which Ninja Forms will treat as invalid on submit. Must stay
+	 * `true` (COMPAT-001).
 	 *
 	 * @since 6.0.6
 	 */
 	public function is_dynamic_content(): bool {
-		return false;
+		return true;
 	}	/**
 	 * Register controls.
 	 *
@@ -1056,8 +1062,7 @@ class ThePlus_Ninja_form extends Plus_Widget_Base {
 				'label'     => esc_html__( 'UnChecked Color', 'tpebl' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .listradio-wrap .nf-field-element label:after' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .listradio-wrap .nf-field-element label:after' => 'border:2px solid {{VALUE}};',
+					'{{WRAPPER}} .listradio-wrap .nf-field-element label:after' => 'color: {{VALUE}}; border: 2px solid {{VALUE}};',
 				),
 			)
 		);

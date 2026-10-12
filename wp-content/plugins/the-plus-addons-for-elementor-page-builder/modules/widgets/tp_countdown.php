@@ -1837,7 +1837,7 @@ class L_ThePlus_Countdown extends Plus_Widget_Base {
 		$inline_style = ( ! empty( $settings['inline_style'] ) && 'yes' === $settings['inline_style'] ) ? 'count-inline-style' : '';
 
 		if ( 'normal' === $cd_type && 'style-1' === $cd_style ) {
-			$output .= '<ul class="pt_plus_countdown ' . esc_attr( $uid ) . ' ' . esc_attr( $inline_style ) . ' ' . esc_attr( $animated_class ) . '" ' . $data_attr . ' data-timer="' . esc_attr( $counting_timer ) . '" data-offset="' . esc_attr( $offset_time ) . '" ' . esc_attr( $animation_attr ) . '>';
+			$output .= '<ul class="pt_plus_countdown ' . esc_attr( $uid ) . ' ' . esc_attr( $inline_style ) . ' ' . esc_attr( $animated_class ) . '" ' . $data_attr . ' data-timer="' . esc_attr( $counting_timer ) . '" data-offset="' . esc_attr( $offset_time ) . '" ' . $animation_attr . '>';
 			if ( ! empty( $days_labels ) ) {
 				$output     .= '<li class="count_1">';
 					$output .= '<span class="days">00</span>';

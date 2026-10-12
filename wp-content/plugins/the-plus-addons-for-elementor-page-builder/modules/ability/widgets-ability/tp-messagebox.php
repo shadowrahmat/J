@@ -10,12 +10,13 @@ wp_register_ability('tpae/tpae-messagebox', [
         'post_id' => ['type' => 'integer', 'description' => 'Elementor page/post ID'],
         'parent_id' => ['type' => 'string', 'description' => 'Target Elementor container ID'],
         'position' => ['type' => 'integer', 'description' => 'Insert position. Use -1 to append.', 'default' => -1],
-        'Title' => ['type' => 'string', 'description' => 'Alert box heading text'],
+        'Title' => ['type' => 'string', 'description' => 'Alert box heading text (the widget\'s actual control key). "title" (lowercase) is accepted as an alias — provide either.'],
+        'title' => ['type' => 'string', 'description' => 'Alias for Title (lowercase). Alert box heading text — provide either this or Title.'],
         'descText' => ['type' => 'string', 'description' => 'Alert box body text (HTML allowed)'],
         'dismiss' => ['type' => 'string', 'enum' => ['yes', 'no'], 'description' => 'Show a close/dismiss button'],
                 'settings' => ['type' => 'object', 'description' => 'Raw Elementor/The Plus control settings to merge into the widget at creation time. Use control keys from sprout/get-theplus-widget-schema.'],
         ],
-        'required' => ['post_id', 'parent_id', 'Title'], 'additionalProperties' => false],
+        'required' => ['post_id', 'parent_id'], 'additionalProperties' => false],
     'output_schema' => ['type' => 'object', 'properties' => ['element_id' => ['type' => 'string'], 'widget_type' => ['type' => 'string'], 'post_id' => ['type' => 'integer']]],
     'execute_callback' => 'tpae_mcp_add_theplus_messagebox_ability',
     'permission_callback' => 'tpae_mcp_add_theplus_messagebox_permission',
@@ -37,12 +38,14 @@ function tpae_mcp_add_theplus_messagebox_ability(array $input) {
     $parent_id = sanitize_text_field((string)($input['parent_id'] ?? ''));
     $position = intval($input['position'] ?? -1);
     if ($post_id <= 0 || $parent_id === '') { return new WP_Error('missing_params', __('post_id and parent_id are required.', 'tpebl')); }
+    $title = $input['Title'] ?? $input['title'] ?? '';
+    if ($title === '') { return new WP_Error('missing_params', __('Title (or title) is required.', 'tpebl')); }
     $post = get_post($post_id);
     if (!$post instanceof WP_Post) { return new WP_Error('invalid_post', __('Target post was not found.', 'tpebl')); }
     $page_data = tpae_mcp_get_elementor_page_data($post_id);
     if (is_wp_error($page_data)) { return $page_data; }
     $settings = [];
-    if (!empty($input['Title'])) { $settings['Title'] = sanitize_text_field((string)$input['Title']); }
+    if (!empty($title)) { $settings['Title'] = sanitize_text_field((string)$title); }
     if (!empty($input['descText'])) { $settings['descText'] = wp_kses_post((string)$input['descText']); }
     if (!empty($input['dismiss'])) { $settings['dismiss'] = sanitize_key((string)$input['dismiss']); }
     $settings = tpae_mcp_merge_widget_settings($settings, $input['settings'] ?? []);

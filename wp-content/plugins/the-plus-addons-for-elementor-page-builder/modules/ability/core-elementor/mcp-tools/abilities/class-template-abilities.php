@@ -228,11 +228,32 @@ class Tpae_Elementor_MCP_Template_Abilities {
 			$elements_data = $page_data;
 		}
 
+		/*
+		 * This ability is gated on check_edit_permission(), which is edit_posts
+		 * plus edit_post on the SOURCE page -- a Contributor has both. The status
+		 * below was hardcoded to 'publish', so a Contributor could publish into
+		 * the Elementor template library, which every editor on the site can then
+		 * insert. elementor_library maps publish_posts -> publish_posts and
+		 * create_posts -> edit_posts, so passing the gate says nothing about
+		 * being allowed to publish.
+		 *
+		 * Downgrade rather than refuse, matching
+		 * tpae_elementor_mcp_authorize_post_creation() in elementor-mcp-bridge.php:
+		 * the work is kept, it just lands as a draft for review. Anyone who can
+		 * already publish sees no change.
+		 */
+		$tpae_library_cpt    = get_post_type_object( 'elementor_library' );
+		$tpae_library_status = 'publish';
+
+		if ( $tpae_library_cpt && ! current_user_can( $tpae_library_cpt->cap->publish_posts ) ) {
+			$tpae_library_status = 'draft';
+		}
+
 		// Create the template post in Elementor's library CPT.
 		$template_id = wp_insert_post(
 			array(
 				'post_title'  => $title,
-				'post_status' => 'publish',
+				'post_status' => $tpae_library_status,
 				'post_type'   => 'elementor_library',
 				'meta_input'  => array(
 					'_elementor_edit_mode'     => 'builder',

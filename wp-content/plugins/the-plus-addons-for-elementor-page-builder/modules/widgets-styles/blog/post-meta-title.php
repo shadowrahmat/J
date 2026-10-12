@@ -18,7 +18,7 @@ $title_text      = '';
 if ( ( ! empty( $display_title_limit ) && 'yes' === $display_title_limit ) && ! empty( $display_title_input ) ) {
 	if ( ! empty( $display_title_by ) ) {
 		if ( 'char' === $display_title_by ) {
-			$title_text = substr( $title_text_main, 0, $display_title_input );
+			$title_text = mb_substr( $title_text_main, 0, $display_title_input );
 		} elseif ( 'word' === $display_title_by ) {
 			$title_text = l_limit_words( $title_text_main, $display_title_input );
 		}

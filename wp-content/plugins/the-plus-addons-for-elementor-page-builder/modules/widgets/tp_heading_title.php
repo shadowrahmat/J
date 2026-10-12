@@ -2738,8 +2738,18 @@ class L_Theplus_Ele_Heading_Title extends Plus_Widget_Base {
 				}
 			}
 
+			/*
+			 * HT1 (widget-test/heading-title, Medium): title_h='a' rendered as
+			 * <a> even with no URL configured (title_link ships as {"url":""},
+			 * so this is a one-step mistake with no warning) -- an element that
+			 * is neither a heading nor a working link: unfocusable, and gone
+			 * from the document outline. Fall back to the control's own default
+			 * heading level when 'a' is selected without a URL.
+			 */
+			$rendered_title_tag = ( 'a' === $title_h && empty( $title_link ) ) ? 'h2' : $title_h;
+
 			$title_con      = '<div class="head-title ' . esc_attr( $mobile_center ) . '" > ';
-				$title_con .= '<' . esc_attr( l_theplus_validate_html_tag( $title_h ) ) . ' ' . $this->get_render_attribute_string( 'titlehref' ) . ' class="heading-title ' . esc_attr( $mobile_center ) . '  ' . esc_attr( $title_gradient_cass ) . '"  data-hover="' . esc_attr( $heading_title_text ) . '">';
+				$title_con .= '<' . esc_attr( l_theplus_validate_html_tag( $rendered_title_tag ) ) . ' ' . $this->get_render_attribute_string( 'titlehref' ) . ' class="heading-title ' . esc_attr( $mobile_center ) . '  ' . esc_attr( $title_gradient_cass ) . '"  data-hover="' . esc_attr( $heading_title_text ) . '">';
 
 			$hed_text_st = ! empty( $settings['heading_s_style'] ) ? $settings['heading_s_style'] : '';
 
@@ -2748,7 +2758,7 @@ class L_Theplus_Ele_Heading_Title extends Plus_Widget_Base {
 			} else {
 				$title_con .= wp_kses_post( $heading_title_text ) . $title_s_before;
 			}
-				$title_con .= '</' . esc_attr( l_theplus_validate_html_tag( $title_h ) ) . '>';
+				$title_con .= '</' . esc_attr( l_theplus_validate_html_tag( $rendered_title_tag ) ) . '>';
 
 			if ( 'style_4' === $heading_style || 'style_9' === $heading_style ) {
 				$title_con .= '<div class="seprator sep-l" >';

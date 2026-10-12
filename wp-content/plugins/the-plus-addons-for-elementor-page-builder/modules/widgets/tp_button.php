@@ -1474,7 +1474,22 @@ class L_ThePlus_Button extends Plus_Widget_Base {
 		$btn_sp_effect  = ! empty( $settings['btn_special_effect'] ) ? $settings['btn_special_effect'] : '';
 		$full_width_btn = ! empty( $settings['full_width_btn'] ) ? $settings['full_width_btn'] : '';
 
-		$plus_mouse = ! empty( $settings['plus_mouse_move_parallax'] ) ? $settings['plus_mouse_move_parallax'] : '';
+		/*
+		 * EXT-004. This widget registers plus_mouse_move_parallax and
+		 * plus_continuous_animation as its OWN inline controls rather than
+		 * through the shared, correctly-gated modules/widgets/theplus-widgets-extra.php
+		 * partial (which 13 Free / 26 Pro widgets go through, and which DOES
+		 * check extras_elements -- see :511-529 and class-tpaep-plus-conti-animation.php).
+		 * So disabling either extension's master switch had no effect here:
+		 * the control stayed visible and the frontend attribute still fired.
+		 * Same fix as the shared partial: force the value empty when the
+		 * extension is off, which the existing 'yes' === check already
+		 * handles correctly with no further change needed downstream.
+		 */
+		$tpae_theplus_options = get_option( 'theplus_options' );
+		$tpae_extras_elements = ! empty( $tpae_theplus_options['extras_elements'] ) ? $tpae_theplus_options['extras_elements'] : array();
+
+		$plus_mouse = ( in_array( 'plus_mouse_move_parallax', $tpae_extras_elements ) && ! empty( $settings['plus_mouse_move_parallax'] ) ) ? $settings['plus_mouse_move_parallax'] : '';
 		$btn_hover  = ! empty( $settings['btn_hover_effects'] ) ? $settings['btn_hover_effects'] : '';
 		$btn_link   = ! empty( $settings['button_link']['url'] ) ? $settings['button_link']['url'] : '';
 
@@ -1484,7 +1499,7 @@ class L_ThePlus_Button extends Plus_Widget_Base {
 		$hover_text = ! empty( $settings['button_hover_text'] ) ? $settings['button_hover_text'] : '';
 		$btn_text   = ! empty( $settings['button_text'] ) ? $settings['button_text'] : '';
 
-		$coni_ani  = ! empty( $settings['plus_continuous_animation'] ) ? $settings['plus_continuous_animation'] : '';
+		$coni_ani  = ( in_array( 'plus_continuous_animation', $tpae_extras_elements ) && ! empty( $settings['plus_continuous_animation'] ) ) ? $settings['plus_continuous_animation'] : '';
 		$hover_ani = ! empty( $settings['plus_animation_hover'] ) ? $settings['plus_animation_hover'] : '';
 		$plus_ani  = ! empty( $settings['plus_animation_effect'] ) ? $settings['plus_animation_effect'] : 'pulse';
 
@@ -1557,7 +1572,15 @@ class L_ThePlus_Button extends Plus_Widget_Base {
 			$this->add_render_attribute( 'button', 'class', 'button-link-wrap ' . $lz1 );
 		}
 
-		$this->add_render_attribute( 'button', 'role', 'button' );
+		/*
+		 * B2 (widget-test/button): role="button" was added here unconditionally,
+		 * while add_link_attributes() above (which sets href) only runs when a
+		 * URL is configured. Clearing the URL left <a role="button"> with no
+		 * href -- announced as a button by AT, but not in the tab order and not
+		 * activated by Space/Enter (measured live: Space scrolled the page
+		 * instead). 0 of 6 competitor buttons (Elementor core included) apply
+		 * a role here at all, so this is removed rather than made conditional.
+		 */
 
 		if ( ! empty( $btn_id ) ) {
 			$this->add_render_attribute( 'button', 'id', $btn_id );

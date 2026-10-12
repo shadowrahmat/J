@@ -914,7 +914,7 @@ class ThePlus_Smooth_Scroll extends Plus_Widget_Base {
 			$output_attributes .= 'data-basicdata="' . esc_attr( $smooth_scroll_data ) . '" ';
 		}
 
-		echo '<div class="plus-smooth-scroll" ' . $output_attributes . ' ' . esc_attr( $tablet_off ) . ' >';
+		echo '<div class="plus-smooth-scroll" ' . $output_attributes . ' ' . $tablet_off . ' >';
 
 		if ( 'basic' === $scroll_type ) {
 			echo '<script>var smoothAllowedBrowsers = ' . $browsers . '</script>';

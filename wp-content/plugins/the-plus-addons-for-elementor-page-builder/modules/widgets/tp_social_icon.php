@@ -1099,6 +1099,22 @@ class L_ThePlus_Social_Icon extends Plus_Widget_Base {
 
 				$id = wp_rand( 1000, 10000000 );
 
+				/*
+				 * SI2 (widget-test/social-icon, Medium): these three used to be
+				 * initialised once before this loop and only ever set inside it,
+				 * never reset -- so once any icon turned target="_blank" or
+				 * rel="nofollow" on, every later icon in the same widget inherited
+				 * it even with that option explicitly off. Now that SI1 (below,
+				 * the esc_attr() double-escaping that made target/rel dead) is
+				 * fixed and these attributes actually function, this leak stops
+				 * being cosmetic -- a later icon would really open a new tab and
+				 * carry a nofollow the author never set. Resetting per-icon here
+				 * is what makes SI1 safe to ship.
+				 */
+				$link_atts_url    = '';
+				$link_atts_target = '';
+				$link_atts_title  = '';
+
 				$pt_social_ic = ! empty( $network['pt_plus_social_icons'] ) ? $network['pt_plus_social_icons'] : '';
 
 				$custom_icons_opt = ! empty( $network['custom_icons_opt'] ) ? $network['custom_icons_opt'] : 'icon';
@@ -1147,11 +1163,37 @@ class L_ThePlus_Social_Icon extends Plus_Widget_Base {
 						$social_text = '<span class="' . esc_attr( $social_chaffle ) . '" data-lang="en">' . wp_kses_post( $soc_txt ) . '</span>';
 					}
 
+					/*
+					 * A11Y-016: in the common configuration (icon-only, no
+					 * social_text filled in -- the field is empty by
+					 * default) the link had no accessible name at all: the
+					 * icon is a bare <i> with no text node, and
+					 * $link_atts_title is never actually a `title=`
+					 * attribute (it's only ever `rel="nofollow"`, despite
+					 * the name). Derive a label from the network slug
+					 * (pt_plus_social_icons, e.g. 'fa-facebook' ->
+					 * 'Facebook') when there's no visible text, and mark
+					 * the decorative icon aria-hidden.
+					 */
+					if ( empty( $social_text ) ) {
+						if ( 'custom' === $pt_social_ic ) {
+							$link_atts_label = 'aria-label="' . esc_attr__( 'Social link', 'tpebl' ) . '"';
+						} else {
+							$network_label    = ucwords( str_replace( array( 'fa-', '-' ), array( '', ' ' ), $pt_social_ic ) );
+							$link_atts_label  = 'aria-label="' . esc_attr( $network_label ) . '"';
+						}
+					} else {
+						// Reset explicitly: $network loops without re-initializing this
+						// variable, and a visible-text network must not inherit an
+						// aria-label left over from a prior icon-only iteration.
+						$link_atts_label = '';
+					}
+
 					if ( 'custom' === $pt_social_ic && 'custom-svg' === $custom_icons_opt && ! empty( $select_svg ) ) {
 						$icon_html = $icon;
 						$icon = '';
 					} else {
-						$icon_html = '<i class="fa fab ' . esc_attr( $icon ) . '"></i>';
+						$icon_html = '<i class="fa fab ' . esc_attr( $icon ) . '" aria-hidden="true"></i>';
 					}
 
 					if ( 'style-6' === $styles ) {
@@ -1183,7 +1225,7 @@ class L_ThePlus_Social_Icon extends Plus_Widget_Base {
 
 						$social .= '<div class="social-loop-inner ' . esc_attr( $animated_columns ) . '">';
 							
-							$social .= '<a ' . $link_atts_url . ' ' . esc_attr( $link_atts_title ) . ' ' . esc_attr( $link_atts_target ) . '>' . $icon_html  . $social_text . $hover_style . '</a>';
+							$social .= '<a ' . $link_atts_url . ' ' . $link_atts_title . ' ' . $link_atts_target . ' ' . $link_atts_label . '>' . $icon_html  . $social_text . $hover_style . '</a>';
 
 						$social .= '</div>';
 

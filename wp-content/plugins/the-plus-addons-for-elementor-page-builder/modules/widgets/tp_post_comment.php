@@ -1353,7 +1353,20 @@ class ThePlus_Post_Comment extends Plus_Widget_Base {
 
 		$post    = get_queried_object();
 		$post_id = get_queried_object_id();
-		$comment = get_comments( $post );
+		/*
+		 * get_comments() expects a query-args array, not a WP_Post. Passing the
+		 * post object made wp_parse_args() spread its properties into the query
+		 * vars, none of which is post_id — so the defaults applied instead
+		 * ( 'status' => 'all', no post filter ) and wp_list_comments() below
+		 * rendered EVERY comment on the site, unapproved and spam included, on
+		 * any page carrying this widget.
+		 */
+		$comment = get_comments(
+			array(
+				'post_id' => $post_id,
+				'status'  => 'approve',
+			)
+		);
 
 		$comment_args = $this->tp_comment_args();
 

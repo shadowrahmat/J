@@ -1,3 +1,17 @@
+/* FORM-15: ask the uncached admin-ajax endpoint for a current submit nonce right before submitting, so a full-page cache
+ * (WP Super Cache, CDN, host cache) cannot leave the form holding the expired nonce that was baked into the cached HTML.
+ * If the request fails the submit still goes out with the rendered nonce, exactly as before.
+ *
+ * @since 6.5.3 */
+window.tpaeFormAjax = window.tpaeFormAjax || function (jq, opts) {
+    var go = function (nonce) {
+        if (nonce) { opts.data.security = nonce; }
+        jq.ajax(opts);
+    };
+    jq.ajax({ url: theplus_ajax_url, type: 'POST', dataType: 'json', data: { action: String(opts.data.action).replace('_submission', '_nonce') } })
+        .done(function (r) { go(r && r.success && r.data && r.data.nonce); })
+        .fail(function () { go(); });
+};
 (function ($) {
     "use strict";
     var WidgetFormHandler = function ($scope, $) {
@@ -126,15 +140,14 @@
                 btnLoader.style.display = 'inline-flex';
             }
         
-            $.ajax({
+            window.tpaeFormAjax($, {
                 url: theplus_ajax_url,
                 type: 'POST',
                 data: {
                     action: 'tpae_form_submission',
                     form_data: JSON.stringify(formData),
                     email_data: emailData,
-                    form_fields: JSON.stringify(formFields),
-                    security: emailData.nonce
+                    form_fields: JSON.stringify(formFields)
                 },
                 success: function (response) {
                     if (response?.success) {

@@ -353,6 +353,10 @@ abstract class Document extends Controls_Stack {
 	 */
 	public function get_main_id() {
 		if ( ! $this->main_id ) {
+			if ( empty( $this->post->ID ) ) {
+				return 0;
+			}
+
 			$post_id = $this->post->ID;
 
 			$parent_post_id = wp_is_post_revision( $post_id );
@@ -1870,8 +1874,12 @@ abstract class Document extends Controls_Stack {
 			$this->do_print_elements( $elements_data );
 
 			if ( $should_store_scripts ) {
-				$scripts_to_queue = array_values( array_diff( $wp_scripts->queue, $scripts_ignored ) );
-				$styles_to_queue = array_values( array_diff( $wp_styles->queue, $styles_ignored ) );
+				$scripts_to_queue = $this->get_cached_asset_handles( array_diff( $wp_scripts->queue, $scripts_ignored ), 'scripts' );
+				$styles_to_queue = $this->get_cached_asset_handles( array_diff( $wp_styles->queue, $styles_ignored ), 'styles' );
+				$styles_to_queue = array_values( array_filter(
+					$styles_to_queue,
+					[ $this, 'should_enqueue_cached_style' ]
+				) );
 			}
 
 			$cached_data = [
@@ -1894,6 +1902,10 @@ abstract class Document extends Controls_Stack {
 
 			if ( ! empty( $cached_data['styles'] ) ) {
 				foreach ( $cached_data['styles'] as $style_handle ) {
+					if ( ! $this->should_enqueue_cached_style( $style_handle ) ) {
+						continue;
+					}
+
 					wp_enqueue_style( $style_handle );
 				}
 			}
@@ -1908,6 +1920,21 @@ abstract class Document extends Controls_Stack {
 
 			echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
+	}
+
+	private function get_cached_asset_handles( array $rendered_handles, string $asset_type ): array {
+		$page_assets = $this->get_meta( Assets_Iteration_Action::ASSETS_META_KEY );
+		$saved_handles = is_array( $page_assets ) ? ( $page_assets[ $asset_type ] ?? [] ) : [];
+
+		return array_values( array_unique( array_merge( $rendered_handles, $saved_handles ) ) );
+	}
+
+	private function should_enqueue_cached_style( $style_handle ): bool {
+		if ( 0 !== strpos( $style_handle, 'elementor-post' ) ) {
+			return true;
+		}
+
+		return (bool) wp_styles()->query( 'elementor-frontend', 'registered' );
 	}
 
 	protected function do_print_elements( $elements_data ) {

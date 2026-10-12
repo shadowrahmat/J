@@ -30,72 +30,106 @@
 	});
 } )(jQuery);
 function theplus_navmenu_hover(){
-	var $= jQuery;	
-	$(".plus-navigation-wrap .menu-hover .navbar-nav .dropdown").on("mouseenter", function() {
-		var $container =$(this).closest(".plus-navigation-inner");
-		var transition_style=$container.data("menu_transition");
+	var $= jQuery;
+	/*
+	 * N2 (widget-test/navigation-menu): dropdowns opened on mouseenter/mouseleave
+	 * only, so focusing the parent link with Tab never opened the submenu --
+	 * its children never entered the tab order. Add focusin/focusout alongside
+	 * the existing mouse handlers, the JS equivalent of CSS :focus-within, since
+	 * this widget's open/close is driven by slideDown/slideUp, not a plain CSS
+	 * :hover rule. focusout's relatedTarget tells us whether focus moved to
+	 * another element still inside this dropdown (down into a nested submenu)
+	 * or left it entirely -- only close in the latter case, otherwise Tab-ing
+	 * through a dropdown's own items would close it after the first item.
+	 */
+	$(".plus-navigation-wrap .menu-hover .navbar-nav .dropdown").on("mouseenter focusin", function() {
+		var $this = $(this);
+		var $container = $this.closest(".plus-navigation-inner");
+		var transition_style = $container.data("menu_transition");
 		if(transition_style=='' || transition_style=='style-1'){
-			$(this).find("> .dropdown-menu").stop().slideDown();
+			$this.find("> .dropdown-menu").stop().slideDown();
 		}else if(transition_style=='style-2'){
-			$(this).find("> .dropdown-menu").stop(true, true).delay(100).fadeIn(600);
+			$this.find("> .dropdown-menu").stop(true, true).delay(100).fadeIn(600);
 		}
-	}).on("mouseleave", function() {
-		var $container =$(this).closest(".plus-navigation-inner");
-		var transition_style=$container.data("menu_transition");
+		// N4: keep the desktop parent's aria-expanded in sync with the visible state.
+		$this.children('a[aria-haspopup="true"]').attr("aria-expanded", "true");
+	}).on("mouseleave focusout", function(e) {
+		var $this = $(this);
+		if(e.type === "focusout" && e.relatedTarget && $this.has(e.relatedTarget).length){
+			return;
+		}
+		var $container = $this.closest(".plus-navigation-inner");
+		var transition_style = $container.data("menu_transition");
 		if(transition_style=='' || transition_style=='style-1'){
-			$(this).find("> .dropdown-menu").stop().slideUp();
+			$this.find("> .dropdown-menu").stop().slideUp();
 		}else if(transition_style=='style-2'){
-			$(this).find("> .dropdown-menu").stop(true, true).delay(100).fadeOut(400);
+			$this.find("> .dropdown-menu").stop(true, true).delay(100).fadeOut(400);
+		}
+		$this.children('a[aria-haspopup="true"]').attr("aria-expanded", "false");
+	});
+	$(".plus-navigation-wrap .menu-hover .navbar-nav .dropdown-submenu").on("mouseenter focusin", function() {
+		var $this = $(this);
+		var $container = $this.closest(".plus-navigation-inner");
+		var transition_style = $container.data("menu_transition");
+		if(transition_style=='' || transition_style=='style-1'){
+			$this.find("> .dropdown-menu").stop().slideDown();
+		}else if(transition_style=='style-2'){
+			$this.find("> .dropdown-menu").stop(true, true).delay(100).fadeIn(600);
+		}
+	}).on("mouseleave focusout", function(e) {
+		var $this = $(this);
+		if(e.type === "focusout" && e.relatedTarget && $this.has(e.relatedTarget).length){
+			return;
+		}
+		var $container = $this.closest(".plus-navigation-inner");
+		var transition_style = $container.data("menu_transition");
+		if(transition_style=='' || transition_style=='style-1'){
+			$this.find("> .dropdown-menu").stop().slideUp();
+		}else if(transition_style=='style-2'){
+			$this.find("> .dropdown-menu").stop(true, true).delay(100).fadeOut(400);
 		}
 	});
-	$(".plus-navigation-wrap .menu-hover .navbar-nav .dropdown-submenu").on("mouseenter", function() {
-		var $container =$(this).closest(".plus-navigation-inner");
-		var transition_style=$container.data("menu_transition");
-		if(transition_style=='' || transition_style=='style-1'){
-			$(this).find("> .dropdown-menu").stop().slideDown();
-		}else if(transition_style=='style-2'){
-			$(this).find("> .dropdown-menu").stop(true, true).delay(100).fadeIn(600);
-		}
-	}).on("mouseleave", function() {
-		var $container =$(this).closest(".plus-navigation-inner");
-		var transition_style=$container.data("menu_transition");
-		if(transition_style=='' || transition_style=='style-1'){
-			$(this).find("> .dropdown-menu").stop().slideUp();
-		}else if(transition_style=='style-2'){
-			$(this).find("> .dropdown-menu").stop(true, true).delay(100).fadeOut(400);
-		}
-	});	
 }
 function theplus_ele_menu_clicking(){
 	"use strict";	
 	var $=jQuery;
 		$('.plus-navigation-wrap .menu-click .plus-navigation-menu .navbar-nav li.menu-item-has-children > a').on('click', function (event) {
-			event.preventDefault(); 
+			event.preventDefault();
 			event.stopPropagation();
 			if($(this).closest(".plus-navigation-inner.menu-click")){
-				var navSideBut = $(this), 
+				var navSideBut = $(this),
 				navSideItem = navSideBut.parent(),
 				navSideUl = navSideBut.parent().parent(),
 				navSideItemSub = navSideItem.find('> ul.dropdown-menu');
+				// N4: only the desktop depth-0 parent link carries aria-haspopup/aria-expanded.
+				var isDesktopParent = navSideBut.attr('aria-haspopup') === 'true';
 				if (navSideItem.hasClass('open')) {
-					navSideItemSub.slideUp(400);					
+					navSideItemSub.slideUp(400);
 					navSideItem.removeClass('open');
+					if(isDesktopParent){
+						navSideBut.attr('aria-expanded', 'false');
+					}
 				} else {
 				navSideUl.css("height","auto");
 				navSideUl.find('li.dropdown.open ul.dropdown-menu').slideUp(400);
 				navSideUl.find('li.dropdown-submenu.open ul.dropdown-menu').slideUp(400);
 				navSideUl.find('li.dropdown,li.dropdown-submenu.open').removeClass('open');
-					navSideItemSub.slideDown(400);					
+				navSideUl.find('> li.dropdown > a[aria-haspopup="true"]').attr('aria-expanded', 'false');
+					navSideItemSub.slideDown(400);
 					navSideItem.addClass('open');
+					if(isDesktopParent){
+						navSideBut.attr('aria-expanded', 'true');
+					}
 				}
 			}
 		});
-		$(document).mouseup(function (e) {
+		$(document).on('mouseup', function (e) {
 			var $menu = $('li.dropdown');
 			if (!$menu.is(e.target) && $menu.has(e.target).length === 0){
 				$menu.find('ul.dropdown-menu').slideUp(400);
 				$menu.find('li.dropdown-submenu.open ul.dropdown-menu').slideUp(400);
-				$menu.removeClass('open');			
+				$menu.removeClass('open');
+				$menu.children('a[aria-haspopup="true"]').attr('aria-expanded', 'false');
 		   }
 		});
 }
@@ -104,16 +138,19 @@ function theplus_ele_menu_clicking(){
 	var WidgetHeaderNavigation = function($scope, $) {
 		var $plus_navigation = $scope.find('.plus-navigation-wrap');
         if($(".mobile-plus-toggle-menu", $scope).length > 0){
-			$(".mobile-plus-toggle-menu", $scope).click(function() {
+			$(".mobile-plus-toggle-menu", $scope).on('click', function() {
 				var target = $(this).data("target");
-				$(this).toggleClass("plus-collapsed");
+				var $toggle = $(this);
+				$toggle.toggleClass("plus-collapsed");
 				if ($(target +'.collapse:not(".in")').length) {
-				  
+
 				  $(target +'.collapse:not(".in")').slideDown(400);
 				  $(target +'.collapse:not(".in")').addClass('in');
+				  $toggle.attr('aria-expanded', 'true');
 				} else {
 				  $(target + '.collapse.in').slideUp(400);
 				  $(target +'.collapse.in').removeClass('in');
+				  $toggle.attr('aria-expanded', 'false');
 				}
 			});
 		}

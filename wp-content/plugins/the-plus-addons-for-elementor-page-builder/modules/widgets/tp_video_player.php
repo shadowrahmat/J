@@ -305,6 +305,22 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 			)
 		);
 		$this->add_control(
+			'video_a11y_pause',
+			array(
+				'label'       => esc_html__( 'Keyboard Pause Control', 'tpebl' ),
+				'type'        => Controls_Manager::SWITCHER,
+				'label_off'   => esc_html__( 'Hide', 'tpebl' ),
+				'label_on'    => esc_html__( 'Show', 'tpebl' ),
+				'default'     => 'yes',
+				'description' => esc_html__( 'Adds a pause control that stays invisible until it receives keyboard focus, so the visual design is unchanged. A video that plays on its own with no visible controls cannot otherwise be stopped, which fails WCAG 2.2.2 (Level A). Turn this off only if you provide your own pause mechanism.', 'tpebl' ),
+				'condition'   => array(
+					'video_type'      => 'self-hosted',
+					'video_autoplay'  => 'yes',
+					'video_controls!' => 'yes',
+				),
+			)
+		);
+		$this->add_control(
 			'showinfo',
 			array(
 				'label'     => esc_html__( 'Video Info', 'tpebl' ),
@@ -1499,6 +1515,17 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 
 		$vid_con = ! empty( $settings['video_controls'] ) ? $settings['video_controls'] : '';
 
+		/*
+		 * VP1 (widget-test/video-player, High) is deliberately NOT handled here.
+		 * An earlier commit (14e30d07) forced controls on whenever AutoPlay was
+		 * enabled, overriding the Controls switch regardless of what the site
+		 * owner set -- that changes rendered output on every existing site using
+		 * autoplay without controls, so it's a hand-off, not this branch's fix
+		 * to make. v6.5.2 solves VP1 a different way: a pause control that stays
+		 * invisible until it takes keyboard focus, gated on
+		 * video_controls !== 'yes' with its own opt-out switcher, so existing
+		 * layouts render byte-identically. Left as `'yes' === $vid_con` only.
+		 */
 		if ( 'yes' === $vid_con ) {
 
 			if ( 'youtube' === $video_type ) {
@@ -1510,6 +1537,20 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 			}
 		} elseif ( 'youtube' === $video_type ) {
 			$youtube_frame_attr .= '&amp;controls=0';
+		}
+
+		/**
+		 * Pause control for a self hosted video that autoplays with no visible
+		 * controls (WCAG 2.1 SC 2.2.2). Hidden until it takes keyboard focus, so
+		 * existing layouts render exactly as before.
+		 *
+		 * @since 6.5.2
+		 */
+		$a11y_pause_html = '';
+		$a11y_pause_opt  = isset( $settings['video_a11y_pause'] ) ? $settings['video_a11y_pause'] : 'yes';
+
+		if ( 'self-hosted' === $video_type && 'yes' === $vid_auto && 'yes' !== $vid_con && 'yes' === $a11y_pause_opt ) {
+			$a11y_pause_html = '<div class="tpae-video-a11y"><button type="button" class="tpae-video-a11y__btn" aria-pressed="false" data-tpae-label-pause="' . esc_attr__( 'Pause video', 'tpebl' ) . '" data-tpae-label-play="' . esc_attr__( 'Play video', 'tpebl' ) . '">' . esc_html__( 'Pause video', 'tpebl' ) . '</button></div>';
 		}
 
 		$vid_info = ! empty( $settings['showinfo'] ) ? $settings['showinfo'] : '';
@@ -1560,7 +1601,16 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 
 		$vid_mute = ! empty( $settings['video_muted'] ) ? $settings['video_muted'] : '';
 
-		if ( 'yes' === $vid_mute ) {
+		/*
+		 * VP4 (widget-test/video-player, Low): AutoPlay alone rendered
+		 * <video autoplay controls> with no muted attribute. Every current
+		 * browser blocks unmuted autoplay, so this was a silently broken
+		 * feature rather than an accessibility event -- but autoplay and
+		 * muted belong together, and the widget already has a working Mute
+		 * option it just didn't couple to AutoPlay. Force muted whenever
+		 * autoplay is on, same as the Mute switch already does.
+		 */
+		if ( 'yes' === $vid_mute || 'yes' === $vid_auto ) {
 
 			if ( 'youtube' === $video_type ) {
 				$youtube_frame_attr .= '&amp;mute=1';
@@ -1640,7 +1690,7 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 
 					$video_space = '';
 				} elseif ( 'youtube' === $video_type ) {
-					$video_content .= '<div class="ts-video-wrapper ts-video-hover-effect-zoom ts-type-' . esc_attr( $video_type ) . '" data-mode="lazyload" data-provider="' . esc_attr( $video_type ) . '" id="ts-video-video-6" ' . esc_attr( $mainsch ) . ' data-grow=""><div class="ts-video-embed-container" ><img class="ts-video-thumbnail" data-object-fit="" ' . esc_attr( $thumbsch ) . ' content="' . esc_url( $banner_image ) . '" src="' . esc_url( $banner_image ) . '" alt="' . esc_attr__( 'Video Thumbnail', 'tpebl' ) . '"><h5 class="ts-video-title">' . $title . '</h5><span class="ts-video-lazyload" data-allowfullscreen="" data-class="pt-plus-video-frame fitvidsignore" data-frameborder="0" data-scrolling="no" data-src="https://www.youtube' . esc_attr( $youtube_privacy ) . '.com/embed/' . esc_attr( $youtube_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1' . esc_attr( $youtube_frame_attr ) . '"  data-sandbox="allow-scripts allow-same-origin allow-presentation allow-forms" data-width="480" data-height="270"></span><button class="ts-video-play-btn ts-video-blay-btn-youtube" type="button">' . $image_video_url . '</button>';
+					$video_content .= '<div class="ts-video-wrapper ts-video-hover-effect-zoom ts-type-' . esc_attr( $video_type ) . '" data-mode="lazyload" data-provider="' . esc_attr( $video_type ) . '" id="ts-video-video-' . esc_attr( $this->get_id() ) . '" ' . $mainsch . ' data-grow=""><div class="ts-video-embed-container" ><img class="ts-video-thumbnail" data-object-fit="" ' . $thumbsch . ' content="' . esc_url( $banner_image ) . '" src="' . esc_url( $banner_image ) . '" alt="' . esc_attr__( 'Video Thumbnail', 'tpebl' ) . '"><h5 class="ts-video-title">' . $title . '</h5><span class="ts-video-lazyload" data-allowfullscreen="" data-class="pt-plus-video-frame fitvidsignore" data-frameborder="0" data-scrolling="no" data-src="https://www.youtube' . esc_attr( $youtube_privacy ) . '.com/embed/' . esc_attr( $youtube_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1' . esc_attr( $youtube_frame_attr ) . '"  data-sandbox="allow-scripts allow-same-origin allow-presentation allow-forms" data-width="480" data-height="270"></span><button class="ts-video-play-btn ts-video-blay-btn-youtube" type="button">' . $image_video_url . '</button>';
 
 					if ( ! empty( $markupsch ) ) {
 						$video_content .= '<div class="tp-video-upload" itemprop="uploadDate" content="' . esc_attr( $uploadate ) . '" style="display: none;"></div><div class="tp-video-upload" itemprop="contentUrl" content="https://www.youtube' . esc_attr( $youtube_privacy ) . '.com/embed/' . esc_attr( $youtube_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1' . esc_attr( $youtube_frame_attr ) . '" style="display: none;"></div>';
@@ -1648,7 +1698,7 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 
 					$video_content .= '</div></div>';
 				} elseif ( 'vimeo' === $video_type ) {
-					$video_content .= '<div class="ts-video-wrapper ts-video-hover-effect-zoom ts-type-' . esc_attr( $video_type ) . '" data-mode="lazyload" data-provider="' . esc_attr( $video_type ) . '" id="ts-video-video-6" ' . esc_attr( $mainsch ) . ' data-grow=""><div class="ts-video-embed-container" ><img class="ts-video-thumbnail" data-object-fit="" ' . esc_attr( $thumbsch ) . ' content="' . esc_url( $banner_image ) . '" src="' . esc_url( $banner_image ) . '" alt="' . esc_attr__( 'Video Thumbnail', 'tpebl' ) . '"><h5 class="ts-video-title">' . $title . '</h5><span class="ts-video-lazyload" data-allowfullscreen="" data-class="pt-plus-video-frame fitvidsignore" data-frameborder="0" data-scrolling="no" data-src="https://player.vimeo.com/video/' . esc_attr( $vimeo_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1" data-sandbox="allow-scripts allow-same-origin allow-presentation allow-forms" data-width="480" data-height="270"></span><button class="ts-video-play-btn ts-video-blay-btn-youtube" type="button">' . $image_video_url . '</button>';
+					$video_content .= '<div class="ts-video-wrapper ts-video-hover-effect-zoom ts-type-' . esc_attr( $video_type ) . '" data-mode="lazyload" data-provider="' . esc_attr( $video_type ) . '" id="ts-video-video-' . esc_attr( $this->get_id() ) . '" ' . $mainsch . ' data-grow=""><div class="ts-video-embed-container" ><img class="ts-video-thumbnail" data-object-fit="" ' . $thumbsch . ' content="' . esc_url( $banner_image ) . '" src="' . esc_url( $banner_image ) . '" alt="' . esc_attr__( 'Video Thumbnail', 'tpebl' ) . '"><h5 class="ts-video-title">' . $title . '</h5><span class="ts-video-lazyload" data-allowfullscreen="" data-class="pt-plus-video-frame fitvidsignore" data-frameborder="0" data-scrolling="no" data-src="https://player.vimeo.com/video/' . esc_attr( $vimeo_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1" data-sandbox="allow-scripts allow-same-origin allow-presentation allow-forms" data-width="480" data-height="270"></span><button class="ts-video-play-btn ts-video-blay-btn-youtube" type="button">' . $image_video_url . '</button>';
 
 					if ( ! empty( $markupsch ) ) {
 						$video_content .= '<div class="tp-video-upload" itemprop="uploadDate" content="' . esc_attr( $uploadate ) . '" style="display: none;"></div><div class="tp-video-upload" itemprop="contentUrl" content="https://player.vimeo.com/video/' . esc_attr( $vimeo_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1" style="display: none;"></div>';
@@ -1656,7 +1706,7 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 
 					$video_content .= '</div></div>';
 				} elseif ( 'self-hosted' === $video_type ) {
-					$video_content .= '<div class="ts-video-wrapper ts-video-hover-effect-zoom ts-type-' . esc_attr( $video_type ) . '" data-mode="lazyload" data-provider="' . esc_attr( $video_type ) . '" id="ts-video-video-6" ' . $mainsch . ' data-grow=""><div class="ts-video-embed-container" ><img class="ts-video-thumbnail" data-object-fit="" ' . esc_attr( $thumbsch ) . ' content="' . esc_url( $banner_image ) . '" src="' . esc_url( $banner_image ) . '" alt="' . esc_attr__( 'Video Thumbnail', 'tpebl' ) . '"><h5 class="ts-video-title">' . $title . '</h5><div class="video_container"><video class="ts-video-poster" width="100%" poster="' . esc_url( $banner_image ) . '" controls > <source src="' . esc_url( $mp4_link ) . '" type="video/mp4" ></video></div></span><button class="ts-video-play-btn ts-video-blay-btn-youtube" type="button">' . $image_video_url . '</button>';
+					$video_content .= '<div class="ts-video-wrapper ts-video-hover-effect-zoom ts-type-' . esc_attr( $video_type ) . '" data-mode="lazyload" data-provider="' . esc_attr( $video_type ) . '" id="ts-video-video-' . esc_attr( $this->get_id() ) . '" ' . $mainsch . ' data-grow=""><div class="ts-video-embed-container" ><img class="ts-video-thumbnail" data-object-fit="" ' . $thumbsch . ' content="' . esc_url( $banner_image ) . '" src="' . esc_url( $banner_image ) . '" alt="' . esc_attr__( 'Video Thumbnail', 'tpebl' ) . '"><h5 class="ts-video-title">' . $title . '</h5><div class="video_container"><video class="ts-video-poster" width="100%" poster="' . esc_url( $banner_image ) . '" controls > <source src="' . esc_url( $mp4_link ) . '" type="video/mp4" ></video></div></span><button class="ts-video-play-btn ts-video-blay-btn-youtube" type="button">' . $image_video_url . '</button>';
 
 					if ( ! empty( $markupsch ) ) {
 						$video_content .= '<div class="tp-video-upload" itemprop="uploadDate" content="' . esc_attr( $uploadate ) . '" style="display: none;"></div><div class="tp-video-upload" itemprop="contentUrl" content="' . esc_url( $mp4_link ) . '" style="display: none;"></div>';
@@ -1666,12 +1716,25 @@ class ThePlus_Video_Player extends Plus_Widget_Base {
 				}
 			} elseif ( 'youtube' === $video_type ) {
 
-				$video_content .= '<div class="ts-video-wrapper embed-container  ts-type-' . esc_attr( $video_type ) . '"><iframe  id="' . esc_attr( $uid ) . '" width="100%"  src="https://www.youtube' . esc_attr( $youtube_privacy ) . '.com/embed/' . esc_attr( $youtube_id ) . '?&amp;autohide=1&amp;showtitle=0' . esc_attr( $youtube_frame_attr ) . '" ' . esc_attr( $youtube_attr ) . ' frameborder="0" allowfullscreen></iframe></div>';
+				/*
+				 * VP3 (widget-test/video-player, Medium): both embeds had no
+				 * title/aria-label, so a screen-reader user encountering the
+				 * iframe heard only "frame" with no indication it was a video
+				 * or what it contained. Populated from the widget's existing
+				 * video_title field, falling back to a generic label so the
+				 * iframe always has SOME accessible name.
+				 */
+				$vp_iframe_title = ! empty( $vid_title ) ? wp_strip_all_tags( $vid_title ) : __( 'Video', 'tpebl' );
+
+				$video_content .= '<div class="ts-video-wrapper embed-container  ts-type-' . esc_attr( $video_type ) . '"><iframe title="' . esc_attr( $vp_iframe_title ) . '" id="' . esc_attr( $uid ) . '" width="100%"  src="https://www.youtube' . esc_attr( $youtube_privacy ) . '.com/embed/' . esc_attr( $youtube_id ) . '?&amp;autohide=1&amp;showtitle=0' . esc_attr( $youtube_frame_attr ) . '" ' . esc_attr( $youtube_attr ) . ' frameborder="0" allowfullscreen></iframe></div>';
 
 			} elseif ( 'vimeo' === $video_type ) {
-				$video_content .= '<div class="ts-video-wrapper embed-container  ts-type-' . esc_attr( $video_type ) . '"><iframe  id="' . esc_attr( $uid ) . '" src="https://player.vimeo.com/video/' . esc_attr( $vimeo_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;' . esc_attr( $vimeo_frame_attr ) . '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>';
+				// VP3: same iframe-title fix as the YouTube branch above.
+				$vp_iframe_title = ! empty( $vid_title ) ? wp_strip_all_tags( $vid_title ) : __( 'Video', 'tpebl' );
+
+				$video_content .= '<div class="ts-video-wrapper embed-container  ts-type-' . esc_attr( $video_type ) . '"><iframe title="' . esc_attr( $vp_iframe_title ) . '" id="' . esc_attr( $uid ) . '" src="https://player.vimeo.com/video/' . esc_attr( $vimeo_id ) . '?html5=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;' . esc_attr( $vimeo_frame_attr ) . '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>';
 			} elseif ( 'self-hosted' === $video_type ) {
-				$video_content .= '<div class="ts-video-wrapper ts-type-' . esc_attr( $video_type ) . '"><video width="100%" ' . esc_attr( $self_video_attr ) . '> <source src="' . esc_url( $mp4_link ) . '" type="video/mp4" ></video></div>';
+				$video_content .= '<div class="ts-video-wrapper ts-type-' . esc_attr( $video_type ) . '">' . $a11y_pause_html . '<video width="100%" ' . esc_attr( $self_video_attr ) . '> <source src="' . esc_url( $mp4_link ) . '" type="video/mp4" ></video></div>';
 			}
 		} elseif ( 'only_icon' === $image_banner ) {
 			if ( 'yes' !== $dis_banner_img ) {

@@ -162,12 +162,31 @@ class Plus_Widgets_Manager {
 		}
 
 		if ( ! empty( $this->transient_widgets ) ) {
-			l_theplus_library()->remove_files_unlink( $post_type, $this->preload_name, array( 'css' ), true );
+			/*
+			 * Only rebuild when the content actually changed, or when the preload file
+			 * is missing.
+			 *
+			 * remove_files_unlink() below deletes the very file that the cache check
+			 * underneath it then tests for, so that check can never be true once the
+			 * unlink has run - it always falls through to a regenerate. That was
+			 * harmless while this whole path sat behind the freshness gate in
+			 * header_init_load_data(), because it was unreachable in the steady state.
+			 * Now that enqueue is correctly ungated, the freshness question has to be
+			 * asked here instead, or the bundle is rewritten on every request.
+			 *
+			 * @since 6.5.2
+			 */
+			$tpae_rebuild = l_theplus_generator()->check_generate_script()
+				|| ! l_theplus_generator()->check_css_js_cache_files( $post_type, $this->preload_name, 'css', true );
 
-			// regenerate files page/post
-			if ( ! l_theplus_generator()->check_css_js_cache_files( $post_type, $this->preload_name, 'css', true ) && l_theplus_generator()->get_caching_option() == false ) {
-				sort( $this->transient_widgets );
-				l_theplus_generator()->plus_generate_scripts( $this->transient_widgets, 'theplus-preload-' . $post_type . '-' . $this->preload_name, array( 'css' ), false );
+			if ( $tpae_rebuild ) {
+				l_theplus_library()->remove_files_unlink( $post_type, $this->preload_name, array( 'css' ), true );
+
+				// regenerate files page/post
+				if ( ! l_theplus_generator()->check_css_js_cache_files( $post_type, $this->preload_name, 'css', true ) && l_theplus_generator()->get_caching_option() == false ) {
+					sort( $this->transient_widgets );
+					l_theplus_generator()->plus_generate_scripts( $this->transient_widgets, 'theplus-preload-' . $post_type . '-' . $this->preload_name, array( 'css' ), false );
+				}
 			}
 		}
 
@@ -260,10 +279,19 @@ class Plus_Widgets_Manager {
 							$this->transient_widgets[] = $type;
 						}
 
+						/*
+						 * 'settings' is optional in Elementor's saved data -- an element
+						 * the author never customised has no settings key at all. Both
+						 * branches below already guard widgetType/elType with isset();
+						 * settings was read unguarded on the same lines, so every such
+						 * element logged "Undefined array key settings" on every render.
+						 */
+						$tpae_element_settings = isset( $element['settings'] ) ? $element['settings'] : array();
+
 						if ( isset( $element['widgetType'] ) ) {
-							$this->plus_widgets_options( $element['settings'], $element['widgetType'] );
+							$this->plus_widgets_options( $tpae_element_settings, $element['widgetType'] );
 						} elseif ( isset( $element['elType'] ) ) {
-							$this->plus_widgets_options( $element['settings'], $element['elType'] );
+							$this->plus_widgets_options( $tpae_element_settings, $element['elType'] );
 						}
 					}
 				}

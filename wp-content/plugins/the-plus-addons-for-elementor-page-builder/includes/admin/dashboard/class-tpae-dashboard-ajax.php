@@ -406,6 +406,41 @@ if ( ! class_exists( 'Tpae_Dashboard_Ajax' ) ) {
 				return $this->tpae_set_response( false, 'Invalid data.', 'Could not read the submitted settings.' );
 			}
 
+			/**
+			 * Reject a Google Client ID that is not one.
+			 *
+			 * A Google API key (`AIzaSy...`) pasted into this field is accepted silently,
+			 * and the failure surfaces only at Google's own consent screen as
+			 * "Error 401: invalid_client" - a screen the site owner may never see and which
+			 * never reaches a PHP log, so Google sign-in is simply dead with nothing to
+			 * diagnose. An OAuth client ID always ends in `.apps.googleusercontent.com`.
+			 *
+			 * Validated only when the value actually changes, so a site already holding a
+			 * bad value can still save unrelated settings while it is corrected.
+			 *
+			 * @since 6.5.2
+			 */
+			if ( isset( $extra_options_data['theplus_google_client_id'] ) ) {
+				$tpae_new_gcid = trim( (string) $extra_options_data['theplus_google_client_id'] );
+				$tpae_old_gcid = is_array( $get_options_data ) && isset( $get_options_data['theplus_google_client_id'] )
+					? trim( (string) $get_options_data['theplus_google_client_id'] )
+					: '';
+
+				if ( '' !== $tpae_new_gcid && $tpae_new_gcid !== $tpae_old_gcid
+					&& ! preg_match( '/\.apps\.googleusercontent\.com$/', $tpae_new_gcid ) ) {
+
+					$tpae_gcid_hint = ( 0 === strpos( $tpae_new_gcid, 'AIza' ) )
+						? 'That looks like a Google API key, not an OAuth client ID.'
+						: 'That does not look like an OAuth client ID.';
+
+					return $this->tpae_set_response(
+						false,
+						'Invalid Google Client ID.',
+						$tpae_gcid_hint . ' A client ID ends in ".apps.googleusercontent.com" and comes from Google Cloud Console under APIs & Services > Credentials > OAuth 2.0 Client IDs.'
+					);
+				}
+			}
+
 			if ( empty( $get_options_data ) ) {
 				add_option( 'theplus_api_connection_data', $extra_options_data, '', 'on' );
 			} else {
@@ -998,6 +1033,9 @@ if ( ! class_exists( 'Tpae_Dashboard_Ajax' ) ) {
 			 */
 			$args['reject_unsafe_urls'] = true;
 
+			/* Bound the wait: an unreachable endpoint must not hold the request open. */
+			$args['timeout'] = 15;
+
 			$response = ( 'POST' === $method )
 				? wp_safe_remote_post( $api_url, $args )
 				: wp_safe_remote_get( $api_url, $args );
@@ -1166,6 +1204,7 @@ if ( ! class_exists( 'Tpae_Dashboard_Ajax' ) ) {
 				'theplus_white_label',
 				'post_type_options',
 				'tp_dashboard_overview',
+				'tp_dashboard_overview_retry',
 				'tpae_onbording_end',
 				'tpae_data_allow',
 				'tpae_menu_notification',

@@ -1,5 +1,11 @@
 *** Variation Swatches for WooCommerce ***
 
+= 2.5.0 - 17-09-2026 =
+
+* Added: WC 11.1+ compatibility.
+* Added: WooCommerce WC Visual Attribute support for Classic themes.
+* Added: Attribute label change shape style.
+
 = 2.4.0 - 19-08-2026 =
 
 * Added - WP 7.1+ compatibility.

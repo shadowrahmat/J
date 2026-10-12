@@ -1770,7 +1770,17 @@ class L_ThePlus_Switcher extends Plus_Widget_Base {	// public $tp_doc = '';
 		$switcher .= '</div>';
 
 		if ( 'style-3' === $switcher_style || 'style-4' === $switcher_style ) {
-			$switcher .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			/*
+			 * B7 (widget-test): this upsell notice was printed to every site
+			 * visitor, in ungrammatical English, whenever a Pro-only style was
+			 * selected while running Free -- confusing for a visitor who has no
+			 * way to act on it. Keep it inside the Elementor editor, where the
+			 * person who picked the style can actually see and fix it; render
+			 * nothing on the live frontend.
+			 */
+			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
+				$switcher .= '<h3 class="theplus-posts-not-found">' . esc_html__( 'This Style Premium Version', 'tpebl' ) . '</h3>';
+			}
 		} else {
 			$switcher .= '<div class="switcher-toggle-sections">';
 

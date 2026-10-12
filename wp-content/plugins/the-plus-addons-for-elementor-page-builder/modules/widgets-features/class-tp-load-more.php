@@ -118,7 +118,19 @@ if ( ! class_exists( 'Tp_load_more' ) ) {
 
 			$filter_category  = isset( $load_attr['filter_category'] ) ? wp_unslash( $load_attr['filter_category'] ) : '';
 			$animated_columns = isset( $load_attr['animated_columns'] ) ? sanitize_text_field( wp_unslash( $load_attr['animated_columns'] ) ) : '';
-			$post_load_more   = isset( $load_attr['post_load_more'] ) && intval( $load_attr['post_load_more'] ) ? wp_unslash( $load_attr['post_load_more'] ) : '';
+			/*
+			 * absint() with a numeric fallback, not an empty string. The old fallback
+			 * reached ( $post_load_more * $paged ) below, and PHP 8 throws a TypeError
+			 * on string * int, so an anonymous request that omitted this field returned
+			 * a 500. class-tp-woo-listing.php already uses a numeric fallback here.
+			 *
+			 * WP_Query treats an empty string and 0 identically for posts_per_page --
+			 * both are empty() and fall back to get_option( 'posts_per_page' ) -- so
+			 * this does not change how many posts a load-more click returns.
+			 *
+			 * @since 6.5.2
+			 */
+			$post_load_more = isset( $load_attr['post_load_more'] ) ? absint( $load_attr['post_load_more'] ) : 0;
 
 			$metro_column = isset( $load_attr['metro_column'] ) ? wp_unslash( $load_attr['metro_column'] ) : '';
 			$metro_style  = isset( $load_attr['metro_style'] ) ? wp_unslash( $load_attr['metro_style'] ) : '';

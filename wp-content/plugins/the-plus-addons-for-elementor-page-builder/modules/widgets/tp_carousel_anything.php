@@ -1087,6 +1087,11 @@ class L_ThePlus_Carousel_Anything extends Plus_Widget_Base {
 		$this->end_controls_section();
 		/*carousel option*/
 
+		// UiChemy promotion: Style picker line + Build Your Own Design panel.
+		if ( class_exists( 'Tpae_UiChemy_Notice' ) ) {
+			\Tpae_UiChemy_Notice::add_widget_notices( $this );
+		}
+
 		include L_THEPLUS_PATH . 'modules/widgets/theplus-profeatures.php';
 	}
 
@@ -1177,7 +1182,7 @@ class L_ThePlus_Carousel_Anything extends Plus_Widget_Base {
 		}
 		?>
  
-		<div id="<?php echo esc_attr( $uid ); ?>" class="theplus-carousel-anything-wrapper <?php echo esc_attr( $isotope ); ?> <?php echo esc_attr( $arrow_class ); ?> <?php echo esc_attr( $data_carousel ); ?> <?php echo esc_attr( $uid ); ?> "data-id="<?php echo esc_attr( $uid ); ?>" data-connection="<?php echo esc_attr( $tab_id ); ?>" <?php echo $carousel_slider; ?> dir="<?php echo esc_attr( $carousel_direction ); ?>"<?php echo $data_slider; ?> <?php echo $carousel_bg_conn; ?>>
+		<div id="<?php echo esc_attr( $uid ); ?>" class="theplus-carousel-anything-wrapper <?php echo esc_attr( $isotope ); ?> <?php echo esc_attr( $arrow_class ); ?> <?php echo esc_attr( $data_carousel ); ?> <?php echo esc_attr( $uid ); ?>" data-id="<?php echo esc_attr( $uid ); ?>" data-connection="<?php echo esc_attr( $tab_id ); ?>" <?php echo $carousel_slider; ?> dir="<?php echo esc_attr( $carousel_direction ); ?>"<?php echo $data_slider; ?> <?php echo $carousel_bg_conn; ?>>
 			<div class="plus-carousel-inner post-inner-loop">
 			<?php
 			if ( ! empty( $settings['carousel_content'] ) ) {

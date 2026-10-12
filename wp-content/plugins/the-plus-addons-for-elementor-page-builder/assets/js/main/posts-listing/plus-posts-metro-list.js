@@ -65,7 +65,7 @@ function theplus_backend_packery_portfolio(uid,metro_column,metro_style) {
 				});
 			});
 		}
-			if (myWindow.innerWidth() > 767) {
+			if ('mobile' !== elementorFrontend.getCurrentDeviceMode()) {
 				$("#"+uid).isotope({
 					itemSelector: '.grid-item',
 					layoutMode: 'masonry',
@@ -133,7 +133,7 @@ function theplus_setup_packery_portfolio(packery_id) {
 		}
 		
 		if($(this).hasClass('list-isotope-metro')){
-			if (myWindow.innerWidth() > 767) {
+			if ('mobile' !== elementorFrontend.getCurrentDeviceMode()) {
 				$("#"+uid).isotope({
 					itemSelector: '.grid-item',
 					layoutMode: 'masonry',

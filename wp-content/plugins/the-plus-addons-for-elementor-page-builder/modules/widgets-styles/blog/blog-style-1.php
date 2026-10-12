@@ -27,7 +27,7 @@ if ( 'metro' === $layout ) {
 	<div class="blog-list-content">
 		<?php if ( 'metro' !== $layout ) { ?>
 		<div class="post-content-image">
-			<a href="<?php echo esc_url( get_the_permalink() ); ?>">
+			<a href="<?php echo esc_url( get_the_permalink() ); ?>" aria-label="<?php echo esc_attr( get_the_title() ); ?>">
 				<?php include L_THEPLUS_WSTYLES . 'blog/format-image.php'; ?>
 			</a>
 		</div>

@@ -79,6 +79,7 @@ define('WP_POST_REVISIONS', false);
 define('WP_DEBUG', false);
 define('WP_DEBUG_DISPLAY', false);
 define('WP_DEBUG_LOG', false);
+@ini_set('display_errors', 0);
 define('SCRIPT_DEBUG', false);
 define('WP_CACHE', false);
 define('FS_METHOD', 'direct' );

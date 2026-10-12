@@ -1,0 +1,103 @@
+{
+    "page_id": 211,
+    "page_url": "http://localhost/juhani/blogs/",
+    "page_hash": "e55345587948948bcebec9abaac6d857c3da8724309636b0cdd0417cc2b0f41c",
+    "widgets": [
+        {
+            "type": "container",
+            "content": {
+                "background_image": {
+                    "url": "http://localhost/juhani/wp-content/uploads/2026/09/ChatGPT-Image-Sep-10-2026-12_25_27-PM.png",
+                    "id": 1139,
+                    "size": "",
+                    "alt": "",
+                    "source": "library"
+                }
+            }
+        },
+        {
+            "type": "heading",
+            "content": {
+                "title": "Add Your Heading Text Here"
+            }
+        },
+        {
+            "type": "container",
+            "content": {
+                "background_image": {
+                    "url": "http://localhost/juhani/wp-content/uploads/2026/04/Blog-03.webp",
+                    "id": 204,
+                    "size": "",
+                    "alt": "",
+                    "source": "library"
+                }
+            }
+        },
+        {
+            "type": "heading",
+            "content": {
+                "title": "শিল্প বিষয়ক অন্তর্দৃষ্টি"
+            }
+        },
+        {
+            "type": "heading",
+            "content": {
+                "title": "টেকসই ভবিষ্যতের<br> পথে মাছ ধরার জালের ভূমিকা"
+            }
+        },
+        {
+            "type": "text-editor",
+            "content": {
+                "editor": "আধুনিক মাছ ধরার জাল এবং দায়িত্বশীল কর্মপদ্ধতি কীভাবে জেলেদের কর্মদক্ষতা বাড়াতে এবং একই সাথে সামুদ্রিক বাস্তুতন্ত্র রক্ষায় সহায়তা করছে, তা জানুন। মাছ ধরার শিল্পকে আরও শক্তিশালী ও টেকসই করে তুলতে সহায়ক উন্নত সমাধানগুলো সম্পর্কে বিস্তারিত জানুন।"
+            }
+        },
+        {
+            "type": "button",
+            "content": {
+                "text": "বিস্তারিত জানুন"
+            }
+        },
+        {
+            "type": "heading",
+            "content": {
+                "title": "সব নিবন্ধ"
+            }
+        },
+        {
+            "type": "loop-grid",
+            "content": {
+                "posts_per_page": 3,
+                "text": "Load More"
+            }
+        }
+    ],
+    "posts": [
+        {
+            "id": 206,
+            "title": "বাংলাদেশে মৎস্য চাষে জালের ব্যবহার : প্রয়োজনীয় নির্দেশিকা",
+            "url": "http://localhost/juhani/fishing-nets-for-fish-farming-in-bangladesh-aquaculture-guide/",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/40-ghor-net-03.webp",
+            "words": 549,
+            "minutes": 3,
+            "tags": []
+        },
+        {
+            "id": 205,
+            "title": "বাংলাদেশে নাইলন ফিশিং নেটের ব্যবহার ও এর সুবিধাসমূহ",
+            "url": "http://localhost/juhani/benefits-of-using-nylon-fishing-nets-in-bangladesh/",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/18-ghor-net-02.webp",
+            "words": 503,
+            "minutes": 3,
+            "tags": []
+        },
+        {
+            "id": 1,
+            "title": "সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট",
+            "url": "http://localhost/juhani/how-to-choose-the-right-fishing-net-in-bangladesh/",
+            "image": "http://localhost/juhani/wp-content/uploads/2026/09/36-ghor-net-02.webp",
+            "words": 571,
+            "minutes": 3,
+            "tags": []
+        }
+    ]
+}

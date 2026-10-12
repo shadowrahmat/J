@@ -23,8 +23,59 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! trait_exists( 'ThePlusAddons\Elementor\ButtonStyle\TP_Global_Button_Style_Helper' ) ) {
 	trait TP_Global_Button_Style_Helper {
 
+		/*
+		 * EXT-001. This codebase's autoloader (includes/autoloader.php) maps
+		 * these three global-preset classes directly in its classmap, so
+		 * class_exists( $name ) -- default $autoload = true -- silently
+		 * autoloads the class as a SIDE EFFECT of the check itself. Gating
+		 * ensure_*_controller() (below) is therefore not sufficient on its
+		 * own: the very next class_exists() call in each consumer would
+		 * autoload the class anyway, regardless of that gate. Verified in the
+		 * lab: class_exists( $name, false ) reported "not loaded", a single
+		 * class_exists( $name ) call (autoload=true) returned true, and a
+		 * follow-up class_exists( $name, false ) then reported "loaded" --
+		 * confirming the autoloader fires purely from the existence check.
+		 *
+		 * The real gate is here: every consumer below checks
+		 * tpae_extras_element_enabled() FIRST and returns its safe fallback
+		 * immediately, BEFORE the class name is referenced in any way. That
+		 * is the only point that reliably keeps the autoloader from firing
+		 * when the switch is off, because the class name is never mentioned
+		 * in executable code on that path.
+		 */
+		protected function tpae_extras_element_enabled( $key ) {
+			$theplus_options = get_option( 'theplus_options' );
+			$extras_elements = ! empty( $theplus_options['extras_elements'] ) ? $theplus_options['extras_elements'] : array();
+
+			return in_array( $key, $extras_elements, true );
+		}
+
 		protected function ensure_global_button_style_controller() {
 			if ( class_exists( '\ThePlusAddons\Elementor\ButtonStyle\TP_Button_Style_Global' ) ) {
+				return;
+			}
+
+			/*
+			 * EXT-001. This trait is the single place every one of the 11
+			 * widgets that offer a "Global Style" button preset goes through
+			 * (get_global_button_style_options() / build_global_button_style_css()
+			 * below both call this first) -- so gating it HERE gates the
+			 * feature everywhere it is consumed, without touching each widget
+			 * file individually. The Kit "Global Button Presets" tab was
+			 * already gated on this flag (class-tp-global-controller-main.php);
+			 * this trait was the ungated back door that let a disabled master
+			 * switch keep resolving presets and generating CSS anyway.
+			 *
+			 * Every caller already has a safe fallback for "class not loaded"
+			 * -- get_global_button_style_options() returns a 'None'-only
+			 * option list, build_global_button_style_css() returns '' -- so
+			 * simply not loading the controller is sufficient to disable the
+			 * feature; nothing downstream needed to change.
+			 */
+			$theplus_options = get_option( 'theplus_options' );
+			$extras_elements = ! empty( $theplus_options['extras_elements'] ) ? $theplus_options['extras_elements'] : array();
+
+			if ( ! in_array( 'plus_global_button', $extras_elements, true ) ) {
 				return;
 			}
 
@@ -40,6 +91,16 @@ if ( ! trait_exists( 'ThePlusAddons\Elementor\ButtonStyle\TP_Global_Button_Style
 				return;
 			}
 
+			/* EXT-001, same gap as the button controller above, for the nested
+			 * global-dimensions preset. Same safe fallback: resolve_dimensions_value()
+			 * returns the raw (non-preset) value unchanged when the class is absent. */
+			$theplus_options = get_option( 'theplus_options' );
+			$extras_elements = ! empty( $theplus_options['extras_elements'] ) ? $theplus_options['extras_elements'] : array();
+
+			if ( ! in_array( 'plus_global_dimensions', $extras_elements, true ) ) {
+				return;
+			}
+
 			$path = L_THEPLUS_PATH . 'modules/extensions/global-control/class-tp-global-dimensions-controller.php';
 
 			if ( file_exists( $path ) ) {
@@ -52,6 +113,16 @@ if ( ! trait_exists( 'ThePlusAddons\Elementor\ButtonStyle\TP_Global_Button_Style
 				return;
 			}
 
+			/* EXT-001, same gap, for the nested global-box-shadow preset. Same safe
+			 * fallback: resolve_box_shadow_css() falls through to format_box_shadow_css()
+			 * (the widget's own inline shadow controls) when the class is absent. */
+			$theplus_options = get_option( 'theplus_options' );
+			$extras_elements = ! empty( $theplus_options['extras_elements'] ) ? $theplus_options['extras_elements'] : array();
+
+			if ( ! in_array( 'plus_global_box_shadow', $extras_elements, true ) ) {
+				return;
+			}
+
 			$path = L_THEPLUS_PATH . 'modules/extensions/global-control/class-tp-global-box-shadow-controller.php';
 
 			if ( file_exists( $path ) ) {
@@ -60,6 +131,10 @@ if ( ! trait_exists( 'ThePlusAddons\Elementor\ButtonStyle\TP_Global_Button_Style
 		}
 
 		protected function get_global_button_style_options() {
+			if ( ! $this->tpae_extras_element_enabled( 'plus_global_button' ) ) {
+				return array( '' => esc_html__( 'None', 'tpebl' ) );
+			}
+
 			$this->ensure_global_button_style_controller();
 
 			if ( class_exists( '\ThePlusAddons\Elementor\ButtonStyle\TP_Button_Style_Global' ) ) {
@@ -285,6 +360,10 @@ if ( ! trait_exists( 'ThePlusAddons\Elementor\ButtonStyle\TP_Global_Button_Style
 				return $value;
 			}
 
+			if ( ! $this->tpae_extras_element_enabled( 'plus_global_dimensions' ) ) {
+				return $value;
+			}
+
 			$this->ensure_global_dimensions_controller();
 
 			if ( ! class_exists( '\ThePlusAddons\Elementor\Dimensions\TP_Dimensions_Global' ) ) {
@@ -303,7 +382,7 @@ if ( ! trait_exists( 'ThePlusAddons\Elementor\ButtonStyle\TP_Global_Button_Style
 		protected function resolve_box_shadow_css( $preset, $prefix = '' ) {
 			$global_key = $prefix . 'shadow_global_preset';
 
-			if ( ! empty( $preset[ $global_key ] ) ) {
+			if ( ! empty( $preset[ $global_key ] ) && $this->tpae_extras_element_enabled( 'plus_global_box_shadow' ) ) {
 				$this->ensure_global_box_shadow_controller();
 
 				if ( class_exists( '\ThePlusAddons\Elementor\BoxShadow\TP_Box_Shadow_Global' ) ) {
@@ -319,6 +398,10 @@ if ( ! trait_exists( 'ThePlusAddons\Elementor\ButtonStyle\TP_Global_Button_Style
 		}
 
 		protected function build_global_button_style_css( $preset_id, $scope ) {
+			if ( ! $this->tpae_extras_element_enabled( 'plus_global_button' ) ) {
+				return '';
+			}
+
 			$this->ensure_global_button_style_controller();
 
 			if ( ! class_exists( '\ThePlusAddons\Elementor\ButtonStyle\TP_Button_Style_Global' ) ) {

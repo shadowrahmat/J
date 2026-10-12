@@ -2,9 +2,10 @@
 /** Convert the journal preview to editable Elementor widgets. CLI only. */
 if (PHP_SAPI !== 'cli') { http_response_code(404); exit; }
 require dirname(__DIR__).'/wp-load.php';
+require __DIR__.'/blog-container-layout.php';
 $page_id=1274;
 $page=get_post($page_id);
-if (!$page || $page->post_name!=='blog-rahmat') throw new RuntimeException('Blog Rahmat identity mismatch');
+if (!$page || $page->post_type!=='page' || !in_array($page->post_name,['blog-rahmat','blog'],true)) throw new RuntimeException('Blog page identity mismatch');
 $response=wp_remote_get(home_url('/blog-preview.php'),['timeout'=>30]);
 if (is_wp_error($response)||wp_remote_retrieve_response_code($response)!==200) throw new RuntimeException('Preview unavailable');
 $dom=new DOMDocument();libxml_use_internal_errors(true);
@@ -59,7 +60,6 @@ $root=$convert($main);
 $root['settings']['_title']='Blog Rahmat - editable journal';
 // The source-page preview caption is not part of the published design.
 $root['elements']=array_values(array_filter($root['elements'],function($e){return strpos($e['settings']['css_classes']??'','jb-preview-note')===false;}));
-$root['elements'][]=$widget('html',['html'=>'<script src="'.esc_url(home_url('/preview-assets/blog.js')).'?v='.filemtime(__DIR__.'/blog.js').'" defer></script>'],'jb-script-widget','Article search functionality');
 $scope='.elementor-'.$page_id.' .jb-preview';
 function jb_native_selectors($s,$scope){
     $s=str_replace('.juhani-blog-preview #content.jb-preview','.jb-preview',$s);
@@ -140,7 +140,8 @@ $scope .jb-library-end>.jb-native-marker{width:24px}
 }
 CSS;
 $css=$reset.PHP_EOL.jb_native_css(file_get_contents(__DIR__.'/blog.css'),$scope).$adapter;
-$template=['version'=>'0.4','title'=>'Blog Rahmat - Juhani Journal','type'=>'page','content'=>[$root],'page_settings'=>['hide_title'=>'yes','template'=>'elementor_header_footer','custom_css'=>$css]];
+$css=juhani_blog_flat_css($css);
+$template=['version'=>'0.4','title'=>'Blog Rahmat - Juhani Journal','type'=>'page','content'=>juhani_blog_separate_sections([$root]),'page_settings'=>['hide_title'=>'yes','template'=>'elementor_header_footer','custom_css'=>$css]];
 file_put_contents(__DIR__.'/blog-rahmat-elementor.json',wp_json_encode($template,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES).PHP_EOL);
 file_put_contents(__DIR__.'/blog-rahmat.css',$css);
 $nodes=[];$counts=[];$walk=function($items)use(&$walk,&$nodes,&$counts){foreach($items as$n){if(isset($nodes[$n['id']]))throw new RuntimeException('Duplicate element ID');$nodes[$n['id']]=true;if($n['elType']==='widget')$counts[$n['widgetType']]=($counts[$n['widgetType']]??0)+1;$walk($n['elements']??[]);}};$walk($template['content']);

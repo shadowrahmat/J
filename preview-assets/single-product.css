@@ -1,0 +1,99 @@
+/* Active copy is saved in the Single Product template's Advanced > Custom CSS.
+ * Layout, typography, colours and card radius primarily use native Elementor controls.
+ * These rules handle the internals of WooCommerce widgets only. */
+.juhani-single-section {min-width:0;--kit-widget-spacing:0px}
+.juhani-single-section a:focus-visible,.juhani-single-section button:focus-visible {outline:2px solid #236b9c;outline-offset:3px}
+.juhani-single-notices .woocommerce-message,.juhani-single-notices .woocommerce-error,.juhani-single-notices .woocommerce-info {margin:0 0 20px;border-radius:12px}
+.juhani-single-notices:has(.woocommerce-notices-wrapper:empty) {display:none}
+.juhani-single-breadcrumb .woocommerce-breadcrumb {margin:0;line-height:1.8}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery {width:100%;margin:0;float:none}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery__wrapper {margin:0}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery__image {background:#eef4f8;overflow:hidden;aspect-ratio:1}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery__image a {display:block;height:100%}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery__image img {width:100%;height:100%;object-fit:contain;padding:0}
+.juhani-single-gallery-column .juhani-product-gallery .flex-viewport {background:#eef4f8;overflow:hidden}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery .flex-control-thumbs.flex-control-thumbs {display:flex;flex-wrap:wrap;gap:12px;margin:17px 0 0;padding:0;list-style:none}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery .flex-control-thumbs.flex-control-thumbs li {width:88px;float:none;margin:0;padding:0;overflow:hidden}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery .flex-control-thumbs img {aspect-ratio:1;object-fit:contain;background:#eef4f8;opacity:.65;cursor:pointer}
+.juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery .flex-control-thumbs img.flex-active {opacity:1;outline:1px solid #236b9c;outline-offset:-1px}
+.juhani-single-stock .stock {margin:0;font-size:10px;line-height:1.8;white-space:nowrap}
+.juhani-single-stock .stock:before {content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:currentColor;margin-right:6px;vertical-align:middle}
+.juhani-single-stock .out-of-stock {color:#9b6862}
+.juhani-single-price .price {margin:0;line-height:1.4}
+.juhani-single-price .woocommerce-Price-currencySymbol {font-size:.7em}
+.juhani-single-price ins {text-decoration:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase form.cart {margin:0}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations {width:100%;border:0;background:none;margin:0 0 15px;border-collapse:collapse}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations tbody {display:block}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations tr {display:grid;grid-template-columns:105px minmax(0,1fr);gap:14px;padding:13px 0;border-bottom:1px solid #edf2f6}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations th.label {width:auto;padding:8px 0 0;border:0;background:none;line-height:1.8;text-align:left}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations th.label label {margin:0}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations td.value {padding:0;border:0;min-width:0;background:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations select {max-width:100%;border-radius:12px;padding:8px 10px;min-height:38px}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .woo-selected-variation-item-name {display:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .variable-items-wrapper.variable-items-wrapper {gap:7px;margin:0;padding:0;display:flex;flex-wrap:wrap}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .variable-items-wrapper .variable-item:not(.radio-variable-item) {min-width:42px;width:auto;min-height:35px;height:auto;padding:7px 12px;margin:0;border:1px solid #d8e5ee;border-radius:12px;background:white;color:#657f91;font:500 11px/1.6 'Segoe UI','Nirmala UI',sans-serif;box-shadow:none;transition:background .15s,border-color .15s,color .15s}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .variable-items-wrapper .variable-item:not(.radio-variable-item):hover {border-color:#86acc6;color:#236b9c;box-shadow:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .variable-items-wrapper .variable-item:not(.radio-variable-item).selected {border-color:#122e43;background:#122e43;color:white;box-shadow:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .variable-items-wrapper .variable-item.disabled {opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .variable-item .variable-item-span {font:inherit;color:inherit}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .reset_variations {font-size:10px;color:#7e95a5;margin:10px 0 0;display:inline-block;text-decoration:underline;text-underline-offset:3px}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .reset_variations[style*="visibility: hidden"] {display:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .single_variation {margin:0}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .woocommerce-variation-price {display:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .woocommerce-variation-description {font-size:12px;color:#657783}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .woocommerce-variation-availability {font-size:10px;color:#4c806b}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .woocommerce-variation-add-to-cart,.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .e-atc-qty-button-holder,.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase form.cart:not(.variations_form):not(.grouped_form) {display:flex;align-items:stretch;gap:13px;flex-wrap:wrap}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .quantity {display:flex;align-items:center;width:124px;flex:0 0 124px;float:none;margin:0;border:1px solid #d6e3ec;border-radius:12px;overflow:hidden;background:white;min-height:53px}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .quantity .qty {width:52px;min-width:0;height:51px;padding:0;border:0;box-shadow:none;text-align:center;appearance:textfield;-moz-appearance:textfield;border-radius:0}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .quantity .qty::-webkit-inner-spin-button,.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .quantity .qty::-webkit-outer-spin-button {appearance:none;margin:0}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .cart .juhani-single-quantity-button {display:grid;place-items:center;width:35px;min-height:51px;padding:0;border:0;border-radius:0;background:white;color:#223747;font-size:19px;font-weight:400;box-shadow:none;flex-shrink:0}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .cart .juhani-single-quantity-button:hover {background:#f1f7fc;color:#236b9c}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .cart .juhani-single-quantity-button:disabled {opacity:.35;cursor:default}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .single_add_to_cart_button {min-height:53px;flex:1;float:none;margin:0;display:flex;gap:12px;align-items:center;justify-content:center;line-height:1.8;box-shadow:none}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .single_add_to_cart_button:disabled,.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .single_add_to_cart_button.disabled {opacity:.6;cursor:not-allowed}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .juhani-single-selection-status {font-size:10px;line-height:1.8;color:#8093a1;padding:0 0 17px}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .juhani-single-selection-status.is-ready {color:#437665}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .juhani-single-selection-status[hidden] {display:none}
+.juhani-single-meta .product_meta {display:flex;flex-wrap:wrap;gap:8px 18px;border:0;padding:0}
+.juhani-single-meta .detail-container {display:inline-flex;gap:4px;padding:0;border:0;margin:0}
+.juhani-single-meta .detail-label {font-weight:400}
+.juhani-single-tabs .woocommerce-tabs ul.wc-tabs {display:flex;flex-wrap:wrap;gap:7px;padding:0;margin:0 0 25px;border:0;list-style:none}
+.juhani-single-tabs .woocommerce-tabs ul.wc-tabs:before,.juhani-single-tabs .woocommerce-tabs ul.wc-tabs li:before,.juhani-single-tabs .woocommerce-tabs ul.wc-tabs li:after {display:none}
+.juhani-single-tabs .woocommerce-tabs ul.wc-tabs li {margin:0;border:1px solid transparent;box-shadow:none;top:0}
+.juhani-single-tabs .woocommerce-tabs ul.wc-tabs li.active {border-color:#dce9f3}
+.juhani-single-tabs .woocommerce-tabs ul.wc-tabs li a {padding:10px 16px;font-size:11px;font-weight:500;line-height:1.7}
+.juhani-single-tabs .woocommerce-tabs .panel {margin:0;box-shadow:none}
+.juhani-single-section.juhani-single-details .juhani-single-tabs .woocommerce-tabs .woocommerce-Tabs-panel.panel {padding:0;border-style:none}
+.juhani-single-section.juhani-single-details .juhani-single-tabs .woocommerce-tabs ul.wc-tabs.tabs li.active {background:#f0f7fc}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase form.cart .e-atc-qty-button-holder {width:100%;flex:1;gap:13px}
+.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase form.cart .e-atc-qty-button-holder .single_add_to_cart_button {flex:1;min-height:53px;margin:0}
+.juhani-single-tabs .juhani-single-specifications {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 30px;margin:0}
+.juhani-single-tabs .juhani-single-specification {padding:16px 0;border-bottom:1px solid #e5edf3}
+.juhani-single-tabs .juhani-single-specification dt {font-size:10px;font-weight:600;color:#879dac;margin-bottom:7px}
+.juhani-single-tabs .juhani-single-specification dd {margin:0;font-size:13px;line-height:1.85;color:#3e5e76}
+.juhani-single-tabs #reviews {font-size:13px;line-height:1.85;color:#657783}
+.juhani-single-tabs #reviews #comments h2 {font-size:22px;margin:0 0 15px;line-height:1.7}
+.juhani-single-tabs #reviews #reply-title {font-size:17px;line-height:1.7;color:#223747}
+.juhani-single-tabs #reviews textarea,.juhani-single-tabs #reviews input:not([type=checkbox]):not([type=submit]) {border:1px solid #d8e5ee;border-radius:12px;padding:10px 12px;max-width:100%}
+.juhani-single-tabs #reviews #respond input#submit {border:0;border-radius:12px;padding:12px 20px;background:#236b9c;color:white}
+@media(max-width:1100px) {
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations tr {grid-template-columns:88px minmax(0,1fr);gap:10px}
+ .juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery .flex-control-thumbs.flex-control-thumbs li {width:75px}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .quantity {width:108px;flex-basis:108px}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .quantity .qty {width:42px}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .cart .juhani-single-quantity-button {width:32px}
+}
+@media(max-width:767px) {
+ .juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery .flex-control-thumbs.flex-control-thumbs {gap:10px}
+ .juhani-single-gallery-column .juhani-product-gallery .woocommerce-product-gallery .flex-control-thumbs.flex-control-thumbs li {width:calc((100% - 30px)/4);max-width:88px}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations tr {grid-template-columns:83px minmax(0,1fr)}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .variable-items-wrapper .variable-item:not(.radio-variable-item) {padding:6px 10px;font-size:10px;min-height:34px}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .single_add_to_cart_button {min-width:0}
+ .juhani-single-tabs .juhani-single-specifications {gap:0 18px}
+}
+@media(max-width:370px) {
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations tr {grid-template-columns:1fr;gap:8px}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase table.variations th.label {padding:0}
+ .juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .woocommerce-variation-add-to-cart,.juhani-single-section .juhani-single-overview .juhani-single-summary .juhani-single-purchase .e-atc-qty-button-holder {gap:8px}
+}

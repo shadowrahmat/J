@@ -3,6 +3,7 @@
 if(!defined("ABSPATH")) exit;
 
 add_action("wp_head", function(){
+  if(get_post_meta(1267,'_juhani_live_search_design',true)) return;
   if(!is_admin()){
     echo '<style id="juhani-search-fix-override">
       /* Search popup results width fix */

@@ -1,0 +1,2239 @@
+{
+    "content": [
+        {
+            "id": "8300013",
+            "elType": "container",
+            "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                    "unit": "px",
+                    "size": 0,
+                    "column": "0",
+                    "row": "0",
+                    "isLinked": true
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": true
+                },
+                "border_radius": {
+                    "unit": "px",
+                    "top": "12",
+                    "right": "12",
+                    "bottom": "12",
+                    "left": "12",
+                    "isLinked": true
+                },
+                "css_classes": "jb-hero jb-container",
+                "_title": "01 - Journal Banner",
+                "_attributes": "aria-labelledby|jb-title\nlang|bn",
+                "html_tag": "section",
+                "margin": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": false
+                }
+            },
+            "elements": [
+                {
+                    "id": "830000d",
+                    "elType": "container",
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": true
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": true
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": true
+                        },
+                        "css_classes": "jb-hero-copy",
+                        "_title": "Banner - Text and Button"
+                    },
+                    "elements": [
+                        {
+                            "id": "8300005",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-eyebrow jb-native-span",
+                                "_title": "THE JUHANI JOURNAL",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "title": "THE JUHANI JOURNAL",
+                                "header_size": "span",
+                                "_attributes": "lang|en"
+                            },
+                            "elements": [],
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "8300006",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-kicker jb-native-span",
+                                "_title": "শিল্প বিষয়ক অন্তর্দৃষ্টি",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "title": "শিল্প বিষয়ক অন্তর্দৃষ্টি",
+                                "header_size": "span"
+                            },
+                            "elements": [],
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "8300007",
+                            "elType": "widget",
+                            "settings": {
+                                "_title": "টেকসই ভবিষ্যতের পথে,মাছ ধরার জালের ভূমিকা।",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "title": "টেকসই ভবিষ্যতের পথে,<br><em>মাছ ধরার জালের ভূমিকা।</em>",
+                                "header_size": "h1",
+                                "_element_id": "jb-title"
+                            },
+                            "elements": [],
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "8300008",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-native-paragraph",
+                                "_title": "আধুনিক মাছ ধরার জাল এবং দায়িত্বশীল কর্মপদ্ধতি কীভাবে জেলেদের কর্মদক্ষতা বাড়াতে এবং একই সাথে সামুদ্রিক বাস্তুতন্ত্র রক্ষায় সহায়তা করছে, তা জানুন।",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "editor": "<p>আধুনিক মাছ ধরার জাল এবং দায়িত্বশীল কর্মপদ্ধতি কীভাবে জেলেদের কর্মদক্ষতা বাড়াতে এবং একই সাথে সামুদ্রিক বাস্তুতন্ত্র রক্ষায় সহায়তা করছে, তা জানুন।</p>"
+                            },
+                            "elements": [],
+                            "widgetType": "text-editor"
+                        },
+                        {
+                            "id": "8300009",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-button jb-native-arrow",
+                                "_title": "সব নিবন্ধ দেখুন",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "text": "সব নিবন্ধ দেখুন",
+                                "link": {
+                                    "url": "#jb-library",
+                                    "is_external": ""
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                }
+                            },
+                            "elements": [],
+                            "widgetType": "button"
+                        },
+                        {
+                            "id": "830000c",
+                            "elType": "container",
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 0,
+                                    "column": "0",
+                                    "row": "0",
+                                    "isLinked": true
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                },
+                                "css_classes": "jb-hero-foot",
+                                "_title": "Banner - Small Note"
+                            },
+                            "elements": [
+                                {
+                                    "id": "830000a",
+                                    "elType": "widget",
+                                    "settings": {
+                                        "_css_classes": "jb-native-inline",
+                                        "_title": "বাস্তব অভিজ্ঞতা। কার্যকর পরামর্শ।",
+                                        "_margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "editor": "<svg width=\"22\" height=\"22\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5C8 2 4 3 2 4v15c3-2 7-2 10 0 3-2 7-2 10 0V4c-2-1-6-2-10 1Zm0 0v14\"></path></svg> বাস্তব অভিজ্ঞতা। কার্যকর পরামর্শ।",
+                                        "_border_radius": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "12",
+                                            "bottom": "12",
+                                            "left": "12",
+                                            "isLinked": true
+                                        }
+                                    },
+                                    "elements": [],
+                                    "widgetType": "text-editor"
+                                },
+                                {
+                                    "id": "830000b",
+                                    "elType": "widget",
+                                    "settings": {
+                                        "_css_classes": "jb-issue jb-native-span",
+                                        "_title": "A LITTLE KNOWLEDGE. A BETTER CATCH.",
+                                        "_margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "title": "A LITTLE KNOWLEDGE. A BETTER CATCH.",
+                                        "header_size": "span",
+                                        "_attributes": "lang|en"
+                                    },
+                                    "elements": [],
+                                    "widgetType": "heading"
+                                }
+                            ],
+                            "isInner": true
+                        }
+                    ],
+                    "isInner": true
+                },
+                {
+                    "id": "8300012",
+                    "elType": "container",
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": true
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": true
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": true
+                        },
+                        "css_classes": "jb-hero-image",
+                        "_title": "Banner - Photo and Caption"
+                    },
+                    "elements": [
+                        {
+                            "id": "830000e",
+                            "elType": "widget",
+                            "settings": {
+                                "_title": "Editable article photograph",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "image": {
+                                    "url": "http://localhost/juhani/wp-content/uploads/2026/09/44-ghor-net-01.webp",
+                                    "id": 1256,
+                                    "alt": "",
+                                    "source": "library",
+                                    "size": ""
+                                },
+                                "image_size": "full"
+                            },
+                            "elements": [],
+                            "widgetType": "image"
+                        },
+                        {
+                            "id": "8300011",
+                            "elType": "container",
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 0,
+                                    "column": "0",
+                                    "row": "0",
+                                    "isLinked": true
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                },
+                                "css_classes": "jb-image-note",
+                                "_title": "Photo - Caption"
+                            },
+                            "elements": [
+                                {
+                                    "id": "830000f",
+                                    "elType": "container",
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "flex_gap": {
+                                            "unit": "px",
+                                            "size": 0,
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": true
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "border_radius": {
+                                            "unit": "%",
+                                            "top": "50",
+                                            "right": "50",
+                                            "bottom": "50",
+                                            "left": "50",
+                                            "isLinked": true
+                                        },
+                                        "css_classes": "jb-dot jb-native-marker",
+                                        "_title": "Photo - Decorative Dot"
+                                    },
+                                    "elements": [],
+                                    "isInner": true
+                                },
+                                {
+                                    "id": "8300010",
+                                    "elType": "widget",
+                                    "settings": {
+                                        "_css_classes": "jb-native-span",
+                                        "_title": "GOOD GEAR STARTS WITH GOOD KNOWLEDGE.",
+                                        "_margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "title": "GOOD GEAR STARTS WITH GOOD KNOWLEDGE.",
+                                        "header_size": "span",
+                                        "_attributes": "lang|en"
+                                    },
+                                    "elements": [],
+                                    "widgetType": "heading"
+                                }
+                            ],
+                            "isInner": true
+                        }
+                    ],
+                    "isInner": true
+                }
+            ],
+            "isInner": true
+        },
+        {
+            "id": "830001f",
+            "elType": "container",
+            "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                    "unit": "px",
+                    "size": 0,
+                    "column": "0",
+                    "row": "0",
+                    "isLinked": true
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": true
+                },
+                "border_radius": {
+                    "unit": "px",
+                    "top": "12",
+                    "right": "12",
+                    "bottom": "12",
+                    "left": "12",
+                    "isLinked": true
+                },
+                "css_classes": "jb-feature jb-container",
+                "_title": "02 - Featured Guide",
+                "_attributes": "aria-labelledby|jb-feature-title\nlang|bn",
+                "html_tag": "section"
+            },
+            "elements": [
+                {
+                    "id": "8300016",
+                    "elType": "container",
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": true
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": true
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": true
+                        },
+                        "css_classes": "jb-feature-image",
+                        "_title": "Featured Guide - Photo",
+                        "_attributes": "aria-label|সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট",
+                        "html_tag": "a",
+                        "link": {
+                            "url": "http://localhost/juhani/how-to-choose-the-right-fishing-net-in-bangladesh/"
+                        }
+                    },
+                    "elements": [
+                        {
+                            "id": "8300014",
+                            "elType": "widget",
+                            "settings": {
+                                "_title": "Editable article photograph",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "image": {
+                                    "url": "http://localhost/juhani/wp-content/uploads/2026/04/Blog-01.webp",
+                                    "id": 202,
+                                    "alt": "জালে ধরা মাছ—সঠিক ফিশিং নেট বেছে নেওয়ার একটি বাস্তব দৃশ্য"
+                                },
+                                "image_size": "full"
+                            },
+                            "elements": [],
+                            "widgetType": "image"
+                        },
+                        {
+                            "id": "8300015",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-feature-badge jb-native-inline",
+                                "_title": "নির্বাচিত গাইড",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "editor": "<svg width=\"22\" height=\"22\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5C8 2 4 3 2 4v15c3-2 7-2 10 0 3-2 7-2 10 0V4c-2-1-6-2-10 1Zm0 0v14\"></path></svg> নির্বাচিত গাইড",
+                                "_border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                }
+                            },
+                            "elements": [],
+                            "widgetType": "text-editor"
+                        }
+                    ],
+                    "isInner": true
+                },
+                {
+                    "id": "830001e",
+                    "elType": "container",
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": true
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": true
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": true
+                        },
+                        "css_classes": "jb-feature-copy",
+                        "_title": "Featured Guide - Text and Link"
+                    },
+                    "elements": [
+                        {
+                            "id": "8300017",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-eyebrow jb-native-span",
+                                "_title": "START WITH THE ESSENTIALS",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "title": "START WITH THE ESSENTIALS",
+                                "header_size": "span",
+                                "_attributes": "lang|en"
+                            },
+                            "elements": [],
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "830001a",
+                            "elType": "container",
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 0,
+                                    "column": "0",
+                                    "row": "0",
+                                    "isLinked": true
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                },
+                                "css_classes": "jb-meta",
+                                "_title": "Topic and Date"
+                            },
+                            "elements": [
+                                {
+                                    "id": "8300018",
+                                    "elType": "widget",
+                                    "settings": {
+                                        "_css_classes": "jb-topic jb-native-span",
+                                        "_title": "জাল নির্বাচন",
+                                        "_margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "title": "জাল নির্বাচন",
+                                        "header_size": "span",
+                                        "_border_radius": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "12",
+                                            "bottom": "12",
+                                            "left": "12",
+                                            "isLinked": true
+                                        }
+                                    },
+                                    "elements": [],
+                                    "widgetType": "heading"
+                                },
+                                {
+                                    "id": "8300019",
+                                    "elType": "widget",
+                                    "settings": {
+                                        "_css_classes": "jb-native-inline",
+                                        "_title": "প্রায় ৩ মিনিট",
+                                        "_margin": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "editor": "<svg width=\"22\" height=\"22\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg> প্রায় ৩ মিনিট",
+                                        "_border_radius": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "12",
+                                            "bottom": "12",
+                                            "left": "12",
+                                            "isLinked": true
+                                        }
+                                    },
+                                    "elements": [],
+                                    "widgetType": "text-editor"
+                                }
+                            ],
+                            "isInner": true
+                        },
+                        {
+                            "id": "830001b",
+                            "elType": "widget",
+                            "settings": {
+                                "_title": "সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "title": "সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট",
+                                "link": {
+                                    "url": "http://localhost/juhani/how-to-choose-the-right-fishing-net-in-bangladesh/"
+                                },
+                                "_element_id": "jb-feature-title"
+                            },
+                            "elements": [],
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "830001c",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-native-paragraph",
+                                "_title": "মৎস্য আহরণে কাঙ্ক্ষিত সাফল্য এবং জালের দীর্ঘস্থায়িত্ব নিশ্চিত করতে সঠিক ফিশিং নেট নির্বাচন অত্যন্ত গুরুত্বপূর্ণ। বাংলাদেশের নদী, পুকুর কিংবা বাণ…",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "editor": "<p>মৎস্য আহরণে কাঙ্ক্ষিত সাফল্য এবং জালের দীর্ঘস্থায়িত্ব নিশ্চিত করতে সঠিক ফিশিং নেট নির্বাচন অত্যন্ত গুরুত্বপূর্ণ। বাংলাদেশের নদী, পুকুর কিংবা বাণ…</p>"
+                            },
+                            "elements": [],
+                            "widgetType": "text-editor"
+                        },
+                        {
+                            "id": "830001d",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-text-link jb-native-arrow",
+                                "_title": "গাইডটি পড়ুন",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "text": "গাইডটি পড়ুন",
+                                "link": {
+                                    "url": "http://localhost/juhani/how-to-choose-the-right-fishing-net-in-bangladesh/",
+                                    "is_external": ""
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                }
+                            },
+                            "elements": [],
+                            "widgetType": "button"
+                        }
+                    ],
+                    "isInner": true
+                }
+            ],
+            "isInner": true
+        },
+        {
+            "id": "8300058",
+            "elType": "container",
+            "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                    "unit": "px",
+                    "size": 0,
+                    "column": "0",
+                    "row": "0",
+                    "isLinked": true
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": true
+                },
+                "border_radius": {
+                    "unit": "px",
+                    "top": "12",
+                    "right": "12",
+                    "bottom": "12",
+                    "left": "12",
+                    "isLinked": true
+                },
+                "css_classes": "jb-library",
+                "_title": "03 - Article Library",
+                "_element_id": "jb-library",
+                "_attributes": "aria-labelledby|jb-library-title\nlang|bn",
+                "html_tag": "section"
+            },
+            "elements": [
+                {
+                    "id": "8300057",
+                    "elType": "container",
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": true
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": true
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": true
+                        },
+                        "css_classes": "jb-container jb-section",
+                        "_title": "Library - Content Width"
+                    },
+                    "elements": [
+                        {
+                            "id": "8300025",
+                            "elType": "container",
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 0,
+                                    "column": "0",
+                                    "row": "0",
+                                    "isLinked": true
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                },
+                                "css_classes": "jb-section-heading",
+                                "_title": "Library - Heading and Description"
+                            },
+                            "elements": [
+                                {
+                                    "id": "8300023",
+                                    "elType": "container",
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "flex_gap": {
+                                            "unit": "px",
+                                            "size": 0,
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": true
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "12",
+                                            "bottom": "12",
+                                            "left": "12",
+                                            "isLinked": true
+                                        },
+                                        "_title": "Layout"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "8300020",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "_css_classes": "jb-eyebrow jb-native-span",
+                                                "_title": "READ. LEARN. CAST WITH CONFIDENCE.",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": true
+                                                },
+                                                "title": "READ. LEARN. CAST WITH CONFIDENCE.",
+                                                "header_size": "span",
+                                                "_attributes": "lang|en"
+                                            },
+                                            "elements": [],
+                                            "widgetType": "heading"
+                                        },
+                                        {
+                                            "id": "8300021",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "_title": "আপনার পরবর্তী ভালো সিদ্ধান্তের জন্য।",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": true
+                                                },
+                                                "title": "আপনার পরবর্তী ভালো সিদ্ধান্তের জন্য।",
+                                                "_element_id": "jb-library-title"
+                                            },
+                                            "elements": [],
+                                            "widgetType": "heading"
+                                        },
+                                        {
+                                            "id": "8300022",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "_css_classes": "jb-native-paragraph",
+                                                "_title": "মৎস্য চাষ, নাইলন জাল ও সঠিক নেট নির্বাচন—সব গাইড এক জায়গায়।",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": true
+                                                },
+                                                "editor": "<p>মৎস্য চাষ, নাইলন জাল ও সঠিক নেট নির্বাচন—সব গাইড এক জায়গায়।</p>"
+                                            },
+                                            "elements": [],
+                                            "widgetType": "text-editor"
+                                        }
+                                    ],
+                                    "isInner": true
+                                }
+                            ],
+                            "isInner": true
+                        },
+                        {
+                            "id": "8300026",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-controls-widget",
+                                "_title": "Article search and topic controls",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "html": "<div class=\"jb-toolbar\"><div class=\"jb-topics\" role=\"group\" aria-label=\"নিবন্ধের বিষয় নির্বাচন\"><button type=\"button\" class=\"jb-filter is-active\" data-topic=\"all\" aria-pressed=\"true\">সব নিবন্ধ <span>৩</span></button><button type=\"button\" class=\"jb-filter\" data-topic=\"aquaculture\" aria-pressed=\"false\">মৎস্য চাষ</button><button type=\"button\" class=\"jb-filter\" data-topic=\"nylon\" aria-pressed=\"false\">নাইলন জাল</button><button type=\"button\" class=\"jb-filter\" data-topic=\"net-selection\" aria-pressed=\"false\">জাল নির্বাচন</button></div><label class=\"jb-search\"><svg width=\"22\" height=\"22\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"></circle><path d=\"m16 16 5 5\"></path></svg><span class=\"jb-sr-only\">শিরোনাম বা বিষয় দিয়ে নিবন্ধ খুঁজুন</span><input id=\"jb-search\" type=\"search\" placeholder=\"নিবন্ধ খুঁজুন…\" autocomplete=\"off\"></label></div>"
+                            },
+                            "elements": [],
+                            "widgetType": "html"
+                        },
+                        {
+                            "id": "8300051",
+                            "elType": "container",
+                            "settings": {
+                                "content_width": "full",
+                                "flex_direction": "column",
+                                "flex_gap": {
+                                    "unit": "px",
+                                    "size": 0,
+                                    "column": "0",
+                                    "row": "0",
+                                    "isLinked": true
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                },
+                                "css_classes": "jb-article-grid",
+                                "_title": "Articles - Individual Cards"
+                            },
+                            "elements": [
+                                {
+                                    "id": "8300036",
+                                    "elType": "container",
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "flex_gap": {
+                                            "unit": "px",
+                                            "size": 0,
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": true
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "12",
+                                            "bottom": "12",
+                                            "left": "12",
+                                            "isLinked": true
+                                        },
+                                        "css_classes": "jb-article",
+                                        "_title": "Article 1 - Separate Card",
+                                        "_attributes": "data-topic|aquaculture\ndata-search|বাংলাদেশে মৎস্য চাষে জালের ব্যবহার : প্রয়োজনীয় নির্দেশিকা বাংলাদেশে মৎস্য চাষের পরিধি দ্রুত বিস্তৃত হচ্ছে। এই অগ্রযাত্রায় অধিক উৎপাদন ও সঠিক ব্যবস্থাপনার জন্য সঠিক জাল নির্বাচন এখন সময়ের দাবি। উন্নত মা… মৎস্য চাষ",
+                                        "html_tag": "article"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "17e164b",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "image": {
+                                                    "url": "http://localhost/juhani/wp-content/uploads/2026/09/44-ghor-net-01.webp",
+                                                    "id": 1256,
+                                                    "size": "",
+                                                    "alt": "",
+                                                    "source": "library"
+                                                },
+                                                "image_size": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 100,
+                                                    "sizes": []
+                                                },
+                                                "height": {
+                                                    "unit": "px",
+                                                    "size": 300,
+                                                    "sizes": []
+                                                },
+                                                "object-fit": "cover"
+                                            },
+                                            "elements": [],
+                                            "widgetType": "image"
+                                        },
+                                        {
+                                            "id": "8300035",
+                                            "elType": "container",
+                                            "settings": {
+                                                "content_width": "full",
+                                                "flex_direction": "column",
+                                                "flex_gap": {
+                                                    "unit": "px",
+                                                    "size": 0,
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "isLinked": true
+                                                },
+                                                "padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": true
+                                                },
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "12",
+                                                    "right": "12",
+                                                    "bottom": "12",
+                                                    "left": "12",
+                                                    "isLinked": true
+                                                },
+                                                "css_classes": "jb-article-copy",
+                                                "_title": "Article - Text",
+                                                "margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                }
+                                            },
+                                            "elements": [
+                                                {
+                                                    "id": "830002f",
+                                                    "elType": "container",
+                                                    "settings": {
+                                                        "content_width": "full",
+                                                        "flex_direction": "column",
+                                                        "flex_gap": {
+                                                            "unit": "px",
+                                                            "size": 0,
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "border_radius": {
+                                                            "unit": "px",
+                                                            "top": "12",
+                                                            "right": "12",
+                                                            "bottom": "12",
+                                                            "left": "12",
+                                                            "isLinked": true
+                                                        },
+                                                        "css_classes": "jb-meta",
+                                                        "_title": "Topic and Date"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "830002d",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-topic jb-native-span",
+                                                                "_title": "মৎস্য চাষ",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "title": "মৎস্য চাষ",
+                                                                "header_size": "span",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "heading"
+                                                        },
+                                                        {
+                                                            "id": "830002e",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-inline",
+                                                                "_title": "08 Apr 2026",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "editor": "<time datetime=\"2026-04-08\" lang=\"en\">08 Apr 2026</time>",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                },
+                                                                "_attributes": "lang|en"
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "text-editor"
+                                                        }
+                                                    ],
+                                                    "isInner": true
+                                                },
+                                                {
+                                                    "id": "8300030",
+                                                    "elType": "widget",
+                                                    "settings": {
+                                                        "_title": "বাংলাদেশে মৎস্য চাষে জালের ব্যবহার : প্রয়োজনীয় নির্দেশিকা",
+                                                        "_margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "title": "বাংলাদেশে মৎস্য চাষে জালের ব্যবহার : প্রয়োজনীয় নির্দেশিকা",
+                                                        "header_size": "h3",
+                                                        "link": {
+                                                            "url": "http://localhost/juhani/fishing-nets-for-fish-farming-in-bangladesh-aquaculture-guide/"
+                                                        }
+                                                    },
+                                                    "elements": [],
+                                                    "widgetType": "heading"
+                                                },
+                                                {
+                                                    "id": "8300031",
+                                                    "elType": "widget",
+                                                    "settings": {
+                                                        "_css_classes": "jb-native-paragraph",
+                                                        "_title": "বাংলাদেশে মৎস্য চাষের পরিধি দ্রুত বিস্তৃত হচ্ছে। এই অগ্রযাত্রায় অধিক উৎপাদন ও সঠিক ব্যবস্থাপনার জন্য সঠিক জাল নির্বাচন এখন সময়ের দাবি। উন্নত মা…",
+                                                        "_margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "editor": "<p>বাংলাদেশে মৎস্য চাষের পরিধি দ্রুত বিস্তৃত হচ্ছে। এই অগ্রযাত্রায় অধিক উৎপাদন ও সঠিক ব্যবস্থাপনার জন্য সঠিক জাল নির্বাচন এখন সময়ের দাবি। উন্নত মা…</p>"
+                                                    },
+                                                    "elements": [],
+                                                    "widgetType": "text-editor"
+                                                },
+                                                {
+                                                    "id": "8300034",
+                                                    "elType": "container",
+                                                    "settings": {
+                                                        "content_width": "full",
+                                                        "flex_direction": "column",
+                                                        "flex_gap": {
+                                                            "unit": "px",
+                                                            "size": 0,
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "border_radius": {
+                                                            "unit": "px",
+                                                            "top": "12",
+                                                            "right": "12",
+                                                            "bottom": "12",
+                                                            "left": "12",
+                                                            "isLinked": true
+                                                        },
+                                                        "css_classes": "jb-card-footer",
+                                                        "_title": "Reading Time and Read Link"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "8300032",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-inline",
+                                                                "_title": "প্রায় ৩ মিনিট",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "editor": "<svg width=\"22\" height=\"22\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg> প্রায় ৩ মিনিট",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "text-editor"
+                                                        },
+                                                        {
+                                                            "id": "8300033",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-arrow",
+                                                                "_title": "পড়ুন",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "text": "পড়ুন",
+                                                                "link": {
+                                                                    "url": "http://localhost/juhani/fishing-nets-for-fish-farming-in-bangladesh-aquaculture-guide/",
+                                                                    "is_external": ""
+                                                                },
+                                                                "border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "button"
+                                                        }
+                                                    ],
+                                                    "isInner": true
+                                                }
+                                            ],
+                                            "isInner": true
+                                        }
+                                    ],
+                                    "isInner": true
+                                },
+                                {
+                                    "id": "8300043",
+                                    "elType": "container",
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "flex_gap": {
+                                            "unit": "px",
+                                            "size": 0,
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": true
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "12",
+                                            "bottom": "12",
+                                            "left": "12",
+                                            "isLinked": true
+                                        },
+                                        "css_classes": "jb-article",
+                                        "_title": "Article 2 - Separate Card",
+                                        "_attributes": "data-topic|nylon\ndata-search|বাংলাদেশে নাইলন ফিশিং নেটের ব্যবহার ও এর সুবিধাসমূহ বাংলাদেশের মৎস্যজীবী এবং বাণিজ্যিক মৎস্যচাষীদের কাছে নাইলন ফিশিং নেট বর্তমানে অন্যতম জনপ্রিয় নাম। এর শক্তি, নমনীয়তা এবং দীর্ঘমেয়াদী কার্যকারিত… নাইলন জাল",
+                                        "html_tag": "article"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "16c306c",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "image": {
+                                                    "url": "http://localhost/juhani/wp-content/uploads/2026/09/40-ghor-net-02.webp",
+                                                    "id": 1249,
+                                                    "size": "",
+                                                    "alt": "",
+                                                    "source": "library"
+                                                },
+                                                "image_size": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 100,
+                                                    "sizes": []
+                                                },
+                                                "height": {
+                                                    "unit": "px",
+                                                    "size": 300,
+                                                    "sizes": []
+                                                },
+                                                "object-fit": "cover"
+                                            },
+                                            "elements": [],
+                                            "widgetType": "image"
+                                        },
+                                        {
+                                            "id": "8300042",
+                                            "elType": "container",
+                                            "settings": {
+                                                "content_width": "full",
+                                                "flex_direction": "column",
+                                                "flex_gap": {
+                                                    "unit": "px",
+                                                    "size": 0,
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "isLinked": true
+                                                },
+                                                "padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": true
+                                                },
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "12",
+                                                    "right": "12",
+                                                    "bottom": "12",
+                                                    "left": "12",
+                                                    "isLinked": true
+                                                },
+                                                "css_classes": "jb-article-copy",
+                                                "_title": "Article - Text"
+                                            },
+                                            "elements": [
+                                                {
+                                                    "id": "830003c",
+                                                    "elType": "container",
+                                                    "settings": {
+                                                        "content_width": "full",
+                                                        "flex_direction": "column",
+                                                        "flex_gap": {
+                                                            "unit": "px",
+                                                            "size": 0,
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "border_radius": {
+                                                            "unit": "px",
+                                                            "top": "12",
+                                                            "right": "12",
+                                                            "bottom": "12",
+                                                            "left": "12",
+                                                            "isLinked": true
+                                                        },
+                                                        "css_classes": "jb-meta",
+                                                        "_title": "Topic and Date"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "830003a",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-topic jb-native-span",
+                                                                "_title": "নাইলন জাল",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "title": "নাইলন জাল",
+                                                                "header_size": "span",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "heading"
+                                                        },
+                                                        {
+                                                            "id": "830003b",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-inline",
+                                                                "_title": "08 Apr 2026",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "editor": "<time datetime=\"2026-04-08\" lang=\"en\">08 Apr 2026</time>",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                },
+                                                                "_attributes": "lang|en"
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "text-editor"
+                                                        }
+                                                    ],
+                                                    "isInner": true
+                                                },
+                                                {
+                                                    "id": "830003d",
+                                                    "elType": "widget",
+                                                    "settings": {
+                                                        "_title": "বাংলাদেশে নাইলন ফিশিং নেটের ব্যবহার ও এর সুবিধাসমূহ",
+                                                        "_margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "title": "বাংলাদেশে নাইলন ফিশিং নেটের ব্যবহার ও এর সুবিধাসমূহ",
+                                                        "header_size": "h3",
+                                                        "link": {
+                                                            "url": "http://localhost/juhani/benefits-of-using-nylon-fishing-nets-in-bangladesh/"
+                                                        }
+                                                    },
+                                                    "elements": [],
+                                                    "widgetType": "heading"
+                                                },
+                                                {
+                                                    "id": "830003e",
+                                                    "elType": "widget",
+                                                    "settings": {
+                                                        "_css_classes": "jb-native-paragraph",
+                                                        "_title": "বাংলাদেশের মৎস্যজীবী এবং বাণিজ্যিক মৎস্যচাষীদের কাছে নাইলন ফিশিং নেট বর্তমানে অন্যতম জনপ্রিয় নাম। এর শক্তি, নমনীয়তা এবং দীর্ঘমেয়াদী কার্যকারিত…",
+                                                        "_margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "editor": "<p>বাংলাদেশের মৎস্যজীবী এবং বাণিজ্যিক মৎস্যচাষীদের কাছে নাইলন ফিশিং নেট বর্তমানে অন্যতম জনপ্রিয় নাম। এর শক্তি, নমনীয়তা এবং দীর্ঘমেয়াদী কার্যকারিত…</p>"
+                                                    },
+                                                    "elements": [],
+                                                    "widgetType": "text-editor"
+                                                },
+                                                {
+                                                    "id": "8300041",
+                                                    "elType": "container",
+                                                    "settings": {
+                                                        "content_width": "full",
+                                                        "flex_direction": "column",
+                                                        "flex_gap": {
+                                                            "unit": "px",
+                                                            "size": 0,
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "border_radius": {
+                                                            "unit": "px",
+                                                            "top": "12",
+                                                            "right": "12",
+                                                            "bottom": "12",
+                                                            "left": "12",
+                                                            "isLinked": true
+                                                        },
+                                                        "css_classes": "jb-card-footer",
+                                                        "_title": "Reading Time and Read Link"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "830003f",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-inline",
+                                                                "_title": "প্রায় ৩ মিনিট",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "editor": "<svg width=\"22\" height=\"22\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg> প্রায় ৩ মিনিট",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "text-editor"
+                                                        },
+                                                        {
+                                                            "id": "8300040",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-arrow",
+                                                                "_title": "পড়ুন",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "text": "পড়ুন",
+                                                                "link": {
+                                                                    "url": "http://localhost/juhani/benefits-of-using-nylon-fishing-nets-in-bangladesh/",
+                                                                    "is_external": ""
+                                                                },
+                                                                "border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "button"
+                                                        }
+                                                    ],
+                                                    "isInner": true
+                                                }
+                                            ],
+                                            "isInner": true
+                                        }
+                                    ],
+                                    "isInner": true
+                                },
+                                {
+                                    "id": "8300050",
+                                    "elType": "container",
+                                    "settings": {
+                                        "content_width": "full",
+                                        "flex_direction": "column",
+                                        "flex_gap": {
+                                            "unit": "px",
+                                            "size": 0,
+                                            "column": "0",
+                                            "row": "0",
+                                            "isLinked": true
+                                        },
+                                        "padding": {
+                                            "unit": "px",
+                                            "top": "0",
+                                            "right": "0",
+                                            "bottom": "0",
+                                            "left": "0",
+                                            "isLinked": true
+                                        },
+                                        "border_radius": {
+                                            "unit": "px",
+                                            "top": "12",
+                                            "right": "12",
+                                            "bottom": "12",
+                                            "left": "12",
+                                            "isLinked": true
+                                        },
+                                        "css_classes": "jb-article",
+                                        "_title": "Article 3 - Separate Card",
+                                        "_attributes": "data-topic|net-selection\ndata-search|সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট মৎস্য আহরণে কাঙ্ক্ষিত সাফল্য এবং জালের দীর্ঘস্থায়িত্ব নিশ্চিত করতে সঠিক ফিশিং নেট নির্বাচন অত্যন্ত গুরুত্বপূর্ণ। বাংলাদেশের নদী, পুকুর কিংবা বাণ… জাল নির্বাচন",
+                                        "html_tag": "article"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "1585aea",
+                                            "elType": "widget",
+                                            "settings": {
+                                                "image": {
+                                                    "url": "http://localhost/juhani/wp-content/uploads/2026/09/44-ghor-net-01.webp",
+                                                    "id": 1256,
+                                                    "size": "",
+                                                    "alt": "",
+                                                    "source": "library"
+                                                },
+                                                "image_size": "full",
+                                                "width": {
+                                                    "unit": "%",
+                                                    "size": 100,
+                                                    "sizes": []
+                                                },
+                                                "height": {
+                                                    "unit": "px",
+                                                    "size": 300,
+                                                    "sizes": []
+                                                },
+                                                "object-fit": "cover"
+                                            },
+                                            "elements": [],
+                                            "widgetType": "image"
+                                        },
+                                        {
+                                            "id": "830004f",
+                                            "elType": "container",
+                                            "settings": {
+                                                "content_width": "full",
+                                                "flex_direction": "column",
+                                                "flex_gap": {
+                                                    "unit": "px",
+                                                    "size": 0,
+                                                    "column": "0",
+                                                    "row": "0",
+                                                    "isLinked": true
+                                                },
+                                                "padding": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": true
+                                                },
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "12",
+                                                    "right": "12",
+                                                    "bottom": "12",
+                                                    "left": "12",
+                                                    "isLinked": true
+                                                },
+                                                "css_classes": "jb-article-copy",
+                                                "_title": "Article - Text"
+                                            },
+                                            "elements": [
+                                                {
+                                                    "id": "8300049",
+                                                    "elType": "container",
+                                                    "settings": {
+                                                        "content_width": "full",
+                                                        "flex_direction": "column",
+                                                        "flex_gap": {
+                                                            "unit": "px",
+                                                            "size": 0,
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "border_radius": {
+                                                            "unit": "px",
+                                                            "top": "12",
+                                                            "right": "12",
+                                                            "bottom": "12",
+                                                            "left": "12",
+                                                            "isLinked": true
+                                                        },
+                                                        "css_classes": "jb-meta",
+                                                        "_title": "Topic and Date"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "8300047",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-topic jb-native-span",
+                                                                "_title": "জাল নির্বাচন",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "title": "জাল নির্বাচন",
+                                                                "header_size": "span",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "heading"
+                                                        },
+                                                        {
+                                                            "id": "8300048",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-inline",
+                                                                "_title": "03 Apr 2026",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "editor": "<time datetime=\"2026-04-03\" lang=\"en\">03 Apr 2026</time>",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                },
+                                                                "_attributes": "lang|en"
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "text-editor"
+                                                        }
+                                                    ],
+                                                    "isInner": true
+                                                },
+                                                {
+                                                    "id": "830004a",
+                                                    "elType": "widget",
+                                                    "settings": {
+                                                        "_title": "সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট",
+                                                        "_margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "title": "সঠিক ফিশিং নেট বাছাইয়ের খুঁটিনাটি : বাংলাদেশের প্রেক্ষাপট",
+                                                        "header_size": "h3",
+                                                        "link": {
+                                                            "url": "http://localhost/juhani/how-to-choose-the-right-fishing-net-in-bangladesh/"
+                                                        }
+                                                    },
+                                                    "elements": [],
+                                                    "widgetType": "heading"
+                                                },
+                                                {
+                                                    "id": "830004b",
+                                                    "elType": "widget",
+                                                    "settings": {
+                                                        "_css_classes": "jb-native-paragraph",
+                                                        "_title": "মৎস্য আহরণে কাঙ্ক্ষিত সাফল্য এবং জালের দীর্ঘস্থায়িত্ব নিশ্চিত করতে সঠিক ফিশিং নেট নির্বাচন অত্যন্ত গুরুত্বপূর্ণ। বাংলাদেশের নদী, পুকুর কিংবা বাণ…",
+                                                        "_margin": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "editor": "<p>মৎস্য আহরণে কাঙ্ক্ষিত সাফল্য এবং জালের দীর্ঘস্থায়িত্ব নিশ্চিত করতে সঠিক ফিশিং নেট নির্বাচন অত্যন্ত গুরুত্বপূর্ণ। বাংলাদেশের নদী, পুকুর কিংবা বাণ…</p>"
+                                                    },
+                                                    "elements": [],
+                                                    "widgetType": "text-editor"
+                                                },
+                                                {
+                                                    "id": "830004e",
+                                                    "elType": "container",
+                                                    "settings": {
+                                                        "content_width": "full",
+                                                        "flex_direction": "column",
+                                                        "flex_gap": {
+                                                            "unit": "px",
+                                                            "size": 0,
+                                                            "column": "0",
+                                                            "row": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "padding": {
+                                                            "unit": "px",
+                                                            "top": "0",
+                                                            "right": "0",
+                                                            "bottom": "0",
+                                                            "left": "0",
+                                                            "isLinked": true
+                                                        },
+                                                        "border_radius": {
+                                                            "unit": "px",
+                                                            "top": "12",
+                                                            "right": "12",
+                                                            "bottom": "12",
+                                                            "left": "12",
+                                                            "isLinked": true
+                                                        },
+                                                        "css_classes": "jb-card-footer",
+                                                        "_title": "Reading Time and Read Link"
+                                                    },
+                                                    "elements": [
+                                                        {
+                                                            "id": "830004c",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-inline",
+                                                                "_title": "প্রায় ৩ মিনিট",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "editor": "<svg width=\"22\" height=\"22\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg> প্রায় ৩ মিনিট",
+                                                                "_border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "text-editor"
+                                                        },
+                                                        {
+                                                            "id": "830004d",
+                                                            "elType": "widget",
+                                                            "settings": {
+                                                                "_css_classes": "jb-native-arrow",
+                                                                "_title": "পড়ুন",
+                                                                "_margin": {
+                                                                    "unit": "px",
+                                                                    "top": "0",
+                                                                    "right": "0",
+                                                                    "bottom": "0",
+                                                                    "left": "0",
+                                                                    "isLinked": true
+                                                                },
+                                                                "text": "পড়ুন",
+                                                                "link": {
+                                                                    "url": "http://localhost/juhani/how-to-choose-the-right-fishing-net-in-bangladesh/",
+                                                                    "is_external": ""
+                                                                },
+                                                                "border_radius": {
+                                                                    "unit": "px",
+                                                                    "top": "12",
+                                                                    "right": "12",
+                                                                    "bottom": "12",
+                                                                    "left": "12",
+                                                                    "isLinked": true
+                                                                }
+                                                            },
+                                                            "elements": [],
+                                                            "widgetType": "button"
+                                                        }
+                                                    ],
+                                                    "isInner": true
+                                                }
+                                            ],
+                                            "isInner": true
+                                        }
+                                    ],
+                                    "isInner": true
+                                }
+                            ],
+                            "isInner": true
+                        }
+                    ],
+                    "isInner": true
+                }
+            ],
+            "isInner": true
+        },
+        {
+            "id": "8300060",
+            "elType": "container",
+            "settings": {
+                "content_width": "full",
+                "flex_direction": "column",
+                "flex_gap": {
+                    "unit": "px",
+                    "size": 0,
+                    "column": "0",
+                    "row": "0",
+                    "isLinked": true
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": true
+                },
+                "border_radius": {
+                    "unit": "px",
+                    "top": "12",
+                    "right": "12",
+                    "bottom": "12",
+                    "left": "12",
+                    "isLinked": true
+                },
+                "css_classes": "jb-help jb-container",
+                "_title": "04 - Contact and WhatsApp",
+                "_attributes": "aria-labelledby|jb-help-title\nlang|bn",
+                "html_tag": "section"
+            },
+            "elements": [
+                {
+                    "id": "830005c",
+                    "elType": "container",
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": true
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": true
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": true
+                        },
+                        "_title": "Layout"
+                    },
+                    "elements": [
+                        {
+                            "id": "8300059",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-eyebrow jb-light jb-native-span",
+                                "_title": "A LITTLE PERSONAL GUIDANCE",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "title": "A LITTLE PERSONAL GUIDANCE",
+                                "header_size": "span",
+                                "_attributes": "lang|en"
+                            },
+                            "elements": [],
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "830005a",
+                            "elType": "widget",
+                            "settings": {
+                                "_title": "গাইড পড়েছেন।এবার আপনার জন্য সঠিক জাল খুঁজি।",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "title": "গাইড পড়েছেন।<br>এবার আপনার জন্য সঠিক জাল খুঁজি।",
+                                "_element_id": "jb-help-title"
+                            },
+                            "elements": [],
+                            "widgetType": "heading"
+                        },
+                        {
+                            "id": "830005b",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-native-paragraph",
+                                "_title": "জাল নির্বাচন বা পাইকারি অর্ডার নিয়ে আমাদের সঙ্গে সরাসরি কথা বলুন।",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "editor": "<p>জাল নির্বাচন বা পাইকারি অর্ডার নিয়ে আমাদের সঙ্গে সরাসরি কথা বলুন।</p>"
+                            },
+                            "elements": [],
+                            "widgetType": "text-editor"
+                        }
+                    ],
+                    "isInner": true
+                },
+                {
+                    "id": "830005f",
+                    "elType": "container",
+                    "settings": {
+                        "content_width": "full",
+                        "flex_direction": "column",
+                        "flex_gap": {
+                            "unit": "px",
+                            "size": 0,
+                            "column": "0",
+                            "row": "0",
+                            "isLinked": true
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": true
+                        },
+                        "border_radius": {
+                            "unit": "px",
+                            "top": "12",
+                            "right": "12",
+                            "bottom": "12",
+                            "left": "12",
+                            "isLinked": true
+                        },
+                        "css_classes": "jb-help-actions",
+                        "_title": "WhatsApp and Phone Buttons"
+                    },
+                    "elements": [
+                        {
+                            "id": "830005d",
+                            "elType": "widget",
+                            "settings": {
+                                "_css_classes": "jb-button jb-button-light jb-native-arrow",
+                                "_title": "WhatsApp-এ কথা বলুন",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": true
+                                },
+                                "text": "WhatsApp-এ কথা বলুন",
+                                "link": {
+                                    "url": "https://wa.me/8801889164315",
+                                    "is_external": "on"
+                                },
+                                "border_radius": {
+                                    "unit": "px",
+                                    "top": "12",
+                                    "right": "12",
+                                    "bottom": "12",
+                                    "left": "12",
+                                    "isLinked": true
+                                }
+                            },
+                            "elements": [],
+                            "widgetType": "button"
+                        }
+                    ],
+                    "isInner": true
+                }
+            ],
+            "isInner": true
+        }
+    ],
+    "page_settings": {
+        "0": "",
+        "hide_title": "yes",
+        "custom_css": ".elementor-1274.e-con,.elementor-1274 .e-con{display:block;--width:100%;--container-widget-width:100%;--container-widget-flex-grow:0;--padding-top:0px;--padding-right:0px;--padding-bottom:0px;--padding-left:0px;--gap:0px;gap:0;min-width:0;max-width:none;flex-direction:row;flex-wrap:nowrap;align-items:stretch;justify-content:normal;flex-shrink:1;margin:0;padding:0;border:0}\n.elementor-1274 .elementor-widget{margin:0;min-width:0;max-width:100%;--container-widget-width:100%;--container-widget-flex-grow:0}\n.elementor-1274 .elementor-widget-text-editor{font:inherit;color:inherit}\n.elementor-1274 .elementor-heading-title{font-family:inherit;color:inherit;padding:0}\n.elementor-1274 .elementor-button{font:inherit;color:inherit;background:transparent;border:0;padding:0;box-shadow:none}\n.elementor-1274 .elementor-button-content-wrapper{display:flex;align-items:center;justify-content:center}\n.elementor-1274 .elementor-button-text{flex-grow:0}\n.elementor-1274{max-width:none;margin:0;padding:0}\n.elementor-1274{--jb-navy:#122e43;--jb-ink:#223747;--jb-blue:#236b9c;--jb-sky:#86cef7;--jb-muted:#657783;--jb-line:#e1eaf0;--jb-paper:#f4f8fb;--jb-radius:12px;--jb-max:1350px;--jb-gutter:20px;background:white;color:var(--jb-ink);font-family:'Segoe UI','Nirmala UI','Noto Sans Bengali',Arial,sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased}\n.elementor-1274,.elementor-1274 *{box-sizing:border-box}\n.elementor-1274 a{color:inherit;text-decoration:none;touch-action:manipulation}\n.elementor-1274 button,.elementor-1274 input{font:inherit;touch-action:manipulation}\n.elementor-1274 button{cursor:pointer}\n.elementor-1274 svg{flex-shrink:0}\n.elementor-1274 img{display:block;width:100%;max-width:100%;object-fit:cover}\n.elementor-1274 h1,.elementor-1274 h2,.elementor-1274 h3,.elementor-1274 p{font-family:inherit;color:inherit;padding:0;margin:0}\n.elementor-1274 h1,.elementor-1274 h2,.elementor-1274 h3{text-wrap:balance}\n.elementor-1274 a:focus-visible,.elementor-1274 button:focus-visible,.elementor-1274 input:focus-visible{outline:3px solid #236b9c;outline-offset:5px}\n.elementor-1274 .jb-container{width:min(var(--jb-max),calc(100% - var(--jb-gutter) - var(--jb-gutter)));margin-inline:auto}\n.elementor-1274 .jb-section{padding-block:70px}\n.elementor-1274 .jb-eyebrow{display:flex;align-items:center;gap:10px;font-family:'Segoe UI',Arial,sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;line-height:1.6;margin-bottom:18px;color:var(--jb-blue)}\n.elementor-1274 .jb-eyebrow:before{content:'';width:22px;height:2px;background:currentColor;opacity:.65}\n.elementor-1274 .jb-eyebrow.jb-light{color:#b2dff9}\n.elementor-1274 :is(.jb-button .elementor-button,.jb-empty .jb-button){display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:54px;background:var(--jb-blue);color:white;border:0;padding:14px 22px;font-size:13px;font-weight:600;line-height:1.6;transition:background .2s,transform .2s,box-shadow .2s}\n.elementor-1274 :is(.jb-button .elementor-button,.jb-empty .jb-button):hover{background:#195781;transform:translateY(-2px);box-shadow:0 8px 22px #14374d18}\n.elementor-1274 :is(.jb-button .elementor-button,.jb-empty .jb-button) svg{width:20px;height:20px}\n.elementor-1274 .jb-button.jb-button-light .elementor-button{background:var(--jb-sky);color:var(--jb-navy)}\n.elementor-1274 .jb-button.jb-button-light .elementor-button:hover{background:#afe2ff}\n.elementor-1274 .jb-text-link .elementor-button{display:inline-flex;align-items:center;gap:20px;font-size:13px;font-weight:600;border-bottom:1px solid #c4d7e3;padding-bottom:9px;line-height:1.8}\n.elementor-1274 .jb-text-link .elementor-button svg{width:18px;height:18px;transition:transform .2s}\n.elementor-1274 .jb-text-link .elementor-button:hover{color:var(--jb-blue);border-color:var(--jb-blue)}\n.elementor-1274 .jb-text-link .elementor-button:hover svg{transform:translateX(3px)}\n.elementor-1274 .jb-breadcrumb{display:flex;align-items:center;gap:11px;padding-block:25px 20px;font-size:11px;color:var(--jb-muted)}\n.elementor-1274 .jb-breadcrumb>.jb-native-span:nth-child(2){color:#a6bac8}\n.elementor-1274 .jb-breadcrumb a:hover{color:var(--jb-blue)}\n.elementor-1274 .jb-hero{display:grid;grid-template-columns:1.15fr 1fr;background:#f0f7fc;border:1px solid #e1edf5;overflow:hidden}\n.elementor-1274 .jb-hero-copy{padding:43px 48px 29px}\n.elementor-1274 .jb-hero .jb-eyebrow{margin-bottom:25px}\n.elementor-1274 .jb-kicker{display:block;font-size:13px;font-weight:600;color:var(--jb-blue);margin-bottom:13px}\n.elementor-1274 h1{font-size:clamp(34px,3.4vw,47px);font-weight:650;line-height:1.6;letter-spacing:-.35px;margin-bottom:21px}\n.elementor-1274 h1 em{color:var(--jb-blue);font-style:normal}\n.elementor-1274 .jb-hero-copy>.jb-native-paragraph{font-size:14px;line-height:1.95;color:var(--jb-muted);max-width:550px;margin-bottom:26px}\n.elementor-1274 .jb-hero-foot{margin-top:35px;padding-top:22px;border-top:1px solid #d4e4ef}\n.elementor-1274 .jb-hero-foot>.jb-native-inline:first-child{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--jb-muted)}\n.elementor-1274 .jb-hero-foot svg{width:16px;height:16px;color:var(--jb-blue)}\n.elementor-1274 .jb-issue{display:block;font-family:'Segoe UI',Arial,sans-serif;font-size:8px;letter-spacing:1.4px;margin-top:8px;color:#8399a8}\n.elementor-1274 .jb-hero-image{position:relative;min-height:510px}\n.elementor-1274 .jb-hero-image img{height:100%;object-position:55% center}\n.elementor-1274 .jb-image-note{position:absolute;left:22px;right:22px;bottom:22px;display:flex;align-items:center;gap:10px;background:#fffffff0;backdrop-filter:blur(10px);padding:15px 17px;font-family:'Segoe UI',Arial,sans-serif;font-size:8px;line-height:1.7;letter-spacing:1.25px;color:var(--jb-navy)}\n.elementor-1274 .jb-dot{width:6px;height:6px;display:inline-block;flex-shrink:0;background:var(--jb-blue);}\n.elementor-1274 .jb-feature{display:grid;grid-template-columns:1fr 1.25fr;gap:60px;align-items:center;padding-block:70px}\n.elementor-1274 .jb-feature-image{display:block;position:relative;overflow:hidden;aspect-ratio:1.55;background:var(--jb-paper)}\n.elementor-1274 .jb-feature-image img{height:100%;transition:transform .4s}\n.elementor-1274 .jb-feature-image:hover img{transform:scale(1.035)}\n.elementor-1274 .jb-feature-badge{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fffffff0;font-size:11px;font-weight:600;color:var(--jb-navy)}\n.elementor-1274 .jb-feature-badge svg{width:16px;height:16px;color:var(--jb-blue)}\n.elementor-1274 .jb-feature-copy{max-width:640px}\n.elementor-1274 .jb-feature-copy>.jb-eyebrow{margin-bottom:18px}\n.elementor-1274 .jb-feature h2{font-size:31px;font-weight:650;line-height:1.65;margin:16px 0;letter-spacing:-.2px}\n.elementor-1274 .jb-feature h2 a:hover{color:var(--jb-blue)}\n.elementor-1274 .jb-feature p{color:var(--jb-muted);font-size:14px;line-height:1.95;margin-bottom:22px}\n.elementor-1274 .jb-meta{display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:10px;color:#748895}\n.elementor-1274 .jb-meta>.jb-native-inline:last-child{display:flex;align-items:center;gap:6px}\n.elementor-1274 .jb-meta svg{width:14px;height:14px}\n.elementor-1274 .jb-topic{display:inline-flex;align-items:center;padding:5px 9px;background:#eaf4fb;color:var(--jb-blue);font-size:10px;font-weight:600;line-height:1.8}\n.elementor-1274 .jb-feature .jb-meta{justify-content:flex-start}\n.elementor-1274 .jb-library{background:#f5f8fb;border-block:1px solid #e6edf3;scroll-margin-top:110px}\n.elementor-1274 .jb-section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:30px}\n.elementor-1274 .jb-section-heading h2{font-size:32px;font-weight:650;line-height:1.65;letter-spacing:-.2px;margin-bottom:11px}\n.elementor-1274 .jb-section-heading p{font-size:14px;line-height:1.9;color:var(--jb-muted)}\n.elementor-1274 .jb-total{font-size:11px;color:var(--jb-muted);padding-bottom:7px;white-space:nowrap}\n.elementor-1274 .jb-toolbar{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:20px 0;border-block:1px solid #dce7ef}\n.elementor-1274 .jb-topics{display:flex;align-items:center;flex-wrap:wrap;gap:8px}\n.elementor-1274 .jb-filter{display:inline-flex;align-items:center;gap:9px;min-height:43px;padding:10px 15px;border:1px solid transparent;border-radius:var(--jb-radius);background:transparent;color:var(--jb-muted);font-size:12px;font-weight:500;line-height:1.65;transition:color .2s,background .2s,border-color .2s}\n.elementor-1274 .jb-filter:hover{background:#e8f3fa;color:var(--jb-blue)}\n.elementor-1274 .jb-filter.is-active{background:var(--jb-navy);color:white;border-color:var(--jb-navy)}\n.elementor-1274 .jb-filter>span{display:grid;place-items:center;min-width:19px;height:19px;padding:0 4px;background:#ffffff20;border-radius:5px;font-size:10px}\n.elementor-1274 .jb-search{display:flex;align-items:center;gap:10px;min-height:47px;width:300px;flex-shrink:0;padding:11px 15px;border:1px solid #d6e3ec;border-radius:var(--jb-radius);background:white;color:#728b9d}\n.elementor-1274 .jb-search:focus-within{border-color:var(--jb-blue);box-shadow:0 0 0 3px #236b9c0c}\n.elementor-1274 .jb-search svg{width:18px;height:18px}\n.elementor-1274 .jb-search input{border:0;box-shadow:none;background:none;width:100%;min-width:0;padding:0;color:var(--jb-ink);font-size:12px;line-height:1.8}\n.elementor-1274 .jb-search input:focus-visible{outline:2px solid #236b9c;outline-offset:3px}\n.elementor-1274 .jb-results-line{display:flex;justify-content:space-between;gap:20px;padding:23px 0;font-size:10px;color:#718896}\n.elementor-1274 .jb-results-line>span:last-child{font-family:'Segoe UI',Arial,sans-serif;font-size:8px;letter-spacing:1.4px}\n.elementor-1274 .jb-article-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}\n.elementor-1274 .jb-article{display:flex;flex-direction:column;min-width:0;padding:10px;background:white;border:1px solid var(--jb-line);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}\n.elementor-1274 .jb-article:hover{transform:translateY(-4px);border-color:#bed8e8;box-shadow:0 14px 30px #14374d0b}\n.elementor-1274 .jb-article[hidden]{display:none}\n.elementor-1274 .jb-article-image{display:block;position:relative;overflow:hidden;aspect-ratio:1.52;background:#edf4f9}\n.elementor-1274 .jb-article-image img{height:100%;object-fit:contain;mix-blend-mode:multiply;padding:18px;transition:transform .35s}\n.elementor-1274 .jb-article:hover img{transform:scale(1.04)}\n.elementor-1274 .jb-image-arrow{position:absolute;right:12px;bottom:12px;width:34px;height:34px;display:grid;place-items:center;background:#fffffff0;color:var(--jb-blue);box-shadow:0 4px 12px #122e4310}\n.elementor-1274 .jb-image-arrow svg{width:17px;height:17px}\n.elementor-1274 .jb-article-copy{padding:21px 15px 14px;display:flex;flex-direction:column;flex:1}\n.elementor-1274 .jb-article h3{font-size:21px;font-weight:600;line-height:1.7;margin-block:15px 13px;letter-spacing:-.15px}\n.elementor-1274 .jb-article h3 a:hover{color:var(--jb-blue)}\n.elementor-1274 .jb-article-copy>.jb-native-paragraph{color:var(--jb-muted);font-size:13px;line-height:1.95;flex:1;margin-bottom:23px}\n.elementor-1274 .jb-card-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;border-top:1px solid #edf1f5;padding-top:16px;font-size:10px;color:#748895}\n.elementor-1274 .jb-card-footer>.jb-native-inline{display:flex;align-items:center;gap:6px}\n.elementor-1274 .jb-card-footer>.jb-native-inline svg{width:14px;height:14px}\n.elementor-1274 .jb-card-footer>.elementor-widget-button .elementor-button{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;color:var(--jb-blue)}\n.elementor-1274 .jb-card-footer>.elementor-widget-button .elementor-button svg{width:16px;height:16px}\n.elementor-1274 .jb-library-end{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:38px}\n.elementor-1274 .jb-library-end>.jb-native-span{width:40px;height:1px;background:#d7e4ed}\n.elementor-1274 .jb-library-end p{font-size:10px;color:#8a9ba7}\n.elementor-1274 .jb-empty{text-align:center;padding:50px 24px;background:white;border:1px solid var(--jb-line);border-radius:var(--jb-radius)}\n.elementor-1274 .jb-empty[hidden]{display:none}\n.elementor-1274 .jb-empty>svg{width:30px;height:30px;color:var(--jb-blue);margin-bottom:15px}\n.elementor-1274 .jb-empty h3{font-size:23px;font-weight:600;line-height:1.7;margin-bottom:12px}\n.elementor-1274 .jb-empty p{font-size:13px;color:var(--jb-muted);margin-bottom:23px}\n.elementor-1274 .jb-help{display:flex;align-items:center;justify-content:space-between;gap:50px;padding:47px 52px;margin-top:70px;margin-bottom:30px;background:linear-gradient(115deg,#122e43,#164467);color:white}\n.elementor-1274 .jb-help h2{font-size:31px;font-weight:600;line-height:1.65;margin-bottom:16px}\n.elementor-1274 .jb-help p{font-size:13px;color:#c4dbe9;line-height:1.95}\n.elementor-1274 .jb-help-actions{display:flex;align-items:center;flex-direction:column;gap:18px;flex-shrink:0}\n.elementor-1274 .jb-phone{display:flex;align-items:center;gap:9px;color:#e2f1fa;font-size:13px}\n.elementor-1274 .jb-phone svg{width:16px;height:16px}\n.elementor-1274 .elementor-1274-note{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:30px;font-size:10px;color:var(--jb-muted)}\n.elementor-1274 .elementor-1274-note>span,.elementor-1274 .elementor-1274-note>a{display:flex;align-items:center;gap:8px}\n.elementor-1274 .elementor-1274-note svg{width:14px;height:14px}\n.elementor-1274 .jb-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}\n@media(max-width:1024px){.elementor-1274{--jb-gutter:24px}\n.elementor-1274 .jb-hero{grid-template-columns:1.1fr 1fr}\n.elementor-1274 .jb-hero-copy{padding:35px 32px 28px}\n.elementor-1274 h1{font-size:35px}\n.elementor-1274 .jb-hero-copy>.jb-native-paragraph{font-size:13px}\n.elementor-1274 .jb-hero-image{min-height:480px}\n.elementor-1274 .jb-hero-foot{margin-top:28px}\n.elementor-1274 .jb-feature{gap:36px;padding-block:55px;grid-template-columns:1fr 1.1fr}\n.elementor-1274 .jb-feature h2{font-size:27px}\n.elementor-1274 .jb-section{padding-block:55px}\n.elementor-1274 .jb-section-heading h2{font-size:28px}\n.elementor-1274 .jb-toolbar{gap:18px;flex-wrap:wrap}\n.elementor-1274 .jb-search{width:290px}\n.elementor-1274 .jb-article-grid{gap:18px}\n.elementor-1274 .jb-article-copy{padding-inline:9px}\n.elementor-1274 .jb-meta{gap:10px;font-size:9px}\n.elementor-1274 .jb-article h3{font-size:18px}\n.elementor-1274 .jb-article-copy>.jb-native-paragraph{font-size:12px}\n.elementor-1274 .jb-help{padding:38px 35px;gap:35px;margin-top:55px}\n.elementor-1274 .jb-help h2{font-size:28px}\n}\n@media(max-width:767px){.elementor-1274{--jb-gutter:20px}\n.elementor-1274 .jb-breadcrumb{padding-block:20px 16px;font-size:10px}\n.elementor-1274 .jb-hero{grid-template-columns:1fr}\n.elementor-1274 .jb-hero-copy{padding:30px 24px}\n.elementor-1274 .jb-hero .jb-eyebrow{font-size:9px;letter-spacing:1.6px;margin-bottom:21px}\n.elementor-1274 .jb-kicker{font-size:12px;margin-bottom:12px}\n.elementor-1274 h1{font-size:31px;line-height:1.65;letter-spacing:0;margin-bottom:19px}\n.elementor-1274 .jb-hero-copy>.jb-native-paragraph{font-size:13px;margin-bottom:24px}\n.elementor-1274 .jb-hero-image{min-height:0;aspect-ratio:1.5}\n.elementor-1274 .jb-hero-image img{position:absolute;inset:0;height:100%}\n.elementor-1274 .jb-image-note{left:16px;right:16px;bottom:16px;font-size:7px;padding:12px 14px;letter-spacing:.9px}\n.elementor-1274 .jb-hero-foot{margin-top:27px;padding-top:18px}\n.elementor-1274 .jb-hero-foot>.jb-native-inline:first-child{font-size:10px}\n.elementor-1274 .jb-issue{font-size:7px;letter-spacing:1.1px}\n.elementor-1274 :is(.jb-button .elementor-button,.jb-empty .jb-button){min-height:50px;padding:13px 18px;font-size:12px;gap:18px}\n.elementor-1274 .jb-feature{grid-template-columns:1fr;gap:26px;padding-block:48px}\n.elementor-1274 .jb-feature h2{font-size:27px;line-height:1.65;margin-block:15px}\n.elementor-1274 .jb-feature p{font-size:13px}\n.elementor-1274 .jb-feature-image{aspect-ratio:1.5}\n.elementor-1274 .jb-feature-badge{left:16px;bottom:16px;font-size:10px;padding:9px 12px}\n.elementor-1274 .jb-text-link .elementor-button{font-size:12px;gap:15px}\n.elementor-1274 .jb-eyebrow{font-size:8px;letter-spacing:1.5px;margin-bottom:17px}\n.elementor-1274 .jb-section{padding-block:48px}\n.elementor-1274 .jb-section-heading{flex-direction:column;align-items:start;gap:12px;margin-bottom:25px}\n.elementor-1274 .jb-section-heading h2{font-size:27px;line-height:1.7}\n.elementor-1274 .jb-section-heading p{font-size:13px}\n.elementor-1274 .jb-total{font-size:10px;padding:0}\n.elementor-1274 .jb-toolbar{flex-direction:column;align-items:stretch;gap:18px;padding-block:18px}\n.elementor-1274 .jb-topics{gap:7px}\n.elementor-1274 .jb-filter{min-height:40px;padding:9px 12px;font-size:11px}\n.elementor-1274 .jb-search{width:100%}\n.elementor-1274 .jb-results-line{padding-block:20px;font-size:10px}\n.elementor-1274 .jb-results-line>span:last-child{display:none}\n.elementor-1274 .jb-article-grid{grid-template-columns:1fr;gap:22px}\n.elementor-1274 .jb-article-image{aspect-ratio:1.65}\n.elementor-1274 .jb-article-copy{padding:20px 13px 14px}\n.elementor-1274 .jb-article h3{font-size:22px;line-height:1.7}\n.elementor-1274 .jb-article-copy>.jb-native-paragraph{font-size:13px}\n.elementor-1274 .jb-meta{font-size:10px}\n.elementor-1274 .jb-card-footer{font-size:10px;padding-top:17px}\n.elementor-1274 .jb-library-end{gap:12px;margin-top:28px}\n.elementor-1274 .jb-library-end>.jb-native-span{width:24px}\n.elementor-1274 .jb-library-end p{font-size:9px}\n.elementor-1274 .jb-empty{padding:38px 22px}\n.elementor-1274 .jb-empty h3{font-size:21px}\n.elementor-1274 .jb-help{flex-direction:column;align-items:start;gap:27px;padding:31px 25px;margin-top:48px;margin-bottom:25px}\n.elementor-1274 .jb-help h2{font-size:26px;line-height:1.7}\n.elementor-1274 .jb-help p{font-size:12px}\n.elementor-1274 .jb-help-actions{width:100%;align-items:start;gap:17px}\n.elementor-1274 .jb-help-actions :is(.jb-button .elementor-button,.jb-empty .jb-button){width:100%}\n.elementor-1274 .jb-phone{font-size:12px}\n.elementor-1274 .elementor-1274-note{flex-direction:column;align-items:start;gap:12px;font-size:9px;padding-bottom:26px}\n}\n@media(prefers-reduced-motion:reduce){.elementor-1274 *,.elementor-1274 *:before,.elementor-1274 *:after{transition:none!important}\n}\n.elementor-1274 .jb-native-span .elementor-heading-title{font:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0}\n.elementor-1274 .jb-eyebrow{width:fit-content}\n.elementor-1274 .jb-eyebrow .elementor-widget-container{display:flex;align-items:center;gap:10px}\n.elementor-1274 .jb-breadcrumb>.elementor-widget,.elementor-1274 .jb-meta>.elementor-widget,.elementor-1274 .jb-help-actions>.elementor-widget,.elementor-1274 .jb-hero-copy>.elementor-widget-button,.elementor-1274 .jb-feature-copy>.elementor-widget-button,.elementor-1274 .jb-card-footer>.elementor-widget{width:auto}\n.elementor-1274 .jb-hero-foot>.jb-native-inline>.elementor-widget-container,.elementor-1274 .jb-meta>.jb-native-inline>.elementor-widget-container,.elementor-1274 .jb-card-footer>.jb-native-inline>.elementor-widget-container,.elementor-1274 .jb-feature-badge>.elementor-widget-container{display:flex;align-items:center;gap:inherit}\n.elementor-1274 .jb-button .elementor-button-content-wrapper{gap:22px}\n.elementor-1274 .jb-native-arrow .elementor-button-content-wrapper:after{content:'';display:block;width:20px;height:20px;flex-shrink:0;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/arrow.svg') center/contain no-repeat}\n.elementor-1274 .jb-text-link .elementor-button-content-wrapper{gap:20px}\n.elementor-1274 .jb-text-link .elementor-button-content-wrapper:after{width:18px;height:18px}\n.elementor-1274 .jb-phone .elementor-button-content-wrapper{gap:9px}\n.elementor-1274 .jb-phone .elementor-button-content-wrapper:after{display:none}\n.elementor-1274 .jb-phone .elementor-button-content-wrapper:before{content:'';width:16px;height:16px;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/phone.svg') center/contain no-repeat}\n.elementor-1274 .jb-card-footer>.elementor-widget-button .elementor-button-content-wrapper{gap:12px}\n.elementor-1274 .jb-card-footer .jb-native-arrow .elementor-button-content-wrapper:after{width:16px;height:16px}\n.elementor-1274 .jb-hero-image>.elementor-widget-image,.elementor-1274 .jb-hero-image>.elementor-widget-image>.elementor-widget-container,.elementor-1274 .jb-feature-image>.elementor-widget-image,.elementor-1274 .jb-feature-image>.elementor-widget-image>.elementor-widget-container,.elementor-1274 .jb-article-image>.elementor-widget-image,.elementor-1274 .jb-article-image>.elementor-widget-image>.elementor-widget-container{height:100%}\n.elementor-1274 .jb-hero-image img,.elementor-1274 .jb-feature-image img,.elementor-1274 .jb-article-image img{width:100%;height:100%;object-fit:cover}\n.elementor-1274 .jb-article-image img{object-fit:contain}\n.elementor-1274 .jb-image-note{width:auto}\n.elementor-1274 .jb-image-note>.jb-native-span:last-child{flex:1;width:auto}\n.elementor-1274 .jb-dot{flex:0 0 6px;width:6px;height:6px}\n.elementor-1274 .jb-feature-badge{width:auto}\n.elementor-1274 .jb-image-arrow>.elementor-widget-container{display:grid;place-items:center;height:100%}\n.elementor-1274 .jb-section-heading>.e-con,.elementor-1274 .jb-help>.e-con:first-child{width:auto;flex:1}\n.elementor-1274 .jb-section-heading>.jb-total{width:auto;flex-shrink:0}\n.elementor-1274 .jb-help>.jb-help-actions{width:auto}\n.elementor-1274 .jb-results-line>.elementor-widget{width:auto}\n.elementor-1274 .jb-results-line>.jb-native-span:last-child{font-family:'Segoe UI',Arial,sans-serif;font-size:8px;letter-spacing:1.4px}\n.elementor-1274 .jb-library-end>.jb-native-paragraph{width:auto}\n.elementor-1274 .jb-library-end>.jb-native-marker{width:40px;height:1px;background:#d7e4ed}\n.elementor-1274 .jb-script-widget{display:none}\n.elementor-1274 .jb-empty .jb-button{border-radius:var(--jb-radius)}\nbody.elementor-page-1274 .site-main{max-width:none;margin:0;padding:0}\nbody.elementor-page-1274 .entry-content{margin:0}\n@media(max-width:767px){\n.elementor-1274 .jb-button .elementor-button-content-wrapper{gap:18px}\n.elementor-1274 .jb-text-link .elementor-button-content-wrapper{gap:15px}\n.elementor-1274 .jb-hero-image>.elementor-widget-image{position:absolute;inset:0}\n.elementor-1274 .jb-section-heading>.e-con,.elementor-1274 .jb-help>.e-con:first-child{width:100%;flex:none}\n.elementor-1274 .jb-help>.jb-help-actions{width:100%}\n.elementor-1274 .jb-help-actions>.jb-button,.elementor-1274 .jb-help-actions>.jb-button .elementor-button{width:100%}\n.elementor-1274 .jb-results-line>.jb-native-span:last-child{display:none}\n.elementor-1274 .jb-library-end>.jb-native-marker{width:24px}\n}"
+    }
+}

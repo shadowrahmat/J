@@ -33,7 +33,7 @@ add_action("wp_footer", function(){ ?>
       // Link title
       const titleEls=item.querySelectorAll(".elementor-heading-title, .elementor-widget-heading .elementor-heading-title, .product_title, h1.product_title");
       titleEls.forEach(titleEl=>{
-        if(titleEl.closest("a")) return;
+        if(titleEl.closest("a") || titleEl.querySelector("a")) return;
         const a2=document.createElement("a");
         a2.href=permalink;
         a2.style.display="block";

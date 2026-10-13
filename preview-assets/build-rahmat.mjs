@@ -228,13 +228,11 @@ ${scope} .faq-list .e-n-accordion{display:flex;flex-direction:column;gap:12px}
 ${scope} .faq-list details>summary{padding:0;background:none;border:0;color:inherit}
 ${scope} .faq-list .e-n-accordion-item-title-header{display:block;width:auto;height:auto;background:none;font:inherit;transform:none!important}
 ${scope} .faq-list .e-n-accordion-item-title-text{font:inherit;color:inherit;line-height:inherit}
-${scope} .faq-list summary:after{content:'+';width:28px;height:28px;display:grid;place-items:center;flex-shrink:0;border-radius:50%;background:white;color:#236b9c;font-size:20px;font-weight:400;transition:transform .2s}
-${scope} .faq-list details[open] summary:after{transform:rotate(45deg)}
 ${scope} .faq-list .faq-answer{padding:0;margin:0;border:0;background:none}
 ${scope} .faq-list details:not([open])>.faq-answer{display:none}
 ${scope} .faq-list details[open]>.faq-answer{display:block}
 ${scope} .faq-help .elementor-button{font-size:inherit;font-weight:inherit;color:inherit}
-${scope} .faq-help .elementor-button-content-wrapper:before,${scope} .phone-link .elementor-button-content-wrapper:before{content:'';width:16px;height:16px;display:block;flex-shrink:0;background:currentColor;mask:url('${base}preview-assets/icons/phone.svg') center/contain no-repeat}
+${scope} .phone-link .elementor-button-content-wrapper:before{content:'';width:16px;height:16px;display:block;flex-shrink:0;background:currentColor;mask:url('${base}preview-assets/icons/phone.svg') center/contain no-repeat}
 ${scope} .faq-help .elementor-button-content-wrapper,${scope} .phone-link .elementor-button-content-wrapper{gap:9px}
 ${scope} .contact-copy{width:auto;flex:1}
 ${scope} .contact-actions{display:flex;width:auto;flex-direction:column}
@@ -252,14 +250,12 @@ ${scope} .benefits .benefit-icon{width:34px;flex-basis:34px}
 ${scope} .step-number{width:36px;flex-basis:36px}
 ${scope} .step-arrow{font-size:18px}
 ${scope} .faq-list .e-n-accordion{gap:10px}
-${scope} .faq-list summary:after{width:25px;height:25px}
 ${scope} .contact-actions{width:100%}
 ${scope} .contact-actions small{white-space:normal}
 ${scope} .hero-notes .notes-list{gap:12px}
 ${scope} .product-arrow .elementor-button-content-wrapper,${scope} .product-arrow .elementor-button-content-wrapper:after{width:13px;height:13px}
 ${scope} .jp-button .elementor-button-content-wrapper{gap:17px}
 }
-@media(prefers-reduced-motion:reduce){${scope} .faq-list summary:after{transition:none}}
 `;
 fs.writeFileSync('preview-assets/icons/arrow.svg',svg('arrow'));
 const css = reset + scopeCss(fs.readFileSync('preview-assets/home.css','utf8')) + scopeCss(fs.readFileSync('preview-assets/refined.css','utf8')) + adapter + fs.readFileSync('preview-assets/rahmat-radius.css','utf8');

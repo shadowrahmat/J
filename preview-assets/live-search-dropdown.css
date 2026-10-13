@@ -1,0 +1,25 @@
+/* Assigned to the Header Search widget: juhani-live-product-search. */
+.juhani-live-product-search .e-search-form input.e-search-input {border-radius:var(--e-search-input-border-radius,12px)}
+.juhani-live-product-search .e-search-results-container {max-width:calc(100vw - 40px);max-height:none;flex-direction:column;grid-template-columns:minmax(0,1fr);align-items:stretch;border:1px solid #dce8f0;border-radius:12px;background:#fff;box-shadow:0 15px 45px #122e4314;padding:0;overflow:hidden}
+.juhani-live-product-search .e-search-results-container .e-search-results {width:100%;min-width:0;flex:0 0 auto;max-height:min(410px,calc(100dvh - 265px));overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#ccdae4 transparent;scroll-padding-block:12px;padding:0 14px 13px;border:0;box-shadow:none}
+.juhani-live-product-search .e-search-results .e-loop-item {min-width:0;margin:0}
+.juhani-live-product-search .e-search-results-container .juhani-live-search-heading {display:flex;width:100%;flex:0 0 auto;align-items:center;justify-content:space-between;gap:15px;padding:16px 19px 12px;color:#8b9fac;font:10px/1.6 'Segoe UI',sans-serif}
+.juhani-live-product-search .juhani-live-search-heading-label {font-size:8px;font-weight:700;letter-spacing:1.6px}
+.juhani-live-product-search .e-search-results-container .juhani-live-search-footer {display:flex;width:100%;flex:0 0 auto;align-items:center;justify-content:space-between;gap:15px;padding:14px 18px;border-top:1px solid #e6eef4;background:#f9fcfe;color:#8da0ad;font:9px/1.6 'Segoe UI','Nirmala UI',sans-serif}
+.juhani-live-product-search .juhani-live-search-keyboard {display:flex;align-items:center;gap:7px}
+.juhani-live-product-search .juhani-live-search-keyboard kbd {display:grid;place-items:center;width:19px;height:20px;border:1px solid #dce7ef;border-radius:5px;background:white;color:#7490a3;font-family:inherit;font-size:12px;box-shadow:0 1px 0 #e1eaf0}
+.juhani-live-product-search .juhani-live-search-view-all {display:flex;align-items:center;gap:14px;text-decoration:none;color:#236b9c;font-size:11px;font-weight:600;line-height:1.7}
+.juhani-live-product-search .juhani-live-search-view-all svg {width:16px;height:16px}
+.juhani-live-product-search .juhani-live-search-view-all:hover {color:#122e43}
+.juhani-live-product-search .juhani-live-search-view-all:focus-visible,.juhani-live-product-search .juhani-search-result-card:focus-visible {outline:2px solid #236b9c;outline-offset:-3px}
+.juhani-live-product-search .e-search-nothing-found-message {margin:0;padding:34px 20px;min-height:170px;display:grid;place-items:center;text-align:center;font:13px/1.9 'Segoe UI','Nirmala UI',sans-serif;color:#657783}
+.juhani-live-product-search [hidden][hidden] {display:none}
+.juhani-live-product-search-popup .e-search-form {flex-wrap:wrap;gap:8px}
+.juhani-live-product-search.juhani-live-product-search-popup .e-search-results-container {position:static;inset:auto;transform:none;flex:0 0 100%;order:3;width:100%;max-width:100%;margin:4px 0 0}
+.juhani-live-product-search-popup .e-search-form input.e-search-input {color:#173b5e;padding:10px 12px;min-height:44px;background:#f8fbfd}
+@media(max-width:767px) {
+ .juhani-live-product-search .e-search-results-container .e-search-results {max-height:min(420px,calc(100dvh - 245px));padding:0 11px 11px}
+ .juhani-live-product-search .e-search-results-container .juhani-live-search-heading {padding:14px 15px 10px}
+ .juhani-live-product-search .e-search-results-container .juhani-live-search-footer {padding:13px 14px;gap:8px}
+ .juhani-live-product-search .juhani-live-search-view-all {font-size:10px;gap:10px}
+}

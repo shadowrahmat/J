@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Mixora Smart WooCommerce Product Filter
+ * Plugin Name: WooCommerce Product Filter
  * Description: User-friendly AJAX WooCommerce product filter with responsive sidebar/drawer, categories, category-aware attributes, price range, sorting, pagination and product cards.
  * Version: 2.0.31
- * Author: Mixora
+ * Author: Marketorr
  * Requires Plugins: woocommerce
  */
 if (!defined('ABSPATH')) exit;

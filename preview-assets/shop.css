@@ -99,16 +99,14 @@
 .jsp-preview .jsp-active-filters button{display:inline-flex;align-items:center;gap:8px;border:1px solid #d9e8f3;border-radius:var(--jsp-radius);padding:6px 10px;background:#f0f7fc;color:var(--jsp-blue);font-size:10px;line-height:1.5}
 .jsp-preview .jsp-active-filters svg{width:12px;height:12px}
 .jsp-preview .jsp-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px}
-.jsp-preview .jsp-product{min-width:0;padding:9px;border:1px solid var(--jsp-line);border-radius:var(--jsp-radius);background:white;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
+.jsp-preview .jsp-product{min-width:0;padding:0;border:1px solid var(--jsp-line);border-radius:var(--jsp-radius);background:white;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
 .jsp-preview .jsp-product:hover{transform:translateY(-4px);border-color:#b8d2e3;box-shadow:0 12px 30px #14374d0b}
-.jsp-preview .jsp-product-photo{position:relative;display:block;aspect-ratio:1.08;background:#eef4f8;border-radius:var(--jsp-radius);overflow:hidden}
-.jsp-preview .jsp-product-photo img{height:100%;object-fit:contain;mix-blend-mode:multiply;padding:29px 22px 17px;transition:transform .35s}
+.jsp-preview .jsp-product-photo{position:relative;display:block;aspect-ratio:1;background:#eef4f8;border-radius:var(--jsp-radius);overflow:hidden}
+.jsp-preview .jsp-product-photo img{height:100%;object-fit:contain;mix-blend-mode:multiply;padding:0;transition:transform .35s}
 .jsp-preview .jsp-product:hover img{transform:scale(1.04)}
-.jsp-preview .jsp-ghor-tag{position:absolute;z-index:1;top:12px;left:12px;display:flex;align-items:baseline;gap:5px;border:1px solid #dce6ed;border-radius:var(--jsp-radius);background:#ffffffea;padding:5px 9px;font-size:14px;font-weight:600;line-height:1.7;color:var(--jsp-navy)}
-.jsp-preview .jsp-ghor-tag>span{font-size:7px;letter-spacing:.8px;font-weight:500;color:#7a91a1}
 .jsp-preview .jsp-product-arrow{position:absolute;right:12px;bottom:12px;width:32px;height:32px;border-radius:var(--jsp-radius);display:grid;place-items:center;background:#fffffff0;color:var(--jsp-blue);box-shadow:0 3px 9px #122e430b}
 .jsp-preview .jsp-product-arrow svg{width:16px;height:16px}
-.jsp-preview .jsp-product-copy{padding:18px 11px 8px}
+.jsp-preview .jsp-product-copy{padding:18px 20px 17px}
 .jsp-preview .jsp-product-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:8px;line-height:1.5;color:#8a9eac}
 .jsp-preview .jsp-product-meta>span:first-child{letter-spacing:1.3px}
 .jsp-preview .jsp-stock{display:flex;align-items:center;gap:5px;color:#548271;font-size:9px}
@@ -202,14 +200,9 @@
 .jsp-preview #jsp-filter-count{font-size:9px;padding:2px 6px;color:white;background:var(--jsp-blue);border-radius:12px}
 .jsp-preview .jsp-sort select{min-height:42px;font-size:11px;max-width:190px}
 .jsp-preview .jsp-product-grid{gap:17px}
-.jsp-preview .jsp-product{padding:7px}
-.jsp-preview .jsp-product-photo{aspect-ratio:.98}
-.jsp-preview .jsp-product-photo img{padding:26px 10px 10px}
-.jsp-preview .jsp-ghor-tag{top:8px;left:8px;font-size:12px;padding:4px 7px;gap:4px}
-.jsp-preview .jsp-ghor-tag>span{font-size:6px}
 .jsp-preview .jsp-product-arrow{right:8px;bottom:8px;width:27px;height:27px}
 .jsp-preview .jsp-product-arrow svg{width:14px;height:14px}
-.jsp-preview .jsp-product-copy{padding:14px 5px 5px}
+.jsp-preview .jsp-product-copy{padding:14px 12px 12px}
 .jsp-preview .jsp-product-meta{font-size:7px;gap:5px}
 .jsp-preview .jsp-stock{font-size:8px;gap:4px}
 .jsp-preview .jsp-product h3{font-size:15px;letter-spacing:-.2px;margin-block:10px}
@@ -235,5 +228,5 @@
 .jsp-preview .jsp-empty{padding:38px 22px}
 .jsp-preview .jsp-empty h3{font-size:21px}
 }
-@media(max-width:370px){.jsp-preview .jsp-product-grid{grid-template-columns:1fr}.jsp-preview .jsp-product-photo{aspect-ratio:1.3}.jsp-preview .jsp-product h3{font-size:19px}.jsp-preview .jsp-price{font-size:16px}.jsp-preview .jsp-product-meta{font-size:8px}.jsp-preview .jsp-product-specs{font-size:10px}.jsp-preview .jsp-product-button{font-size:11px;padding-inline:12px}}
+@media(max-width:370px){.jsp-preview .jsp-product-grid{grid-template-columns:1fr}.jsp-preview .jsp-product h3{font-size:19px}.jsp-preview .jsp-price{font-size:16px}.jsp-preview .jsp-product-meta{font-size:8px}.jsp-preview .jsp-product-specs{font-size:10px}.jsp-preview .jsp-product-button{font-size:11px;padding-inline:12px}}
 @media(prefers-reduced-motion:reduce){.jsp-preview *,.jsp-preview *:before,.jsp-preview *:after{transition:none!important}}

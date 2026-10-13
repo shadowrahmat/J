@@ -1,0 +1,79 @@
+{
+  "desktop": {
+    "width": 1440,
+    "border": "rgb(216, 229, 238)",
+    "radius": "12px",
+    "select": {
+      "x": 1203,
+      "y": 873.640625,
+      "width": 192,
+      "height": 44
+    },
+    "filter": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "overflow": false
+  },
+  "mobile": [
+    {
+      "width": 320,
+      "border": "rgb(216, 229, 238)",
+      "radius": "12px",
+      "select": {
+        "x": 108.921875,
+        "y": 1256.921875,
+        "width": 191.078125,
+        "height": 44
+      },
+      "filter": {
+        "x": 20,
+        "y": 1256.921875,
+        "width": 76.921875,
+        "height": 44
+      },
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "border": "rgb(216, 229, 238)",
+      "radius": "12px",
+      "select": {
+        "x": 108.921875,
+        "y": 1205.296875,
+        "width": 261.078125,
+        "height": 44
+      },
+      "filter": {
+        "x": 20,
+        "y": 1205.296875,
+        "width": 76.921875,
+        "height": 44
+      },
+      "overflow": false
+    },
+    {
+      "width": 425,
+      "border": "rgb(216, 229, 238)",
+      "radius": "12px",
+      "select": {
+        "x": 108.921875,
+        "y": 1228.71875,
+        "width": 296.078125,
+        "height": 44
+      },
+      "filter": {
+        "x": 20,
+        "y": 1228.71875,
+        "width": 76.921875,
+        "height": 44
+      },
+      "overflow": false
+    }
+  ],
+  "sorting": "descending prices verified",
+  "filter": "opens, filters, closes; count badge removed; remains aligned",
+  "errors": []
+}

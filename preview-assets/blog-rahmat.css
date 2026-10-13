@@ -237,3 +237,5 @@ body.elementor-page-1274 .entry-content{margin:0}
 .elementor-1274 .jb-results-line>.jb-native-span:last-child{display:none}
 .elementor-1274 .jb-library-end>.jb-native-marker{width:24px}
 }
+/* Follow the banner container native Top Margin control. */
+.elementor-1274 .jb-hero{margin-top:var(--margin-top,0px)}

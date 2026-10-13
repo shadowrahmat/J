@@ -1,0 +1,142 @@
+{
+  "result": {
+    "count": "9 results",
+    "panel": {
+      "width": 560,
+      "left": 724.21875,
+      "right": 1284.21875,
+      "radius": "12px",
+      "height": 504
+    },
+    "cards": [
+      {
+        "href": "http://localhost/juhani/product/cast-net-44-ghor/",
+        "name": "Cast Net – 44 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1640,
+          2620
+        ],
+        "measure": "6.5–8.5 Haat · 3 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/44-ghor-net-01-1-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-40-ghor/",
+        "name": "Cast Net – 40 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1540,
+          2620
+        ],
+        "measure": "6.5–9.5 Haat · 3 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/40-ghor-net-03-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-36-ghor/",
+        "name": "Cast Net – 36 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1540,
+          4720
+        ],
+        "measure": "6.5–9.5 Haat · 3 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/36-ghor-net-01-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-30-ghor/",
+        "name": "Cast Net – 30 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1390,
+          4720
+        ],
+        "measure": "6.5–9.5 Haat · 3 / 3/4 / 4 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/30-ghor-net-04-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-28-ghor/",
+        "name": "Cast Net – 28 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1640,
+          4720
+        ],
+        "measure": "7.5–10.5 Haat · 3 / 3/4 / 4 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/28-ghor-net-04-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-25-ghor/",
+        "name": "Cast Net – 25 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1440,
+          4720
+        ],
+        "measure": "8.5–11.5 Haat · 3 / 3/4 / 4 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/25-ghor-net-02-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-22-ghor/",
+        "name": "Cast Net – 22 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1440,
+          4220
+        ],
+        "measure": "8.5–10.5 Haat · 3 / 3/4 / 4 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/22-ghor-net-01-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-18-ghor/",
+        "name": "Cast Net – 18 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1540,
+          4220
+        ],
+        "measure": "8.5–10.5 Haat · 4 / 6 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/18-ghor-net-02-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      },
+      {
+        "href": "http://localhost/juhani/product/cast-net-15-ghor/",
+        "name": "Cast Net – 15 Ghor",
+        "stock": "In stock",
+        "amounts": [
+          1540,
+          4220
+        ],
+        "measure": "8.5–10.5 Haat · 4 / 6 Suta",
+        "image": "http://localhost/juhani/wp-content/uploads/2026/09/15-ghor-net-02-300x300.webp",
+        "photoWidth": 84,
+        "radius": "12px",
+        "visible": true
+      }
+    ],
+    "overflow": false
+  },
+  "errors": []
+}

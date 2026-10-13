@@ -454,13 +454,10 @@
 .elementor-1261 .rahmat-page .faq-list details>summary{padding:0;background:none;border:0;color:inherit}
 .elementor-1261 .rahmat-page .faq-list .e-n-accordion-item-title-header{display:block;width:auto;height:auto;background:none;font:inherit;transform:none!important}
 .elementor-1261 .rahmat-page .faq-list .e-n-accordion-item-title-text{font:inherit;color:inherit;line-height:inherit}
-.elementor-1261 .rahmat-page .faq-list summary:after{content:'+';width:28px;height:28px;display:grid;place-items:center;flex-shrink:0;border-radius:50%;background:white;color:#236b9c;font-size:20px;font-weight:400;transition:transform .2s}
-.elementor-1261 .rahmat-page .faq-list details[open] summary:after{transform:rotate(45deg)}
 .elementor-1261 .rahmat-page .faq-list .faq-answer{padding:0;margin:0;border:0;background:none}
 .elementor-1261 .rahmat-page .faq-list details:not([open])>.faq-answer{display:none}
 .elementor-1261 .rahmat-page .faq-list details[open]>.faq-answer{display:block}
-.elementor-1261 .rahmat-page .faq-help .elementor-button{font-size:inherit;font-weight:inherit;color:inherit}
-.elementor-1261 .rahmat-page .faq-help .elementor-button-content-wrapper:before,.elementor-1261 .rahmat-page .phone-link .elementor-button-content-wrapper:before{content:'';width:16px;height:16px;display:block;flex-shrink:0;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/phone.svg') center/contain no-repeat}
+.elementor-1261 .rahmat-page .faq-help .elementor-button{font-size:inherit;font-weight:inherit;color:inherit}.elementor-1261 .rahmat-page .phone-link .elementor-button-content-wrapper:before{content:'';width:16px;height:16px;display:block;flex-shrink:0;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/phone.svg') center/contain no-repeat}
 .elementor-1261 .rahmat-page .faq-help .elementor-button-content-wrapper,.elementor-1261 .rahmat-page .phone-link .elementor-button-content-wrapper{gap:9px}
 .elementor-1261 .rahmat-page .contact-copy{width:auto;flex:1}
 .elementor-1261 .rahmat-page .contact-actions{display:flex;width:auto;flex-direction:column}
@@ -480,14 +477,13 @@ body.elementor-page-1261 .entry-content{margin:0}
 .elementor-1261 .rahmat-page .step-number{width:36px;flex-basis:36px}
 .elementor-1261 .rahmat-page .step-arrow{font-size:18px}
 .elementor-1261 .rahmat-page .faq-list .e-n-accordion{gap:10px}
-.elementor-1261 .rahmat-page .faq-list summary:after{width:25px;height:25px}
 .elementor-1261 .rahmat-page .contact-actions{width:100%}
 .elementor-1261 .rahmat-page .contact-actions small{white-space:normal}
 .elementor-1261 .rahmat-page .hero-notes .notes-list{gap:12px}
 .elementor-1261 .rahmat-page .product-arrow .elementor-button-content-wrapper,.elementor-1261 .rahmat-page .product-arrow .elementor-button-content-wrapper:after{width:13px;height:13px}
 .elementor-1261 .rahmat-page .jp-button .elementor-button-content-wrapper{gap:17px}
 }
-@media(prefers-reduced-motion:reduce){.elementor-1261 .rahmat-page .faq-list summary:after{transition:none}
+@media(prefers-reduced-motion:reduce){
 }
 /* Native widgets use Elementor controls; this bridge follows the Accordion's native radius. */
 :where(.elementor-1261 .rahmat-page .faq-list details){border-radius:var(--n-accordion-border-radius,12px)}

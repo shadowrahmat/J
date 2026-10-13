@@ -1,0 +1,12 @@
+/* Layout, colours, typography, padding and radius are native Elementor controls. */
+.juhani-search-result-card {--kit-widget-spacing:0px;min-width:0;touch-action:manipulation}
+.juhani-search-result-photo img {display:block;width:100%;height:100%;object-fit:cover}
+.juhani-search-result-copy {min-width:0}
+.juhani-search-result-price .woocommerce-Price-amount {white-space:nowrap}
+.juhani-search-result-price .woocommerce-Price-currencySymbol {font-size:11px;font-weight:500}
+.juhani-search-result-price .juhani-search-result-price-dash {color:#8fa4b3;font-weight:400;margin-inline:3px}
+.juhani-search-result-stock .juhani-search-result-stock-label {display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.juhani-search-result-stock .juhani-search-result-stock-label:before {content:'';width:4px;height:4px;border-radius:50%;background:currentColor}
+.juhani-search-result-stock .is-unavailable {color:#9b6862}
+.juhani-search-result-card:focus-visible {outline:2px solid #236b9c;outline-offset:-3px}
+@media(max-width:767px) {.juhani-search-result-price .woocommerce-Price-currencySymbol {font-size:10px}}

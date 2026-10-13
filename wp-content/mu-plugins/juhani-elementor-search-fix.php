@@ -47,6 +47,12 @@ add_filter( 'rest_pre_dispatch', function ( $result, $server, $request ) {
 		return $result;
 	}
 
+	// Match Bengali size searches to the catalog's numeric product names.
+	$classes = preg_split( '/\s+/', trim( $widget_data['settings']['_css_classes'] ?? '' ) );
+	if ( in_array( 'juhani-live-product-search', $classes, true ) ) {
+		$search_term = strtr( $search_term, [ '০'=>'0', '১'=>'1', '২'=>'2', '৩'=>'3', '৪'=>'4', '৫'=>'5', '৬'=>'6', '৭'=>'7', '৮'=>'8', '৯'=>'9' ] );
+	}
+
 	$widget_instance = \ElementorPro\Core\Utils::create_widget_instance_from_db( $post_id, $widget_id );
 	if ( ! $widget_instance || ! method_exists( $widget_instance, 'render_results' ) ) {
 		return $result;

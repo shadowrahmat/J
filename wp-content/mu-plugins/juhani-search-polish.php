@@ -4,6 +4,7 @@ if(!defined("ABSPATH")) exit;
 
 add_action("wp_head", function(){
   if(is_admin()) return;
+  if(get_post_meta(1267,'_juhani_live_search_design',true)) return;
   echo '<style id="juhani-search-polished">
     /* Popup shell — sharp, no radius per brand */
     #elementor-popup-modal-1214 .dialog-widget-content,

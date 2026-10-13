@@ -1,0 +1,84 @@
+{
+    "post": {
+        "ID": 1270,
+        "post_author": "2",
+        "post_date": "2026-10-12 11:26:58",
+        "post_date_gmt": "2026-10-12 11:26:58",
+        "post_content": "",
+        "post_title": "JUHANI Live Product Search",
+        "post_excerpt": "",
+        "post_status": "publish",
+        "comment_status": "closed",
+        "ping_status": "closed",
+        "post_password": "",
+        "post_name": "juhani-live-product-search",
+        "to_ping": "",
+        "pinged": "",
+        "post_modified": "2026-10-13 05:33:12",
+        "post_modified_gmt": "2026-10-13 05:33:12",
+        "post_content_filtered": "",
+        "post_parent": 0,
+        "guid": "http://localhost/juhani/?post_type=elementor_library&#038;p=1270",
+        "menu_order": 0,
+        "post_type": "elementor_library",
+        "post_mime_type": "",
+        "comment_count": "0",
+        "filter": "raw"
+    },
+    "meta": {
+        "_elementor_edit_mode": [
+            "builder"
+        ],
+        "_elementor_template_type": [
+            "loop-item"
+        ],
+        "_elementor_version": [
+            "4.3.4"
+        ],
+        "_elementor_pro_version": [
+            "4.3.0"
+        ],
+        "_elementor_global_class_usage_indexed": [
+            "1"
+        ],
+        "_elementor_global_class_usage_indexed_preview": [
+            "1"
+        ],
+        "_elementor_migrations_state_d2a1": [
+            "4.3.4:4.3.0:4619a43acdb71a3fd22ba7518aa0a7ef"
+        ],
+        "_edit_lock": [
+            "1791872977:2"
+        ],
+        "_wp_old_slug": [
+            "elementor-loop-item-1270"
+        ],
+        "_wp_page_template": [
+            "default"
+        ],
+        "_elementor_data": [
+            "[{\"id\":\"107ec66\",\"elType\":\"container\",\"settings\":[],\"elements\":[{\"id\":\"125c835\",\"elType\":\"container\",\"settings\":{\"content_width\":\"full\",\"flex_direction\":\"row\",\"flex_gap\":{\"column\":\"10\",\"row\":\"0\",\"isLinked\":false,\"unit\":\"px\",\"size\":10},\"border_border\":\"solid\",\"border_width\":{\"unit\":\"px\",\"top\":\"1\",\"right\":\"1\",\"bottom\":\"1\",\"left\":\"1\",\"isLinked\":true},\"border_color\":\"#4CA2D959\",\"border_radius\":{\"unit\":\"px\",\"top\":\"0\",\"right\":\"0\",\"bottom\":\"0\",\"left\":\"0\",\"isLinked\":false},\"padding\":{\"unit\":\"px\",\"top\":\"12\",\"right\":\"12\",\"bottom\":\"12\",\"left\":\"12\",\"isLinked\":true},\"__globals__\":{\"border_color\":\"\"}},\"elements\":[{\"id\":\"453bf32\",\"elType\":\"container\",\"settings\":{\"content_width\":\"full\",\"width\":{\"unit\":\"%\",\"size\":27,\"sizes\":[]}},\"elements\":[{\"id\":\"1a4752a\",\"elType\":\"widget\",\"settings\":{\"image_size\":\"full\",\"width\":{\"unit\":\"px\",\"size\":93,\"sizes\":[]},\"object-fit\":\"cover\",\"__dynamic__\":{\"image\":\"[elementor-tag id=\\\"dde43f7\\\" name=\\\"woocommerce-product-image-tag\\\" settings=\\\"%7B%7D\\\"]\"},\"align\":\"start\",\"width_tablet\":{\"unit\":\"px\",\"size\":\"\",\"sizes\":[]},\"width_mobile\":{\"unit\":\"px\",\"size\":\"\",\"sizes\":[]}},\"elements\":[],\"widgetType\":\"image\"}],\"isInner\":true},{\"id\":\"e5f6c55\",\"elType\":\"container\",\"settings\":{\"content_width\":\"full\",\"width\":{\"unit\":\"%\",\"size\":80,\"sizes\":[]},\"flex_gap\":{\"column\":\"0\",\"row\":\"10\",\"isLinked\":false,\"unit\":\"px\",\"size\":0}},\"elements\":[{\"id\":\"b00b0e7\",\"elType\":\"widget\",\"settings\":{\"__dynamic__\":{\"title\":\"[elementor-tag id=\\\"\\\" name=\\\"woocommerce-product-title-tag\\\" settings=\\\"%7B%22product_id%22%3Afalse%2C%22before%22%3A%22%22%2C%22after%22%3A%22%22%2C%22fallback%22%3A%22%22%7D\\\"]\"},\"title\":\"Add Your Heading Text Here\",\"typography_typography\":\"custom\",\"typography_font_family\":\"Poppins\",\"typography_font_size\":{\"unit\":\"px\",\"size\":20,\"sizes\":[]},\"typography_font_weight\":\"600\",\"typography_line_height\":{\"unit\":\"px\",\"size\":32,\"sizes\":[]}},\"elements\":[],\"widgetType\":\"woocommerce-product-title\"},{\"id\":\"2958237\",\"elType\":\"widget\",\"settings\":{\"price_color\":\"#000000\",\"typography_typography\":\"custom\",\"typography_font_family\":\"Poppins\",\"typography_font_size\":{\"unit\":\"px\",\"size\":20,\"sizes\":[]},\"typography_font_weight\":\"400\",\"typography_line_height\":{\"unit\":\"px\",\"size\":34,\"sizes\":[]}},\"elements\":[],\"widgetType\":\"woocommerce-product-price\"}],\"isInner\":true}],\"isInner\":true}],\"isInner\":false}]"
+        ],
+        "_elementor_source": [
+            "product"
+        ],
+        "_elementor_page_settings": [
+            "a:1:{s:10:\"preview_id\";s:0:\"\";}"
+        ],
+        "tp_widgets": [
+            "a:2:{s:7:\"widgets\";a:3:{i:0;s:21:\"plus-alignmnet-effect\";i:1;s:16:\"tp-heading-title\";i:2;s:24:\"tp-heading-title-style_1\";}s:9:\"update_at\";s:10:\"1791879703\";}"
+        ],
+        "_elementor_page_assets": [
+            "a:2:{s:6:\"styles\";a:3:{i:0;s:12:\"widget-image\";i:1;s:14:\"widget-heading\";i:2;s:32:\"widget-woocommerce-product-price\";}s:7:\"scripts\";a:1:{i:0;s:18:\"elementor-frontend\";}}"
+        ],
+        "_elementor_css": [
+            "a:6:{s:4:\"time\";i:1791880092;s:5:\"fonts\";a:1:{i:0;s:7:\"Poppins\";}s:5:\"icons\";a:0:{}s:20:\"dynamic_elements_ids\";a:2:{i:0;s:7:\"1a4752a\";i:1;s:7:\"b00b0e7\";}s:6:\"status\";s:4:\"file\";i:0;s:0:\"\";}"
+        ],
+        "_elementor_element_cache": [
+            "{\"timeout\":1791956062,\"value\":{\"content\":\"<div class=\\\"elementor-element elementor-element-107ec66 e-flex e-con-boxed e-con e-parent\\\" data-id=\\\"107ec66\\\" data-element_type=\\\"container\\\" data-e-type=\\\"container\\\">\\n\\t\\t\\t\\t\\t<div class=\\\"e-con-inner\\\">\\n\\t\\t<div class=\\\"elementor-element elementor-element-125c835 e-con-full e-flex e-con e-child\\\" data-id=\\\"125c835\\\" data-element_type=\\\"container\\\" data-e-type=\\\"container\\\">\\n\\t\\t<div class=\\\"elementor-element elementor-element-453bf32 e-con-full e-flex e-con e-child\\\" data-id=\\\"453bf32\\\" data-element_type=\\\"container\\\" data-e-type=\\\"container\\\">\\n\\t\\t[elementor-element k=\\\"cbc34ee69519316db713f3a4fc4ccc0a\\\" data=\\\"eyJpZCI6IjFhNDc1MmEiLCJlbFR5cGUiOiJ3aWRnZXQiLCJzZXR0aW5ncyI6eyJpbWFnZV9zaXplIjoiZnVsbCIsIndpZHRoIjp7InVuaXQiOiJweCIsInNpemUiOjkzLCJzaXplcyI6W119LCJvYmplY3QtZml0IjoiY292ZXIiLCJfX2R5bmFtaWNfXyI6eyJpbWFnZSI6IltlbGVtZW50b3ItdGFnIGlkPVwiZGRlNDNmN1wiIG5hbWU9XCJ3b29jb21tZXJjZS1wcm9kdWN0LWltYWdlLXRhZ1wiIHNldHRpbmdzPVwiJTdCJTdEXCJdIn0sImFsaWduIjoic3RhcnQiLCJ3aWR0aF90YWJsZXQiOnsidW5pdCI6InB4Iiwic2l6ZSI6IiIsInNpemVzIjpbXX0sIndpZHRoX21vYmlsZSI6eyJ1bml0IjoicHgiLCJzaXplIjoiIiwic2l6ZXMiOltdfX0sImVsZW1lbnRzIjpbXSwid2lkZ2V0VHlwZSI6ImltYWdlIn0=\\\"]\\t\\t<\\/div>\\n\\t\\t<div class=\\\"elementor-element elementor-element-e5f6c55 e-con-full e-flex e-con e-child\\\" data-id=\\\"e5f6c55\\\" data-element_type=\\\"container\\\" data-e-type=\\\"container\\\">\\n\\t\\t[elementor-element k=\\\"cbc34ee69519316db713f3a4fc4ccc0a\\\" data=\\\"eyJpZCI6ImIwMGIwZTciLCJlbFR5cGUiOiJ3aWRnZXQiLCJzZXR0aW5ncyI6eyJfX2R5bmFtaWNfXyI6eyJ0aXRsZSI6IltlbGVtZW50b3ItdGFnIGlkPVwiXCIgbmFtZT1cIndvb2NvbW1lcmNlLXByb2R1Y3QtdGl0bGUtdGFnXCIgc2V0dGluZ3M9XCIlN0IlMjJwcm9kdWN0X2lkJTIyJTNBZmFsc2UlMkMlMjJiZWZvcmUlMjIlM0ElMjIlMjIlMkMlMjJhZnRlciUyMiUzQSUyMiUyMiUyQyUyMmZhbGxiYWNrJTIyJTNBJTIyJTIyJTdEXCJdIn0sInRpdGxlIjoiQWRkIFlvdXIgSGVhZGluZyBUZXh0IEhlcmUiLCJ0eXBvZ3JhcGh5X3R5cG9ncmFwaHkiOiJjdXN0b20iLCJ0eXBvZ3JhcGh5X2ZvbnRfZmFtaWx5IjoiUG9wcGlucyIsInR5cG9ncmFwaHlfZm9udF9zaXplIjp7InVuaXQiOiJweCIsInNpemUiOjIwLCJzaXplcyI6W119LCJ0eXBvZ3JhcGh5X2ZvbnRfd2VpZ2h0IjoiNjAwIiwidHlwb2dyYXBoeV9saW5lX2hlaWdodCI6eyJ1bml0IjoicHgiLCJzaXplIjozMiwic2l6ZXMiOltdfX0sImVsZW1lbnRzIjpbXSwid2lkZ2V0VHlwZSI6Indvb2NvbW1lcmNlLXByb2R1Y3QtdGl0bGUifQ==\\\"][elementor-element k=\\\"cbc34ee69519316db713f3a4fc4ccc0a\\\" data=\\\"eyJpZCI6IjI5NTgyMzciLCJlbFR5cGUiOiJ3aWRnZXQiLCJzZXR0aW5ncyI6eyJwcmljZV9jb2xvciI6IiMwMDAwMDAiLCJ0eXBvZ3JhcGh5X3R5cG9ncmFwaHkiOiJjdXN0b20iLCJ0eXBvZ3JhcGh5X2ZvbnRfZmFtaWx5IjoiUG9wcGlucyIsInR5cG9ncmFwaHlfZm9udF9zaXplIjp7InVuaXQiOiJweCIsInNpemUiOjIwLCJzaXplcyI6W119LCJ0eXBvZ3JhcGh5X2ZvbnRfd2VpZ2h0IjoiNDAwIiwidHlwb2dyYXBoeV9saW5lX2hlaWdodCI6eyJ1bml0IjoicHgiLCJzaXplIjozNCwic2l6ZXMiOltdfX0sImVsZW1lbnRzIjpbXSwid2lkZ2V0VHlwZSI6Indvb2NvbW1lcmNlLXByb2R1Y3QtcHJpY2UifQ==\\\"]\\t\\t<\\/div>\\n\\t\\t\\t\\t<\\/div>\\n\\t\\t\\t\\t\\t<\\/div>\\n\\t\\t\\t\\t<\\/div>\\n\\t\\t\",\"scripts\":[\"elementor-frontend\"],\"styles\":[\"widget-image\",\"widget-heading\",\"widget-woocommerce-product-price\"]}}"
+        ],
+        "_elementor_screenshot_failed": [
+            "2026-10-13 08:28:15"
+        ]
+    }
+}

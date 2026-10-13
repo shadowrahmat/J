@@ -1,0 +1,158 @@
+.elementor-1284 .elementor-element.elementor-element-80d98aa{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--flex-wrap-mobile:wrap;--gap:0px 0px;--row-gap:0px;--column-gap:0px;border-style:solid;--border-style:solid;border-width:1px 1px 1px 1px;--border-top-width:1px;--border-right-width:1px;--border-bottom-width:1px;--border-left-width:1px;border-color:#E1E9F0;--border-color:#E1E9F0;--border-radius:12px 12px 12px 12px;--padding-top:0px;--padding-bottom:0px;--padding-left:0px;--padding-right:0px;}.elementor-1284 .elementor-element.elementor-element-80d98aa:not(.elementor-motion-effects-element-type-background), .elementor-1284 .elementor-element.elementor-element-80d98aa > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#FFFFFF;}.elementor-1284 .elementor-element.elementor-element-ef3138d{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--flex-wrap-mobile:wrap;--gap:0px 0px;--row-gap:0px;--column-gap:0px;--border-radius:12px 12px 12px 12px;--padding-top:0px;--padding-bottom:0px;--padding-left:0px;--padding-right:0px;}.elementor-1284 .elementor-element.elementor-element-8098fe1 img{border-radius:12px 12px 12px 12px;}.elementor-1284 .elementor-element.elementor-element-772e1d0 .elementor-button{border-radius:12px 12px 12px 12px;}.elementor-1284 .elementor-element.elementor-element-c359d76{--display:flex;--flex-direction:column;--container-widget-width:100%;--container-widget-height:initial;--container-widget-flex-grow:0;--container-widget-align-self:initial;--flex-wrap-mobile:wrap;--gap:0px 0px;--row-gap:0px;--column-gap:0px;--padding-top:0px;--padding-bottom:0px;--padding-left:0px;--padding-right:0px;}.elementor-1284 .elementor-element.elementor-element-f21bc81{--display:flex;--flex-direction:row;--container-widget-width:initial;--container-widget-height:100%;--container-widget-flex-grow:1;--container-widget-align-self:stretch;--flex-wrap-mobile:wrap;}.elementor-1284 .elementor-element.elementor-element-63c5081 .elementor-button{border-radius:12px 12px 12px 12px;}/* Start custom CSS *//* Self-contained styling for Juhani Loop Product Card */
+.juhani-loop-card.product-card {
+    min-width: 0;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    padding: 12px 12px 16px 12px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E1E9F0 !important;
+    border-radius: 12px !important;
+}
+.juhani-loop-card.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(20, 55, 77, 0.08);
+    border-color: #c2d9e9;
+}
+.juhani-loop-card .product-image {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: #f1f6fa;
+    border-radius: 12px;
+}
+.juhani-loop-card .product-image .product-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform 0.4s ease;
+}
+.juhani-loop-card:hover .product-image .product-photo img {
+    transform: scale(1.045);
+}
+.juhani-loop-card .product-open {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #272727;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 4px 14px rgba(20, 55, 77, 0.08);
+    z-index: 2;
+}
+.juhani-loop-card .product-open a,
+.juhani-loop-card .product-open .elementor-button {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+}
+.juhani-loop-card:hover .product-open,
+.juhani-loop-card .product-image:focus-within .product-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+.juhani-loop-card .product-info {
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+}
+.juhani-loop-card .product-type {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #236b9c;
+    margin-bottom: 4px;
+}
+.juhani-loop-card .product-type .elementor-heading-title {
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin: 0;
+}
+.juhani-loop-card h3.elementor-heading-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.2px !important;
+    margin: 4px 0 12px 0 !important;
+    line-height: 1.35 !important;
+    color: #10395E !important;
+}
+.juhani-loop-card h3.elementor-heading-title a {
+    color: inherit;
+    text-decoration: none;
+}
+.juhani-loop-card .price-row {
+    padding-top: 12px;
+    border-top: 1px solid #edf1f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.juhani-loop-card .price-row .price {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #236b9c;
+    font-weight: 650;
+    flex: 1;
+}
+.juhani-loop-card .product-arrow {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: #edf6fc;
+    color: #236b9c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s ease, color .2s ease;
+}
+.juhani-loop-card .product-arrow:hover {
+    background: #236b9c;
+    color: #ffffff;
+}
+.juhani-loop-card .product-arrow .elementor-button {
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+}
+.juhani-loop-card .product-arrow .elementor-button-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+}
+.juhani-loop-card .product-arrow .elementor-button-content-wrapper:after {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: currentColor;
+    mask: url('http://localhost/juhani/preview-assets/icons/arrow.svg') center/contain no-repeat;
+    -webkit-mask: url('http://localhost/juhani/preview-assets/icons/arrow.svg') center/contain no-repeat;
+}/* End custom CSS */

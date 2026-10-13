@@ -1,0 +1,92 @@
+{
+  "result": {
+    "panel": {
+      "x": 15,
+      "y": 216,
+      "width": 360,
+      "height": 508,
+      "right": 375,
+      "bottom": 724,
+      "radius": "12px"
+    },
+    "cards": [
+      {
+        "name": "Cast Net – 44 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-44-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 40 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-40-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 36 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-36-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 30 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-30-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 28 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-28-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 25 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-25-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 22 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-22-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 18 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-18-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      },
+      {
+        "name": "Cast Net – 15 Ghor",
+        "href": "http://localhost/juhani/product/cast-net-15-ghor/",
+        "width": 336,
+        "height": 106.90625,
+        "photoWidth": 64,
+        "visible": true
+      }
+    ],
+    "count": "9 results",
+    "overflow": false
+  },
+  "errors": [],
+  "bengaliSearch": "25 Ghor matched",
+  "empty": "visible"
+}

@@ -353,10 +353,6 @@ abstract class Document extends Controls_Stack {
 	 */
 	public function get_main_id() {
 		if ( ! $this->main_id ) {
-			if ( empty( $this->post->ID ) ) {
-				return 0;
-			}
-
 			$post_id = $this->post->ID;
 
 			$parent_post_id = wp_is_post_revision( $post_id );

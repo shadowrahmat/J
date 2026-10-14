@@ -1,0 +1,354 @@
+.juhani-order-flow {
+    --jop-ink: #143449;
+    --jop-navy: #123b60;
+    --jop-blue: #236b9c;
+    --jop-sky: #91d5f5;
+    --jop-muted: #778b9a;
+    --jop-line: #e0eaf0;
+    margin: 0;
+    color: var(--jop-ink);
+    background: #fbfcfd;
+    font: 14px/1.6 'Segoe UI', 'Nirmala UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+.juhani-order-flow * { box-sizing: border-box; }
+.juhani-order-flow a { color: inherit; text-decoration: none; }
+.juhani-order-flow button, .juhani-order-flow input, .juhani-order-flow textarea { font: inherit; }
+.juhani-order-flow button, .juhani-order-flow a { -webkit-tap-highlight-color: transparent; }
+.juhani-order-flow button { cursor: pointer; }
+.juhani-order-flow h1, .juhani-order-flow h2, .juhani-order-flow h3, .juhani-order-flow p { margin: 0; }
+.juhani-order-flow .woocommerce h2,.juhani-order-flow .woocommerce h3 { font-family:'Segoe UI','Nirmala UI',Arial,sans-serif; color:var(--jop-ink); }
+.juhani-order-flow [hidden] { display: none; }
+.juhani-order-flow :focus-visible { outline: 2px solid #3899cc; outline-offset: 4px; }
+.juhani-order-flow .jop-wrap { width:var(--width,1350px); max-width:100%; margin-inline:auto; }
+.juhani-order-flow .jop-top { background: var(--jop-navy); color: #e6f3fa; font-size: 11px; }
+.juhani-order-flow .jop-top .jop-wrap { min-height: 35px; display: flex; align-items: center; justify-content: space-between; }
+.juhani-order-flow .jop-top a { margin-left: 5px; color: white; }
+.juhani-order-flow .jop-header { display: flex; align-items: center; justify-content: space-between; min-height: 92px; gap: 24px; border-bottom: 1px solid var(--jop-line); }
+.juhani-order-flow .jop-logo { flex: 0 0 155px; }
+.juhani-order-flow .jop-logo img { display: block; width: 155px; height: 56px; object-fit: contain; }
+.juhani-order-flow .jop-steps { display: flex; align-items: center; gap: 16px; font-size: 12px; color: #91a1ac; }
+.juhani-order-flow .jop-steps a, .juhani-order-flow .jop-step-muted { display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+.juhani-order-flow .jop-steps a > span, .juhani-order-flow .jop-step-muted b { display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid var(--jop-line); border-radius: 50%; font-size: 9px; font-weight: 600; }
+.juhani-order-flow .jop-steps .is-current { color: var(--jop-navy); font-weight: 650; }
+.juhani-order-flow .jop-steps .is-current > span { background: var(--jop-navy); color: white; border-color: var(--jop-navy); }
+.juhani-order-flow .jop-steps .is-complete { color: #4e8972; }
+.juhani-order-flow .jop-steps .is-complete > span { background: #edf7f2; border-color: #d6e9df; }
+.juhani-order-flow .jop-steps i { width: 38px; height: 1px; background: var(--jop-line); }
+.juhani-order-flow .jop-preview-label { display: flex; align-items: center; gap: 7px; padding: 5px 10px; border: 1px solid #dbe9f2; border-radius: 20px; color: #7290a4; font-size: 10px; white-space: nowrap; }
+.juhani-order-flow .jop-preview-label > span { width: 5px; height: 5px; background: #69afd1; border-radius: 50%; }
+.juhani-order-flow .jop-main { padding-top: 25px; }
+.juhani-order-flow .jop-back { font-size: 11px; color: #788e9d; }
+.juhani-order-flow .jop-back:hover { color: var(--jop-blue); }
+.juhani-order-flow .jop-page-title { display: flex; align-items: flex-end; justify-content: space-between; margin: 36px 0 35px; gap: 24px; }
+.juhani-order-flow .jop-eyebrow { display: block; color: #7a9bb0; font-size: 9px; font-weight: 650; letter-spacing: 1.65px; }
+.juhani-order-flow h1 { margin: 7px 0 6px; font-size: clamp(30px, 3.5vw, 43px); line-height: 1.15; letter-spacing: -1.5px; font-weight: 700; }
+.juhani-order-flow .jop-page-title p { color: var(--jop-muted); font-size: 13px; }
+.juhani-order-flow .jop-count { color: #91a4b1; padding-bottom: 3px; font-size: 11px; }
+.juhani-order-flow .jop-layout { display: grid; grid-template-columns: minmax(0, 1fr) 350px; gap: 32px; align-items: start; }
+.juhani-order-flow .jop-cart-panel, .juhani-order-flow .jop-form-panel, .juhani-order-flow .jop-payment-panel { border: 1px solid var(--jop-line); border-radius: 14px; background: white; overflow: hidden; }
+.juhani-order-flow .jop-panel-heading { display: flex; align-items: center; justify-content: space-between; padding: 22px 26px; border-bottom: 1px solid var(--jop-line); }
+.juhani-order-flow h2 { font-size: 18px; line-height: 1.4; font-weight: 650; letter-spacing: -.4px; }
+.juhani-order-flow .jop-panel-heading > span { font-size: 8px; letter-spacing: 1.1px; color: #96a7b3; }
+.juhani-order-flow .jop-item { display: grid; grid-template-columns: 142px minmax(0, 1fr); gap: 23px; padding: 26px; border-bottom: 1px solid var(--jop-line); }
+.juhani-order-flow .jop-item-image { position: relative; background: #eff4f7; border-radius: 10px; overflow: hidden; aspect-ratio: 1; }
+.juhani-order-flow .jop-item-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.juhani-order-flow .jop-item-heading { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.juhani-order-flow .jop-item-category { display: block; font-size: 8px; color: #8a9eab; letter-spacing: 1.25px; margin-bottom: 4px; }
+.juhani-order-flow .jop-item h3 { font-size: 20px; line-height: 1.35; letter-spacing: -.5px; font-weight: 650; }
+.juhani-order-flow .jop-remove { padding: 0; width: 25px; height: 25px; flex-shrink: 0; display: grid; place-items: center; background: transparent; border: 0; color: #9babb5; font-size: 20px; line-height: 1; border-radius: 50%; }
+.juhani-order-flow .jop-remove:hover { background: #fff0ee; color: #b66e65; }
+.juhani-order-flow .jop-specs { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 6px; color: #667d8d; font-size: 10px; }
+.juhani-order-flow .jop-specs > span { background: #f5f8fa; border: 1px solid #e9f0f4; border-radius: 5px; padding: 3px 8px; }
+.juhani-order-flow .jop-item-details { color: #95a6b2; font-size: 10px; }
+.juhani-order-flow .jop-item-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; gap: 14px; }
+.juhani-order-flow .jop-quantity { display: flex; align-items: center; border: 1px solid #dce7ef; border-radius: 8px; background: white; height: 35px; overflow: hidden; }
+.juhani-order-flow .jop-quantity button { width: 31px; height: 33px; border: 0; background: transparent; color: #66889f; font-size: 16px; }
+.juhani-order-flow .jop-quantity button:hover { background: #edf6fc; }
+.juhani-order-flow .jop-quantity input { width: 32px; min-width: 0; padding: 0; text-align: center; color: var(--jop-ink); font-size: 12px; border: 0; outline: none; background: transparent; -moz-appearance: textfield; }
+.juhani-order-flow .jop-quantity input::-webkit-inner-spin-button, .juhani-order-flow .jop-quantity input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.juhani-order-flow .jop-item-price { display: flex; flex-direction: column; align-items: flex-end; }
+.juhani-order-flow .jop-item-price strong { font-size: 19px; font-weight: 650; color: var(--jop-blue); line-height: 1.25; }
+.juhani-order-flow .jop-item-price small { font-size: 9px; color: #96a6b1; margin-top: 3px; }
+.juhani-order-flow .jop-cart-foot { display: flex; gap: 12px; align-items: center; padding: 22px 26px; background: #f8fbfd; }
+.juhani-order-flow .jop-small-icon { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid #deebf3; color: #5798bc; border-radius: 8px; font-size: 19px; }
+.juhani-order-flow .jop-cart-foot strong { font-size: 11px; font-weight: 600; }
+.juhani-order-flow .jop-cart-foot p { font-size: 10px; color: #92a3af; }
+.juhani-order-flow .jop-cart-foot > a { margin-left: auto; white-space: nowrap; color: #6e94ae; font-size: 10px; }
+.juhani-order-flow .jop-summary { border: 1px solid #dbe8f1; border-radius: 14px; background: #f2f8fc; padding: 26px; }
+.juhani-order-flow .jop-summary-title { padding-bottom: 23px; }
+.juhani-order-flow .jop-summary-title h2 { margin-top: 5px; font-size: 23px; letter-spacing: -.7px; }
+.juhani-order-flow .jop-total-lines { border-top: 1px solid #dce8f0; padding: 20px 0; display: grid; gap: 13px; }
+.juhani-order-flow .jop-total-lines > div { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: #6f8596; }
+.juhani-order-flow .jop-total-lines strong { color: var(--jop-ink); font-weight: 600; }
+.juhani-order-flow .jop-total-lines small { font-size: 9px; color: #8fa1ae; }
+.juhani-order-flow .jop-total { border-top: 1px solid #dce8f0; padding-top: 17px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+.juhani-order-flow .jop-total strong { font-size: 29px; line-height: 1.3; font-weight: 700; letter-spacing: -1px; }
+.juhani-order-flow .jop-tax-note { margin-top: 8px; font-size: 9px; color: #8ea3b1; }
+.juhani-order-flow .jop-button { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; margin-top: 23px; padding: 15px 17px; min-height: 52px; background: var(--jop-navy); color: white; border: 0; border-radius: 9px; font-size: 12px; font-weight: 600; transition: background .2s, transform .2s, box-shadow .2s; }
+.juhani-order-flow .jop-button:hover { background: #1c557d; transform: translateY(-2px); box-shadow: 0 6px 16px #123b6014; }
+.juhani-order-flow .jop-button > span:last-child { font-size: 15px; font-weight: 400; }
+.juhani-order-flow .jop-button[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+.juhani-order-flow .jop-assurance { display: flex; justify-content: center; align-items: center; gap: 7px; margin-top: 14px; font-size: 10px; color: #7c94a5; }
+.juhani-order-flow .jop-lock { color: #69a6c7; }
+.juhani-order-flow .jop-support { display: flex; gap: 13px; padding: 25px 12px 19px; }
+.juhani-order-flow .jop-support-icon { width: 28px; height: 28px; display: grid; place-items: center; flex-shrink: 0; border: 1px solid #d9e7f0; border-radius: 50%; color: #64a1c2; font-size: 12px; }
+.juhani-order-flow .jop-support strong { font-size: 12px; font-weight: 600; }
+.juhani-order-flow .jop-support p { color: #91a1ad; font-size: 11px; }
+.juhani-order-flow .jop-support a { display: inline-block; margin-top: 8px; color: #558aaa; font-size: 11px; font-weight: 600; }
+.juhani-order-flow .jop-restore { background: transparent; border: 0; color: #93a8b7; font-size: 10px; padding: 0 12px; text-decoration: underline; text-underline-offset: 3px; }
+.juhani-order-flow .jop-bottom-note { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 6px; padding: 48px 0 42px; }
+.juhani-order-flow .jop-bottom-note > span { font-size: 8px; letter-spacing: 2px; color: #9bb2c0; }
+.juhani-order-flow .jop-bottom-note p { font-size: 11px; color: #a1b0ba; }
+.juhani-order-flow .jop-footer { border-top: 1px solid var(--jop-line); display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-block: 23px; font-size: 9px; color: #90a1ae; }
+.juhani-order-flow .jop-footer > div { display: flex; gap: 19px; }
+.juhani-order-flow .jop-footer a:hover { color: var(--jop-blue); }
+.juhani-order-flow .jop-dot { margin: 0 8px; color: #c2d0d9; }
+.juhani-order-flow .jop-checkout-tag { display: flex; align-items: center; gap: 8px; font-size: 10px; color: #7193aa; padding-bottom: 5px; }
+.juhani-order-flow .jop-checkout-left { display: grid; gap: 20px; }
+.juhani-order-flow .jop-form-panel, .juhani-order-flow .jop-payment-panel { padding: 28px; }
+.juhani-order-flow .jop-section-title { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 26px; }
+.juhani-order-flow .jop-section-number { display: grid; place-items: center; width: 29px; height: 29px; flex-shrink: 0; border: 1px solid #deebf3; border-radius: 8px; color: #69a2c2; background: #f4f9fc; font-size: 10px; }
+.juhani-order-flow .jop-section-title p { margin-top: 3px; font-size: 11px; color: #92a3af; }
+.juhani-order-flow .jop-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px 19px; }
+.juhani-order-flow .jop-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.juhani-order-flow .jop-field-wide { grid-column: 1 / -1; }
+.juhani-order-flow .jop-field label { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; }
+.juhani-order-flow .jop-field label > span { color: #89adbf; font-size: 10px; }
+.juhani-order-flow .jop-field em { font-style: normal; font-size: 9px; font-weight: 400; color: #9aacb7; margin-left: auto; }
+.juhani-order-flow .jop-field input, .juhani-order-flow .jop-field textarea { min-height: 47px; padding: 12px 14px; border: 1px solid #dce7ef; border-radius: 8px; background: #fbfdfe; color: var(--jop-ink); font-size: 12px; width: 100%; outline: none; transition: border-color .2s, box-shadow .2s; }
+.juhani-order-flow .jop-field textarea { resize: vertical; min-height: 99px; }
+.juhani-order-flow .jop-field input::placeholder, .juhani-order-flow .jop-field textarea::placeholder { color: #a0b2bf; }
+.juhani-order-flow .jop-field input:focus, .juhani-order-flow .jop-field textarea:focus { border-color: #7bbada; box-shadow: 0 0 0 3px #81c9ee13; background: white; }
+.juhani-order-flow .jop-field small { color: #94a7b3; font-size: 10px; }
+.juhani-order-flow .jop-payment-panel .jop-section-title { margin-bottom: 20px; }
+.juhani-order-flow .jop-payment-choice { display: flex; align-items: center; gap: 13px; padding: 18px; border: 1px solid #bfdce9; border-radius: 10px; background: #f5fbfe; cursor: pointer; }
+.juhani-order-flow .jop-payment-choice input { width: 16px; height: 16px; accent-color: var(--jop-blue); margin: 0; flex-shrink: 0; }
+.juhani-order-flow .jop-payment-copy { display: grid; gap: 2px; }
+.juhani-order-flow .jop-payment-copy strong { font-size: 13px; font-weight: 600; }
+.juhani-order-flow .jop-payment-copy > span { color: #7c96a7; font-size: 11px; }
+.juhani-order-flow .jop-cod-badge { margin-left: auto; padding: 5px 9px; color: #629372; background: #eaf5ed; border-radius: 5px; font-size: 9px; letter-spacing: .8px; }
+.juhani-order-flow .jop-payment-note { display: flex; align-items: flex-start; gap: 8px; color: #99aab5; font-size: 10px; padding: 13px 4px 0; }
+.juhani-order-flow .jop-payment-note > span { color: #86b29d; }
+.juhani-order-flow .jop-checkout-summary { padding: 25px; }
+.juhani-order-flow .jop-order-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 7px; gap: 10px; }
+.juhani-order-flow .jop-order-heading > a { font-size: 10px; color: #6490ab; white-space: nowrap; }
+.juhani-order-flow .jop-mini-items { display: grid; gap: 18px; padding: 22px 0; }
+.juhani-order-flow .jop-mini-item { display: grid; grid-template-columns: 56px minmax(0,1fr) auto; align-items: center; gap: 11px; }
+.juhani-order-flow .jop-mini-image { width: 56px; height: 62px; border-radius: 7px; overflow: hidden; position: relative; background: #e9f0f4; }
+.juhani-order-flow .jop-mini-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.juhani-order-flow .jop-mini-item h3 { font-size: 11px; font-weight: 650; line-height: 1.5; }
+.juhani-order-flow .jop-mini-item p { font-size: 9px; color: #8ba1b0; margin-top: 3px; }
+.juhani-order-flow .jop-mini-item small { font-size: 9px; color: #819aaa; }
+.juhani-order-flow .jop-mini-item > strong { font-size: 11px; white-space: nowrap; font-weight: 650; }
+.juhani-order-flow .jop-preview-disclaimer { margin-top: 12px; text-align: center; font-size: 9px; color: #7a96a7; }
+.juhani-order-flow .jop-terms { margin-top: 15px; padding-top: 15px; border-top: 1px solid #dce8f0; text-align: center; color: #8ea2b0; font-size: 9px; line-height: 1.9; }
+.juhani-order-flow .jop-terms a { color: #5f88a2; text-decoration: underline; text-underline-offset: 2px; }
+.juhani-order-flow .jop-toast { position: fixed; z-index: 10; left: 50%; bottom: 25px; transform: translateX(-50%); padding: 16px 24px; max-width: calc(100% - 32px); width: max-content; border: 1px solid #dce7ef; border-radius: 10px; background: var(--jop-navy); color: white; font-size: 12px; box-shadow: 0 10px 40px #123b6024; }
+.juhani-order-flow .jop-empty-cart { padding: 55px 30px; text-align: center; color: #879dac; }
+.juhani-order-flow .jop-empty-cart h3 { font-size: 23px; margin-bottom: 8px; color: var(--jop-ink); }
+.juhani-order-flow .jop-empty-cart button { margin-top: 16px; background: #eff8fd; border: 1px solid #d6e8f4; border-radius: 7px; color: var(--jop-blue); padding: 9px 15px; font-size: 11px; }
+@media (max-width: 1024px) {
+    .juhani-order-flow .jop-wrap { width: calc(100% - 48px); }
+    .juhani-order-flow .jop-layout { grid-template-columns: minmax(0, 1fr) 310px; gap: 20px; }
+    .juhani-order-flow .jop-item { grid-template-columns: 106px minmax(0, 1fr); padding: 21px; gap: 17px; }
+    .juhani-order-flow .jop-item h3 { font-size: 17px; }
+    .juhani-order-flow .jop-summary { padding: 22px; }
+    .juhani-order-flow .jop-form-panel, .juhani-order-flow .jop-payment-panel { padding: 23px; }
+    .juhani-order-flow .jop-steps { gap: 10px; }
+    .juhani-order-flow .jop-steps i { width: 22px; }
+    .juhani-order-flow .jop-preview-label { font-size: 9px; padding: 5px 8px; }
+}
+@media (max-width: 800px) {
+    .juhani-order-flow .jop-layout { grid-template-columns: 1fr; gap: 23px; }
+    .juhani-order-flow .jop-side { display: grid; grid-template-columns: 1fr; }
+    .juhani-order-flow .jop-header { flex-wrap: wrap; gap: 15px; padding-block: 20px; }
+    .juhani-order-flow .jop-steps { order: 3; width: 100%; justify-content: center; padding-top: 10px; }
+    .juhani-order-flow .jop-logo img { width: 139px; height: 45px; }
+    .juhani-order-flow .jop-page-title { margin-top: 28px; }
+    .juhani-order-flow .jop-checkout-tag { display: none; }
+    .juhani-order-flow .jop-footer { flex-wrap: wrap; justify-content: center; text-align: center; gap: 12px 25px; }
+}
+@media (max-width: 480px) {
+    .juhani-order-flow .jop-wrap { width: calc(100% - 36px); }
+    .juhani-order-flow .jop-top .jop-wrap { min-height: 31px; justify-content: center; font-size: 9px; }
+    .juhani-order-flow .jop-top .jop-wrap > span:last-child { display: none; }
+    .juhani-order-flow .jop-header { padding-block: 17px; }
+    .juhani-order-flow .jop-steps { gap: 10px; font-size: 10px; }
+    .juhani-order-flow .jop-steps a, .juhani-order-flow .jop-step-muted { gap: 6px; }
+    .juhani-order-flow .jop-steps a > span, .juhani-order-flow .jop-step-muted b { width: 23px; height: 23px; font-size: 8px; }
+    .juhani-order-flow .jop-steps i { width: 15px; }
+    .juhani-order-flow .jop-main { padding-top: 21px; }
+    .juhani-order-flow .jop-page-title { align-items: flex-start; flex-direction: column; gap: 12px; margin: 27px 0 24px; }
+    .juhani-order-flow .jop-eyebrow { font-size: 8px; letter-spacing: 1.25px; }
+    .juhani-order-flow h1 { font-size: 34px; letter-spacing: -1.2px; margin-block: 8px; }
+    .juhani-order-flow .jop-page-title p { font-size: 11px; }
+    .juhani-order-flow .jop-count { font-size: 10px; }
+    .juhani-order-flow .jop-panel-heading { padding: 18px; }
+    .juhani-order-flow .jop-panel-heading h2 { font-size: 16px; }
+    .juhani-order-flow .jop-panel-heading > span { font-size: 7px; letter-spacing: .5px; }
+    .juhani-order-flow .jop-item { grid-template-columns: 84px minmax(0, 1fr); gap: 13px; padding: 19px 16px; }
+    .juhani-order-flow .jop-item h3 { font-size: 15px; letter-spacing: -.3px; }
+    .juhani-order-flow .jop-item-category { font-size: 7px; letter-spacing: .8px; }
+    .juhani-order-flow .jop-specs { margin-top: 8px; gap: 4px; font-size: 8px; }
+    .juhani-order-flow .jop-specs > span { padding: 2px 5px; }
+    .juhani-order-flow .jop-item-details { font-size: 8px; }
+    .juhani-order-flow .jop-remove { width: 19px; height: 19px; font-size: 18px; }
+    .juhani-order-flow .jop-item-bottom { gap: 8px; margin-top: 13px; }
+    .juhani-order-flow .jop-item-price strong { font-size: 16px; }
+    .juhani-order-flow .jop-item-price small { font-size: 8px; }
+    .juhani-order-flow .jop-quantity { height: 31px; }
+    .juhani-order-flow .jop-quantity button { width: 24px; height: 29px; font-size: 13px; }
+    .juhani-order-flow .jop-quantity input { width: 24px; font-size: 10px; }
+    .juhani-order-flow .jop-cart-foot { padding: 18px 16px; gap: 10px; flex-wrap: wrap; }
+    .juhani-order-flow .jop-cart-foot > a { width: 100%; padding-left: 42px; }
+    .juhani-order-flow .jop-cart-foot p { font-size: 9px; }
+    .juhani-order-flow .jop-form { grid-template-columns: 1fr; gap: 20px; }
+    .juhani-order-flow .jop-form-panel, .juhani-order-flow .jop-payment-panel { padding: 22px 19px; }
+    .juhani-order-flow .jop-section-title { margin-bottom: 22px; }
+    .juhani-order-flow .jop-section-title h2 { font-size: 17px; }
+    .juhani-order-flow .jop-section-title p { font-size: 10px; }
+    .juhani-order-flow .jop-payment-choice { padding: 15px 12px; gap: 10px; }
+    .juhani-order-flow .jop-payment-copy strong { font-size: 12px; }
+    .juhani-order-flow .jop-payment-copy > span { font-size: 10px; }
+    .juhani-order-flow .jop-cod-badge { padding: 4px 6px; font-size: 8px; }
+    .juhani-order-flow .jop-bottom-note { padding: 36px 0 30px; }
+    .juhani-order-flow .jop-bottom-note > span { font-size: 7px; letter-spacing: 1.4px; }
+    .juhani-order-flow .jop-footer { font-size: 8px; gap: 12px; padding-bottom: 23px; }
+    .juhani-order-flow .jop-footer > span:last-child { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .juhani-order-flow *, .juhani-order-flow *::before, .juhani-order-flow *::after { transition: none; }
+}
+
+/* Live WooCommerce adapters under the manually assigned page root. */
+.juhani-order-flow { width:100%; min-height:100vh; }
+.juhani-order-flow .elementor-widget { margin:0; min-width:0; }
+.juhani-order-flow .elementor-widget-shortcode .elementor-shortcode { width:100%; }
+.juhani-order-flow .jop-title-copy { gap:0; }
+.juhani-order-flow .jop-title-copy .elementor-heading-title { font:700 clamp(30px,3.5vw,43px)/1.15 'Segoe UI','Nirmala UI',sans-serif; color:#143449; letter-spacing:-1.5px; padding:0; }
+.juhani-order-flow .jop-title-copy .jop-eyebrow { font:650 9px/1.6 'Segoe UI',sans-serif; color:#7a9bb0; letter-spacing:1.65px; }
+.juhani-order-flow .jop-title-copy .jop-intro { color:#778b9a; font:13px/1.6 'Segoe UI','Nirmala UI',sans-serif; }
+.juhani-order-flow .jop-title-copy .jop-intro p { margin:0; }
+.juhani-order-flow .jop-header-help { color:#7a9bb0; font-size:10px; white-space:nowrap; }
+.juhani-order-flow .jop-checkout-tag svg { width:14px; height:14px; }
+.juhani-order-flow .woocommerce { width:100%; }
+.juhani-order-flow .woocommerce .woocommerce-cart-form { margin:0; }
+.juhani-order-flow .woocommerce .juhani-cart-table { display:block; width:100%; border:0; border-collapse:collapse; margin:0; }
+.juhani-order-flow .woocommerce .juhani-cart-table tbody,.juhani-order-flow .woocommerce .juhani-cart-table tr { display:block; width:100%; }
+.juhani-order-flow .woocommerce .juhani-cart-table td { display:block; padding:0; border:0; background:none; }
+.juhani-order-flow .woocommerce .juhani-cart-table td::before { display:none; }
+.juhani-order-flow .woocommerce .juhani-cart-table .cart_item { border:0; }
+.juhani-order-flow .woocommerce .juhani-cart-table a.remove { display:grid; width:25px; height:25px; font-size:20px; font-weight:400; color:#9babb5; line-height:1; background:transparent; text-decoration:none; }
+.juhani-order-flow .woocommerce .juhani-cart-table a.remove:hover { color:#b66e65; background:#fff0ee; }
+.juhani-order-flow .jop-quantity .quantity { width:auto; margin:0; float:none; }
+.juhani-order-flow .jop-quantity .quantity input.qty { width:32px; min-height:0; height:33px; padding:0; border:0; box-shadow:none; border-radius:0; font-size:12px; background:transparent; }
+.juhani-order-flow .jop-item-image img { width:100%; height:100%; max-width:100%; margin:0; }
+.juhani-order-flow .juhani-cart-actions { border:0; }
+.juhani-order-flow .juhani-cart-actions .juhani-cart-update { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.juhani-order-flow .juhani-cart-actions .coupon { display:grid; grid-template-columns:minmax(0,1fr) auto; width:100%; float:none; gap:8px; padding:15px 25px; }
+.juhani-order-flow .juhani-cart-actions .coupon::before,.juhani-order-flow .juhani-cart-actions .coupon::after { content:none; display:none; }
+.juhani-order-flow .woocommerce-cart-form .juhani-cart-table .juhani-cart-actions .coupon input#coupon_code { grid-area:1 / 1; width:100%; min-width:0; float:none; margin:0; border:1px solid #dce7ef; border-radius:7px; padding:8px; }
+.juhani-order-flow .woocommerce-cart-form .juhani-cart-actions .coupon button.button[type="submit"] { grid-area:1 / 2; width:auto; min-width:0; float:none; margin:0; border:0; border-radius:7px; background:#123b60; color:white; padding:8px 12px; font-size:11px; white-space:nowrap; }
+.juhani-order-flow .juhani-cart-actions .coupon .coupon-error-notice { grid-column:1 / -1; margin:0; font-size:12px; line-height:1.6; color:#a43131; overflow-wrap:anywhere; }
+.juhani-order-flow .cart-collaterals,.juhani-order-flow .cart-collaterals .cart_totals { float:none; width:100%; margin:0; }
+.juhani-order-flow .cart-collaterals .cross-sells { float:none; width:100%; }
+.juhani-order-flow .jop-summary .juhani-order-totals { border:0; border-top:1px solid #dce8f0; border-collapse:collapse; margin:0; width:100%; border-radius:0; }
+.juhani-order-flow .jop-summary .juhani-order-totals tbody { display:table-row-group; }
+.juhani-order-flow .jop-summary .juhani-order-totals tr { display:table-row; background:none; }
+.juhani-order-flow .jop-summary .juhani-order-totals th,.juhani-order-flow .jop-summary .juhani-order-totals td { display:table-cell; background:transparent; border:0; padding:8px 0; color:#6f8596; font-size:12px; font-weight:400; vertical-align:top; text-align:left; }
+.juhani-order-flow .jop-summary .juhani-order-totals tr:first-child th,.juhani-order-flow .jop-summary .juhani-order-totals tr:first-child td { padding-top:20px; }
+.juhani-order-flow .jop-summary .juhani-order-totals td { text-align:right; }
+.juhani-order-flow .jop-summary .juhani-order-totals td::before { display:none; }
+.juhani-order-flow .jop-summary .juhani-order-totals small { font-size:9px; color:#8fa1ae; }
+.juhani-order-flow .jop-summary .juhani-order-totals .order-total th,.juhani-order-flow .jop-summary .juhani-order-totals .order-total td { padding-top:17px; margin-top:12px; border-top:1px solid #dce8f0; color:#143449; font-weight:600; vertical-align:middle; }
+.juhani-order-flow .jop-summary .juhani-order-totals .order-total td { font-size:29px; line-height:1.3; letter-spacing:-1px; }
+.juhani-order-flow .jop-summary .juhani-order-totals .order-total strong { font-weight:700; }
+.juhani-order-flow .jop-summary .juhani-order-totals .cart-subtotal .amount { color:#143449; font-weight:600; }
+.juhani-order-flow .jop-summary .juhani-order-totals .includes_tax { display:block; font-size:9px; letter-spacing:0; }
+.juhani-order-flow .jop-summary .wc-proceed-to-checkout { margin-top:23px; padding:0; }
+.juhani-order-flow .jop-summary .wc-proceed-to-checkout a.checkout-button { display:flex; justify-content:space-between; align-items:center; width:100%; margin:0; min-height:52px; padding:15px 17px; border:0; border-radius:9px; background:#123b60; color:white; font:600 12px/1.6 'Segoe UI',sans-serif; }
+.juhani-order-flow .jop-summary .wc-proceed-to-checkout a.checkout-button::after { content:'→'; font-size:16px; }
+.juhani-order-flow .jop-summary .wc-proceed-to-checkout a.checkout-button:hover { background:#1c557d; }
+.juhani-order-flow .jop-assurance svg { width:13px; height:13px; }
+.juhani-order-flow .jop-empty-cart .jop-button { max-width:280px; margin:23px auto 0; }
+.juhani-order-flow .woocommerce form.checkout { margin:0; }
+.juhani-order-flow .jop-form-panel .col2-set,.juhani-order-flow .jop-form-panel .col2-set .col-1,.juhani-order-flow .jop-form-panel .col2-set .col-2 { width:100%; float:none; margin:0; }
+.juhani-order-flow .jop-form-panel .woocommerce-billing-fields > h3,.juhani-order-flow .jop-form-panel .woocommerce-additional-fields > h3 { display:none; }
+.juhani-order-flow .jop-form-panel .woocommerce-billing-fields__field-wrapper { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 19px; }
+.juhani-order-flow .jop-form-panel .form-row { padding:0; margin:0; width:100%; float:none; min-width:0; }
+.juhani-order-flow .jop-form-panel .form-row-wide { grid-column:1/-1; }
+.juhani-order-flow .jop-form-panel .form-row label { font-size:12px; font-weight:600; line-height:1.6; margin-bottom:8px; color:#143449; }
+.juhani-order-flow .jop-form-panel .form-row .required { color:#89adbf; }
+.juhani-order-flow .jop-form-panel .form-row .woocommerce-input-wrapper { display:block; width:100%; }
+.juhani-order-flow .jop-form-panel .form-row input.input-text,.juhani-order-flow .jop-form-panel .form-row textarea.input-text { min-height:47px; padding:12px 14px; border:1px solid #dce7ef; border-radius:8px; background:#fbfdfe; color:#143449; font:12px/1.6 'Segoe UI','Nirmala UI',sans-serif; width:100%; outline:none; transition:border-color .2s,box-shadow .2s; }
+.juhani-order-flow .jop-form-panel .form-row textarea.input-text { min-height:99px; resize:vertical; }
+.juhani-order-flow .jop-form-panel .form-row .input-text::placeholder { color:#a0b2bf; }
+.juhani-order-flow .jop-form-panel .form-row .input-text:focus { border-color:#7bbada; box-shadow:0 0 0 3px #81c9ee13; background:white; }
+.juhani-order-flow .jop-form-panel .form-row .description { display:block; margin-top:8px; color:#94a7b3; font-size:10px; line-height:1.6; }
+.juhani-order-flow .jop-form-panel .woocommerce-additional-fields__field-wrapper { margin-top:22px; }
+.juhani-order-flow .jop-form-panel .form-row.woocommerce-invalid .input-text { border-color:#c87868; }
+.juhani-order-flow .jop-payment-panel.woocommerce-checkout-payment { background:white; border-radius:14px; }
+.juhani-order-flow .jop-payment-panel.woocommerce-checkout-payment ul.payment_methods { margin:0; padding:0; border:0; list-style:none; }
+.juhani-order-flow .jop-payment-panel.woocommerce-checkout-payment ul.payment_methods li { padding:18px; border:1px solid #bfdce9; border-radius:10px; background:#f5fbfe; margin:0 0 10px; color:#143449; }
+.juhani-order-flow .jop-payment-panel.woocommerce-checkout-payment ul.payment_methods li > label { font-size:13px; font-weight:600; cursor:pointer; }
+.juhani-order-flow .jop-payment-panel.woocommerce-checkout-payment ul.payment_methods li input { accent-color:#236b9c; margin-right:10px; }
+.juhani-order-flow .jop-payment-panel.woocommerce-checkout-payment .payment_box { width:100%; margin:6px 0 0; padding:0 0 0 27px; background:none; color:#7c96a7; font:11px/1.8 'Segoe UI','Nirmala UI',sans-serif; }
+.juhani-order-flow .jop-payment-panel.woocommerce-checkout-payment .payment_box::before { display:none; }
+.juhani-order-flow .jop-payment-panel .payment_box p { margin:0; }
+.juhani-order-flow .jop-summary .jop-mini-item img { width:100%; height:100%; object-fit:cover; }
+.juhani-order-flow .jop-mini-specs { display:flex; flex-wrap:wrap; gap:3px 5px; color:#8ba1b0; font-size:8px; margin-top:3px; }
+.juhani-order-flow .juhani-checkout-quantity { display:flex; align-items:center; gap:5px; margin-top:5px; color:#819aaa; font-size:9px; }
+.juhani-order-flow .juhani-checkout-quantity button { border:1px solid #d8e6ef; border-radius:4px; color:#6493af; background:white; padding:0; width:19px; height:19px; font-size:11px; }
+.juhani-order-flow .jop-summary .juhani-checkout-submit { margin:0; padding:0; }
+.juhani-order-flow .jop-summary .juhani-checkout-submit #place_order { float:none; width:100%; display:flex; justify-content:space-between; margin-top:23px; border:0; background:#123b60; color:white; min-height:52px; padding:15px 17px; border-radius:9px; font:600 12px/1.6 'Segoe UI',sans-serif; }
+.juhani-order-flow .jop-summary .juhani-checkout-submit #place_order:hover { background:#1c557d; }
+.juhani-order-flow .juhani-place-order-total { white-space:nowrap; font-size:14px; }
+.juhani-order-flow .woocommerce-terms-and-conditions-wrapper { margin-top:15px; padding-top:15px; border-top:1px solid #dce8f0; color:#8ea2b0; font-size:9px; line-height:1.9; }
+.juhani-order-flow .woocommerce-terms-and-conditions-wrapper a { color:#5f88a2; text-decoration:underline; }
+.juhani-order-flow .woocommerce-terms-and-conditions-wrapper label { font-size:10px; line-height:1.7; }
+.juhani-order-flow .woocommerce-terms-and-conditions-wrapper input { accent-color:#236b9c; }
+.juhani-order-flow .woocommerce .woocommerce-notices-wrapper { font-size:12px; }
+.juhani-order-flow .woocommerce .woocommerce-error,.juhani-order-flow .woocommerce .woocommerce-info,.juhani-order-flow .woocommerce .woocommerce-message { font-size:12px; border-radius:8px; }
+.juhani-order-flow .woocommerce ul#shipping_method { margin:0; padding:0; list-style:none; font-size:11px; }
+.juhani-order-flow .woocommerce ul#shipping_method li { margin:0 0 6px; }
+.juhani-order-flow .woocommerce ul#shipping_method input { margin-right:4px; }
+.juhani-order-flow .jop-title-copy .jop-eyebrow p { font:inherit; color:inherit; letter-spacing:inherit; }
+.juhani-order-flow .woocommerce .juhani-cart-table .jop-item-image img { width:100%; height:100%; max-width:100%; margin:0; }
+.juhani-order-flow .jop-quantity button { padding:0; min-height:0; min-width:0; border-radius:0; line-height:1; box-shadow:none; }
+.juhani-order-flow .woocommerce .juhani-cart-table a.remove { color:#9babb5 !important; }
+.juhani-order-flow .woocommerce .juhani-cart-table a.remove:hover { color:#b66e65 !important; }
+.juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel { background:white; border:1px solid #e0eaf0; border-radius:14px; padding:28px; }
+.juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel ul.payment_methods { border:0; padding:0; margin:0; }
+.juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel .payment_box { background:none; color:#7c96a7; margin:6px 0 0; padding:0 0 0 27px; font:11px/1.8 'Segoe UI','Nirmala UI',sans-serif; }
+.juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel .payment_box::before { display:none; }
+.juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel ul.payment_methods:has(> li:only-child) > li > label { display:flex; align-items:center; gap:13px; }
+.juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel ul.payment_methods:has(> li:only-child) > li > label::before { content:''; display:inline-block; flex:0 0 16px; width:16px; height:16px; border:1px solid #236b9c; border-radius:50%; background:#236b9c; box-shadow:inset 0 0 0 3px #f5fbfe; }
+.juhani-order-flow .juhani-order-totals #shipping_method label { font-weight:400; color:#6f8596; font-size:11px; }
+.juhani-order-flow .woocommerce .shipping-calculator-form { text-align:left; font-size:11px; }
+@media(max-width:800px) {
+ .juhani-order-flow .jop-header-help { font-size:9px; }
+ .juhani-order-flow .jop-summary .juhani-order-totals tr { display:table-row; }
+ .juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel { padding:23px; }
+}
+@media(max-width:480px) {
+ .juhani-order-flow .jop-form-panel .woocommerce-billing-fields__field-wrapper { grid-template-columns:1fr; gap:20px; }
+ .juhani-order-flow .jop-title-copy .elementor-heading-title { font-size:34px; letter-spacing:-1.2px; }
+ .juhani-order-flow .jop-title-copy .jop-eyebrow { font-size:8px; letter-spacing:1.25px; }
+ .juhani-order-flow .jop-title-copy .jop-intro { font-size:11px; }
+ .juhani-order-flow .jop-quantity .quantity input.qty { width:24px; height:29px; font-size:10px; }
+ .juhani-order-flow .woocommerce .juhani-cart-table a.remove { width:19px; height:19px; font-size:18px; }
+ .juhani-order-flow .woocommerce-checkout #payment.jop-payment-panel { padding:22px 19px; }
+}
+@media (min-width:801px) {
+ .juhani-checkout-page .jop-checkout-layout { grid-template-columns:minmax(0,3fr) minmax(0,2fr); }
+}
+.juhani-checkout-page .jop-mini-item h3 { font-size:16px; line-height:1.45; overflow-wrap:anywhere; }
+.juhani-checkout-page .jop-mini-specs { font-size:12px; line-height:1.6; gap:4px 8px; margin-top:5px; color:#667d8d; }
+.juhani-checkout-page .juhani-checkout-quantity { font-size:13px; gap:6px; margin-top:8px; color:#667d8d; }
+.juhani-checkout-page .juhani-checkout-quantity button { flex:0 0 28px; width:28px; height:28px; font-size:16px; line-height:1; }
+.juhani-checkout-page .juhani-checkout-quantity > span:last-of-type { min-width:14px; text-align:center; }
+@media (max-width:1024px) {
+ .juhani-checkout-page .jop-mini-item { grid-template-columns:56px minmax(0,1fr); row-gap:8px; }
+ .juhani-checkout-page .jop-mini-item > strong { grid-column:2; justify-self:start; }
+}

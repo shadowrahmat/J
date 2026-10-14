@@ -1,0 +1,127 @@
+.juhani-cart-drawer { --jdp-navy:#123b60; --jdp-ink:#15374d; --jdp-blue:#236b9c; --jdp-muted:#8aa0ae; --jdp-line:#e3edf3; }
+dialog.juhani-cart-drawer { color:var(--jdp-ink); font:14px/1.6 "Segoe UI","Nirmala UI",Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+.juhani-cart-drawer * { box-sizing:border-box; }
+.juhani-cart-drawer a { color:inherit; text-decoration:none; }
+.juhani-cart-drawer button,.juhani-cart-drawer input { font:inherit; }
+.juhani-cart-drawer button { cursor:pointer; }
+.juhani-cart-drawer h1,.juhani-cart-drawer h2,.juhani-cart-drawer h3,.juhani-cart-drawer p { margin:0; }
+.juhani-cart-drawer :focus-visible { outline:2px solid #5ba6ce; outline-offset:4px; }
+.juhani-cart-drawer [hidden] { display:none; }
+dialog.juhani-cart-drawer { position:fixed; inset:0 0 0 auto; margin:0; border:0; padding:0; width:440px; max-width:100%; height:100dvh; max-height:100dvh; color:var(--jdp-ink); background:white; overflow:hidden; box-shadow:-20px 0 65px #071b3320; }
+dialog.juhani-cart-drawer::backdrop { background:#081f3a5e; backdrop-filter:blur(2px); }
+dialog.juhani-cart-drawer[open] { animation:juhani-order-drawer-enter .3s cubic-bezier(.2,.75,.2,1); }
+dialog.juhani-cart-drawer.is-closing { animation:juhani-order-drawer-exit .2s ease both; }
+.juhani-cart-drawer .jdp-shell { display:flex; flex-direction:column; height:100%; }
+.juhani-cart-drawer .jdp-header { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; padding:29px 28px 25px; border-bottom:1px solid var(--jdp-line); flex:0 0 auto; }
+.juhani-cart-drawer .jdp-eyebrow { display:block; color:#7c9db3; font-size:8px; font-weight:650; letter-spacing:1.4px; }
+.juhani-cart-drawer .jdp-title-row { display:flex; align-items:center; gap:13px; margin:5px 0 4px; }
+.juhani-cart-drawer .jdp-title-row h2 { font-size:29px; line-height:1.3; font-weight:700; letter-spacing:-1px; outline:none; }
+.juhani-cart-drawer .jdp-count { padding:3px 9px; border:1px solid #e1edf4; border-radius:20px; background:#f4f9fc; color:#83a0b3; font-size:9px; white-space:nowrap; }
+.juhani-cart-drawer .jdp-header p { color:#91a4b1; font-size:11px; }
+.juhani-cart-drawer .jdp-close { display:grid; place-items:center; width:33px; height:33px; margin-top:4px; border:1px solid #e1eaf1; border-radius:50%; background:white; color:#7c94a5; flex-shrink:0; transition:background .2s,color .2s; }
+.juhani-cart-drawer .jdp-close svg { width:16px; height:16px; }
+.juhani-cart-drawer .jdp-close:hover { color:var(--jdp-navy); background:#f0f7fb; }
+.juhani-cart-drawer .jdp-scroll { flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:0 28px 24px; scrollbar-width:thin; scrollbar-color:#d8e5ee transparent; }
+.juhani-cart-drawer .jdp-item { display:grid; grid-template-columns:87px minmax(0,1fr); gap:16px; padding:25px 0; border-bottom:1px solid var(--jdp-line); }
+.juhani-cart-drawer .jdp-photo { height:105px; border-radius:9px; overflow:hidden; background:#eef4f8; }
+.juhani-cart-drawer .jdp-photo img { display:block; width:100%; height:100%; object-fit:cover; }
+.juhani-cart-drawer .jdp-item-top { display:flex; justify-content:space-between; align-items:flex-start; gap:7px; }
+.juhani-cart-drawer .jdp-category { display:block; font-size:7px; letter-spacing:1.1px; color:#93a8b5; margin-bottom:4px; }
+.juhani-cart-drawer .jdp-item h3 { font-size:16px; line-height:1.35; font-weight:650; letter-spacing:-.4px; }
+.juhani-cart-drawer .jdp-remove { display:grid; place-items:center; flex-shrink:0; width:22px; height:22px; padding:0; border:0; background:transparent; color:#a5b6c0; border-radius:5px; }
+.juhani-cart-drawer .jdp-remove svg { width:14px; height:14px; }
+.juhani-cart-drawer .jdp-remove:hover { color:#b57d70; background:#fff4f1; }
+.juhani-cart-drawer .jdp-specs { display:flex; flex-wrap:wrap; gap:5px; margin-top:9px; }
+.juhani-cart-drawer .jdp-specs span { padding:2px 6px; border:1px solid #e6eef4; border-radius:4px; color:#7d96a7; font-size:8px; background:#f8fbfd; }
+.juhani-cart-drawer .jdp-item-bottom { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:15px; }
+.juhani-cart-drawer .jdp-quantity { display:flex; align-items:center; border:1px solid #dfe9f1; border-radius:7px; overflow:hidden; height:30px; background:white; }
+.juhani-cart-drawer .jdp-quantity button { width:27px; height:28px; border:0; background:transparent; color:#7199b3; font-size:14px; padding:0; }
+.juhani-cart-drawer .jdp-quantity button:hover { background:#edf6fc; }
+.juhani-cart-drawer .jdp-quantity input { width:25px; padding:0; min-width:0; color:var(--jdp-ink); text-align:center; border:0; background:transparent; font-size:10px; -moz-appearance:textfield; }
+.juhani-cart-drawer .jdp-quantity input::-webkit-inner-spin-button,.juhani-cart-drawer .jdp-quantity input::-webkit-outer-spin-button { -webkit-appearance:none; margin:0; }
+.juhani-cart-drawer .jdp-price { text-align:right; }
+.juhani-cart-drawer .jdp-price strong { display:block; color:var(--jdp-blue); font-size:16px; line-height:1.3; font-weight:650; }
+.juhani-cart-drawer .jdp-price small { font-size:8px; color:#9cafba; }
+.juhani-cart-drawer .jdp-help-note { display:flex; align-items:flex-start; gap:12px; background:#f5f9fc; border:1px solid #e5eff5; border-radius:9px; margin-top:25px; padding:16px; }
+.juhani-cart-drawer .jdp-help-symbol { width:23px; height:23px; display:grid; place-items:center; flex-shrink:0; border:1px solid #d8e8f3; border-radius:50%; color:#75a7c5; font-size:10px; }
+.juhani-cart-drawer .jdp-help-note strong { font-size:10px; font-weight:600; }
+.juhani-cart-drawer .jdp-help-note p { font-size:9px; color:#9bafbc; margin-top:1px; }
+.juhani-cart-drawer .jdp-help-note a { display:inline-flex; gap:14px; margin-top:7px; color:#6895b0; font-size:9px; font-weight:600; }
+.juhani-cart-drawer .jdp-footer { flex:0 0 auto; border-top:1px solid #dce9f2; background:#f6fafd; padding:23px 28px 18px; }
+.juhani-cart-drawer .jdp-subtotal { display:flex; justify-content:space-between; align-items:center; }
+.juhani-cart-drawer .jdp-subtotal > span { font-size:13px; font-weight:600; }
+.juhani-cart-drawer .jdp-subtotal strong { font-size:28px; line-height:1.25; font-weight:700; letter-spacing:-.8px; }
+.juhani-cart-drawer .jdp-delivery-note { margin:5px 0 19px; color:#93a8b6; font-size:10px; }
+.juhani-cart-drawer .jdp-checkout { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; padding:14px 17px; min-height:49px; border-radius:8px; background:var(--jdp-navy); color:white; font-size:12px; font-weight:600; transition:background .2s,box-shadow .2s,transform .2s; }
+.juhani-cart-drawer .jdp-checkout svg { width:18px; height:18px; }
+.juhani-cart-drawer .jdp-checkout:hover { background:#1d557d; box-shadow:0 7px 15px #123b6015; transform:translateY(-1px); }
+.juhani-cart-drawer .jdp-checkout[aria-disabled="true"] { opacity:.4; pointer-events:none; }
+.juhani-cart-drawer .jdp-view-cart { display:flex; justify-content:center; align-items:center; gap:12px; padding:11px; font-size:11px; color:#547f9b; }
+.juhani-cart-drawer .jdp-view-cart:hover { color:var(--jdp-navy); }
+.juhani-cart-drawer .jdp-cod-note { display:flex; justify-content:center; align-items:center; gap:6px; color:#8aa4b5; font-size:9px; margin-top:1px; }
+.juhani-cart-drawer .jdp-cod-note svg { width:13px; height:13px; color:#79a3ba; }
+.juhani-cart-drawer .jdp-demo-label { display:flex; justify-content:center; align-items:center; gap:5px; font-size:8px; color:#a7b8c3; margin-top:14px; }
+.juhani-cart-drawer .jdp-demo-label > span { width:4px; height:4px; border-radius:50%; background:#93bdd3; }
+.juhani-cart-drawer .jdp-empty { padding:48px 10px 35px; text-align:center; }
+.juhani-cart-drawer .jdp-empty > svg { width:47px; height:47px; color:#8db8d0; margin-bottom:15px; }
+.juhani-cart-drawer .jdp-empty h3 { font-size:23px; letter-spacing:-.7px; }
+.juhani-cart-drawer .jdp-empty p { color:#91a6b3; font-size:11px; margin-top:8px; }
+.juhani-cart-drawer .jdp-empty button { display:inline-block; background:#eff7fc; color:var(--jdp-blue); border:1px solid #dcebf4; border-radius:7px; padding:10px 15px; margin-top:20px; font-size:11px; }
+@keyframes juhani-order-drawer-enter { from { transform:translateX(100%); } to { transform:translateX(0); } }
+@keyframes juhani-order-drawer-exit { from { transform:translateX(0); } to { transform:translateX(100%); } }
+@media (max-width:600px) {
+    dialog.juhani-cart-drawer { width:min(440px,100%); }
+    .juhani-cart-drawer .jdp-header { padding:25px 23px 23px; }
+    .juhani-cart-drawer .jdp-scroll { padding-inline:23px; }
+    .juhani-cart-drawer .jdp-footer { padding:22px 23px 18px; padding-bottom:max(18px,env(safe-area-inset-bottom)); }
+}
+@media (max-width:360px) {
+    .juhani-cart-drawer .jdp-header { padding:23px 18px 20px; }
+    .juhani-cart-drawer .jdp-title-row h2 { font-size:27px; }
+    .juhani-cart-drawer .jdp-scroll { padding-inline:18px; }
+    .juhani-cart-drawer .jdp-item { grid-template-columns:75px minmax(0,1fr); gap:12px; padding-block:22px; }
+    .juhani-cart-drawer .jdp-photo { height:97px; }
+    .juhani-cart-drawer .jdp-item h3 { font-size:14px; }
+    .juhani-cart-drawer .jdp-specs { gap:3px; }
+    .juhani-cart-drawer .jdp-specs span { padding:2px 4px; font-size:7px; }
+    .juhani-cart-drawer .jdp-price strong { font-size:15px; }
+    .juhani-cart-drawer .jdp-item-bottom { gap:7px; }
+    .juhani-cart-drawer .jdp-quantity button { width:23px; }
+    .juhani-cart-drawer .jdp-quantity input { width:23px; }
+    .juhani-cart-drawer .jdp-footer { padding:20px 18px 16px; }
+    .juhani-cart-drawer .jdp-help-note { padding:13px; gap:10px; }
+}
+@media (max-height:650px) {
+    .juhani-cart-drawer .jdp-header { padding-top:18px; padding-bottom:17px; }
+    .juhani-cart-drawer .jdp-header p { display:none; }
+    .juhani-cart-drawer .jdp-footer { padding-top:16px; padding-bottom:12px; }
+    .juhani-cart-drawer .jdp-demo-label { margin-top:8px; }
+    .juhani-cart-drawer .jdp-delivery-note { margin-bottom:13px; }
+}
+@media (prefers-reduced-motion:reduce) {
+    dialog.juhani-cart-drawer[open],dialog.juhani-cart-drawer.is-closing { animation:none; }
+    .juhani-cart-drawer *,.juhani-cart-drawer *::before,.juhani-cart-drawer *::after { transition:none; }
+}
+
+.juhani-cart-drawer .elementor-menu-cart__container { display:none; }
+.juhani-cart-drawer.jdp-drawer { border-radius:0; }
+.juhani-cart-drawer .jdp-close,.juhani-cart-drawer .jdp-remove,.juhani-cart-drawer .jdp-quantity button { min-height:0; min-width:0; box-shadow:none; }
+.juhani-cart-drawer .jdp-close svg,.juhani-cart-drawer .jdp-remove svg { display:block; }
+.juhani-cart-drawer .jdp-browse { display:inline-block; background:#eff7fc; color:#236b9c; border:1px solid #dcebf4; border-radius:7px; padding:10px 15px; margin-top:20px; font-size:11px; }
+.juhani-cart-drawer .jdp-price .woocommerce-Price-currencySymbol,.juhani-cart-drawer .jdp-subtotal .woocommerce-Price-currencySymbol { font-size:.7em; }
+.juhani-cart-drawer .juhani-drawer-error { margin:15px 0 0; padding:12px; border:1px solid #f2dcd6; border-radius:7px; color:#a35846; background:#fff9f7; font-size:11px; }
+.juhani-cart-drawer .jdp-quantity button:disabled,.juhani-cart-drawer .jdp-remove:disabled { opacity:.4; cursor:wait; }
+.juhani-cart-drawer .jdp-close { padding:0; width:33px; height:33px; max-width:33px; line-height:1; }
+.juhani-cart-drawer .jdp-close svg { width:16px; min-width:16px; height:16px; }
+.juhani-cart-drawer.jdp-drawer .jdp-quantity input[type="number"] { width:25px; min-width:0; max-width:25px; height:28px; min-height:0; padding:0; border:0; border-radius:0; background:transparent; color:var(--jdp-ink); font:10px/28px 'Segoe UI','Nirmala UI',Arial,sans-serif; text-align:center; box-shadow:none; }
+.juhani-cart-drawer .jdp-title-row h2,.juhani-cart-drawer .jdp-item h3 { color:var(--jdp-ink); font-family:'Segoe UI','Nirmala UI',Arial,sans-serif; }
+@media(max-width:360px) {
+ .juhani-cart-drawer.jdp-drawer .jdp-quantity input[type="number"] { width:23px; max-width:23px; }
+}
+.juhani-cart-drawer .elementor-menu-cart__toggle .elementor-button:hover,
+.juhani-cart-drawer .elementor-menu-cart__toggle .elementor-button:focus {
+ background-color:transparent;
+ box-shadow:none;
+ transform:none;
+}
+.juhani-cart-drawer .elementor-menu-cart__toggle .elementor-button:focus:not(:focus-visible) { outline:none; }

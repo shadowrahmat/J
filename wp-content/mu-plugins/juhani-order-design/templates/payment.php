@@ -1,0 +1,4 @@
+<?php defined('ABSPATH')||exit;if(!wp_doing_ajax())do_action('woocommerce_review_order_before_payment');?>
+<section id="payment" class="woocommerce-checkout-payment jop-payment-panel"><div class="jop-section-title"><span class="jop-section-number">02</span><div><h2>Payment method</h2><p>A straightforward way to pay.</p></div></div>
+<?php if(WC()->cart&&WC()->cart->needs_payment()):?><ul class="wc_payment_methods payment_methods methods" aria-label="Payment methods"><?php if($available_gateways){foreach($available_gateways as $gateway)wc_get_template('checkout/payment-method.php',['gateway'=>$gateway]);}else{echo '<li>';wc_print_notice(apply_filters('woocommerce_no_available_payment_methods_message','Please fill in your details above to see available payment methods.'),'notice');echo '</li>';}?></ul><?php endif;?></section>
+<?php if(!wp_doing_ajax())do_action('woocommerce_review_order_after_payment');?>

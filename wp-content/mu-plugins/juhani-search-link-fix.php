@@ -56,11 +56,13 @@ add_action("wp_footer", function(){ ?>
     });
   }
   // Observe results container for live search injection
+  const observedContainers = new WeakSet();
   const tryObserve=()=>{
     const containers=document.querySelectorAll(".e-search-results-container, .e-search-results, .e-search-form, body");
     let ok=false;
     containers.forEach(el=>{
-      try{ const obs=new MutationObserver(enhanceSearchLinks); obs.observe(el, {childList:true, subtree:true}); ok=true; }catch(e){}
+      if(observedContainers.has(el)){ ok=true; return; }
+      try{ const obs=new MutationObserver(enhanceSearchLinks); obs.observe(el, {childList:true, subtree:true}); observedContainers.add(el); ok=true; }catch(e){}
     });
     return ok;
   };

@@ -1,0 +1,2 @@
+<?php defined('ABSPATH')||exit;remove_action('woocommerce_cart_is_empty','wc_empty_cart_message',10);do_action('woocommerce_cart_is_empty');add_action('woocommerce_cart_is_empty','wc_empty_cart_message',10);?>
+<section class="wc-empty-cart-message jop-cart-panel jop-empty-cart"><h3>Your next catch awaits.</h3><p>Your cart is empty. Find the right fishing gear for your next trip.</p><a class="jop-button" href="<?php echo esc_url(juhani_order_shop_url());?>">Explore our collection <span>→</span></a></section>

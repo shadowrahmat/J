@@ -1,4 +1,11 @@
 
+# BEGIN JUHANI PRIVATE PROJECT FILES
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^\.(?:git|review)(?:/|$) - [F,L,NC]
+</IfModule>
+# END JUHANI PRIVATE PROJECT FILES
+
 # BEGIN WordPress
 # The directives (lines) between "BEGIN WordPress" and "END WordPress" are
 # dynamically generated, and should only be modified via WordPress filters.

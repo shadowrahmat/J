@@ -83,12 +83,12 @@
 .elementor-1274 .jb-results-line{display:flex;justify-content:space-between;gap:20px;padding:23px 0;font-size:10px;color:#718896}
 .elementor-1274 .jb-results-line>span:last-child{font-family:'Segoe UI',Arial,sans-serif;font-size:8px;letter-spacing:1.4px}
 .elementor-1274 .jb-article-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.elementor-1274 .jb-article{display:flex;flex-direction:column;min-width:0;padding:10px;background:white;border:1px solid var(--jb-line);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
-.elementor-1274 .jb-article:hover{transform:translateY(-4px);border-color:#bed8e8;box-shadow:0 14px 30px #14374d0b}
+.jb-article-grid .jb-article{display:flex;flex-direction:column;min-width:0;padding:10px;background:white;border:1px solid var(--jb-line);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.jb-article-grid .jb-article:hover{transform:translateY(-4px);border-color:#bed8e8;box-shadow:0 14px 30px #14374d0b}
 .elementor-1274 .jb-article[hidden]{display:none}
 .elementor-1274 .jb-article-image{display:block;position:relative;overflow:hidden;aspect-ratio:1.52;background:#edf4f9}
 .elementor-1274 .jb-article-image img{height:100%;object-fit:contain;mix-blend-mode:multiply;padding:18px;transition:transform .35s}
-.elementor-1274 .jb-article:hover img{transform:scale(1.04)}
+
 .elementor-1274 .jb-image-arrow{position:absolute;right:12px;bottom:12px;width:34px;height:34px;display:grid;place-items:center;background:#fffffff0;color:var(--jb-blue);box-shadow:0 4px 12px #122e4310}
 .elementor-1274 .jb-image-arrow svg{width:17px;height:17px}
 .elementor-1274 .jb-article-copy{padding:21px 15px 14px;display:flex;flex-direction:column;flex:1}
@@ -238,4 +238,10 @@ body.elementor-page-1274 .entry-content{margin:0}
 .elementor-1274 .jb-library-end>.jb-native-marker{width:24px}
 }
 /* Follow the banner container native Top Margin control. */
-.elementor-1274 .jb-hero{margin-top:var(--margin-top,0px)}/* End custom CSS */
+.elementor-1274 .jb-hero{margin-top:var(--margin-top,0px)}
+
+@media (prefers-reduced-motion: reduce) {
+    .jb-article-grid .jb-article {
+        transition: none;
+    }
+}/* End custom CSS */

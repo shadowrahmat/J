@@ -225,14 +225,14 @@
 .elementor-1271 .ja-preview .ja-eyebrow .elementor-heading-title,.elementor-1271 .ja-preview .ja-small-label .elementor-heading-title,.elementor-1271 .ja-preview .ja-native-span .elementor-heading-title{font:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0}
 .elementor-1271 .ja-preview .ja-hero-copy>.elementor-widget-button,.elementor-1271 .ja-preview .ja-contact-buttons>.elementor-widget,.elementor-1271 .ja-preview .ja-breadcrumb>.elementor-widget{width:auto}
 .elementor-1271 .ja-preview .ja-button .elementor-button-content-wrapper{gap:24px}
-.elementor-1271 .ja-preview .ja-button .elementor-button-content-wrapper:after,.elementor-1271 .ja-preview .ja-link .elementor-button-content-wrapper:after,.elementor-1271 .ja-preview .ja-article-link .elementor-button-content-wrapper:after{content:'';display:block;width:20px;height:20px;flex-shrink:0;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/arrow.svg') center/contain no-repeat}
+.ja-preview .ja-button .elementor-button-content-wrapper:after,.ja-preview .ja-link .elementor-button-content-wrapper:after,.ja-preview .ja-article-link .elementor-button-content-wrapper:after{content:'';display:block;width:20px;height:20px;flex-shrink:0;background:currentColor;mask:var(--juhani-arrow-mask) center/contain no-repeat}
 .elementor-1271 .ja-preview .ja-link .elementor-button-content-wrapper{gap:20px}
 .elementor-1271 .ja-preview .ja-article-link .elementor-button-content-wrapper{gap:15px}
 .elementor-1271 .ja-preview .ja-link .elementor-button-content-wrapper:after{width:18px;height:18px}
 .elementor-1271 .ja-preview .ja-article-link .elementor-button-content-wrapper:after{width:16px;height:16px}
 .elementor-1271 .ja-preview .ja-button .elementor-button{gap:24px}
 .elementor-1271 .ja-preview .ja-phone .elementor-button-content-wrapper{gap:9px}
-.elementor-1271 .ja-preview .ja-phone .elementor-button-content-wrapper:before{content:'';width:17px;height:17px;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/phone.svg') center/contain no-repeat}
+.ja-preview .ja-phone .elementor-button-content-wrapper:before{content:'';width:17px;height:17px;background:currentColor;mask:var(--juhani-phone-mask) center/contain no-repeat}
 .elementor-1271 .ja-preview .ja-link,.elementor-1271 .ja-preview .ja-article-link,.elementor-1271 .ja-preview .ja-phone{width:fit-content}
 .elementor-1271 .ja-preview .ja-link .elementor-button,.elementor-1271 .ja-preview .ja-article-link .elementor-button,.elementor-1271 .ja-preview .ja-phone .elementor-button,.elementor-1271 .ja-preview .ja-plain-link .elementor-button{font:inherit;color:inherit}
 .elementor-1271 .ja-preview .ja-hero-note{width:auto}
@@ -261,7 +261,7 @@
 .elementor-1271 .ja-preview .ja-preview-note>.ja-native-inline{display:flex;align-items:center;gap:8px;width:auto}
 .elementor-1271 .ja-preview .ja-preview-note>.elementor-widget-button{width:auto}
 .elementor-1271 .ja-preview .ja-preview-note>.ja-plain-link .elementor-button-content-wrapper{gap:8px}
-.elementor-1271 .ja-preview .ja-preview-note>.ja-plain-link .elementor-button-content-wrapper:after{content:'';width:14px;height:14px;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/arrow.svg') center/contain no-repeat}
+.ja-preview .ja-preview-note>.ja-plain-link .elementor-button-content-wrapper:after{content:'';width:14px;height:14px;background:currentColor;mask:var(--juhani-arrow-mask) center/contain no-repeat}
 body.elementor-page-1271 .site-main{max-width:none;margin:0;padding:0}
 body.elementor-page-1271 .entry-content{margin:0}
 @media(max-width:1024px){ .elementor-1271 .ja-preview .ja-section-heading>.e-con{width:auto}.elementor-1271 .ja-preview .ja-rating>.e-con{width:auto}}

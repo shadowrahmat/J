@@ -200,12 +200,12 @@
 .elementor-1274 .jb-breadcrumb>.elementor-widget,.elementor-1274 .jb-meta>.elementor-widget,.elementor-1274 .jb-help-actions>.elementor-widget,.elementor-1274 .jb-hero-copy>.elementor-widget-button,.elementor-1274 .jb-feature-copy>.elementor-widget-button,.elementor-1274 .jb-card-footer>.elementor-widget{width:auto}
 .elementor-1274 .jb-hero-foot>.jb-native-inline>.elementor-widget-container,.elementor-1274 .jb-meta>.jb-native-inline>.elementor-widget-container,.elementor-1274 .jb-card-footer>.jb-native-inline>.elementor-widget-container,.elementor-1274 .jb-feature-badge>.elementor-widget-container{display:flex;align-items:center;gap:inherit}
 .elementor-1274 .jb-button .elementor-button-content-wrapper{gap:22px}
-.elementor-1274 .jb-native-arrow .elementor-button-content-wrapper:after{content:'';display:block;width:20px;height:20px;flex-shrink:0;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/arrow.svg') center/contain no-repeat}
+.jb-native-arrow .elementor-button-content-wrapper:after{content:'';display:block;width:20px;height:20px;flex-shrink:0;background:currentColor;mask:var(--juhani-arrow-mask) center/contain no-repeat}
 .elementor-1274 .jb-text-link .elementor-button-content-wrapper{gap:20px}
 .elementor-1274 .jb-text-link .elementor-button-content-wrapper:after{width:18px;height:18px}
 .elementor-1274 .jb-phone .elementor-button-content-wrapper{gap:9px}
 .elementor-1274 .jb-phone .elementor-button-content-wrapper:after{display:none}
-.elementor-1274 .jb-phone .elementor-button-content-wrapper:before{content:'';width:16px;height:16px;background:currentColor;mask:url('http://localhost/juhani/preview-assets/icons/phone.svg') center/contain no-repeat}
+.jb-phone .elementor-button-content-wrapper:before{content:'';width:16px;height:16px;background:currentColor;mask:var(--juhani-phone-mask) center/contain no-repeat}
 .elementor-1274 .jb-card-footer>.elementor-widget-button .elementor-button-content-wrapper{gap:12px}
 .elementor-1274 .jb-card-footer .jb-native-arrow .elementor-button-content-wrapper:after{width:16px;height:16px}
 .elementor-1274 .jb-hero-image>.elementor-widget-image,.elementor-1274 .jb-hero-image>.elementor-widget-image>.elementor-widget-container,.elementor-1274 .jb-feature-image>.elementor-widget-image,.elementor-1274 .jb-feature-image>.elementor-widget-image>.elementor-widget-container,.elementor-1274 .jb-article-image>.elementor-widget-image,.elementor-1274 .jb-article-image>.elementor-widget-image>.elementor-widget-container{height:100%}

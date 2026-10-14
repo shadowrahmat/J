@@ -280,23 +280,11 @@ add_action('wp_head', function () {
 }, 99);
 
 // ------------------------------------------------------------------
-// 15. Hero background WebP override (ChatGPT hero 2.18MB PNG -> 131KB WebP, 94% saving)
-//     No DB change; CSS-only progressive enhancement with image-set fallback.
-//     Element ID ccdbb65 is the hero container on Home (post 2/131). Override safely.
+// 15. Preload the native homepage Media Library background.
 // ------------------------------------------------------------------
 add_action('wp_head', function () {
-    // Only on front/home where hero exists; but output globally is harmless (selector only matches if element present)
-    $webp = '/juhani/wp-content/uploads/2026/09/ChatGPT-Image-Sep-10-2026-12_25_27-PM.webp';
-    $png  = '/juhani/wp-content/uploads/2026/09/ChatGPT-Image-Sep-10-2026-12_25_27-PM.png';
-    echo '<style id="juhani-hero-webp">'
-        . '.elementor-element-ccdbb65{background-image:url("' . esc_url($webp) . '")}'
-        . '@supports not (background-image:url("' . esc_url($webp) . '")){.elementor-element-ccdbb65{background-image:url("' . esc_url($png) . '")}}'
-        . '</style>' . "\n";
-    // Also preload hero WebP on home for LCP boost
-    if (is_front_page() || is_home() || (function_exists('is_shop') && is_shop())) {
-        // No, hero is only on front; limit preload to front to avoid extra request elsewhere
-        if (is_front_page() || (get_queried_object_id() == 2) || (get_queried_object_id() == 131)) {
-            echo '<link rel="preload" as="image" href="' . esc_url($webp) . '" fetchpriority="high">' . "\n";
-        }
-    }
+    if (!is_front_page()) return;
+    $ids = get_option('juhani_media_icons', []);
+    $hero = wp_get_attachment_url(absint($ids['hero'] ?? 0));
+    if ($hero) echo '<link rel="preload" as="image" href="' . esc_url($hero) . '" fetchpriority="high">' . "\n";
 }, 20);

@@ -14,8 +14,8 @@ function juhani_single_layout_enabled(): bool {
 
 add_action('wp_enqueue_scripts', function () {
     if (!juhani_single_layout_enabled()) return;
-    $file = ABSPATH . 'preview-assets/single-product.js';
-    wp_enqueue_script('juhani-editable-single-product', home_url('/preview-assets/single-product.js'), ['jquery', 'wc-add-to-cart-variation'], filemtime($file), true);
+    $file = __DIR__ . '/juhani-assets/js/single-product.js';
+    wp_enqueue_script('juhani-editable-single-product', content_url('/mu-plugins/juhani-assets/js/single-product.js'), ['jquery', 'wc-add-to-cart-variation'], filemtime($file), true);
     wp_localize_script('juhani-editable-single-product', 'juhaniSingleProductSettings', ['decimals'=>wc_get_price_decimals()]);
 }, 30);
 

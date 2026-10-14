@@ -73,6 +73,6 @@ add_action('wp_enqueue_scripts',function(){
         wp_enqueue_style('juhani-live-search-card');
         wp_add_inline_style('juhani-live-search-card',$settings['custom_css']);
     }
-    $path=ABSPATH.'preview-assets/live-product-search.js';
-    wp_enqueue_script('juhani-live-product-search-design',home_url('/preview-assets/live-product-search.js'),['elementor-frontend'],filemtime($path),true);
+    $path=__DIR__.'/juhani-assets/js/live-product-search.js';
+    wp_enqueue_script('juhani-live-product-search-design',content_url('/mu-plugins/juhani-assets/js/live-product-search.js'),['elementor-frontend'],filemtime($path),true);
 },40);

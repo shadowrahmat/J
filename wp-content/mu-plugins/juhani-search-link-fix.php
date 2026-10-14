@@ -4,6 +4,7 @@ if(!defined("ABSPATH")) exit;
 add_action("wp_footer", function(){ ?>
 <script id="juhani-search-link-fix-js">
 (function(){
+  const siteUrl = <?php echo wp_json_encode(home_url('/'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
   function enhanceSearchLinks(){
     const items = document.querySelectorAll(".e-search-results .e-loop-item, .e-search-results-container .e-loop-item, .e-search-results .elementor-1212, .e-search-results-container .elementor-1212");
     items.forEach(item=>{
@@ -16,7 +17,7 @@ add_action("wp_footer", function(){ ?>
       const m2=cls.match(/e-loop-item-(\d+)/);
       const postId=m?m[1]:(m2?m2[1]:null);
       if(!postId) return;
-      const permalink = "/juhani/?p=" + postId;
+      const permalink = new URL("?p=" + postId, siteUrl).href;
       // Link image — target any img inside image widget
       const imgWraps=item.querySelectorAll(".elementor-widget-image, .elementor-widget-theme-post-featured-image");
       imgWraps.forEach(w=>{

@@ -46,13 +46,14 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Frontend' ) ) {
 			return Woo_Variation_Swatches_Product_Page::instance();
 		}
 
-		public function get_compatibility() {
+		public function get_compatibility(): Woo_Variation_Swatches_Compatibility {
 			return Woo_Variation_Swatches_Compatibility::instance();
 		}
 
 		public function get_attribute_taxonomy_by_name( $attribute_name ) {
 
-			$transient_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy__%s', $attribute_name ) );
+			// @TODO: Clear on Update, Save and Delete
+			$transient_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'wvs_transient_taxonomy_name__%s', $attribute_name ) );
 
 			if ( ! taxonomy_exists( $attribute_name ) ) {
 				return false;
@@ -82,7 +83,8 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Frontend' ) ) {
 
 		public function get_attribute_taxonomy_by_id( $attribute_id ) {
 
-			$transient_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy_id__%s', $attribute_id ) );
+			// @TODO: Clear on Update, Save and Delete
+			$transient_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'wvs_transient_taxonomy_id__%s', $attribute_id ) );
 
 			$attribute_taxonomy = get_transient( $transient_key );
 			if ( false === $attribute_taxonomy ) {

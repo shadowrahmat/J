@@ -1,0 +1,844 @@
+/* Reusable Juhani catalog. All styling belongs to this manual component root. */
+.mixora-juhani-widget {
+    --mjc-columns: 3;
+    --mjc-columns-tablet: 2;
+    --mjc-columns-mobile: 2;
+    --mjc-gap: 23px;
+    --mjc-gap-tablet: 20px;
+    --mjc-gap-mobile: 17px;
+    --mjc-sidebar-width: 265px;
+    --mjc-sidebar-width-tablet: 235px;
+    --mjc-layout-gap: 32px;
+    --mjc-layout-gap-tablet: 24px;
+    --mjc-radius: 12px;
+    --mjc-accent: #236b9c;
+    --mjc-ink: #223747;
+    --mjc-line: #e1eaf0;
+    --mjc-navy: #122e43;
+    --mjc-muted: #657783;
+    width: 100%;
+    min-width: 0;
+    font: 400 16px/1.5 'Segoe UI', sans-serif;
+    color: var(--mjc-ink);
+    text-align: start;
+}
+
+.mixora-juhani-widget *,
+.mixora-juhani-widget *::before,
+.mixora-juhani-widget *::after {
+    box-sizing: border-box;
+}
+
+.mixora-juhani-widget [hidden][hidden] {
+    display: none;
+}
+
+.mixora-juhani-widget a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.mixora-juhani-widget button,
+.mixora-juhani-widget input,
+.mixora-juhani-widget select {
+    margin: 0;
+    max-width: 100%;
+    box-shadow: none;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+.mixora-juhani-widget button {
+    cursor: pointer;
+}
+
+.mixora-juhani-widget svg {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.mixora-juhani-widget .mjc-sr-only,
+.mixora-juhani-widget .jsp-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.mixora-juhani-widget .mjc-layout {
+    display: grid;
+    grid-template-columns: var(--mjc-sidebar-width) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--mjc-layout-gap);
+    width: 100%;
+}
+
+.mixora-juhani-widget .mjc-sidebar,
+.mixora-juhani-widget .mjc-results {
+    min-width: 0;
+}
+
+.mixora-juhani-widget .mjc-panel {
+    width: 100%;
+    padding: 21px 20px;
+    border: 1px solid var(--mjc-line);
+    border-radius: var(--mjc-radius);
+    background: #fff;
+}
+
+.mixora-juhani-widget .mjc-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 9px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--mjc-line);
+}
+
+.mixora-juhani-widget .mjc-panel-heading h3 {
+    margin: 0;
+    color: var(--mjc-ink);
+    font: 600 14px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-panel-heading button {
+    display: none;
+    padding: 8px;
+    border: 0;
+    border-radius: var(--mjc-radius);
+    color: var(--mjc-accent);
+    background: #f0f7fc;
+    font: 600 12px/1.8 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-panel-heading button svg {
+    width: 12px;
+    height: 12px;
+}
+
+.mixora-juhani-widget .mjc-reset-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 9px;
+    min-height: 46px;
+    padding: 19px 0 3px;
+}
+
+.mixora-juhani-widget .mjc-reset-row > span {
+    color: #8a9eac;
+    font: 600 8px/1.85 'Segoe UI', sans-serif;
+    letter-spacing: 1.8px;
+}
+
+.mixora-juhani-widget .mjc-reset-row button {
+    padding: 0;
+    border: 0;
+    border-radius: var(--mjc-radius);
+    background: transparent;
+    color: var(--mjc-accent);
+    font: 600 10px/1.8 'Segoe UI', sans-serif;
+    text-decoration: underline;
+}
+
+.mixora-juhani-widget .mjc-reset-row button:hover {
+    color: var(--mjc-navy);
+}
+
+.mixora-juhani-widget .mjc-group {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--mjc-line);
+}
+
+.mixora-juhani-widget .mjc-group > summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 15px 0;
+    list-style: none;
+    color: var(--mjc-ink);
+    font: 600 11px/1.6 'Segoe UI', sans-serif;
+    cursor: pointer;
+}
+
+.mixora-juhani-widget .mjc-group > summary::-webkit-details-marker {
+    display: none;
+}
+
+.mixora-juhani-widget .mjc-group > summary:hover {
+    color: var(--mjc-accent);
+}
+
+.mixora-juhani-widget .mjc-group-icon {
+    width: 11px;
+    height: 11px;
+}
+
+.mixora-juhani-widget .mjc-group[open] .mjc-group-icon path:last-child {
+    display: none;
+}
+
+.mixora-juhani-widget .mjc-group-body {
+    display: flow-root;
+    min-width: 0;
+}
+
+.mixora-juhani-widget .jsp-filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 13px 0 0;
+}
+
+.mixora-juhani-widget .jsp-filter-options label {
+    position: relative;
+    min-width: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.mixora-juhani-widget .jsp-filter-options input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+.mixora-juhani-widget .jsp-filter-options label > span {
+    display: block;
+    min-width: 37px;
+    padding: 8px 10px;
+    border: 1px solid #dae5ed;
+    border-radius: var(--mjc-radius);
+    background: #fff;
+    color: #617b8e;
+    font: 400 10px/1.6 'Segoe UI', sans-serif;
+    text-align: center;
+    transition: background .15s, color .15s, border-color .15s;
+}
+
+.mixora-juhani-widget .jsp-filter-options label:hover > span {
+    border-color: #9cbdd3;
+    color: var(--mjc-accent);
+}
+
+.mixora-juhani-widget .jsp-filter-options input:checked + span {
+    border-color: var(--mjc-navy);
+    background: var(--mjc-navy);
+    color: #fff;
+}
+
+.mixora-juhani-widget .jsp-filter-options input:focus-visible + span {
+    outline: 3px solid var(--mjc-accent);
+    outline-offset: 3px;
+}
+
+.mixora-juhani-widget .jsp-number-options {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mixora-juhani-widget .jsp-number-options label > span {
+    min-width: 0;
+    padding-inline: 3px;
+}
+
+.mixora-juhani-widget .jsp-price-inputs {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: end;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.mixora-juhani-widget .jsp-price-inputs label {
+    min-width: 0;
+    margin: 0;
+}
+
+.mixora-juhani-widget .jsp-price-inputs label > span {
+    display: block;
+    margin-bottom: 6px;
+    color: #8a9ba7;
+    font: 400 9px/1.5 'Segoe UI', sans-serif;
+}
+
+/* These are the current shop's computed field styles, including its kit font. */
+.mixora-juhani-widget .jsp-price-inputs input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    padding: 11px 15px;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    background: #f5f5f5;
+    color: #4a595a;
+    font: 400 16px/1.5 Poppins, sans-serif;
+    transition: border-color .3s;
+}
+
+.mixora-juhani-widget .jsp-price-inputs > span {
+    line-height: 38px;
+    color: #8a9ba7;
+}
+
+.mixora-juhani-widget .jsp-price-inputs ~ small {
+    display: block;
+    margin-top: 9px;
+    color: #8b9da9;
+    font: 400 12.8px/1.8 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .jsp-price-error {
+    margin: 0 0 14.4px;
+    color: #a03c35;
+    font: 400 10px/1.8 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-help {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 23px 21px;
+    border: 1px solid #dfebf3;
+    border-radius: var(--mjc-radius);
+    background: #f0f7fc;
+}
+
+.mixora-juhani-widget .mjc-help > svg,
+.mixora-juhani-widget .mjc-help > img {
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin-bottom: 2px;
+    color: var(--mjc-accent);
+}
+
+.mixora-juhani-widget .mjc-help h3 {
+    width: 100%;
+    margin: 11px 0 9px;
+    color: var(--mjc-ink);
+    font: 600 16px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-help p {
+    width: 100%;
+    margin: 0 0 30.4px;
+    color: var(--mjc-muted);
+    font: 400 11px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-help a {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 9px;
+    min-height: 24px;
+    color: var(--mjc-accent);
+    font: 600 11px/1.8 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-help a svg {
+    width: 11px;
+    height: 11px;
+    margin-top: 4px;
+}
+
+.mixora-juhani-widget .mjc-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 19px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--mjc-line);
+}
+
+.mixora-juhani-widget .mjc-collection {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+}
+
+.mixora-juhani-widget .mjc-collection strong {
+    color: var(--mjc-ink);
+    font: 600 15px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-result-status {
+    color: #8297a5;
+    font: 400 10px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 9px;
+    min-width: 0;
+}
+
+.mixora-juhani-widget .mjc-open-filters {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 10px 13px;
+    border: 1px solid var(--mjc-line);
+    border-radius: var(--mjc-radius);
+    color: var(--mjc-ink);
+    background: #fff;
+    font: 600 11px/1.8 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-open-filters svg {
+    width: 11px;
+    height: 11px;
+}
+
+.mixora-juhani-widget .mjc-filter-count {
+    color: var(--mjc-accent);
+    font: 600 9px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-apply {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 21px;
+    padding: 11px 14px;
+    border: 1px solid var(--mjc-navy);
+    border-radius: var(--mjc-radius);
+    background: var(--mjc-navy);
+    color: #fff;
+    font: 600 12px/1.8 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-search {
+    display: block;
+    margin: 12px 0;
+    color: var(--mjc-muted);
+    font-size: 12px;
+}
+
+.mixora-juhani-widget .mjc-search input {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px;
+    border: 1px solid var(--mjc-line);
+    border-radius: var(--mjc-radius);
+    background: #fff;
+    color: var(--mjc-ink);
+    font: inherit;
+}
+
+.mixora-juhani-widget .mjc-sort {
+    display: block;
+    min-width: 0;
+    margin: 0;
+}
+
+.mixora-juhani-widget .mjc-sort select {
+    display: block;
+    width: 192px;
+    min-width: 0;
+    min-height: 44px;
+    padding: 10px 32px 10px 14px;
+    border: 1px solid #d8e5ee;
+    border-radius: var(--mjc-radius);
+    background: #fff;
+    color: var(--mjc-muted);
+    font: 400 13px/1.5 'Segoe UI', sans-serif;
+    cursor: pointer;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.mixora-juhani-widget .mjc-sort select:hover {
+    border-color: #9cbdd3;
+}
+
+.mixora-juhani-widget .mjc-active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.mixora-juhani-widget .mjc-active-filters:empty {
+    display: none;
+}
+
+.mixora-juhani-widget .mjc-active-filters button {
+    display: inline-block;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 30px;
+    border: 0;
+    border-radius: 3px;
+    color: #fff;
+    background: #4ca2d9;
+    font: 500 14.4px/1.5 Arimo, sans-serif;
+    transition: .3s;
+}
+
+.mixora-juhani-widget .mjc-active-filters svg {
+    display: inline;
+    vertical-align: baseline;
+    width: 12px;
+    height: 12px;
+}
+
+.mixora-juhani-widget .mjc-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--mjc-columns), minmax(0, 1fr));
+    gap: var(--mjc-gap);
+}
+
+.mixora-juhani-widget .mjc-product {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--mjc-line);
+    border-radius: var(--mjc-radius);
+    background: #fff;
+    overflow: hidden;
+}
+
+.mixora-juhani-widget .mjc-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--mjc-radius);
+    background: #eef4f8;
+    overflow: hidden;
+}
+
+.mixora-juhani-widget .mjc-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin: 0;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.mixora-juhani-widget .mjc-product-body {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px 17px;
+}
+
+.mixora-juhani-widget .mjc-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 24px;
+}
+
+.mixora-juhani-widget .mjc-category {
+    color: #8a9eac;
+    font: 400 8px/1.85 'Segoe UI', sans-serif;
+    letter-spacing: 1.3px;
+}
+
+.mixora-juhani-widget .mjc-stock {
+    color: #548271;
+    font: 400 9px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-title {
+    margin: 11px 0 12px;
+    padding: 0;
+    color: var(--mjc-ink);
+    font: 600 18px/1.5 'Segoe UI', sans-serif;
+    letter-spacing: normal;
+}
+
+.mixora-juhani-widget .mjc-title a {
+    color: inherit;
+    font: inherit;
+}
+
+.mixora-juhani-widget .mjc-specs {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 24px;
+    margin-bottom: 17px;
+    color: #607e92;
+    font: 400 10px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-specs small {
+    font-size: 80%;
+}
+
+.mixora-juhani-widget .mjc-price {
+    margin-bottom: 18px;
+    color: var(--mjc-navy);
+    font: 600 16px/1.5 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-price del {
+    opacity: .6;
+}
+
+.mixora-juhani-widget .mjc-price ins {
+    background: transparent;
+    text-decoration: none;
+}
+
+.mixora-juhani-widget .mjc-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    border: 1px solid #d9e6ef;
+    border-radius: var(--mjc-radius);
+    color: var(--mjc-accent);
+    background: #fff;
+    font: 600 10px/1.8 'Segoe UI', sans-serif;
+    text-align: center;
+    transition: background .2s, color .2s;
+}
+
+.mixora-juhani-widget .mjc-action > span {
+    min-width: 0;
+}
+
+.mixora-juhani-widget .mjc-action svg {
+    width: 1em;
+    height: 1em;
+}
+
+.mixora-juhani-widget .mjc-action:hover {
+    color: #fff;
+    background: var(--mjc-navy);
+}
+
+.mixora-juhani-widget .mjc-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 55px 25px;
+    border: 1px solid var(--mjc-line);
+    border-radius: var(--mjc-radius);
+    background: #f4f8fb;
+    text-align: center;
+}
+
+.mixora-juhani-widget .mjc-empty > svg,
+.mixora-juhani-widget .mjc-empty > img {
+    width: 28px;
+    height: 28px;
+    color: var(--mjc-accent);
+}
+
+.mixora-juhani-widget .mjc-empty h3 {
+    width: 100%;
+    margin: 15px 0 12px;
+    color: var(--mjc-ink);
+    font: 600 23px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-empty p {
+    width: 100%;
+    margin: 0 0 37.4px;
+    color: var(--mjc-muted);
+    font: 400 13px/1.85 'Segoe UI', sans-serif;
+}
+
+.mixora-juhani-widget .mjc-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    margin: 33px 0 0;
+    color: #8a9ba7;
+    font: 400 10px/1.85 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+.mixora-juhani-widget .mjc-dialog {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(90vw, 380px);
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: var(--mjc-radius) 0 0 var(--mjc-radius);
+    background: transparent;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.mixora-juhani-widget .mjc-dialog:not([open]) {
+    display: none;
+}
+
+.mixora-juhani-widget .mjc-dialog::backdrop {
+    background: #071c2f80;
+    backdrop-filter: blur(3px);
+}
+
+.mixora-juhani-widget button:focus-visible,
+.mixora-juhani-widget a:focus-visible,
+.mixora-juhani-widget summary:focus-visible,
+.mixora-juhani-widget select:focus-visible,
+.mixora-juhani-widget .jsp-price-inputs input:focus-visible {
+    outline: 2px solid var(--mjc-accent);
+    outline-offset: 2px;
+}
+
+@media (max-width: 1024px) {
+    .mixora-juhani-widget .mjc-layout {
+        grid-template-columns: var(--mjc-sidebar-width-tablet) minmax(0, 1fr);
+        gap: var(--mjc-layout-gap-tablet);
+    }
+
+    .mixora-juhani-widget .mjc-panel {
+        padding: 20px 17px;
+    }
+
+    .mixora-juhani-widget .mjc-grid {
+        grid-template-columns: repeat(var(--mjc-columns-tablet), minmax(0, 1fr));
+        gap: var(--mjc-gap-tablet);
+    }
+
+    .mixora-juhani-widget .mjc-title {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 767px) {
+    .mixora-juhani-widget .mjc-layout {
+        display: block;
+    }
+
+    .mixora-juhani-widget .mjc-sidebar:empty,
+    .mixora-juhani-widget .mjc-sidebar > .mjc-panel,
+    .mixora-juhani-widget .mjc-help {
+        display: none;
+    }
+
+    .mixora-juhani-widget .mjc-dialog .mjc-panel {
+        min-height: 100%;
+        padding: 23px 22px 30px;
+    }
+
+    .mixora-juhani-widget .mjc-panel-heading button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mixora-juhani-widget .mjc-apply {
+        display: inline-flex;
+    }
+
+    .mixora-juhani-widget .jsp-filter-options label > span {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .mixora-juhani-widget .jsp-number-options {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .mixora-juhani-widget .jsp-number-options label > span {
+        padding-inline: 2px;
+    }
+
+    .mixora-juhani-widget .jsp-price-inputs input {
+        height: 43px;
+    }
+
+    .mixora-juhani-widget .mjc-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mixora-juhani-widget .mjc-collection {
+        justify-content: space-between;
+    }
+
+    .mixora-juhani-widget .mjc-tools {
+        gap: 12px;
+    }
+
+    .mixora-juhani-widget .mjc-open-filters {
+        display: inline-flex;
+        flex: 0 0 auto;
+    }
+
+    .mixora-juhani-widget .mjc-sort {
+        flex: 1 1 0;
+    }
+
+    .mixora-juhani-widget .mjc-sort select {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .mixora-juhani-widget .mjc-grid {
+        grid-template-columns: repeat(var(--mjc-columns-mobile), minmax(0, 1fr));
+        gap: var(--mjc-gap-mobile);
+    }
+
+    .mixora-juhani-widget .mjc-product-body {
+        padding: 14px 12px 12px;
+    }
+
+    .mixora-juhani-widget .mjc-title {
+        font-size: 15px;
+    }
+
+    .mixora-juhani-widget .mjc-specs {
+        flex-wrap: wrap;
+        margin-bottom: 13px;
+        font-size: 9px;
+    }
+
+    .mixora-juhani-widget .mjc-price {
+        margin-bottom: 14px;
+        font-size: 13px;
+    }
+
+    .mixora-juhani-widget .mjc-action {
+        padding: 9px 7px;
+        font-size: 9px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mixora-juhani-widget .jsp-filter-options label > span,
+    .mixora-juhani-widget .jsp-price-inputs input,
+    .mixora-juhani-widget .mjc-sort select,
+    .mixora-juhani-widget .mjc-action {
+        transition: none;
+    }
+}

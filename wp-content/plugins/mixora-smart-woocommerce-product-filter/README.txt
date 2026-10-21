@@ -1,4 +1,23 @@
-Mixora Smart WooCommerce Product Filter v2.0.24
+Mixora Smart WooCommerce Product Filter v3.0.0
+
+New in v3.0.0
+- Elementor widget: search for "Mixora Product Filter" under General.
+- Drop the widget into a full-width container for the current Juhani filter/card design.
+- Native Content controls: categories, labels, optional catalog search, help card and links.
+- Native Style controls: responsive columns, product spacing, sidebar width/spacing, radius and colors.
+- Default design: 3 desktop columns, 2 tablet/mobile columns; mobile filters open in an accessible dialog.
+- Cards and filter options use current WooCommerce products, attributes, variation prices, images and stock.
+- Each widget filters independently; no page ID, preview folder, MU script or external font/icon request is needed.
+- The Juhani view filters the rendered catalog instantly in the browser, as the original Shop did.
+- Original AJAX shortcode, pagination and classic appearance remain compatible.
+- Juhani shortcode: [mixora_product_filter design="juhani"]
+- Category scope: [mixora_product_filter design="juhani" category_ids="12,34"]
+- CSS handoff: IMPLEMENTATION.md. Active styles: assets/juhani-catalog.css.
+- Requires WooCommerce; Elementor is needed only for the drag-and-drop widget.
+
+Bundled filled arrow/close/filter/plus/minus paths preserve the existing Font Awesome
+Free icons supplied by Elementor (icons: CC BY 4.0; https://fontawesome.com/license/free).
+SVG wrappers are adapted for the catalog and accordion state toggling.
 
 What changed in v2.0.22
 - Category-aware attribute options.

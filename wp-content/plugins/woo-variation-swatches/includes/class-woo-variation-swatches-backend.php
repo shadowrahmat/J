@@ -10,8 +10,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Backend' ) ) {
 		public string $type_dual_color_key      = 'is_dual_color';
 		public string $type_secondary_color_key = 'secondary_color';
 
-		protected static $instance = null;
-
 		protected $admin_menu;
 
 		protected function __construct() {
@@ -22,11 +20,12 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Backend' ) ) {
 		}
 
 		public static function instance() {
-			if ( is_null( self::$instance ) ) {
-				self::$instance = new self();
+			static $instance;
+			if ( null === $instance ) {
+				$instance = new self();
 			}
 
-			return self::$instance;
+			return $instance;
 		}
 
 		protected function includes() {
@@ -61,9 +60,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Backend' ) ) {
 
 
 			add_filter( 'woocommerce_json_search_found_product_attribute_terms', array( $this, 'add_visual_data_to_attribute_terms' ), 10, 2 );
-
-			// add_action('woocommerce_attribute_updated', array( $this, 'clear_attribute_transient_on_update' ), 10, 2 );
-			// add_action('woocommerce_attribute_deleted', array( $this, 'clear_attribute_transient_on_delete' ), 10, 3 );
 		}
 
 		public function activate_redirect() {
@@ -73,28 +69,6 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Backend' ) ) {
 				wp_redirect( $this->get_admin_menu()->get_settings_link( 'woo_variation_swatches', 'tutorial' ) );
 				exit;
 			}
-		}
-
-		public function clear_attribute_transient_on_update( $attribute_id, $data ) {
-			// Clear transient by taxonomy_id
-			$transient_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy_id__%s', $attribute_id ) );
-			delete_transient( $transient_key );
-
-			// Clear transient by taxonomy_name with pa_ prefixed.
-			$attribute_name = wc_attribute_taxonomy_name( $data['attribute_name'] );
-			$transient_key  = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy__%s', $attribute_name ) );
-
-			delete_transient( $transient_key );
-		}
-
-		public function clear_attribute_transient_on_delete( $attribute_id, $name, $taxonomy ) {
-			// Clear transient by taxonomy_id
-			$transient_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy_id__%s', $attribute_id ) );
-			delete_transient( $transient_key );
-
-			// Clear transient by taxonomy_name with pa_ prefixed.
-			$transient_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy__%s', $taxonomy ) );
-			delete_transient( $transient_key );
 		}
 
 		protected function init() {
@@ -220,19 +194,13 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Backend' ) ) {
 
 				<select multiple="multiple"
 						data-minimum_input_length="0"
-						data-limit="<?php
-						echo esc_attr( $term_limit ); ?>" data-return_id="id"
-						data-placeholder="<?php
-						esc_attr_e( 'Select values', 'woo-variation-swatches' ); ?>"
-						data-orderby="<?php
-						echo esc_attr( $attribute_orderby ); ?>"
+						data-limit="<?php echo esc_attr( $term_limit ); ?>" data-return_id="id"
+						data-placeholder="<?php esc_attr_e( 'Select values', 'woo-variation-swatches' ); ?>"
+						data-orderby="<?php echo esc_attr( $attribute_orderby ); ?>"
 						class="multiselect attribute_values wc-taxonomy-term-search"
-						name="attribute_values[<?php
-						echo esc_attr( $i ); ?>][]"
-						data-taxonomy="<?php
-						echo esc_attr( $attribute->get_taxonomy() ); ?>"
-						data-is-visual-attribute="<?php
-				        echo esc_attr( wc_bool_to_string( $is_visual_attribute ) ); ?>">
+						name="attribute_values[<?php echo esc_attr( $i ); ?>][]"
+						data-taxonomy="<?php echo esc_attr( $attribute->get_taxonomy() ); ?>"
+						data-is-visual-attribute="<?php echo esc_attr( wc_bool_to_string( $is_visual_attribute ) ); ?>">
 					<?php
 					$selected_terms = $attribute->get_terms();
 					$term_visuals   = array();
@@ -269,13 +237,10 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Backend' ) ) {
 					}
 					?>
 				</select>
-				<button class="button plus select_all_attributes"><?php
-					esc_html_e( 'Select all', 'woo-variation-swatches' ); ?></button>
-				<button class="button minus select_no_attributes"><?php
-					esc_html_e( 'Select none', 'woo-variation-swatches' ); ?></button>
-				<button class="button fr plus add_new_attribute"><?php
-					// @TODO: Create Dialog for Color, Image on Create value button click.
-					esc_html_e( 'Create value', 'woo-variation-swatches' ); ?></button>
+				<button class="button plus select_all_attributes"><?php esc_html_e( 'Select all', 'woo-variation-swatches' ); ?></button>
+				<button class="button minus select_no_attributes"><?php esc_html_e( 'Select none', 'woo-variation-swatches' ); ?></button>
+				<?php // @TODO: Create Dialog for Color, Image on Create value button click. ?>
+				<button class="button fr plus add_new_attribute"><?php esc_html_e( 'Create value', 'woo-variation-swatches' ); ?></button>
 
 				<?php
 			}
@@ -297,17 +262,17 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Backend' ) ) {
 				wp_register_script( $serializejson_handle, woo_variation_swatches()->assets_url( "/js/jquery.serializejson{$suffix}.js" ), array( 'jquery' ), '3.2.1', true );
 			}
 
-
-			wp_enqueue_script( 'wp-color-picker-alpha', woo_variation_swatches()->assets_url( "/js/wp-color-picker-alpha{$suffix}.js" ), array(
+			/*wp_enqueue_script( 'wp-color-picker-alpha', woo_variation_swatches()->assets_url( "/js/wp-color-picker-alpha{$suffix}.js" ), array(
 				'jquery',
 				'wp-color-picker',
-			), woo_variation_swatches()->version(), true );
+			), woo_variation_swatches()->version(), true );*/
 
 			wp_enqueue_script( 'gwp-form-field-dependency', untrailingslashit( plugin_dir_url( __FILE__ ) ) . '/getwooplugins/js/getwooplugins-form-field-dependency.js', array( 'jquery' ), filemtime( untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/getwooplugins/js/getwooplugins-form-field-dependency.js' ), true );
 
 			wp_enqueue_script( 'woo-variation-swatches-admin', woo_variation_swatches()->assets_url( "/js/admin{$suffix}.js" ), array(
 				'jquery',
-				'wp-color-picker-alpha',
+				'wp-color-picker',
+				// 'wp-color-picker-alpha',
 				'wc-enhanced-select',
 				'wp-api-fetch',
 				'wp-url',

@@ -1,12 +1,12 @@
 <?php
 
-	defined( 'ABSPATH' ) || exit;
+use Automattic\WooCommerce\Utilities\LoggingUtil;
+
+defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 
 	class Woo_Variation_Swatches {
-
-		protected static $instance = null;
 
 		public function __construct() {
 			$this->includes();
@@ -15,8 +15,8 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 			do_action( 'woo_variation_swatches_loaded', $this );
 		}
 
-		public function version() {
-			return esc_attr( WOO_VARIATION_SWATCHES_PLUGIN_VERSION );
+		public function version(): string {
+			return constant( 'WOO_VARIATION_SWATCHES_PLUGIN_VERSION' );
 		}
 
 		protected function define( $name, $value ) {
@@ -26,11 +26,12 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 		}
 
 		public static function instance() {
-			if ( is_null( self::$instance ) ) {
-				self::$instance = new self();
+			static $instance;
+			if ( null === $instance ) {
+				$instance = new self();
 			}
 
-			return self::$instance;
+			return $instance;
 		}
 
 		public function includes() {
@@ -49,8 +50,8 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 		/**
 		 * Hooks.
 		 *
-		 * @example: [wvs_show_archive_variation product_id="ID"]
 		 * @return void
+		 * @example: [wvs_show_archive_variation product_id="ID"]
 		 */
 		public function hooks(): void {
 			// Register with hook
@@ -106,11 +107,12 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 
 		public function get_option( $option, $default_value = null ) {
 
+			// @TODO: We have to clear it after settings saved or reset.
 			$cache_key   = $this->get_cache()->get_cache_key( 'global_settings' );
-			$cache_group = 'woo_variation_swatches';
+			$cache_group = $this->get_cache()->get_cache_group_name();
 			$options     = wp_cache_get( $cache_key, $cache_group );
 			if ( false === $options ) {
-				$options = GetWooPlugins_Admin_Settings::get_option( 'woo_variation_swatches' );
+				$options = $this->get_options();
 				wp_cache_set( $cache_key, $options, $cache_group );
 			}
 
@@ -123,12 +125,17 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 		}
 
 		public function get_options() {
-			$options = GetWooPlugins_Admin_Settings::get_option( 'woo_variation_swatches' );
+
+			static $options = null;
+
+			if ( null === $options ) {
+				$options = GetWooPlugins_Admin_Settings::get_option( 'woo_variation_swatches' );
+			}
 
 			return $options;
 		}
 
-		public function get_cache() {
+		public function get_cache(): Woo_Variation_Swatches_Manage_Cache {
 			return Woo_Variation_Swatches_Manage_Cache::instance();
 		}
 
@@ -136,48 +143,51 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 			load_plugin_textdomain( 'woo-variation-swatches', false, plugin_basename( dirname( WOO_VARIATION_SWATCHES_PLUGIN_FILE ) ) . '/languages' );
 		}
 
-		public function basename() {
+		public function basename(): string {
 			return basename( dirname( WOO_VARIATION_SWATCHES_PLUGIN_FILE ) );
 		}
 
-		public function plugin_basename() {
+		public function plugin_basename(): string {
 			return plugin_basename( WOO_VARIATION_SWATCHES_PLUGIN_FILE );
 		}
 
-		public function plugin_dirname() {
+		public function plugin_dirname(): string {
 			return dirname( plugin_basename( WOO_VARIATION_SWATCHES_PLUGIN_FILE ) );
 		}
 
-		public function plugin_path() {
+		public function plugin_path(): string {
 			return untrailingslashit( plugin_dir_path( WOO_VARIATION_SWATCHES_PLUGIN_FILE ) );
 		}
 
-		public function plugin_url() {
+		public function plugin_url(): string {
 			return untrailingslashit( plugins_url( '/', WOO_VARIATION_SWATCHES_PLUGIN_FILE ) );
 		}
 
-		public function images_url( $file = '' ) {
+		public function images_url( $file = '' ): string {
 			return untrailingslashit( plugin_dir_url( WOO_VARIATION_SWATCHES_PLUGIN_FILE ) . 'images' ) . $file;
 		}
 
-		public function org_assets_url( $file = '' ) {
-			$clean_file = ltrim( $file, '/');
-			return sprintf('https://ps.w.org/woo-variation-swatches/assets/%s?ver=%s', $clean_file, $this->version());
+		public function org_assets_url( $file = '' ): string {
+			$clean_file = ltrim( $file, '/' );
+
+			return sprintf( 'https://ps.w.org/woo-variation-swatches/assets/%s?ver=%s', $clean_file, $this->version() );
 		}
 
-		public function assets_url( $file = '' ) {
+		public function assets_url( $file = '' ): string {
 			return untrailingslashit( plugin_dir_url( WOO_VARIATION_SWATCHES_PLUGIN_FILE ) . 'assets' ) . $file;
 		}
 
-		public function assets_path( $file = '' ) {
+		public function assets_path( $file = '' ): string {
 			return $this->plugin_path() . '/assets' . $file;
 		}
 
-		public function assets_version( $file ) {
-			return filemtime( $this->assets_path( $file ) );
+		public function assets_version( $file ): int {
+			$make_time = filemtime( $this->assets_path( $file ) );
+
+			return false === $make_time ? current_time( 'U' ) : $make_time;
 		}
 
-		public function include_path( $file = '' ) {
+		public function include_path( $file = '' ): string {
 			return untrailingslashit( plugin_dir_path( WOO_VARIATION_SWATCHES_PLUGIN_FILE ) . 'includes' ) . $file;
 		}
 
@@ -193,7 +203,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 			return apply_filters( 'woo_variation_swatches_template_url', untrailingslashit( $this->plugin_url() ) . '/templates' );
 		}
 
-		public function sanitize_name( $value ) {
+		public function sanitize_name( $value ): string {
 			return wc_clean( rawurldecode( sanitize_title( wp_unslash( $value ) ) ) );
 		}
 
@@ -248,23 +258,46 @@ if ( ! class_exists( 'Woo_Variation_Swatches' ) ) {
 				include $located;
 			} else {
 				/* translators: %1$s = Template location, %2$s = Template Name. */
-				trigger_error( sprintf( esc_html__( '"Variation Swatches for WooCommerce" Plugin try to load "%1$s" but template "%2$s" was not found.', 'woo-variation-swatches' ), esc_html($located), esc_html($template_name) ), E_USER_WARNING ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
+				trigger_error( sprintf( esc_html__( '"Variation Swatches for WooCommerce" Plugin try to load "%1$s" but template "%2$s" was not found.', 'woo-variation-swatches' ), esc_html( $located ), esc_html( $template_name ) ), E_USER_WARNING ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
 			}
 
 			do_action( 'woo_variation_swatches_after_get_template', $template_name, $template_args );
 		}
 
-		public function is_pro() {
+		public function is_pro(): bool {
 			return false;
 		}
 
-		public function get_pro_product_id() {
+		public function get_pro_product_id(): int {
 			return 113;
 		}
 
 		public static function plugin_activated() {
 			update_option( 'woocommerce_show_marketplace_suggestions', 'no' );
 			update_option( 'woo_variation_swatches_do_activate_redirect', 'yes' );
+		}
+
+		public function is_wc_log_enabled(): bool {
+
+			$key = 'woocommerce_logs_logging_enabled';
+
+			$enabled = get_option( $key, true );
+			$enabled = filter_var( $enabled, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE );
+
+			if ( is_null( $enabled ) ) {
+				$enabled = true;
+			}
+
+			return $enabled;
+		}
+
+		public function log( string $message, $data = array() ): void {
+
+			if ( $this->is_wc_log_enabled() ) {
+				$source  = array( 'source' => $this->basename() );
+				$context = wp_parse_args( $data, $source );
+				wc_get_logger()->info( $message, $context );
+			}
 		}
 	}
 }

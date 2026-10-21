@@ -1,11 +1,14 @@
 <?php
 
-	defined( 'ABSPATH' ) || exit;
+defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Woo_Variation_Swatches_Manage_Cache' ) ) {
 	class Woo_Variation_Swatches_Manage_Cache {
 
-		protected static $instance = null;
+		// Group flush already done in this request.
+		protected bool $is_already_flushed = false;
+
+		protected array $cache_keys_deleted = array();
 
 		protected function __construct() {
 			$this->includes();
@@ -14,12 +17,13 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Manage_Cache' ) ) {
 			do_action( 'woo_variation_swatches_manage_cache_loaded', $this );
 		}
 
-		public static function instance() {
-			if ( is_null( self::$instance ) ) {
-				self::$instance = new self();
+		public static function instance(): Woo_Variation_Swatches_Manage_Cache {
+			static $instance;
+			if ( null === $instance ) {
+				$instance = new self();
 			}
 
-			return self::$instance;
+			return $instance;
 		}
 
 		protected function includes() {
@@ -47,8 +51,9 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Manage_Cache' ) ) {
 				'clear_cache_on_delete_product_transients'
 			) );
 
-			// Options
+			// Settings saved.
 			add_action( 'getwooplugins_settings_saved', array( $this, 'clear_cache_on_settings_modify' ) );
+			// Settings Reset.
 			add_action( 'getwooplugins_after_delete_options', array( $this, 'clear_cache_on_settings_modify' ) );
 
 			// Product label settings
@@ -69,7 +74,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Manage_Cache' ) ) {
 
 			if ( ! is_admin() && current_user_can( 'manage_woocommerce' ) && ( is_singular( 'product' ) || is_shop() ) ) {
 
-				$create_nonce = wp_create_nonce('woo_variation_swatches_clear_transient');
+				$create_nonce = wp_create_nonce( 'woo_variation_swatches_clear_transient' );
 
 				$url = remove_query_arg( array(
 					'variation_id',
@@ -78,31 +83,31 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Manage_Cache' ) ) {
 					'added-to-cart',
 				), add_query_arg( 'woo_variation_swatches_clear_transient', $create_nonce ) );
 
-				$node =  array(
-					'id'     => 'woo-variation-swatches-clear-transient',
-					'title'  => esc_html__( 'Clear swatches transient', 'woo-variation-swatches' ),
-					'href'   => esc_url( $url),
+				$node = array(
+					'id'    => 'woo-variation-swatches-clear-transient',
+					'title' => esc_html__( 'Clear swatches transient', 'woo-variation-swatches' ),
+					'href'  => esc_url( $url ),
 
 				);
-				$wp_admin_bar->add_menu($node);
+				$wp_admin_bar->add_menu( $node );
 			}
 		}
 
-		protected function init() {
+		protected function init(): void {
 			if ( function_exists( 'wp_cache_add_global_groups' ) ) {
-				wp_cache_add_global_groups( array( 'woo_variation_swatches' ) );
+				wp_cache_add_global_groups( array( $this->get_cache_group_name() ) );
 			}
 		}
 
-		public function get_key_with_language_suffix( $key ) {
-			return $this->get_cache_key( $key );
-		}
-
-		private function is_polylang() {
+		private function is_polylang(): bool {
 			return function_exists( 'pll_default_language' );
 		}
 
-		public function get_cache_key( $key ) {
+		public function get_cache_group_name(): string {
+			return 'woo_variation_swatches';
+		}
+
+		public function get_cache_key( $key ): string {
 
 			$suffix = '';
 
@@ -127,163 +132,157 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Manage_Cache' ) ) {
 				$suffix .= sprintf( '_%s', $current_currency );
 			}
 
-			$generated_cache_key = sprintf( '%s%s', $key, $suffix);
+			$generated_cache_key = sprintf( '%s%s', $key, $suffix );
 
-			if ( ! is_admin() && current_user_can( 'manage_options' ) && isset($_GET['woo_variation_swatches_clear_transient']) ) {
+			if ( ! is_admin() && current_user_can( 'manage_options' ) && isset( $_GET['woo_variation_swatches_clear_transient'] ) ) {
 
-				check_admin_referer('woo_variation_swatches_clear_transient', 'woo_variation_swatches_clear_transient');
-				$cache_group = 'woo_variation_swatches';
-				delete_transient( $generated_cache_key);
-				wp_cache_delete( $generated_cache_key, $cache_group );
-				do_action( 'woo_variation_swatches_clear_transient', $generated_cache_key, $cache_group);
+				check_admin_referer( 'woo_variation_swatches_clear_transient', 'woo_variation_swatches_clear_transient' );
+
+				if ( ! in_array( $generated_cache_key, $this->cache_keys_deleted ) ) {
+					delete_transient( $generated_cache_key );
+					wp_cache_delete( $generated_cache_key, $this->get_cache_group_name() );
+					woo_variation_swatches()->log( 'Delete cache by admin bar menu', array(
+						'key' => $generated_cache_key,
+					) );
+
+					$this->cache_keys_deleted[] = $generated_cache_key;
+
+					do_action( 'woo_variation_swatches_clear_transient', $generated_cache_key, $this->get_cache_group_name() );
+				}
 			}
 
 			return apply_filters( 'woo_variation_swatches_get_cache_key', $generated_cache_key, $key, $suffix );
 		}
 
 		// Clear Settings Cache
-		public function clear_cache_on_settings_modify() {
-
+		public function clear_cache_on_settings_modify(): void {
 			do_action( 'litespeed_purge_all', 'Woo Variation Swatches: purge all' );
-			wp_cache_delete( 'global_settings', 'woo_variation_swatches' );
-
-			wp_cache_flush();
-
-			$this->delete_last_changed();
-			$this->clear_cache_by_group();
+			wp_cache_delete( 'global_settings', $this->get_cache_group_name() );
+			woo_variation_swatches()->log( 'Clear global settings cache' );
 		}
 
 		// Clear transients Cache
-		public function clear_cache_on_delete_product_transients( $post_id ) {
-			if ( $post_id > 0 ) {
+		public function clear_cache_on_delete_product_transients( $post_id ): void {
 
-				$cache_group = 'woo_variation_swatches';
-
-				$cache_keys = array(
-					'variation_images_of__%s',
-					'product_settings_of__%s',
-					'variation_attributes_of__%s',
-					'available_variations__%s',
-					'available_variations_in_rest__%s'
-				);
-
-				foreach ( $cache_keys as $key_template ) {
-					$cache_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( $key_template, $post_id ) );
-					wp_cache_delete( $cache_key, $cache_group );
-				}
-
-				$cache_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'available_preview_variation__%s', $post_id ) );
-				wp_cache_delete( $cache_key, $cache_group );
-			}
-
-			$this->delete_last_changed();
+			// WooCommerce -> Status -> Tools -> Clear transients
 			$this->clear_cache_by_group();
 		}
 
 		// Clear Attributes Cache
-		public function clear_cache_on_attribute_added( $id, $data ) {
+		public function clear_cache_on_attribute_added( $id, $data ): void {
 
-			$transient_key       = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy__%s', wc_attribute_taxonomy_name( $data[ 'attribute_name' ] ) ) );
-			$transient_key_by_id = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy_id__%s', $id ) );
+			$transient_key       = $this->get_cache_key( sprintf( 'wvs_transient_taxonomy_name__%s', wc_attribute_taxonomy_name( $data['attribute_name'] ) ) );
+			$transient_key_by_id = $this->get_cache_key( sprintf( 'wvs_transient_taxonomy_id__%s', $id ) );
 
 			delete_transient( $transient_key );
 			delete_transient( $transient_key_by_id );
-			$this->delete_last_changed();
-			$this->clear_cache_by_group();
+			woo_variation_swatches()->log( 'delete_transient cache after attribute added', array(
+				'name'    => wc_attribute_taxonomy_name( $data['attribute_name'] ),
+				'id'    => $id,
+			) );
 		}
 
-		public function clear_cache_on_attribute_updated( $id, $data, $old_slug ) {
+		public function clear_cache_on_attribute_updated( $id, $data, $old_slug ): void {
 
-			$transient_key       = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy__%s', wc_attribute_taxonomy_name( $data[ 'attribute_name' ] ) ) );
-			$transient_key_old   = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy__%s', wc_attribute_taxonomy_name( $old_slug ) ) );
-			$transient_key_by_id = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy_id__%s', $id ) );
+			$transient_key       = $this->get_cache_key( sprintf( 'wvs_transient_axonomy_name__%s', wc_attribute_taxonomy_name( $data['attribute_name'] ) ) );
+			$transient_key_old   = $this->get_cache_key( sprintf( 'wvs_transient_taxonomy_name__%s', wc_attribute_taxonomy_name( $old_slug ) ) );
+			$transient_key_by_id = $this->get_cache_key( sprintf( 'wvs_transient_taxonomy_id__%s', $id ) );
 
 			delete_transient( $transient_key );
 			delete_transient( $transient_key_old );
 			delete_transient( $transient_key_by_id );
 
-			$this->delete_last_changed();
-			$this->clear_cache_by_group();
+			woo_variation_swatches()->log( 'delete_transient cache after attribute updated', array(
+				'old'    => wc_attribute_taxonomy_name( $old_slug ),
+				'name'    => wc_attribute_taxonomy_name( $data['attribute_name'] ),
+				'id'    => $id,
+			) );
 		}
 
-		public function clear_cache_on_attribute_deleted( $id, $name, $taxonomy ) {
+		public function clear_cache_on_attribute_deleted( $id, $name, $taxonomy ): void {
 
-			$transient_key       = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy__%s', $taxonomy ) );
-			$transient_key_by_id = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'woo_variation_swatches_cache_attribute_taxonomy_id__%s', $id ) );
+			$transient_key       = $this->get_cache_key( sprintf( 'wvs_transient_taxonomy_name__%s', $taxonomy ) );
+			$transient_key_by_id = $this->get_cache_key( sprintf( 'wvs_transient_taxonomy_id__%s', $id ) );
 
 			delete_transient( $transient_key );
 			delete_transient( $transient_key_by_id );
-			$this->delete_last_changed();
-			$this->clear_cache_by_group();
+
+			woo_variation_swatches()->log( 'delete_transient cache after attribute updated', array(
+				'name'    => $taxonomy,
+				'id'    => $id,
+			) );
 		}
 
 		// Clear Product Cache
 
 		public function clear_cache_on_product_modify( $variation_id ) {
-
-			$variation_product = wc_get_product( $variation_id );
-
-			if ( ! $variation_product ) {
-				return false;
-			}
-
-			$product_id  = $variation_product->get_parent_id();
-			$cache_group = 'woo_variation_swatches';
-
-			$cache_keys = array(
-				'variation_images_of__%s',
-				'product_settings_of__%s',
-				'variation_attributes_of__%s',
-				'available_variations__%s'
-			);
-
-			foreach ( $cache_keys as $key_template ) {
-				$cache_key = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( $key_template, $product_id ) );
-				wp_cache_delete( $cache_key, $cache_group );
-			}
-
-			$cache_key_1 = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'available_preview_variation__%s', $variation_id ) );
-			wp_cache_delete( $cache_key_1, $cache_group );
-
-			$this->delete_last_changed();
 			$this->clear_cache_by_group();
 		}
 
-		public function clear_cache_on_product_settings_modify( $product_id ) {
+		/**
+		 * Cache key with product version. Bumping the version invalidates
+		 * every language and currency variant of the key at once.
+		 *
+		 * @param string $key Key template, Ex: 'variation_images'.
+		 * @param int $product_id Product id.
+		 *
+		 * @return string
+		 */
+		public function get_product_cache_key( string $key, int $product_id ): string {
+			// $key = sprintf( '%s_product_%s__v%s', $key, $product_id, $this->get_product_version( $product_id ) );
+			$key = sprintf( '%s__p%s', $key, $product_id );
 
-			$cache_key   = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'product_settings_of__%s', $product_id ) );
-			$cache_group = 'woo_variation_swatches';
+			return $this->get_cache_key( $key );
+		}
 
-			wp_cache_delete( $cache_key, $cache_group );
+		// Expiration for persistent cache, so orphaned versioned keys do not stay forever.
+		public function get_cache_expiration(): int {
+			return absint( apply_filters( 'woo_variation_swatches_cache_expiration', DAY_IN_SECONDS ) );
+		}
 
-			$cache_key_2 = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'available_variations__%s', $product_id ) );
-			wp_cache_delete( $cache_key_2, $cache_group );
-
-			$cache_key_3 = woo_variation_swatches()->get_cache()->get_cache_key( sprintf( 'available_preview_variation__%s', $product_id ) );
-			wp_cache_delete( $cache_key_3, $cache_group );
-
-			$this->delete_last_changed();
+		public function clear_cache_on_product_settings_modify( int $product_id ): void {
 			$this->clear_cache_by_group();
 		}
 
-		public function get_last_changed() {
-			return wp_cache_get_last_changed( 'woo_variation_swatches' );
+		public function get_last_changed(): string {
+			return wp_cache_get_last_changed( $this->get_cache_group_name() );
 		}
 
-		public function delete_last_changed() {
-			wp_cache_delete( 'last_changed', 'woo_variation_swatches' );
+		public function delete_last_changed(): void {
+			wp_cache_delete( 'last_changed', $this->get_cache_group_name() );
 		}
 
-		public function update_last_changed() {
-			wp_cache_set( 'last_changed', microtime(), 'woo_variation_swatches' );
+		public function update_last_changed(): void {
+			// wp_cache_set_last_changed() added in WP 6.3.
+			if ( function_exists( 'wp_cache_set_last_changed' ) ) {
+				wp_cache_set_last_changed( $this->get_cache_group_name() );
+			} else {
+				wp_cache_set( 'last_changed', microtime(), $this->get_cache_group_name() );
+			}
 		}
 
-		public function clear_cache_by_group() {
+		/**
+		 * Flush cache group, at most once per request. Use only for global changes.
+		 *
+		 * @return bool True if group flushed or already flushed in this request.
+		 */
+		public function clear_cache_by_group(): bool {
+			if ( $this->is_already_flushed ) {
+				return true;
+			}
+
+			woo_variation_swatches()->log( 'Trying to clear cache by Group' );
+
 			if ( function_exists( 'wp_cache_flush_group' ) && method_exists( 'WP_Object_Cache', 'flush_group' ) ) {
 				if ( wp_cache_supports( 'flush_group' ) ) {
-					wp_cache_flush_group( 'woo_variation_swatches' );
+					wp_cache_flush_group( $this->get_cache_group_name() );
+					$this->is_already_flushed = true;
+
+					woo_variation_swatches()->log( 'All Cache Cleared by Group' );
 				}
 			}
+
+			return $this->is_already_flushed;
 		}
 	}
 }

@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Woo_Variation_Swatches_Compatibility' ) ) {
 	class Woo_Variation_Swatches_Compatibility {
 
-		protected static $_instance = null;
+		protected static $instance = null;
 
 		protected function __construct() {
 			$this->includes();
@@ -15,11 +15,11 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Compatibility' ) ) {
 		}
 
 		public static function instance() {
-			if ( is_null( self::$_instance ) ) {
-				self::$_instance = new self();
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new self();
 			}
 
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		protected function includes() {
@@ -34,7 +34,10 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Compatibility' ) ) {
 			), 10, 3 );
 
 
-			add_action('woo_variation_swatches_rest_get_product_variations', array( $this, 'yith_wcwtl_compatibility' ));
+			add_action( 'woo_variation_swatches_rest_get_product_variations', array(
+				$this,
+				'yith_compatibility'
+			) );
 
 		}
 
@@ -75,7 +78,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches_Compatibility' ) ) {
 		}
 
 		// YITH WooCommerce Waitlist Compatibility.
-		public function yith_wcwtl_compatibility() {
+		public function yith_compatibility() {
 			if ( class_exists( 'YITH_WCWTL_Frontend' ) ) {
 				$object = YITH_WCWTL_Frontend::get_instance();
 				add_filter( 'woocommerce_get_stock_html', array( $object, 'output_form_3_0' ), 20, 2 );

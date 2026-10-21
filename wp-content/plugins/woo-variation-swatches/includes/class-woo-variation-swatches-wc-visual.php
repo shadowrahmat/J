@@ -15,17 +15,17 @@ if ( ! class_exists( 'Woo_Variation_Swatches_WC_Visual' ) ) {
 		/**
 		 * Image visual type.
 		 */
-		public string  $type_image = 'image';
+		public string $type_image = 'image';
 
 		/**
 		 * Empty visual type.
 		 */
-		public string  $type_none = 'none';
+		public string $type_none = 'none';
 
-		public string  $attribute_type = 'wc-visual';
+		public string $attribute_type = 'wc-visual';
 
-		public string $type_color_key           = 'product_attribute_color';
-		public string $type_image_key           = 'product_attribute_image';
+		public string $type_color_key = 'product_attribute_color';
+		public string $type_image_key = 'product_attribute_image';
 
 		public static function instance(): self {
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'Woo_Variation_Swatches_WC_Visual' ) ) {
 		 * @since 10.9.0
 		 */
 		public function get_swatches_term_visuals( array $term_ids, string $image_size = 'thumbnail' ): array {
-			$visuals  = array();
+			$visuals = array();
 			// $term_ids = $this->prime_swatches_term_visual_caches( $term_ids );
 
 			foreach ( $term_ids as $term_id ) {

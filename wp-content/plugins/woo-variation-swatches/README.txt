@@ -2,11 +2,11 @@
 Contributors: EmranAhmed, getwooplugins, storepress
 Tags: variation swatches, woocommerce variation swatches, woocommerce attributes swatches, variation swatches for woocommerce, woocommerce color image button swatches
 Requires PHP: 7.4
-Requires at least: 6.4
+Requires at least: 6.8
 Tested up to: 7.1
 WC requires at least: 8.0
-WC tested up to: 11.1
-Stable tag: 2.5.0
+WC tested up to: 11.2
+Stable tag: 2.6.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -348,6 +348,19 @@ Yes. Premium adds radio button swatches, product-level (custom) attribute suppor
 12. Global Variation Color Swatches Attribute List Preview
 
 == Changelog ==
+
+= 2.6.0 - 20-10-2026 =
+* Added: Minimum WordPress version raised to 6.8
+* Added: WC 11.2+ compatibility.
+* Fixed: Saving a variation no longer triggers repeated object cache flushes
+* Fixed:  Clearing transients from the admin bar now clears each key only once per request
+* Fixed:  Asset version falls back to the current time when the file's modified time can't be read
+* Tweak: Rewrite the object cache layer and remove `Woo_Variation_Swatches_Cache`
+* Tweak: Flush the plugin cache group at most once per request
+* Tweak: Cache entries for each product now expire after one day (filter: `woo_variation_swatches_cache_expiration`)
+* Tweak: New transient key names for attribute taxonomy lookups (`wvs_transient_taxonomy_*`)
+* Tweak: Saving settings now clears only the cached global settings instead of the whole object cache
+* Tweak: Use the core `wp-color-picker` in admin instead of `wp-color-picker-alpha`
 
 = 2.5.0 - 17-09-2026 =
 * Added: WC 11.1+ compatibility.

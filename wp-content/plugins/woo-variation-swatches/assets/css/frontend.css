@@ -2,7 +2,7 @@
  * Variation Swatches for WooCommerce
  *
  * Author: Emran Ahmed ( emran.bd.08@gmail.com )
- * Date: 9/17/2026, 7:21:24 PM
+ * Date: 10/20/2026, 10:08:09 PM
  * Released under the GPLv3 license.
  */
 .woo-variation-swatches.wvs-tooltip {
@@ -179,6 +179,7 @@
   top: auto;
   bottom: var(--arrow-position);
 }
+
 .wvs-tooltip-position-bottom[data-wvstooltip]:before, .wvs-tooltip-position-bottom.wvs-has-image-tooltip:before {
   bottom: auto;
   top: calc(var(--tip-position) * -1);
@@ -188,30 +189,36 @@
 .wvs-theme-sober-child .product form.cart .variations .variable {
   margin-bottom: 15px !important;
 }
+
 .wvs-theme-sober .product form.cart .variations .variable-options,
 .wvs-theme-sober-child .product form.cart .variations .variable-options {
   border: 0 !important;
 }
+
 .wvs-theme-sober .product form.cart .variations .variable-options::after,
 .wvs-theme-sober-child .product form.cart .variations .variable-options::after {
   display: none;
 }
+
 .wvs-theme-sober .product form.cart .variations .arrow,
 .wvs-theme-sober-child .product form.cart .variations .arrow {
   display: none;
 }
+
 .wvs-theme-sober .product form.cart .variations .label,
 .wvs-theme-sober-child .product form.cart .variations .label {
   display: block;
   text-align: right;
   margin-right: 10px;
 }
+
 .wvs-theme-sober .product form.cart .variations .value,
 .wvs-theme-sober-child .product form.cart .variations .value {
   -webkit-box-flex: unset;
       -ms-flex-positive: unset;
           flex-grow: unset;
 }
+
 .wvs-theme-sober .product form.cart .variations select,
 .wvs-theme-sober-child .product form.cart .variations select {
   border: 1px solid #E4E6EB !important;
@@ -221,25 +228,30 @@
        text-align-last: left !important;
   -webkit-appearance: menulist-button !important;
 }
+
 .wvs-theme-sober .product form.cart .radio-variable-item,
 .wvs-theme-sober-child .product form.cart .radio-variable-item {
   margin: 5px;
   text-align: left;
 }
+
 .wvs-theme-sober .product form.cart .radio-variable-item:last-child,
 .wvs-theme-sober-child .product form.cart .radio-variable-item:last-child {
   margin-right: 0;
 }
+
 .wvs-theme-sober .product form.cart .radio-variable-item label,
 .wvs-theme-sober-child .product form.cart .radio-variable-item label {
   padding-left: 30px;
   margin: 0;
 }
+
 .wvs-theme-sober .product form.cart .radio-variable-item label::before,
 .wvs-theme-sober-child .product form.cart .radio-variable-item label::before {
   top: 0;
   border-radius: 100%;
 }
+
 .wvs-theme-sober .product form.cart .radio-variable-item label::after,
 .wvs-theme-sober-child .product form.cart .radio-variable-item label::after {
   top: 8px;
@@ -248,9 +260,11 @@
 .wvs-theme-shophistic-lite.woocommerce #main .entry-summary .variations {
   display: block !important;
 }
+
 .wvs-theme-shophistic-lite .ql_custom_variations {
   display: none !important;
 }
+
 .wvs-theme-shophistic-lite .radio-variable-item input[type=radio] {
   display: inline-block;
   margin: 0;
@@ -280,11 +294,13 @@
 .wvs-theme-kalium-child .image-variable-item img {
   width: 100% !important;
 }
+
 .wvs-theme-kalium .radio-variable-item input,
 .wvs-theme-kalium-child .radio-variable-item input {
   width: 16px !important;
   height: 16px !important;
 }
+
 .wvs-theme-kalium .woo-variation-items-wrapper .select-option-ui,
 .wvs-theme-kalium-child .woo-variation-items-wrapper .select-option-ui {
   display: none;
@@ -304,6 +320,7 @@
 .wvs-theme-thegem-elementor .woo-variation-items-wrapper .combobox-wrapper {
   display: none;
 }
+
 .wvs-theme-thegem .wvs-archive-variation-wrapper .variations,
 .wvs-theme-thegem-child .wvs-archive-variation-wrapper .variations,
 .wvs-theme-thegem-elementor .wvs-archive-variation-wrapper .variations {
@@ -314,6 +331,7 @@
 .wvs-theme-ushop-child .variations_form {
   overflow: visible !important;
 }
+
 .wvs-theme-ushop .single-product-summary .product_meta,
 .wvs-theme-ushop-child .single-product-summary .product_meta {
   display: inline-table;
@@ -323,10 +341,12 @@
 .wvs-theme-savoy-child .woo-variation-items-wrapper {
   position: relative !important;
 }
+
 .wvs-theme-savoy .woo-variation-items-wrapper .sod_select,
 .wvs-theme-savoy-child .woo-variation-items-wrapper .sod_select {
   display: none !important;
 }
+
 .wvs-theme-savoy .nm-variation-row,
 .wvs-theme-savoy-child .nm-variation-row {
   display: -webkit-box;
@@ -343,6 +363,7 @@
 .wvs-theme-woodmart-child .woo-variation-items-wrapper > .swatches-select {
   display: none;
 }
+
 .wvs-theme-woodmart .wd-attr-selected,
 .wvs-theme-woodmart-child .wd-attr-selected {
   display: none;
@@ -352,6 +373,7 @@
 .wvs-theme-gecko-child .variations .value.woo-variation-items-wrapper {
   border: 0 !important;
 }
+
 .wvs-theme-gecko .variations .value.woo-variation-items-wrapper::after,
 .wvs-theme-gecko-child .variations .value.woo-variation-items-wrapper::after {
   display: none !important;
@@ -363,6 +385,7 @@
   height: auto;
   width: auto;
 }
+
 .woo-variation-gallery-theme-massive-dynamic .woo-variation-items-wrapper .clear-selection .reset_variations,
 .woo-variation-gallery-theme-massive-dynamic-child .woo-variation-items-wrapper .clear-selection .reset_variations {
   font-size: 8px !important;
@@ -380,6 +403,7 @@
 .wvs-theme-claue-child .woo-variation-items-wrapper {
   border: none;
 }
+
 .wvs-theme-claue .woo-variation-items-wrapper::after,
 .wvs-theme-claue-child .woo-variation-items-wrapper::after {
   display: none;
@@ -394,6 +418,7 @@
 .wvs-theme-oxygen-child .woo-variation-items-wrapper .select-wrapper {
   display: none;
 }
+
 .wvs-theme-oxygen .variable-items-wrapper.radio-variable-wrapper .radio-variable-item input,
 .wvs-theme-oxygen-child .variable-items-wrapper.radio-variable-wrapper .radio-variable-item input {
   width: 18px;
@@ -418,10 +443,12 @@
 .wvs-theme-jevelin-child .sh-woo-layout table.variations td select.woo-variation-raw-select {
   display: none !important;
 }
+
 .wvs-theme-jevelin .sh-woo-layout table.variations,
 .wvs-theme-jevelin-child .sh-woo-layout table.variations {
   max-width: 100%;
 }
+
 .wvs-theme-jevelin .radio-variable-item label,
 .wvs-theme-jevelin-child .radio-variable-item label {
   line-height: 1 !important;

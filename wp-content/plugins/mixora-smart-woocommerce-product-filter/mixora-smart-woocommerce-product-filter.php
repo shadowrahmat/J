@@ -1,15 +1,22 @@
 <?php
 /**
  * Plugin Name: WooCommerce Product Filter
- * Description: User-friendly AJAX WooCommerce product filter with responsive sidebar/drawer, categories, category-aware attributes, price range, sorting, pagination and product cards.
- * Version: 2.0.31
+ * Description: Reusable Elementor shop filter and live WooCommerce product cards with the Juhani design, plus the original AJAX filter shortcode.
+ * Version: 3.0.0
  * Author: Marketorr
  * Requires Plugins: woocommerce
  */
 if (!defined('ABSPATH')) exit;
 
+require_once __DIR__ . '/includes/class-juhani-catalog.php';
+add_action('wp_enqueue_scripts', ['Mixora_Juhani_Catalog', 'register_assets']);
+add_action('elementor/widgets/register', function($widgets_manager) {
+    require_once __DIR__ . '/includes/class-elementor-catalog-widget.php';
+    $widgets_manager->register(new Mixora_Juhani_Catalog_Widget());
+});
+
 class Mixora_Smart_Product_Filter {
-    const VERSION = '2.0.31';
+    const VERSION = '3.0.0';
 
     public function __construct() {
         add_shortcode('mixora_product_filter', [$this, 'shortcode']);
@@ -224,6 +231,10 @@ class Mixora_Smart_Product_Filter {
 
     public function shortcode($atts) {
         if (!class_exists('WooCommerce')) return '<p>WooCommerce is required.</p>';
+
+        if (isset($atts['design']) && 'juhani' === sanitize_key($atts['design'])) {
+            return Mixora_Juhani_Catalog::render($atts);
+        }
 
         wp_enqueue_style('mixora-smart-wc-filter');
         wp_enqueue_style('mixora-red-hat-display', 'https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap', [], null);

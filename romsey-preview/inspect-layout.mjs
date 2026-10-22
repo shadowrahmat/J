@@ -1,0 +1,8 @@
+import {connect} from './browser.mjs';
+const b=await connect();
+await b.call('Emulation.setDeviceMetricsOverride',{width:320,height:960,deviceScaleFactor:1,mobile:false});
+console.log(await b.evaluate(`(()=>{const r=document.querySelector('.mrfw-romsey-native-01-banner').closest('[data-elementor-id]');const rr=r.getBoundingClientRect();return {width:innerWidth,overflow:[...r.querySelectorAll('*')].map(e=>({tag:e.tagName,cls:e.className,left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right,width:e.getBoundingClientRect().width,text:e.innerText?.slice(0,100)})).filter(x=>x.right>rr.right+1||x.left<rr.left-1).slice(0,25)}})()`));
+await b.call('Emulation.setDeviceMetricsOverride',{width:1440,height:960,deviceScaleFactor:1,mobile:false});
+console.log(await b.evaluate(`(()=>{const i=document.querySelector('.mrfw-romsey-native-blue-gum-image img');const p=i.closest('.elementor-widget');return {image:{width:i.clientWidth,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,style:getComputedStyle(i).cssText,computedWidth:getComputedStyle(i).width,maxWidth:getComputedStyle(i).maxWidth},widget:{width:p.clientWidth,padding:getComputedStyle(p).padding},card:{width:p.parentElement.clientWidth,padding:getComputedStyle(p.parentElement).padding}}})()`));
+console.log(await b.evaluate(`(()=>{const i=document.querySelector('.mrfw-romsey-native-blue-gum-image');const rules=[];function walk(rs){for(const r of rs){if(r.selectorText?.includes(i.dataset.id))rules.push(r.cssText);if(r.cssRules)walk(r.cssRules)}}for(const s of document.styleSheets){try{walk(s.cssRules)}catch{}}return rules})()`));
+b.close();

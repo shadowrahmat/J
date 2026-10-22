@@ -1,0 +1,836 @@
+{
+    "container": {
+        "content_width": {
+            "type": "select",
+            "default": "boxed",
+            "prefix_class": "e-con-"
+        },
+        "flex_items": {
+            "type": "heading"
+        },
+        "flex__is_row": {
+            "type": "hidden",
+            "default": "row",
+            "condition": {
+                "flex_direction": [
+                    "row",
+                    "row-reverse"
+                ],
+                "container_type": [
+                    "flex"
+                ]
+            }
+        },
+        "flex__is_column": {
+            "type": "hidden",
+            "default": "column",
+            "condition": {
+                "flex_direction": [
+                    "",
+                    "column",
+                    "column-reverse"
+                ],
+                "container_type": [
+                    "flex"
+                ]
+            }
+        },
+        "grid_items_grid": {
+            "type": "heading"
+        },
+        "grid_outline": {
+            "type": "switcher",
+            "default": "yes",
+            "condition": {
+                "container_type": [
+                    "grid"
+                ]
+            }
+        },
+        "grid__is_row": {
+            "type": "hidden",
+            "default": "row",
+            "condition": {
+                "grid_auto_flow": [
+                    "row"
+                ],
+                "container_type": [
+                    "grid"
+                ]
+            }
+        },
+        "grid__is_column": {
+            "type": "hidden",
+            "default": "column",
+            "condition": {
+                "grid_auto_flow": [
+                    "column"
+                ],
+                "container_type": [
+                    "grid"
+                ]
+            }
+        },
+        "background_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:not(.elementor-motion-effects-element-type-background), {{WRAPPER}} > .elementor-motion-effects-container > .elementor-motion-effects-layer": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "background_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "background_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "background_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "background_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:hover": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "background_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "background_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "background_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "background_overlay_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}::before, {{WRAPPER}} > .elementor-background-video-container::before, {{WRAPPER}} > .e-con-inner > .elementor-background-video-container::before, {{WRAPPER}} > .elementor-background-slideshow::before, {{WRAPPER}} > .e-con-inner > .elementor-background-slideshow::before, {{WRAPPER}} > .elementor-motion-effects-container > .elementor-motion-effects-layer::before": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "background_overlay_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "background_overlay_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "background_overlay_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "background_overlay_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:hover::before, {{WRAPPER}}:hover > .elementor-background-video-container::before, {{WRAPPER}}:hover > .e-con-inner > .elementor-background-video-container::before, {{WRAPPER}} > .elementor-background-slideshow:hover::before, {{WRAPPER}} > .e-con-inner > .elementor-background-slideshow:hover::before": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "background_overlay_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "background_overlay_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "background_overlay_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "section_border": {
+            "type": "section"
+        },
+        "tabs_border": {
+            "type": "tabs"
+        },
+        "tab_border": {
+            "type": "tab"
+        },
+        "tab_border_hover": {
+            "type": "tab"
+        },
+        "heading_grid_item": {
+            "type": "heading"
+        },
+        "position_description": {
+            "type": "alert"
+        },
+        "position": {
+            "type": "select",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}": "--position: {{VALUE}};"
+            }
+        },
+        "_tabs_positioning": {
+            "type": "tabs"
+        },
+        "_tab_positioning": {
+            "type": "tab"
+        },
+        "_tab_positioning_hover": {
+            "type": "tab"
+        }
+    },
+    "heading": {
+        "title_colors": {
+            "type": "tabs"
+        },
+        "title_colors_normal": {
+            "type": "tab"
+        },
+        "title_colors_hover": {
+            "type": "tab"
+        },
+        "_element_width": {
+            "type": "select",
+            "prefix_class": "elementor-widget__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_tablet": {
+            "type": "select",
+            "prefix_class": "elementor-widget-tablet__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_mobile": {
+            "type": "select",
+            "prefix_class": "elementor-widget-mobile__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_heading_grid_item": {
+            "type": "heading"
+        },
+        "_position_description": {
+            "type": "alert"
+        },
+        "_position": {
+            "type": "select",
+            "default": "",
+            "prefix_class": "elementor-"
+        },
+        "_tabs_positioning": {
+            "type": "tabs"
+        },
+        "_tab_positioning": {
+            "type": "tab"
+        },
+        "_tab_positioning_hover": {
+            "type": "tab"
+        },
+        "_background_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_background_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:hover": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_section_border": {
+            "type": "section"
+        },
+        "_tabs_border": {
+            "type": "tabs"
+        },
+        "_tab_border_normal": {
+            "type": "tab"
+        },
+        "_tab_border_hover": {
+            "type": "tab"
+        }
+    },
+    "text-editor": {
+        "link_colors": {
+            "type": "tabs"
+        },
+        "colors_normal": {
+            "type": "tab"
+        },
+        "colors_hover": {
+            "type": "tab"
+        },
+        "_element_width": {
+            "type": "select",
+            "prefix_class": "elementor-widget__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_tablet": {
+            "type": "select",
+            "prefix_class": "elementor-widget-tablet__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_mobile": {
+            "type": "select",
+            "prefix_class": "elementor-widget-mobile__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_heading_grid_item": {
+            "type": "heading"
+        },
+        "_position_description": {
+            "type": "alert"
+        },
+        "_position": {
+            "type": "select",
+            "default": "",
+            "prefix_class": "elementor-"
+        },
+        "_tabs_positioning": {
+            "type": "tabs"
+        },
+        "_tab_positioning": {
+            "type": "tab"
+        },
+        "_tab_positioning_hover": {
+            "type": "tab"
+        },
+        "_background_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_background_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:hover": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_section_border": {
+            "type": "section"
+        },
+        "_tabs_border": {
+            "type": "tabs"
+        },
+        "_tab_border_normal": {
+            "type": "tab"
+        },
+        "_tab_border_hover": {
+            "type": "tab"
+        }
+    },
+    "image": {
+        "_element_width": {
+            "type": "select",
+            "prefix_class": "elementor-widget__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_tablet": {
+            "type": "select",
+            "prefix_class": "elementor-widget-tablet__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_mobile": {
+            "type": "select",
+            "prefix_class": "elementor-widget-mobile__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_heading_grid_item": {
+            "type": "heading"
+        },
+        "_position_description": {
+            "type": "alert"
+        },
+        "_position": {
+            "type": "select",
+            "default": "",
+            "prefix_class": "elementor-"
+        },
+        "_tabs_positioning": {
+            "type": "tabs"
+        },
+        "_tab_positioning": {
+            "type": "tab"
+        },
+        "_tab_positioning_hover": {
+            "type": "tab"
+        },
+        "_background_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_background_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:hover": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_section_border": {
+            "type": "section"
+        },
+        "_tabs_border": {
+            "type": "tabs"
+        },
+        "_tab_border_normal": {
+            "type": "tab"
+        },
+        "_tab_border_hover": {
+            "type": "tab"
+        }
+    },
+    "icon-list": {
+        "icon_align": {
+            "type": "choose",
+            "prefix_class": "elementor-align-",
+            "default": ""
+        },
+        "icon_align_tablet": {
+            "type": "choose",
+            "prefix_class": "elementor-tablet-align-",
+            "default": ""
+        },
+        "icon_align_mobile": {
+            "type": "choose",
+            "prefix_class": "elementor-mobile-align-",
+            "default": ""
+        },
+        "icon_colors": {
+            "type": "tabs"
+        },
+        "icon_colors_normal": {
+            "type": "tab"
+        },
+        "icon_colors_hover": {
+            "type": "tab"
+        },
+        "text_colors": {
+            "type": "tabs"
+        },
+        "text_colors_normal": {
+            "type": "tab"
+        },
+        "text_colors_hover": {
+            "type": "tab"
+        },
+        "_element_width": {
+            "type": "select",
+            "prefix_class": "elementor-widget__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_tablet": {
+            "type": "select",
+            "prefix_class": "elementor-widget-tablet__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_mobile": {
+            "type": "select",
+            "prefix_class": "elementor-widget-mobile__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_heading_grid_item": {
+            "type": "heading"
+        },
+        "_position_description": {
+            "type": "alert"
+        },
+        "_position": {
+            "type": "select",
+            "default": "",
+            "prefix_class": "elementor-"
+        },
+        "_tabs_positioning": {
+            "type": "tabs"
+        },
+        "_tab_positioning": {
+            "type": "tab"
+        },
+        "_tab_positioning_hover": {
+            "type": "tab"
+        },
+        "_background_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_background_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:hover": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_section_border": {
+            "type": "section"
+        },
+        "_tabs_border": {
+            "type": "tabs"
+        },
+        "_tab_border_normal": {
+            "type": "tab"
+        },
+        "_tab_border_hover": {
+            "type": "tab"
+        }
+    },
+    "button": {
+        "align": {
+            "type": "choose",
+            "prefix_class": "elementor-align-",
+            "condition": [],
+            "default": ""
+        },
+        "align_tablet": {
+            "type": "choose",
+            "prefix_class": "elementor-tablet-align-",
+            "condition": [],
+            "default": ""
+        },
+        "align_mobile": {
+            "type": "choose",
+            "prefix_class": "elementor-mobile-align-",
+            "condition": [],
+            "default": ""
+        },
+        "background_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}} .elementor-button": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "background_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "background_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "background_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "button_background_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "button_background_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "button_background_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "button_background_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_element_width": {
+            "type": "select",
+            "prefix_class": "elementor-widget__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_tablet": {
+            "type": "select",
+            "prefix_class": "elementor-widget-tablet__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_element_width_mobile": {
+            "type": "select",
+            "prefix_class": "elementor-widget-mobile__width-",
+            "selectors": {
+                "{{WRAPPER}}": "width: {{VALUE}}; max-width: {{VALUE}}"
+            },
+            "default": ""
+        },
+        "_heading_grid_item": {
+            "type": "heading"
+        },
+        "_position_description": {
+            "type": "alert"
+        },
+        "_position": {
+            "type": "select",
+            "default": "",
+            "prefix_class": "elementor-"
+        },
+        "_tabs_positioning": {
+            "type": "tabs"
+        },
+        "_tab_positioning": {
+            "type": "tab"
+        },
+        "_tab_positioning_hover": {
+            "type": "tab"
+        },
+        "_background_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_background_hover_color": {
+            "type": "color",
+            "default": "",
+            "selectors": {
+                "{{WRAPPER}}:hover": "background-color: {{VALUE}};"
+            },
+            "condition": {
+                "_background_hover_background": [
+                    "classic",
+                    "gradient",
+                    "video"
+                ]
+            }
+        },
+        "_background_hover_color_b": {
+            "type": "color",
+            "default": "#f2295b",
+            "condition": {
+                "_background_hover_background": [
+                    "gradient"
+                ]
+            }
+        },
+        "_section_border": {
+            "type": "section"
+        },
+        "_tabs_border": {
+            "type": "tabs"
+        },
+        "_tab_border_normal": {
+            "type": "tab"
+        },
+        "_tab_border_hover": {
+            "type": "tab"
+        }
+    }
+}

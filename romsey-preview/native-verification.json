@@ -1,0 +1,230 @@
+{
+  "types": {
+    "text-editor": 12,
+    "heading": 13,
+    "image": 6,
+    "icon": 3,
+    "divider": 1,
+    "icon-list": 1,
+    "button": 33
+  },
+  "content": {
+    "page": "18",
+    "sections": 9,
+    "missingText": [],
+    "missingLinks": [],
+    "areas": 33,
+    "iframes": 0,
+    "htmlWidgets": 0,
+    "gallery": 0,
+    "fonts": [
+      {
+        "family": "DM Serif Display",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Serif Display",
+        "status": "loaded"
+      },
+      {
+        "family": "DM Serif Display",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Serif Display",
+        "status": "loaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "loaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "unloaded"
+      },
+      {
+        "family": "DM Sans",
+        "status": "loaded"
+      }
+    ]
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "pageWidth": 1425,
+      "pageOverflow": false,
+      "rootWidth": 1425,
+      "rootScrollWidth": 1425,
+      "rootOverflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1024,
+      "pageWidth": 1009,
+      "pageOverflow": false,
+      "rootWidth": 1009,
+      "rootScrollWidth": 1009,
+      "rootOverflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 768,
+      "pageWidth": 753,
+      "pageOverflow": false,
+      "rootWidth": 753,
+      "rootScrollWidth": 753,
+      "rootOverflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 390,
+      "pageWidth": 375,
+      "pageOverflow": false,
+      "rootWidth": 375,
+      "rootScrollWidth": 375,
+      "rootOverflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 320,
+      "pageWidth": 327,
+      "pageOverflow": true,
+      "rootWidth": 305,
+      "rootScrollWidth": 305,
+      "rootOverflow": false,
+      "brokenImages": 0
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+.woodend-preview{--ink:#34382f;--accent:#ad4e35;--cream:#f5f1e9;--paper:#fffcf6;--line:#ddd7ca;--muted:#6c7064;margin:0;background:var(--cream);color:var(--ink);font:15px/1.85 'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.woodend-preview *{box-sizing:border-box}
+.woodend-preview a{color:inherit;text-decoration:none}
+.woodend-preview a:hover{color:var(--accent)}
+.woodend-preview a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.woodend-preview img{display:block;max-width:100%;object-fit:cover}
+.woodend-preview h1,.woodend-preview h2,.woodend-preview p,.woodend-preview figure{margin:0}
+.woodend-preview h1,.woodend-preview h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.16;letter-spacing:-.025em;text-wrap:balance}
+.woodend-preview p{color:var(--muted)}
+.woodend-preview .woodend-wrap{width:min(1160px,calc(100% - 96px));margin-inline:auto}
+.woodend-preview .woodend-header{border-bottom:1px solid var(--line)}
+.woodend-preview .woodend-header-inner{display:flex;align-items:center;justify-content:space-between;min-height:98px;gap:25px}
+.woodend-preview .woodend-header-inner img{width:104px;height:auto;object-fit:contain}
+.woodend-preview .woodend-header-inner nav{display:flex;gap:23px;font-size:12px;font-weight:500}
+.woodend-preview .woodend-header-phone{font-size:13px;white-space:nowrap;border-bottom:1px solid var(--accent);padding-block:6px}
+.woodend-preview .woodend-header-phone span{color:var(--accent);margin-left:15px}
+.woodend-preview .woodend-page-title{padding-block:38px 46px;text-align:center}
+.woodend-preview .woodend-breadcrumb{display:flex;justify-content:center;gap:11px;color:#818675;font-size:11px;margin-bottom:22px}
+.woodend-preview h1{font-size:clamp(54px,6vw,82px);line-height:1.1;letter-spacing:-.045em}
+.woodend-preview h1 em{font-weight:400;color:var(--accent)}
+.woodend-preview .woodend-supply{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:stretch;padding-bottom:78px}
+.woodend-preview .woodend-supply-photo img{width:100%;height:100%;min-height:600px;object-position:46% center}
+.woodend-preview .woodend-supply h2{font-size:41px;line-height:1.13;max-width:580px;margin-bottom:25px}
+.woodend-preview .woodend-supply-copy>p{font-size:14px;line-height:1.95}
+.woodend-preview .woodend-supply-copy>p+p{margin-top:22px}
+.woodend-preview .woodend-supply .woodend-delivery-terms{padding-left:20px;border-left:1px solid #c9a990;color:#535a4d}
+.woodend-preview .woodend-section-heading{text-align:center;max-width:760px;margin:0 auto 38px}
+.woodend-preview .woodend-heading-rule{display:block;width:40px;height:1px;background:var(--accent);margin:0 auto 24px}
+.woodend-preview .woodend-section-heading h2{font-size:44px}
+.woodend-preview .woodend-specialist{padding-bottom:78px}
+.woodend-preview .woodend-specialist-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:68px;align-items:center}
+.woodend-preview .woodend-specialist-photo img{width:100%;height:345px;object-position:center 48%}
+.woodend-preview .woodend-specialist-photo figcaption{padding:23px 27px;font-size:12px;line-height:1.85;color:#75786c;background:var(--paper)}
+.woodend-preview .woodend-specialist-copy p{font-size:15px;line-height:1.95}
+.woodend-preview .woodend-specialist-copy p+p{margin-top:30px;padding-top:25px;border-top:1px solid var(--line)}
+.woodend-preview .woodend-why{background:#eae6dc;padding-block:62px}
+.woodend-preview .woodend-why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;align-items:center}
+.woodend-preview .woodend-why h2{font-size:48px}
+.woodend-preview .woodend-why p{font-size:16px;line-height:1.9}
+.woodend-preview .woodend-eco{padding-block:72px 50px}
+.woodend-preview .woodend-eco-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;background:var(--paper);padding:40px 44px}
+.woodend-preview .woodend-eco-grid p{font-size:14px;line-height:1.95}
+.woodend-preview .woodend-eco-grid>div{border-left:1px solid #e6ded0;padding-left:38px}
+.woodend-preview .woodend-eco-grid .woodend-call{font-family:'DM Serif Display',Georgia,serif;font-size:24px;line-height:1.5;letter-spacing:-.015em;color:var(--ink);border-top:1px solid var(--line);padding-top:24px;margin-top:24px;text-wrap:balance}
+.woodend-preview .woodend-call a{color:var(--accent);text-decoration:underline;text-decoration-color:#c7a18b;text-underline-offset:4px}
+.woodend-preview .woodend-comparison{padding-bottom:65px}
+.woodend-preview .woodend-comparison p{font-family:'DM Serif Display',Georgia,serif;font-size:25px;line-height:1.5;text-align:center;max-width:890px;margin:auto;text-wrap:balance;color:#69705f}
+.woodend-preview .woodend-comparison strong{font-weight:400;color:var(--accent)}
+.woodend-preview .woodend-footer{background:var(--paper);padding-block:50px 24px}
+.woodend-preview .woodend-footer-grid{display:grid;grid-template-columns:1.3fr .5fr;gap:140px}
+.woodend-preview .woodend-footer-grid img{margin-bottom:25px;width:110px;height:auto}
+.woodend-preview .woodend-footer h2{font:600 14px/1.5 'DM Sans',Arial,sans-serif;letter-spacing:0;margin-bottom:14px}
+.woodend-preview .woodend-footer p,.woodend-preview .woodend-footer a{font-size:12px;line-height:1.8;overflow-wrap:anywhere}
+.woodend-preview .woodend-footer-grid p{max-width:500px;margin-bottom:16px}
+.woodend-preview .woodend-footer-grid a{display:block;margin-top:6px}
+.woodend-preview .woodend-footer-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;gap:30px;justify-content:space-between}
+.woodend-preview .woodend-footer-bottom p{font-size:10px}
+@media(max-width:1100px){.woodend-preview .woodend-wrap{width:calc(100% - 64px)}.woodend-preview .woodend-header-inner nav{gap:18px;font-size:11px}.woodend-preview .woodend-header-phone{display:none}.woodend-preview .woodend-supply{gap:40px}.woodend-preview .woodend-supply h2{font-size:35px}.woodend-preview .woodend-supply-photo img{min-height:620px}.woodend-preview .woodend-specialist-grid,.woodend-preview .woodend-why-grid{gap:42px}.woodend-preview .woodend-specialist-copy p{font-size:14px}.woodend-preview .woodend-eco-grid{gap:30px;padding:30px}.woodend-preview .woodend-eco-grid>div{padding-left:28px}.woodend-preview .woodend-why h2{font-size:43px}}
+@media(max-width:767px){.woodend-preview .woodend-wrap{width:calc(100% - 40px)}.woodend-preview .woodend-header-inner{min-height:95px;gap:14px;flex-wrap:wrap;justify-content:center;padding:15px 0}.woodend-preview .woodend-header-inner img{width:90px}.woodend-preview .woodend-header-inner nav{justify-content:center;gap:8px 18px;flex-wrap:wrap;font-size:11px}.woodend-preview .woodend-page-title{padding-block:28px 34px}.woodend-preview .woodend-breadcrumb{font-size:10px;margin-bottom:20px}.woodend-preview h1{font-size:53px;max-width:350px;margin:auto}.woodend-preview .woodend-supply,.woodend-preview .woodend-specialist-grid,.woodend-preview .woodend-why-grid,.woodend-preview .woodend-eco-grid{grid-template-columns:1fr;gap:28px}.woodend-preview .woodend-supply{padding-bottom:44px}.woodend-preview .woodend-supply-photo img{min-height:0;height:285px}.woodend-preview .woodend-supply h2{font-size:33px;margin-bottom:24px}.woodend-preview .woodend-supply-copy>p{font-size:14px;line-height:1.9}.woodend-preview .woodend-section-heading{margin-bottom:28px}.woodend-preview .woodend-section-heading h2{font-size:34px}.woodend-preview .woodend-heading-rule{margin-bottom:21px}.woodend-preview .woodend-specialist{padding-bottom:44px}.woodend-preview .woodend-specialist-photo img{height:275px}.woodend-preview .woodend-specialist-photo figcaption{padding:21px;font-size:12px}.woodend-preview .woodend-specialist-copy p{font-size:14px;line-height:1.9}.woodend-preview .woodend-specialist-copy p+p{margin-top:24px;padding-top:22px}.woodend-preview .woodend-why{padding-block:40px}.woodend-preview .woodend-why-grid{gap:22px}.woodend-preview .woodend-why h2{font-size:38px}.woodend-preview .woodend-why p{font-size:14px}.woodend-preview .woodend-eco{padding-block:44px 34px}.woodend-preview .woodend-eco-grid{padding:24px;gap:24px}.woodend-preview .woodend-eco-grid>div{border-left:0;border-top:1px solid #e6ded0;padding-left:0;padding-top:24px}.woodend-preview .woodend-eco-grid p{font-size:13px}.woodend-preview .woodend-eco-grid .woodend-call{font-size:23px}.woodend-preview .woodend-comparison{padding-bottom:42px}.woodend-preview .woodend-comparison p{font-size:23px}.woodend-preview .woodend-footer{padding-top:40px}.woodend-preview .woodend-footer-grid{grid-template-columns:1fr;gap:28px}.woodend-preview .woodend-footer-bottom{flex-direction:column;gap:10px;margin-top:30px}}
+@media(prefers-reduced-motion:reduce){.woodend-preview *{scroll-behavior:auto}}

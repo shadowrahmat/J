@@ -1,0 +1,65 @@
+{
+  "widgets": {
+    "text-editor": 12,
+    "heading": 6,
+    "image": 2,
+    "divider": 2
+  },
+  "content": {
+    "page": "19",
+    "sections": 6,
+    "expectedBlocks": 16,
+    "missingText": [],
+    "missingLinks": [],
+    "productNames": false,
+    "deliveryAreas": false,
+    "iframes": 0,
+    "htmlWidgets": 0,
+    "gallery": 0,
+    "fonts": [
+      "DM Sans"
+    ]
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "rootWidth": 1425,
+      "rootScrollWidth": 1425,
+      "rootOverflow": false,
+      "pageWidth": 1425,
+      "brokenImages": 0
+    },
+    {
+      "width": 1024,
+      "rootWidth": 1009,
+      "rootScrollWidth": 1009,
+      "rootOverflow": false,
+      "pageWidth": 1009,
+      "brokenImages": 0
+    },
+    {
+      "width": 768,
+      "rootWidth": 753,
+      "rootScrollWidth": 753,
+      "rootOverflow": false,
+      "pageWidth": 753,
+      "brokenImages": 0
+    },
+    {
+      "width": 390,
+      "rootWidth": 375,
+      "rootScrollWidth": 375,
+      "rootOverflow": false,
+      "pageWidth": 375,
+      "brokenImages": 0
+    },
+    {
+      "width": 320,
+      "rootWidth": 305,
+      "rootScrollWidth": 305,
+      "rootOverflow": false,
+      "pageWidth": 327,
+      "brokenImages": 0
+    }
+  ]
+}

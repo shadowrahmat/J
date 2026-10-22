@@ -1,0 +1,91 @@
+.romsey-preview{--ink:#292b27;--accent:#c8452d;--cream:#f5f2eb;--line:#dedbd3;--muted:#686b62;margin:0;background:#fff;color:var(--ink);font:16px/1.8 Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+.romsey-preview *{box-sizing:border-box}
+.romsey-preview a{color:inherit;text-decoration:none}
+.romsey-preview a:focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+.romsey-preview a:hover{color:var(--accent)}
+.romsey-preview img{display:block;max-width:100%;object-fit:cover}
+.romsey-preview h1,.romsey-preview h2,.romsey-preview p,.romsey-preview ul{margin:0}
+.romsey-preview h1,.romsey-preview h2{font-family:Arial,Helvetica,sans-serif;font-weight:600;letter-spacing:-.05em;line-height:1.14;text-wrap:balance}
+.romsey-preview h2{font-size:38px}
+.romsey-preview p{color:var(--muted)}
+.romsey-preview .romsey-wrap{width:min(1180px,calc(100% - 96px));margin-inline:auto}
+.romsey-preview .romsey-site-header{background:#fff}
+.romsey-preview .romsey-header-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:103px}
+.romsey-preview .romsey-header-inner img{width:108px;height:auto;object-fit:contain}
+.romsey-preview .romsey-header-inner nav{display:flex;align-items:center;gap:25px;font-size:12px;font-weight:600}
+.romsey-preview .romsey-phone{font-size:13px;font-weight:600;white-space:nowrap;background:var(--accent);color:#fff;padding:11px 17px}
+.romsey-preview .romsey-phone:hover{background:#a93723;color:#fff}
+.romsey-preview .romsey-phone span{margin-left:14px}
+.romsey-preview .romsey-hero{position:relative;background:#252920;min-height:640px;isolation:isolate}
+.romsey-preview .romsey-hero-image{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,29,22,.96) 0%,rgba(24,29,22,.87) 28%,rgba(24,29,22,.3) 63%,rgba(24,29,22,.06)),url('assets/redgum-offcuts.jpg') right 53%/cover no-repeat}
+.romsey-preview .romsey-hero-inner{padding-block:45px 112px}
+.romsey-preview .romsey-hero-copy{width:52%;max-width:620px}
+.romsey-preview .romsey-breadcrumb{display:flex;gap:12px;font-size:11px;color:#dedfd7;margin-bottom:45px;letter-spacing:.03em}
+.romsey-preview .romsey-hero h1{font-size:clamp(66px,7.5vw,108px);color:#fff;line-height:.97;letter-spacing:-.065em}
+.romsey-preview .romsey-hero h1 span{font-family:Georgia,serif;font-weight:400;font-style:italic;color:#e4b89b;letter-spacing:-.06em}
+.romsey-preview .romsey-hero-copy>p{font-size:14px;line-height:1.85;color:#e2e2d8;max-width:430px;margin-top:28px}
+.romsey-preview .romsey-hero-rule{width:45px;height:2px;background:#df9c79;margin-top:27px}
+.romsey-preview .romsey-products{position:relative;margin-top:-54px;padding:0 0 85px}
+.romsey-preview .romsey-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.romsey-preview .romsey-product{background:#fff;padding:10px 10px 0;border:1px solid #ece9e1;box-shadow:0 16px 35px -24px #34352e55}
+.romsey-preview .romsey-product-image{display:block;overflow:hidden;background:var(--cream)}
+.romsey-preview .romsey-product-image img{width:100%;height:auto;aspect-ratio:1.55;transition:transform .35s ease}
+.romsey-preview .romsey-product-image:hover img{transform:scale(1.035)}
+.romsey-preview .romsey-product-info{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:24px 12px}
+.romsey-preview .romsey-product h2{font-size:23px;letter-spacing:-.035em;margin-bottom:9px}
+.romsey-preview .romsey-product p{font-size:13px;color:#72746b}
+.romsey-preview .romsey-product-arrow{display:grid;place-items:center;width:35px;height:35px;flex-shrink:0;background:var(--cream);color:var(--accent);font-size:21px}
+.romsey-preview .romsey-product-arrow:hover{background:var(--accent);color:#fff}
+.romsey-preview .romsey-intro{padding-block:0 85px}
+.romsey-preview .romsey-intro-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:100px;align-items:center}
+.romsey-preview .romsey-intro h2{font-size:43px;max-width:620px;line-height:1.16}
+.romsey-preview .romsey-terms{list-style:none;padding:25px 28px;border-left:3px solid var(--accent);background:var(--cream)}
+.romsey-preview .romsey-terms li:first-child{font-size:24px;line-height:1.3;font-weight:600;letter-spacing:-.03em;color:var(--accent)}
+.romsey-preview .romsey-terms li+li{font-size:13px;line-height:1.6;margin-top:14px;padding-top:14px;border-top:1px solid #dcd7cd}
+.romsey-preview .romsey-points{background:var(--cream);padding-block:88px}
+.romsey-preview .romsey-points-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+.romsey-preview .romsey-points-photo{position:relative;padding:0 20px 20px 0}
+.romsey-preview .romsey-points-photo:after{content:'';position:absolute;inset:24px 0 0 24px;background:#ded9cc;z-index:0}
+.romsey-preview .romsey-points-photo img{position:relative;z-index:1;width:100%;height:580px}
+.romsey-preview .romsey-points h2{font-size:35px;max-width:480px;margin-bottom:28px}
+.romsey-preview .romsey-points ul{padding:0;list-style:none;counter-reset:points}
+.romsey-preview .romsey-points li{position:relative;padding:18px 0 18px 43px;border-top:1px solid #d8d5ca;font-size:14px;line-height:1.7;color:#5d6056;counter-increment:points}
+.romsey-preview .romsey-points li:before{content:counter(points,decimal-leading-zero);position:absolute;left:0;top:20px;font-size:10px;letter-spacing:.08em;font-weight:600;color:var(--accent)}
+.romsey-preview .romsey-btu{margin-block:88px;background:#2d322a;display:grid;grid-template-columns:.9fr 1.1fr;gap:65px;padding:60px}
+.romsey-preview .romsey-btu h2{color:#f4f1e7;font-size:35px}
+.romsey-preview .romsey-mark{display:block;font:44px/1 Georgia,serif;color:#dba887;margin-bottom:30px}
+.romsey-preview .romsey-btu-copy p{font-size:14px;color:#d2d5ca;line-height:1.85}
+.romsey-preview .romsey-btu-copy p+p{margin-top:22px}
+.romsey-preview .romsey-btu .romsey-order-note{font-size:12px;color:#c1c6b7;padding:20px 0 20px 22px;border-left:2px solid #b97857;background:#ffffff04}
+.romsey-preview .romsey-why{padding-block:0 75px}
+.romsey-preview .romsey-why-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:100px;align-items:start}
+.romsey-preview .romsey-why h2{font-size:35px}
+.romsey-preview .romsey-why p{font-size:15px;line-height:1.9}
+.romsey-preview .romsey-contact{padding-bottom:55px}
+.romsey-preview .romsey-contact-inner{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:45px;display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:center}
+.romsey-preview .romsey-contact .romsey-contact-heading{color:var(--accent);font:italic 35px/1.2 Georgia,serif;letter-spacing:-.03em}
+.romsey-preview .romsey-contact-inner>p+p{font-size:14px;line-height:1.9}
+.romsey-preview .romsey-contact a{text-decoration:underline;text-decoration-color:#b7aea0;text-underline-offset:4px;overflow-wrap:anywhere;color:var(--ink)}
+.romsey-preview .romsey-comparison{padding-bottom:75px}
+.romsey-preview .romsey-comparison p{margin:auto;max-width:900px;text-align:center;font:27px/1.55 Georgia,serif;color:#45483e;text-wrap:balance}
+.romsey-preview .romsey-comparison strong{font-weight:400;color:var(--accent);font-size:1.18em}
+.romsey-preview .romsey-areas{background:var(--cream);padding-block:70px 80px}
+.romsey-preview .romsey-areas h2{font-size:40px;margin-bottom:35px}
+.romsey-preview .romsey-areas h2 span{font-family:Georgia,serif;font-style:italic;font-weight:400;color:var(--accent)}
+.romsey-preview .romsey-areas ul{padding:0;list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 30px}
+.romsey-preview .romsey-areas a{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dcd7cc;padding:12px 0;font-size:13px}
+.romsey-preview .romsey-areas a span{color:#989b8d;font-size:14px}
+.romsey-preview .romsey-footer{padding-block:55px 24px;background:#fff}
+.romsey-preview .romsey-footer-grid{display:grid;grid-template-columns:1.3fr .5fr;gap:140px}
+.romsey-preview .romsey-footer-grid img{margin-bottom:25px}
+.romsey-preview .romsey-footer h2{font:600 15px/1.5 Arial,sans-serif;letter-spacing:0;margin-bottom:14px}
+.romsey-preview .romsey-footer p,.romsey-preview .romsey-footer a{font-size:13px;line-height:1.8;overflow-wrap:anywhere}
+.romsey-preview .romsey-footer-grid p{max-width:500px;margin-bottom:16px}
+.romsey-preview .romsey-footer-grid a{display:block;margin-top:6px}
+.romsey-preview .romsey-footer-links{padding-top:10px}
+.romsey-preview .romsey-footer-bottom{margin-top:44px;padding-top:24px;border-top:1px solid var(--line);display:flex;gap:30px;justify-content:space-between}
+.romsey-preview .romsey-footer-bottom p{font-size:11px}
+@media(max-width:1100px){.romsey-preview .romsey-wrap{width:calc(100% - 64px)}.romsey-preview .romsey-header-inner nav{gap:17px;font-size:11px}.romsey-preview .romsey-phone{display:none}.romsey-preview .romsey-intro-grid,.romsey-preview .romsey-why-grid,.romsey-preview .romsey-contact-inner{gap:45px}.romsey-preview .romsey-points-grid{gap:40px}.romsey-preview .romsey-intro h2{font-size:36px}.romsey-preview .romsey-btu{padding:40px;gap:35px}.romsey-preview .romsey-btu h2{font-size:31px}.romsey-preview .romsey-areas ul{grid-template-columns:repeat(4,minmax(0,1fr))}.romsey-preview .romsey-product-info{padding:20px 8px}.romsey-preview .romsey-product h2{font-size:21px}}
+@media(max-width:767px){.romsey-preview .romsey-wrap{width:calc(100% - 40px)}.romsey-preview .romsey-header-inner{min-height:95px;gap:15px;flex-wrap:wrap;justify-content:center;padding:15px 0}.romsey-preview .romsey-header-inner img{width:95px}.romsey-preview .romsey-header-inner nav{justify-content:center;gap:8px 18px;flex-wrap:wrap;font-size:11px}.romsey-preview .romsey-hero{min-height:560px}.romsey-preview .romsey-hero-image{background:linear-gradient(90deg,rgba(24,29,22,.94),rgba(24,29,22,.6)),url('assets/redgum-offcuts.jpg') 62% center/cover}.romsey-preview .romsey-hero-inner{padding-block:30px 90px}.romsey-preview .romsey-hero-copy{width:100%;max-width:none}.romsey-preview .romsey-hero h1{font-size:74px}.romsey-preview .romsey-breadcrumb{margin-bottom:40px}.romsey-preview .romsey-hero-copy>p{font-size:13px;max-width:315px;margin-top:25px}.romsey-preview .romsey-hero-rule{margin-top:23px}.romsey-preview .romsey-products{margin-top:-38px;padding-bottom:45px}.romsey-preview .romsey-product-grid{grid-template-columns:1fr;gap:20px}.romsey-preview .romsey-product{padding:8px 8px 0}.romsey-preview .romsey-product-image img{aspect-ratio:1.8}.romsey-preview .romsey-product-info{padding:20px 10px}.romsey-preview .romsey-product h2{font-size:23px}.romsey-preview .romsey-intro{padding-bottom:45px}.romsey-preview .romsey-intro-grid,.romsey-preview .romsey-points-grid,.romsey-preview .romsey-btu,.romsey-preview .romsey-why-grid,.romsey-preview .romsey-contact-inner{grid-template-columns:1fr;gap:25px}.romsey-preview .romsey-intro h2,.romsey-preview .romsey-points h2,.romsey-preview .romsey-btu h2,.romsey-preview .romsey-why h2{font-size:31px}.romsey-preview .romsey-terms{padding:23px}.romsey-preview .romsey-points{padding-block:42px}.romsey-preview .romsey-points-photo{padding:0 14px 14px 0}.romsey-preview .romsey-points-photo:after{inset:16px 0 0 16px}.romsey-preview .romsey-points-photo img{height:310px}.romsey-preview .romsey-points h2{margin-bottom:22px}.romsey-preview .romsey-points li{padding-left:36px}.romsey-preview .romsey-btu{margin-block:45px;padding:30px 25px;gap:25px}.romsey-preview .romsey-mark{font-size:35px;margin-bottom:22px}.romsey-preview .romsey-why{padding-bottom:40px}.romsey-preview .romsey-contact{padding-bottom:40px}.romsey-preview .romsey-contact-inner{padding-block:32px;gap:24px}.romsey-preview .romsey-contact .romsey-contact-heading{font-size:32px}.romsey-preview .romsey-comparison{padding-bottom:42px}.romsey-preview .romsey-comparison p{font-size:23px}.romsey-preview .romsey-areas{padding-block:42px}.romsey-preview .romsey-areas h2{font-size:33px;margin-bottom:24px}.romsey-preview .romsey-areas ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}.romsey-preview .romsey-areas a{font-size:12px}.romsey-preview .romsey-footer{padding-top:40px}.romsey-preview .romsey-footer-grid{grid-template-columns:1fr;gap:28px}.romsey-preview .romsey-footer-bottom{flex-direction:column;gap:10px;margin-top:30px}.romsey-preview .romsey-footer-grid img{width:105px;height:auto}}
+@media(max-width:359px){.romsey-preview .romsey-hero h1{font-size:64px}.romsey-preview .romsey-hero-copy>p{font-size:12px}.romsey-preview .romsey-intro h2{font-size:28px}.romsey-preview .romsey-terms li:first-child{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.romsey-preview .romsey-product-image img{transition:none}}

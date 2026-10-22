@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+const base=new URL('./',import.meta.url);
+const c=JSON.parse(fs.readFileSync(new URL('content.json',base)));
+const e=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const origin='https://macedonrangesfirewoodyard.com.au';
+const nav=[['Home','/'],['About Us','/about-us/'],['Firewood Products','/firewood-products/'],['Wholesale','/wholesale/'],['Delivery Areas','/delivery-areas/'],['Contact Us','/contact-us/']];
+const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Woodend Firewood — Macedon Ranges Firewood Yard</title><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="style.css"></head>
+<body class="woodend-preview">
+<header class="woodend-header"><div class="woodend-wrap woodend-header-inner"><a href="${origin}/" aria-label="Macedon Ranges Firewood Yard"><img src="assets/logo.png" width="129" height="72" alt="Macedon Ranges Firewood Yard"></a><nav aria-label="Main navigation">${nav.map(([t,p])=>`<a href="${origin+p}">${t}</a>`).join('')}</nav><a class="woodend-header-phone" href="tel:0406600018">0406600018 <span aria-hidden="true">↗</span></a></div></header>
+<main>
+<section class="woodend-page-title"><div class="woodend-wrap"><div class="woodend-breadcrumb"><a href="${origin}/">Home</a><span aria-hidden="true">/</span><span>Woodend Firewood</span></div><h1>Woodend <em>Firewood</em></h1></div></section>
+<section class="woodend-supply woodend-wrap" aria-labelledby="woodend-supply-title"><div class="woodend-supply-photo"><img src="assets/redgum-supply.jpg" width="640" height="480" alt="Seasoned Redgum firewood"></div><div class="woodend-supply-copy"><h2 id="woodend-supply-title">${e(c.supplyTitle)}</h2><p class="woodend-delivery-terms">${c.supply[0]}</p><p>${c.supply[1]}</p><p>${c.supply[2]}</p></div></section>
+<section class="woodend-specialist woodend-wrap" aria-labelledby="woodend-specialist-title"><div class="woodend-section-heading"><span class="woodend-heading-rule" aria-hidden="true"></span><h2 id="woodend-specialist-title">${e(c.specialistTitle)}</h2></div><div class="woodend-specialist-grid"><figure class="woodend-specialist-photo"><img src="assets/redgum-offcuts.jpg" width="640" height="480" alt="Firewood being loaded for delivery" loading="lazy"><figcaption>${c.specialist[1]}</figcaption></figure><div class="woodend-specialist-copy"><p>${c.specialist[0]}</p><p>${c.specialist[2]}</p></div></div></section>
+<section class="woodend-why" aria-labelledby="woodend-why-title"><div class="woodend-wrap woodend-why-grid"><h2 id="woodend-why-title">${e(c.whyTitle)}</h2><p>${c.why}</p></div></section>
+<section class="woodend-eco woodend-wrap" aria-labelledby="woodend-eco-title"><div class="woodend-section-heading"><span class="woodend-heading-rule" aria-hidden="true"></span><h2 id="woodend-eco-title">${e(c.ecoTitle)}</h2></div><div class="woodend-eco-grid"><p>${c.eco[0]}</p><div><p>${c.eco[1]}</p><p class="woodend-call">${c.eco[2]}</p></div></div></section>
+<section class="woodend-comparison woodend-wrap" aria-label="Mixed hardwood comparison"><p>${e(c.mixed).replace('5%','<strong>5%</strong>').replace('25%','<strong>25%</strong>')}</p></section>
+</main>
+<footer class="woodend-footer"><div class="woodend-wrap"><div class="woodend-footer-grid"><div><img src="assets/logo.png" width="129" height="72" alt="Macedon Ranges Firewood Yard"><h2>Macedon Ranges Firewood Yard</h2><p>Duckholes Rd Romsey , Victoria, 3434<br>( It is the first driveway on the right when you turn off Melbourne Lancefield Road onto Duckholes Road )</p><a href="tel:0406600018">Call 0406 600 018</a><a href="mailto:macedonrangesfirewoodyard@gmail.com">Email: macedonrangesfirewoodyard@gmail.com</a></div><div><h2>Quick Links</h2>${nav.filter(([t])=>t!=='Wholesale').map(([t,p])=>`<a href="${origin+p}">${t}</a>`).join('')}</div></div><div class="woodend-footer-bottom"><p>© 2019 - 2023 Macedon Ranges Firewood Yard. All Rights Reserved. | Designed By <a href="https://jrtechnologiesweb.com/">JR Technologies Web</a></p><p>ABN : 620185659</p></div></div></footer>
+</body></html>`;
+fs.writeFileSync(new URL('index.html',base),html);
+console.log('Built Woodend preview from original remaining content.');

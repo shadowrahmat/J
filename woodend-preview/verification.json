@@ -1,0 +1,53 @@
+{
+  "content": {
+    "expectedBlocks": 16,
+    "renderedBlocks": 16,
+    "missing": [],
+    "added": [],
+    "missingLinks": [],
+    "productSection": false,
+    "productNames": false,
+    "gallery": false,
+    "deliveryAreas": false,
+    "map": false,
+    "fonts": [
+      "DM Sans",
+      "DM Sans",
+      "DM Sans",
+      "DM Serif Display",
+      "DM Serif Display"
+    ]
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "scrollWidth": 1425,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1009,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 768,
+      "scrollWidth": 753,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 390,
+      "scrollWidth": 375,
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "width": 320,
+      "scrollWidth": 305,
+      "overflow": false,
+      "brokenImages": 0
+    }
+  ]
+}
